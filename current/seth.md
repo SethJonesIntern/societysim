@@ -1,7 +1,8 @@
-# seth status (updated 2026-10-11T14:30Z)
+# seth status (updated 2026-10-11T15:00Z)
 ## Active
-- #205 | PR #215 approved, auto-merge
-- T5.2 #35 selfplay | RUNNING half size (Seth): 45 games, $4 cap, batch_id selfplay_baseline, main 0257d57, scratch cfg selfplay_half.yaml; watchdog on. Extend to 90 later by running configs/selfplay_baseline.yaml (resume).
+- T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
+- #224 persuasion seq-index bug | implementer
+- #225 Windows os.replace retry | implementer
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
