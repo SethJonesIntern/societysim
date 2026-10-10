@@ -1,11 +1,15 @@
-# marcus status (updated 2026-10-10T07:37Z)
+# marcus status (updated 2026-10-10T07:40Z)
 ## Active
-- T4.1 #23 viewer scaffold (Augustin's team) | agent: implementer (opus), done | branch issue-23-viewer-scaffold | PR #93 | state: in review (opus). Modes narrator+villager. Needs admin: make viewer a required CI check after merge.
+- T4.2 #24 circle table | agent: implementer (opus) | branch issue-24-circle-table | PR - | state: implementing
+- T4.6 #28 mode toggle (+App.tsx) | agent: codex-implementer | branch issue-28-mode-toggle | PR - | state: implementing
+- T4.7 #29 inspector | agent: implementer (sonnet) | branch issue-29-player-inspector | PR - | state: implementing
+- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR - | state: implementing
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.1 #23 viewer scaffold (Augustin's team): PR #93 merged. Handoffs posted on #24-#33 #40. Unblocked #24 #28 #29 #30 (claimed by Marcus). Admin TODO: make `viewer` a required CI check.
 - T1.4c #85 anti-injection: PR #87 merged (3 rounds). Handoffs on #23 #19.
 - T2.2b #83 Gemini sampling (Seth's team): PR #92 merged. Handoffs on #15 #34.
 - T1.9b #88 widen sweep: PR #91 merged (243 default games, 657 slow behind SOCIETYSIM_SLOW=1).
@@ -35,7 +39,7 @@
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Human setup: collaborators invited, gh scopes OK. .env created by Marcus with all keys except AMD (AMD platform spawn fails: ErrImagePull; #41 waits on AMD support). Agents can't read .env (sandbox). Marcus ran `societysim doctor` himself: all 9 models OK in all 3 modes (HF/OpenAI/Gemini keys good). Jev live test skipped in Marcus's terminal too: pytest doesn't load .env; told him uv run --env-file .env pytest tests/unit/test_jev.py. Gemini 3+ temperature deprecation + stray LiteLLM error filed as #83 (team:runner). Plugins/MCPs unverified.
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
-- AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (wrong resource; sponsor says use Custom Repos -> Basic GPU Environment) (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
+- AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (wrong resource; sponsor says use Custom Repos -> Basic GPU Environment) (platform-side, 02:59 EDT); trying LLM Course notebook. Probe 1 done: R9700 32GB gfx1201, HF reachable, no `python` (python3?), 194GB NFS free. Probe 2 (torch/vllm) pending (GPU/VRAM, vllm, HF access). Note posted on #41.
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
 - Marcus 03:25 EDT: keep going until rate limited, no permission needed. Marcus claimed #23 and #83 himself (classifier blocked me) and is adding Bash(gh issue:*)/Bash(gh pr:*) allow rules. Cross-team work OK: take idle ready tickets from other teams.
 - PR #89 (Marcus's README edit): my approve was blocked by the classifier (Self-Approval). Gave Marcus the commands, or he can ask for a reviewer.
