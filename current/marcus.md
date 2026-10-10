@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T13:17Z)
+# marcus status (updated 2026-10-10T13:19Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 | state: in review (no live Neon run yet; flush now ~1s)
-- #21 PR #80 rebased (SOCIETYSIM_HF_DATASET default) | reviewer (opus) running | hold stays (Seth). .env.example lacks SOCIETYSIM_HF_DATASET (follow-up).
+- #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
 - #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR - | state: implementing
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
@@ -67,6 +67,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Reviewers: do NOT make live calls that load .env via the CLI unless asked (PR #80 reviewer did a 403 HF create smoke test).
 - Marcus asleep again; work autonomously, ping him only if absolutely needed.
 - Seth told (GitHub @mention on #35) not to work on PR #80 rebase/default repo or #157. LATER TODO: Discord ping for Seth needs his numeric Discord user ID (Marcus to provide; `<@ID>` in content); the webhook is Marcus personal channel, check Seth can see it.
 - Agent cap raised to 5 (Marcus). Marcus resting; autonomous mode: do all coding tickets incl. Seth runner coding work. NO paid batch runs (Seth: no paid runs while asleep).
