@@ -1,14 +1,14 @@
-# seth status (updated 2026-10-11T17:30Z)
+# seth status (updated 2026-10-11T18:00Z)
 ## Active
 - T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
-- #230 utf-8 logs | PR #235 round 2 review (read_text_lenient in logging/textio.py)
-- T5.2 replay plan (Seth: only affected games): 11 games g0001,g0003,g0004,g0010,g0012,g0021,g0025,g0030,g0031,g0039,g0044 (all 5 gpt-oss). ~$0.45. After #235 merges.
+- T5.2 replay RUNNING on 158712a: 11 holed games moved to runs/selfplay_baseline_quarantine/, resume replays them (cap $4, ledger $1.79). Main folder detached; don't switch branches.
 - #240 Windows CI | PR #241 hold; fixing WSL bash; rebase after #237
 - #232 Windows suite | PR #237 approved but conflicting -> rebasing
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #230 UTF-8 logs + cp1252 read fallback: PR #235 merged 19:11Z
 - #231 highlights seq: PR #233 merged
 - #224 persuasion seq: PR #227 approved/merging
 - #225 Windows replace retry: PR #226 approved/merging
@@ -62,4 +62,5 @@
 - #136 (gemma suspicion) is Marcus's, in review. When merged: re-run gemma 3-game check (needs Seth OK for spend) then resume T5.2.
 - Cleaned 44 agent worktrees (~700MB in OneDrive).
 - #147 (Marcus) fixed gemma: 0/120 invalid. Wolves won 15/16 live games: flagged on #35 for engine.
+- Old cp1252 logs (smoke 10, selfplay 34) read fine via read_text_lenient but deploy-space copies raw bytes -> viewer may garble them. Consider re-encoding copies at deploy, not raw logs.
 ## Codex: n/a
