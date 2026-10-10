@@ -1,11 +1,11 @@
-# marcus status (updated 2026-10-10T20:22Z)
+# marcus status (updated 2026-10-10T20:23Z)
 ## Active
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
   - #251 deception matrix: PR #257 | in review (opus) (wolves never listeners - author decision)
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
   - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | PR #260 | in review + HOLD (stacked on #256). Needs live bank build: 9 Jude lines, 370 chars.
-  - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | implementer | issue-259-ten-player-experiment (stacked on #256)
+  - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | in review + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
   - T5.3 #36 RUNNING (Marcus OK: 'complete Seth's path'): mixed_v1 --agents llm --neon started 2026-10-10T20:14Z, log .cache/mixed_v1.log, cap $10. Seth notified on #36. DON'T git checkout in main checkout while running.
