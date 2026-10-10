@@ -1,10 +1,9 @@
-# marcus status (updated 2026-10-10T21:07Z)
+# marcus status (updated 2026-10-10T21:10Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
   - #256 now also gets viewer parse.ts v3/p9 (msg to implementer) -> then merge stack #256 -> #260/#261/#269 (rebase) -> Ctrl-C mixed_v1 (no drain mechanism; partials excluded) -> run mixed_v2_10p (~$13.62, cap $15).
   - #270 stepper | issue-270-stepper | implementing
   - #271 narration playback | issue-271-narration-playback | implementing
-  - #272 neon auth: PR #275 | in review
   - #273 deception matrix UI | NOT dispatched yet (agent cap)
   - #274 setup form | issue-274-setup-form (stacked on #269) | implementing
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
@@ -39,6 +38,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #272 viewer neonAuth.ts: PR #275 merged (live token+leaderboard 200). Port notes on #40.
 - #263 docs/PITCH.md: PR #265 merged.
 - #267 viewer slideshow click-through + Back to live: filed for Augustin (assigned agus-marmor), Discord ping sent.
 - #264 research answers: CLOSED not planned (Marcus: don't worry about answers portion).
