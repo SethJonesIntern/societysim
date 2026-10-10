@@ -534,5 +534,47 @@ def highlights(
     typer.echo(f"wrote {out} ({len(moments)} moments)")
 
 
+@app.command()
+def publish(
+    batch_dir: Path,
+    repo: Annotated[
+        str | None,
+        typer.Option(
+            "--repo", help="Hugging Face dataset, org/name. Default: $SOCIETYSIM_HF_DATASET."
+        ),
+    ] = None,
+    private: Annotated[
+        bool, typer.Option("--private/--public", help="Visibility if the repo is created.")
+    ] = True,
+) -> None:
+    """Push BATCH_DIR (runs/<batch>) logs, labels and a dataset card to a HF Dataset.
+
+    Needs HF_TOKEN with write access. Safe to re-run: files are named per game, so a re-upload
+    overwrites them. Run `societysim label` first to include labels.
+    """
+    from societysim.analysis.publish import publish_batch
+
+    load_dotenv()
+    repo = repo or os.environ.get("SOCIETYSIM_HF_DATASET")
+    if not repo:
+        typer.echo("no dataset repo: pass --repo org/name or set SOCIETYSIM_HF_DATASET")
+        raise typer.Exit(1)
+    token = os.environ.get("HF_TOKEN")
+    if not token:
+        typer.echo("HF_TOKEN is not set")
+        raise typer.Exit(1)
+    if not batch_dir.is_dir():
+        typer.echo(f"not a directory: {batch_dir}")
+        raise typer.Exit(1)
+    try:
+        n = publish_batch(batch_dir, repo, token, private=private)
+    except ValueError as e:
+        typer.echo(str(e))
+        raise typer.Exit(1) from None
+    typer.echo(
+        f"published {n['games']} games, {n['events']} events, {n['labels']} labels to {repo}"
+    )
+
+
 if __name__ == "__main__":
     app()
