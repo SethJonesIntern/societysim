@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T12:12Z)
+# marcus status (updated 2026-10-10T12:16Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN (in progress now, fresh pod: re-cloned repo): UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
+- T6.3b #114 verify AMD | HUMAN, running now: fresh pod, re-cloned. doctor in-pod GREEN (amd-gpt-oss-20b ok; json_schema 2672ms, json_object 1699ms, none 1754ms). 1 selfplay_amd game running. Then: post results on #114/#42/#36, serve.sh stop for hours.
 - #149 bare ids fix (regression from #147: "Dev (p0)" copied into player, 38% invalid) | agent: implementer (opus) | branch issue-149-bare-ids | PR #150 (label hold) | state: in review + live gemma check on PR head running (runs/gemma-149). Remove hold if invalid < 10%; post numbers on #35.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
