@@ -1,13 +1,13 @@
-# seth status (updated 2026-10-10T22:20Z)
+# seth status (updated 2026-10-10T22:40Z)
 ## Active
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges. Dry-run on 3863ec1 OK: smoke est $0.90/$1 cap, selfplay $16.79/$25, mixed $20.00/$40 (price-based). Needs review after #90.
-- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR #98 | state: rebased on 2ac09e9 (exact base_rate); in review + HOLD until #82 merges
+- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR #98 | state: approved on stacked base; rebasing onto main after #82 squash (conflicts) + small notes; then quick re-review, remove hold
 - T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: round 3 pushed (3863ec1, per-model estimate, atomic meta, --dry-run); final re-review + HOLD (live batch)
-- T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: approved; hold removed (Seth's defs confirmed); merging
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T3.3 #19 metrics: PR #82 merged 2026-10-10T07:44Z (Seth's metric decisions)
 - T2.1b #94 client robustness: PR #96 merged 2026-10-10T07:44Z
 - T6.1 #39 Neon sink: PR #73 merged 2026-10-10T07:13Z (live Neon check passed)
 - T2.2 #12 registry/doctor: PR #72 merged 2026-10-10T07:03Z (doctor 9/9 live; Seth OK'd orchestrator removing hold)
@@ -33,4 +33,5 @@
 - Filed #94 (client robustness, runner) and #95 (cached flag contract, team:engine, for Marcus).
 - 2026-10-10: Seth asked for max parallelism until 4:20 reset; stacking #16 on #90 and #20 on #82.
 - Windows MAX_PATH: don't make worktrees under the scratchpad (litellm paths too long).
+- Paid tests: only test_real_hf_selfplay (HF_TOKEN) and test_real_jev_on_fixture (TYPESAFE_API_KEY); skipped unless key exported. Proposed live marker + SOCIETYSIM_LIVE=1 guard (awaiting Seth).
 ## Codex: n/a
