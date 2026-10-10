@@ -1,13 +1,14 @@
-# marcus status (updated 2026-10-10T07:23Z)
+# marcus status (updated 2026-10-10T07:24Z)
 ## Active
-- T0.6 #79 contract cached + schema_version 2 | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR #86 | state: round 1 fixed, re-review round 2 running
-- T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
+- T1.9b #88 widen invariant sweep (doctor/reveal/chat flags) | agent: codex-implementer | branch issue-88-sweep-flags | PR - | state: implementing
 - T1.4c #85 anti-injection | agent: implementer (opus), done | branch issue-85-contain-model-text | PR #87 | state: in review (opus, adversarial). Cap 800 chars.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T0.6 #79 contract: meta.usage.cached, schema_version 2: PR #86 merged (2 rounds; cached optional, v1 logs still validate, LOG_SCHEMA.md v2). Handoffs on #15 #19 #20 #23 #39.
+- T1.9 #75 invariant sweep: PR #84 merged (240 games, 14/14 mutations caught). Handoffs on #15 #34. Follow-up #88.
 - **M1 Engine + self-play COMPLETE (8/8).** T1.8 #10 play CLI: PR #81 merged (2 rounds; fail-fast on missing keys). Handoffs on #15 #34 #23. Marcus told.
 - T1.4b #76 test helpers: PR #78 merged (tests/helpers.py).
 - T1.6c #74 cached across retries: PR #77 merged (in-memory only). Handoffs on #19 #20. #79 unblocked.
