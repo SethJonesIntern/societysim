@@ -1,11 +1,13 @@
 # marcus status (updated 2026-10-10T05:44Z)
 ## Active
-- T1.7 #9 RandomAgent + integration | agent: codex-implementer, done | branch issue-9-scripted-agent | PR #68 | state: in review (opus). Handles lone_wolf generically.
+- (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
-- Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
+- M1 is 7/8 done: only #10 T1.8 play CLI left, blocked on Seth's #12 (model registry).
+- Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T1.7 #9 RandomAgent + integration: PR #68 merged (tested on main with #67; 12 real lone_wolf turns over 30 seeds). Handoff posted on #10.
 - T1.6b #65 fallback meta + lone wolf: PR #67 merged (no contract change; meta.action free text). Handoffs on #9 (urgent, earlier) and #23.
 - T1.6 #8 orchestrator: PR #63 merged 01:30 EDT (2 rounds; None-color crash fixed). Handoffs posted on #9 #10 #11 #15 #65. #9, #65 ready.
 - T1.3b #64 EventLogger zero sinks: PR #66 merged. Handoff posted on #8 #9 #65.
