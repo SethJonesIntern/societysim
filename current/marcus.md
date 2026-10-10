@@ -1,17 +1,20 @@
-# marcus status (updated 2026-10-10T04:45Z)
+# marcus status (updated 2026-10-10T04:48Z)
 ## Active
-- T0.2 #2 contracts | agent: implementer (opus), done | branch issue-2-contracts | PR #45 | state: in review (opus reviewer). Tell Marcus the moment it merges.
+- T0.4 #46 handoff-comments convention | agent: implementer (sonnet) | branch issue-46-handoff-comments | PR - | state: implementing
+- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
+- T1.3 #5 EventLogger | agent: implementer (sonnet; Codex slot taken) | branch issue-5-event-logger | PR - | state: implementing
 ## Queue (next up)
-- When T0.2 merges, these become ready: #3 T1.1 (codex), #5 T1.3 (codex), #7 T1.5 (opus), #17 T3.1 (sonnet), #18 T3.2 (opus).
-- Wave 1 (critical chain toward #8 orchestrator): #3 -> Codex, #5 -> Sonnet (only one Codex agent), #7 -> Opus. Then #17 and #18 as slots free up. Check Files touched for overlaps first.
-- Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7 too) -> #9; #10 also needs #12 (Seth's).
+- Ready, mine: #7 T1.5 prompts (opus) next slot, then #18 T3.2 labeler (opus), #17 T3.1 jev (sonnet). No file overlaps.
+- Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
-- T0.3 #43 workflow dry run: PR #44 merged by auto-merge 04:33Z. Review-gate went green after review:approved label.
+- T0.2 #2 contracts: PR #45 merged ~04:50Z. Unblocked #3 #5 #7 #11 #14 #17 #18 #23. Posted handoff comments on #5 #7 #11 #14 #18 #23. Marcus told.
+- T0.3 #43 workflow dry run: PR #44 auto-merged 04:33Z.
 - T0.1 #1 repo bootstrap (closed)
 ## Decisions / gotchas
-- Workflow verified end to end (implementer -> PR -> reviewer -> label -> auto-merge squash). Quirk: reviewer can't gh pr checkout a branch that is checked out in the implementer's worktree; it fetched the head instead.
-- Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones, and T0.2 merge.
+- NEW CONVENTION (Marcus, being codified in #46): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
+- Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
+- T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
+- Deferred chores (from T0.2 review): pythonpath=["tests"] in pyproject; make jsonschema explicit dep; docs/PLAN.md:143-144 says names for accuse/vote, should say seat ids. Candidate small ticket.
+- Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
-- T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas avoid pattern/min/max, all fields required; mis_elimination labels every voter incl. wolves.
-- Follow-ups from T0.2 (for Marcus): add pythonpath=["tests"] to pyproject; jsonschema only arrives transitively via litellm; gen-schema.sh needs npx.
-## Codex: available
+## Codex: available (in use on #3)
