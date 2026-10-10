@@ -57,8 +57,8 @@ ROLE = {
     Role.VILLAGER: "a villager",
 }
 
-Speaker = Annotated[str, Field(pattern=r"^(narrator|p[0-8])$")]
-VoiceKey = Annotated[str, Field(pattern=r"^(narrator|narrator_night|p[0-8])$")]
+Speaker = Annotated[str, Field(pattern=r"^(narrator|p[0-9])$")]
+VoiceKey = Annotated[str, Field(pattern=r"^(narrator|narrator_night|p[0-9])$")]
 Category = Literal["narrator", "highlight", "speech", "wolf_chat"]
 
 

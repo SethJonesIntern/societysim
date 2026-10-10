@@ -19,7 +19,7 @@
           "type": "string"
         },
         "speaker": {
-          "pattern": "^(narrator|p[0-8])$",
+          "pattern": "^(narrator|p[0-9])$",
           "type": "string"
         },
         "voice": {
@@ -62,7 +62,7 @@
     },
     "voices": {
       "patternProperties": {
-        "^(narrator|narrator_night|p[0-8])$": {
+        "^(narrator|narrator_night|p[0-9])$": {
           "type": "string"
         }
       },
