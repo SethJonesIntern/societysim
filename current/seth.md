@@ -1,6 +1,10 @@
-# seth status (updated 2026-10-11T01:45Z)
+# seth status (updated 2026-10-11T02:20Z)
 ## Active
-- T5.2 #35 selfplay | RUNNING in main folder (detached at db78681), started ~09:10Z, runs/selfplay_baseline, $8 cap, --agents llm; watchdog kills at >20% invalid/model or projected >$8. Don't switch branches in main folder until done. Resume = same command.
+- T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
+- #137 live-test guard (infra) | implementer | no spend
+- #138 shared HF router limit | implementer
+- #36 mixed cap $40->$10 | implementer (config only, no run)
+- #139 report games-vs-seats + base-rate denominator | implementer
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
@@ -43,4 +47,5 @@
 - THROUGHPUT (T5.1): concurrency 4 -> 19 games/h, 20 RPM total (gemma 10, qwen 5.3, deepseek 4.7), no 429s. Game 5-15 min (median ~9), ~$0.02/game (dry-run prior ~4x high). At concurrency 8 expect ~35-40 games/h -> T5.2/T5.3 ~2.5-3h each.
 - Gemma remaining invalids are semantic (suspicion missing players). Wolves won 3/3 gemma-only + 9/10 smoke: watch win balance.
 - Seth approved caps: selfplay $8, mixed $10 (expected ~$4/$5). amd-gpt-oss-20b excluded: AMD_VLLM_BASE_URL unset here (Marcus's server).
+- Free pipeline check: `label --no-jev` + `report` on runs/smoke_batch works end to end. self_tag lie rate deepseek 24%, gemma 19%, qwen3 40%.
 ## Codex: n/a
