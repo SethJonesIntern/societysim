@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T18:10Z)
+# marcus status (updated 2026-10-10T18:12Z)
 ## Active
-- #219 Neon games.agents + views exclude scripted | implementer | issue-219-neon-agents | PR #221 | in review + HOLD (live: sync-neon from scratch worktree applies schema)
 - #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | implementing (after #219 for Neon section)
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
@@ -19,6 +18,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #219 Neon games.agents + views exclude scripted: PR #221 merged after live schema apply. Handoff #220.
 - #218 deploy-space.sh --out local staging: PR #222 merged.
 - #21 publish (Seth's PR #80): rebased, re-approved, live-checked with Marcus's write token, hold lifted by Marcus's call, MERGED. Handoff #37. #37 + #42 moved blocked->ready (deps merged) but wait for Seth's batch data.
 - #198 Databricks --notebooks one command: PR #199 merged after Marcus live run (metrics + mlflow SUCCESS). Handoff #42.
