@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-10T23:37Z)
+# marcus status (updated 2026-10-10T23:39Z)
 ## Active
+- DEVPOST: Codex (codex_devpost.md) filling the Devpost submission text in Brave (plain English; no final submit, no uploads/legal fields; visitor play described as built-not-live; no batch results claimed).
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - PLAY LIVE DEPLOY: BLOCKED - NEEDS MARCUS DECISION. polter-dev Docker Space -> 402 (needs HF PRO). societysim org -> 403 (HF_TOKEN lacks org write; free org likely 402 anyway). Options: HF PRO ~$9/mo (rerun same deploy) vs other host (Render/Cloud Run, new ticket). All keys present; dry-run clean.
