@@ -1,12 +1,16 @@
-# marcus status (updated 2026-10-10T16:09Z)
+# marcus status (updated 2026-10-10T16:14Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- Marcus asked: do more of Seth's work + more coding. Survey agent (opus) filing up to 5 real non-viewer tickets (budget guard vs estimate, Neon test-row delete, batch robustness). Doctor run in background (preflight for #35/#36; dry-run: selfplay 90 games est $16.79 vs $8 cap, mixed 100 games est $20 vs $10 cap; estimate ~4x high).
+- #174 calibrated prior | agent: implementer | branch issue-174-calibrated-prior | state: implementing
+- #175 Neon replay + sync-neon --delete | agent: implementer | branch issue-175-neon-replay | state: implementing
+- #176 unfinished games in label/report/highlights | agent: implementer | branch issue-176-unfinished-games | state: implementing
+- Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- #177 provider-failure stop (agent:opus) - after #174 merges (both touch batch/runner.py).
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
