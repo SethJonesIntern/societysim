@@ -1,11 +1,11 @@
-# marcus status (updated 2026-10-10T22:29Z)
+# marcus status (updated 2026-10-10T22:31Z)
 ## Active
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - Codex chain (bg): AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
-- PR #289 (#281 security) | fix round 1 (provider error text leak, worst-case reservation for $2 cap, fail closed w/o PLAY_TRUSTED_PROXIES on Space) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
+- PR #289 (#281 security) APPROVED (adversarial re-review) | rebasing onto main after #284 (was DIRTY) + HOLD. Then #285 rebase -> merge, then #282 deploy (need PLAY_* keys; Codex creating). NOTE: HF proxy behaviour unverified -> check logs after first deploy. Merge order: #284 -> #289 -> #285, then #282 deploy.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
-  - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
+  - #280 server core: PR #284 MERGED.
   - #281 security: PR #289 (limits: 120 rpm/IP, 1 active + 5/day per IP, 4 concurrent, 45 min, $2/day, 2048 max_tokens, allowlist qwen3/llama4/gemma/gpt-oss-120b/deepseek/flash-lite/gpt-5-nano). Needs PLAY_TRUSTED_PROXIES on deploy.
   - #282 deploy Docker HF Space polter-dev/societysim-play | blocked on #280/#281
   - #283 viewer play: PR #285 | APPROVED + HOLD (merge after #284+#281)
