@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T23:16Z)
+# marcus status (updated 2026-10-10T23:17Z)
 ## Active
-- #323 SECURITY: PR #325 round-1 fixes pushed (failed redacted + labels_public view, anon denied labels); RE-REVIEW sent. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
-- #326 flaky test_security seed | PR #327 | APPROVED, auto-merge queued
+- #323 SECURITY: PR #325 APPROVED, auto-merge waiting on CI. When posting handoffs to #295/#321 add: labels must use labels_public too. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
 - #309 play alerts | PR #328 | CHANGES round 1 (webhook URL leak on malformed URL; cron re-alerts every 15m -> transition-only). Fix sent to same implementer. After merge: set repo secret + Space secret PLAY_ALERT_WEBHOOK_URL (from ~/.config/societysim/discord_webhook via stdin, never print), VITE_PLAY_API_URL var after deploy.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
@@ -51,6 +50,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #326 PR #327 flaky server test MERGED.
 - PR #324 avatars MERGED (handoffs posted #302 #297). PR #314 play deploy MERGED (handoffs posted).
 - #292 Research + New game pages: PR #313 merged (auto-deploys). Styling note to Augustin on #301.
 - PR #288 Augustin's illustrated frontend: our fixes pushed to his branch, merged, auto-deployed (society-sim.us live with his UI + index.json). Handoffs #40 #267 #121 #33 #120.
