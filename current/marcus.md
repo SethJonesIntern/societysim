@@ -1,13 +1,13 @@
-# marcus status (updated 2026-10-10T23:18Z)
+# marcus status (updated 2026-10-10T23:20Z)
 ## Active
-- #323 SECURITY: PR #325 APPROVED, auto-merge waiting on CI. When posting handoffs to #295/#321 add: labels must use labels_public too. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
+- #323 PR #325 MERGED (handoffs posted incl labels_public note). LIVE APPLY + Data API verify + deploy check: general-purpose agent running.
 - #309 play alerts | PR #328 | round-1 fixes pushed; RE-REVIEW (checking tests/server flake 2/5 after change: rebase on #327? event-loop blocking?). After merge: set repo secret + Space secret PLAY_ALERT_WEBHOOK_URL (from ~/.config/societysim/discord_webhook via stdin, never print), VITE_PLAY_API_URL var after deploy.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
-- AMD: POD RUNNING (SJC, Basic GPU notebook, 8060S gfx1151, 180-min runtime from ~23:10Z). llamacpp server READY, doctor PASSED (incl json_schema). 5-game run_on_box batch STARTED; Codex (codex_amd4.out) monitoring. Next: collect outputs, Speed table numbers (#308).
+- AMD: POD RUNNING (SJC, Basic GPU notebook, 8060S gfx1151, 180-min runtime from ~23:10Z). llamacpp server READY, doctor PASSED (incl json_schema). 5-game run_on_box: 3 done, 4th running (as of heartbeat); Codex monitoring. Next: collect outputs, Speed table numbers (#308).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
@@ -50,6 +50,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- Closed stale PR #120 (superseded by #321).
 - #326 PR #327 flaky server test MERGED.
 - PR #324 avatars MERGED (handoffs posted #302 #297). PR #314 play deploy MERGED (handoffs posted).
 - #292 Research + New game pages: PR #313 merged (auto-deploys). Styling note to Augustin on #301.
