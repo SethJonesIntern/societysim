@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T13:05Z)
+# seth status (updated 2026-10-10T13:10Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR - | state: implementing
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: in review + HOLD (Seth must run `societysim doctor` with real keys, fix/drop failing models, then remove hold)
 - T2.3 #13 | agent: implementer (sonnet) | branch issue-13-cache | PR #71 | state: in review
 ## Queue (next up)
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
@@ -13,4 +13,5 @@
 - uv isn't installed here; agents use `python -m uv`.
 - Follow-up from #70 review: client.py raises IndexError when a provider returns no choices; should return parsed=None with an error.
 - #71: cache replays return CachedUsage(cached=True), but orchestrator _add() rebuilds plain Usage, so the cached flag doesn't reach event meta. Cost reports can't exclude cached calls yet; may need a follow-up ticket (orchestrator.py or Usage contract).
+- #72: HF model ids, provider pins (esp. Gemma-4-26B) and price overrides are guesses; doctor unverified. No .env on this machine.
 ## Codex: n/a
