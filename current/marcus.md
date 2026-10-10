@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T12:35Z)
+# marcus status (updated 2026-10-10T12:38Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: doctor GREEN in-pod; 1 game COMPLETE on #151 branch (wolves, 62 events, 0 invalid, 0 fallback, tarball 12:29). Need: stats (tok/s, game time), serve.sh stop hours, tarball download; then post on #114/#42/#36 and close #114.
+- T6.3b #114 verify AMD | RESULTS (local runs/selfplay_amd): 62 events, 30 model turns, 0 invalid, 0 fallback, wolves (parity); 9044 out tokens; 373 s model time (~6.2 min, 12.4 s/turn); vLLM 33-41 tok/s single stream, TTFT ~0.33 s; idle GPU 3%/23 W/90% VRAM. Waiting on serve.sh stop hours, then post on #114/#42/#36 and close #114.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
