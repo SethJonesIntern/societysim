@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-10T17:34Z)
 ## Active
+- #213 report/postbatch wording nits | implementer | issue-213-report-wording | implementing
 - T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
 - #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
@@ -91,6 +92,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Asked Marcus: write-scoped HF token + dataset name (suggest polter-dev/societysim-games, public) to lift PR #80 hold and publish after batches.
 - While a batch runs from the main checkout, NEVER git checkout there; live-check PRs from a scratch worktree with a symlinked .env (removed after).
 - 2026-10-10: survey agent accidentally ran `label` WITHOUT --no-jev on 10 scripted games -> 248 paid Jev (TypeSafe) calls. CLI loads .env itself, so unsetting env vars doesn't protect. Always tell agents: label --no-jev only.
 - docs/DEMO.md Neon section stale (says play/batch lack NeonSink; --neon exists since #157) -> fix under #38.
