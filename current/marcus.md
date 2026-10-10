@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T07:27Z)
+# marcus status (updated 2026-10-10T07:28Z)
 ## Active
 - T1.9b #88 widen sweep | agent: codex-implementer, done | branch issue-88-sweep-flags | PR #91 | state: in review (opus; game count fell 240->45, requiring >=240).
-- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: changes round 1 (trailing backslash; more quote lookalikes; cap from max_statement_words), sent to same implementer
+- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 1 fixed, re-review round 2 running
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
