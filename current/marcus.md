@@ -2,7 +2,7 @@
 ## Active
 - PR #288 (Augustin frontend): our implementer pushing fixes to his branch viewer-illustrated-integration (CI leak-test timeout, DATA_CONTRACT root paths, Handoff). HOLD; merge after re-review. Supersedes most of #121; #120 needs rebase.
 - PR #289 (#281 security) | in review (opus) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
-- Seth T5.2 DONE (45 games, $2.19, 7p). Seth asking about HF write access (publish to polter-dev/societysim-games).
+- Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
   - #281 security: PR #289 (limits: 120 rpm/IP, 1 active + 5/day per IP, 4 concurrent, 45 min, $2/day, 2048 max_tokens, allowlist qwen3/llama4/gemma/gpt-oss-120b/deepseek/flash-lite/gpt-5-nano). Needs PLAY_TRUSTED_PROXIES on deploy.
@@ -11,7 +11,7 @@
   - Turnstile widget societysim-play DONE (managed; hosts society-sim.us, www, societysim.pages.dev, localhost); repo var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY set. NOTE: hf.space not a Turnstile host (widget renders on our site, fine).
   - Marcus TODO: dedicated spend-limited keys for visitor play (OpenAI project w/ budget, HF inference-only token, Gemini key)
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
-  - 10p BATCH RUNNING: mixed_v2_10p --agents llm --neon started 2026-10-10T21:22Z, log .cache/mixed_v2_10p.log, cap $15. Afterwards: postbatch (jev? check TypeSafe), HF publish polter-dev/societysim-games, DEPLOY_SOURCE, narrate highlight game, Databricks live (#268 hold), close #37/#42/#216.
+  - 10p BATCH RUNNING (17/100, $1.97 at last check): mixed_v2_10p --agents llm --neon started 2026-10-10T21:22Z, log .cache/mixed_v2_10p.log, cap $15. Afterwards: postbatch (jev? check TypeSafe), HF publish polter-dev/societysim-games, DEPLOY_SOURCE, narrate highlight game, Databricks live (#268 hold), close #37/#42/#216.
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception: PR #268 | APPROVED + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
