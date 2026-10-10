@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T20:45Z)
+# seth status (updated 2026-10-10T20:55Z)
 ## Active
-- T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR - | state: implementing
+- T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR #96 | state: in review
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR - | state: implementing, PR to get hold until #90 merges
 - T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR - | state: implementing, PR to get hold until #82 merges
 - T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: changes round 3 (per-model cost estimate w/ price prior; atomic run_meta) + HOLD. 2 failed rounds already; Seth told, continuing for pace
