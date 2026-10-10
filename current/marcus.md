@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T12:38Z)
+# marcus status (updated 2026-10-10T12:39Z)
 ## Active
-- T6.3b #114 verify AMD | RESULTS (local runs/selfplay_amd): 62 events, 30 model turns, 0 invalid, 0 fallback, wolves (parity); 9044 out tokens; 373 s model time (~6.2 min, 12.4 s/turn); vLLM 33-41 tok/s single stream, TTFT ~0.33 s; idle GPU 3%/23 W/90% VRAM. Waiting on serve.sh stop hours, then post on #114/#42/#36 and close #114.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
@@ -10,6 +9,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- T6.3b #114 AMD verified + CLOSED: doctor green, 1 valid game (0 invalid), stats posted on #114, handoffs on #42 #36. Server stopped ~12:38 box time (~0.55 h).
 - #151 AMD reasoning_effort low + max_tokens 2048: PR #152 merged after live box check (game done in minutes, 62 events, 0 invalid, 0 fallback).
 - #149 bare-id suspicion line: PR #150 merged. Live gemma check 0 invalid / 134 turns. #35 told to resume.
 - #146 notebook base-rate dedupe: PR #148 merged (verified on scratch overlapping data, 0 mismatches).
