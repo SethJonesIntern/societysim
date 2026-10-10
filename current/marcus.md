@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T12:47Z)
 ## Active
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). Marcus running notebook import + run_nb (jobs runs/submit serverless) + --dashboard + mlflow now; commands given.
-- T5.5a #153 DEMO.md draft | agent: implementer (opus) | branch issue-153-demo-draft | PR #156 | state: in review. Open questions: Neon live not wired (filed #157 for Seth), AMD self-play only, Adobe depends on held #121
+- T5.5a #153 DEMO.md draft | agent: implementer (opus) | branch issue-153-demo-draft | PR #156 | state: changes round 1 (narrator view steps, Neon live overclaim, Figma tokens/axe overclaim) sent. Open questions: Neon live not wired (filed #157 for Seth), AMD self-play only, Adobe depends on held #121
 - T5.4a #154 README draft | agent: implementer (opus) | branch issue-154-readme | PR #155 | state: changes round 1 (AMD overclaim x2, key list, handoff wording) sent to implementer
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
