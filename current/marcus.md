@@ -1,19 +1,19 @@
-# marcus status (updated 2026-10-10T13:14Z)
+# marcus status (updated 2026-10-10T13:15Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #160 societysim highlights (demo moments) | agent: implementer (opus) | branch issue-160-highlights | PR #164 | state: changes round 1 (--out option) sent
-- #161 concurrent turns | agent: implementer (opus) | branch issue-161-concurrent-turns | PR - | state: implementing. PR carries hold; merge only after Seth batch finishes. Marcus declined AMD mixed batch.
 - #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR - | state: implementing
 - #21 PR #80 rebase + default dataset env var (Seth PR, Marcus request) | agent: implementer (opus) | branch issue-21-publish | state: implementing. KEEP hold; repo name + live HF check = Seth.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
-- STRETCH (after #36/#37): #162 ElevenLabs narration, #163 human-playable seat (after #161). Label `stretch`, status:blocked.
+- STRETCH (after #36/#37): #162 ElevenLabs narration, #163 human-playable seat (#161 closed, no wait). Label `stretch`, status:blocked.
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #161 concurrent turns: CLOSED not planned; night+vote already gathered, statements must be sequential. PR #165 closed. Speed = parallel games.
 - #158 mlflow on serverless: PR #159 merged after live SUCCESS.
 - T5.5a #153 DEMO.md draft: PR #156 merged (2 rounds). Handoffs on #38 #37.
 - T5.4a #154 README draft: PR #155 merged (2 rounds). Handoff on #37.
