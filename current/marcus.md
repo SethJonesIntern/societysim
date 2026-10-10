@@ -1,7 +1,10 @@
-# marcus status (updated 2026-10-10T05:19Z)
+# marcus status (updated 2026-10-10T05:26Z)
 ## Active
-- T1.6 #8 orchestrator (size L) | agent: implementer (opus) | branch issue-8-orchestrator | PR - | state: implementing
+- T1.6 #8 orchestrator | agent: implementer (opus), done | branch issue-8-orchestrator | PR #63 | state: in review (opus). Touched agents/base.py + llm_agent.py (reviewer checking scope). Gaps filed as #64, #65.
+- T1.3b #64 EventLogger.close() zero sinks | agent: implementer (opus) | branch issue-64-logger-zero-sinks | PR - | state: implementing
 ## Queue (next up)
+- #65 T1.6b meta.fallback on seer/doctor + lone-wolf TargetResponse prompt (opus): blocked on #8. Touches engine.py, orchestrator.py, prompts.py.
+- After #8 merges: #9 T1.7 RandomAgent + integration test -> Codex.
 - Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
