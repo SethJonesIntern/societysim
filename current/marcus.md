@@ -1,6 +1,8 @@
-# marcus status (updated 2026-10-10T12:39Z)
+# marcus status (updated 2026-10-10T12:43Z)
 ## Active
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
+- T5.5a #153 DEMO.md draft | agent: implementer (opus) | branch issue-153-demo-draft | PR - | state: implementing
+- T5.4a #154 README draft | agent: implementer (opus) | branch issue-154-readme | PR - | state: implementing
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -58,6 +60,9 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Session now in bypass-permissions mode (Marcus). Still: never load/read .env, no viewer, no merging around CI, do not touch Seth held PRs.
+- Done by me 2026-10-10: ruleset main now requires python, review-gate, viewer. GitHub Pages enabled (workflow) -> https://polter-dev.github.io/societysim/. HF_SPACE var: waiting on Marcus for HF username.
+- PR #80 (Seth, #21) is DIRTY (conflicts) + hold. Seth must rebase.
 - Live model checks: run on the PR head with `hold` BEFORE merge (orchestrator can run `uv run societysim play` itself; the CLI loads keys). #147 regressed gemma to 38% invalid because only offline tests ran.
 - BURN MODE until 06:20 EDT (10:20Z), timer running: cap lifted, use Codex + Claude subagents, file useful follow-ups when queue is empty. Earlier burn window 00:48-01:30 done.
 - NEW CONVENTION (Marcus, merged via #47): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
