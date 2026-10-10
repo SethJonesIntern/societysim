@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T16:25Z)
+# seth status (updated 2026-10-10T16:35Z)
 ## Active
-- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: in review + HOLD (needs live Neon check: DDL, sync-neon count; needs NEON_DATABASE_URL)
+- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: changes round 1 (close() timeout; direct sink error tests) + HOLD (needs live Neon check)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
@@ -19,4 +19,5 @@
 - Follow-up (client.py): fail fast without retries on missing credentials (LiteLLM treats it as 500 and retries noisily); return parsed=None on empty choices.
 - 2026-10-10 doctor run: HF credits were empty (Seth topped up). HF provider pins wrong for qwen3/llama4/deepseek; gemma id rejected; Gemini ids 404.
 - LiteLLM bug: huggingface/deepinfra/<id> posts to router/deepinfra/v1/chat/completions, which HF rejects. Use router.huggingface.co/v1 with model '<id>:deepinfra'. HF token needed Inference Providers scope + Sethery32 credits.
+- #73 reviewer: anon SELECT on events (incl. wolf channel/scratchpads) is intended per PLAN T6.2 for replay viewer.
 ## Codex: n/a
