@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-11T00:15Z)
+# seth status (updated 2026-10-11T00:35Z)
 ## Active
-- T2.2b #122 gemma json_schema | agent: implementer (sonnet) | branch issue-122-gemma-schema | PR - | state: implementing; orchestrator runs doctor + live 3-game check
+- T2.2b #122 gemma json_schema | agent: implementer (sonnet) | branch issue-122-gemma-schema | PR #125 | state: in review + HOLD; doctor ok (json_schema); live 3-game all-gemma check running (cap $0.50)
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: rebasing onto main after #90; dry-run tests; max_concurrency 8; then review, remove hold
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
