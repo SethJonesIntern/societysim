@@ -1,13 +1,13 @@
-# marcus status (updated 2026-10-10T05:27Z)
+# marcus status (updated 2026-10-10T05:28Z)
 ## Active
 - T1.6 #8 orchestrator | agent: implementer (opus), done | branch issue-8-orchestrator | PR #63 | state: in review (opus). Touched agents/base.py + llm_agent.py (reviewer checking scope). Gaps filed as #64, #65.
-- T1.3b #64 EventLogger zero sinks | agent: implementer (opus), done | branch issue-64-logger-zero-sinks | PR #66 | state: in review. Handoff: #8/#9 drop JsonlSink workaround after merge.
 ## Queue (next up)
 - #65 T1.6b meta.fallback on seer/doctor + lone-wolf TargetResponse prompt (opus): blocked on #8. Touches engine.py, orchestrator.py, prompts.py.
 - After #8 merges: #9 T1.7 RandomAgent + integration test -> Codex.
 - Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T1.3b #64 EventLogger zero sinks: PR #66 merged. Handoff posted on #8 #9 #65.
 - T1.4 #6 observation + leakage: PR #62 merged (reviewer mutation-tested 10 branches). Handoffs posted on #8 #9. #8 unblocked.
 - T1.2 #4 engine.py: PR #61 merged (2 rounds). Self-votes illegal, now in RULES.md. Handoffs posted on #6 #8 #9. #6 unblocked.
 - T3.4 #57 Jev resilience: PR #60 merged (2 rounds). Handoffs posted on #19 #21.
