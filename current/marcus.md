@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T05:28Z)
+# marcus status (updated 2026-10-10T05:29Z)
 ## Active
-- T1.6 #8 orchestrator | agent: implementer (opus) | branch issue-8-orchestrator | PR #63 | state: changes round 1 (None color crash at game_start; docstring; drop JsonlSink workaround), sent to same implementer
+- T1.6 #8 orchestrator | agent: implementer (opus) | branch issue-8-orchestrator | PR #63 | state: round 1 fixed, re-review round 2 running
 ## Queue (next up)
 - #65 T1.6b meta.fallback on seer/doctor + lone-wolf TargetResponse prompt (opus): blocked on #8. Touches engine.py, orchestrator.py, prompts.py.
 - After #8 merges: #9 T1.7 RandomAgent + integration test -> Codex.
