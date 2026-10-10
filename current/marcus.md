@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T05:10Z)
+# marcus status (updated 2026-10-10T05:17Z)
 ## Active
-- T1.4 #6 observation.py + leakage tests | agent: implementer (opus) | branch issue-6-observation | PR - | state: implementing
+- T1.4 #6 observation.py + leakage | agent: implementer (opus), done | branch issue-6-observation | PR #62 | state: in review (opus, adversarial). Open: token budget is char estimate; test helper shared via test_leakage.py.
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
