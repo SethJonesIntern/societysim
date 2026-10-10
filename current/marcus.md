@@ -1,10 +1,12 @@
-# marcus status (updated 2026-10-10T05:00Z)
+# marcus status (updated 2026-10-10T05:01Z)
 ## Active
-- T3.3 #55 Jev wiring | branch issue-55-jev-label-wiring | PR #56 | state: approved, auto-merge queued. After merge: handoff to #19. Optional later: 401/connection refused aborts batch with traceback; .cache/jev is cwd-relative.
 - T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR - | state: implementing (must settle self-vote per RULES.md)
+- T3.4 #57 label CLI Jev resilience + cache path | agent: implementer (opus) | branch issue-57-jev-resilience | PR - | state: implementing
+- T1.5b #58 prompts omit zero-count roles | agent: implementer (opus) | branch issue-58-prompts-zero-roles | PR - | state: implementing
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T3.3 #55 Jev wiring: PR #56 merged. Handoff posted on #19. Follow-ups filed #57, #58.
 - T1.1 #3 rules/state: PR #54 merged (2 rounds: night-number contract, set->list determinism fix, model shuffle removed). Handoffs posted on #4 #6 #8 #14. #4 unblocked.
 - T0.5 #48 chore: PR #53 merged (pythonpath, jsonschema+httpx explicit, PLAN.md seat ids). Handoff: none.
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
