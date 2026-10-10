@@ -1,13 +1,13 @@
-# seth status (updated 2026-10-11T03:15Z)
+# seth status (updated 2026-10-11T03:40Z)
 ## Active
 - T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
-- #144 base-rate dedupe | implementer (abstain decision left for Seth)
-- #138 router limit | PR #143 in review
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #138 shared HF router limit: PR #143 merged 10:21Z
+- #144 base-rate dedupe: PR #145 merged 10:28Z (abstain-in-base decision pending Seth)
 - #137 live-test guard: PR #141 merged 10:18Z
 - #139 report games/seats: PR #142 merged 10:20Z
 - #36 mixed cap $10: PR #140 merged 10:16Z (run not started)
@@ -50,4 +50,5 @@
 - Gemma remaining invalids are semantic (suspicion missing players). Wolves won 3/3 gemma-only + 9/10 smoke: watch win balance.
 - Seth approved caps: selfplay $8, mixed $10 (expected ~$4/$5). amd-gpt-oss-20b excluded: AMD_VLLM_BASE_URL unset here (Marcus's server).
 - Free pipeline check: `label --no-jev` + `report` on runs/smoke_batch works end to end. self_tag lie rate deepseek 24%, gemma 19%, qwen3 40%.
+- Filed #146 (team:engine): Databricks notebook must match #145 dedupe.
 ## Codex: n/a
