@@ -49,4 +49,5 @@
 - Marcus 03:25 EDT: keep going until rate limited, no permission needed. Marcus claimed #23 and #83 himself (classifier blocked me) and is adding Bash(gh issue:*)/Bash(gh pr:*) allow rules. Cross-team work OK: take idle ready tickets from other teams.
 - PR #89 (Marcus's README edit): my approve was blocked by the classifier (Self-Approval). Gave Marcus the commands, or he can ask for a reviewer.
 - Marcus: if a remaining fix after 2 rounds is small and clear, run round 3 without asking. Only escalate needs-human for real disagreements or large rework.
+- Notify Marcus via Discord webhook (URL in ~/.config/societysim/discord_webhook, chmod 600; never print it): needs-human, rate limits, decisions, milestone completions. Test sent OK (HTTP 204).
 ## Codex: available (2 agents: #10, #74)
