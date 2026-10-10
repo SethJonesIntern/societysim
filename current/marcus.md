@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T22:31Z)
+# marcus status (updated 2026-10-10T22:33Z)
 ## Active
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - Codex chain (bg): AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
@@ -36,6 +36,8 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- BIG LIST filed 2026-10-10T22:33Z: viewer (Augustin, assigned): #299 Play page design, #300 10-seat table, #301 style new controls, #302 avatars, #303 mobile/a11y. runner (Seth): #304 ETA bug, #305 humans-vs-models (blocked #282), #306 GPT-pair 10p batch, #307 Neon prune. infra: #308 AMD live (mine, Codex), #309 spend alerts (blocked #282), #310 PR preview deploys. engine: #311 demo safety net (blocked).
+- Discord: Play page spec sent to Augustin (Normal/Watch/Advanced, Your-turn panel, reveal, errors).
 - #217 human_vs_ai.yaml - PARKED by Marcus (just curious; later for demo).
 - #216 balance proposal (9p / day-first) - PARKED until after #36; Marcus wants to test whether models win more depending on others' lies. Free scripted comparison first, then ~$1-2 paid pilot (needs approval).
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
