@@ -1,10 +1,10 @@
 # marcus status (updated 2026-10-10T05:07Z)
 ## Active
 - T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR #61 | state: changes round 1 (raise on illegal living seer/doctor target; RULES.md self-vote line in this PR; fuller #8 handoff), sent to same codex agent. Self-vote = illegal (Marcus may override).
-- T3.4 #57 Jev resilience | branch issue-57-jev-resilience | PR #60 | state: approved round 2, auto-merge queued. After merge: handoffs #19 #21.
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T3.4 #57 Jev resilience: PR #60 merged (2 rounds). Handoffs posted on #19 #21.
 - T1.5b #58 prompts zero roles: PR #59 merged. Handoff: none. (Optional nit: 'the wolves talk' plural with 1 wolf.)
 - T3.3 #55 Jev wiring: PR #56 merged. Handoff posted on #19. Follow-ups filed #57, #58.
 - T1.1 #3 rules/state: PR #54 merged (2 rounds: night-number contract, set->list determinism fix, model shuffle removed). Handoffs posted on #4 #6 #8 #14. #4 unblocked.
