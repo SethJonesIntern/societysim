@@ -1,6 +1,7 @@
-# marcus status (updated 2026-10-10T16:19Z)
+# marcus status (updated 2026-10-10T16:23Z)
 ## Active
-- #177 provider-failure stop | agent: implementer (opus) | branch issue-177-provider-failure | state: implementing
+- Survey round 2 (opus): gemini-flash latency/timeouts, review nits, scale check for #37/#42. Filing up to 3 tickets.
+- #177 provider-failure stop | agent: implementer (opus) | branch issue-177-provider-failure | PR #184 | state: in review (opus reviewer); urgent note posted on #35
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
