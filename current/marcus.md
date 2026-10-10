@@ -1,9 +1,8 @@
-# marcus status (updated 2026-10-10T13:26Z)
+# marcus status (updated 2026-10-10T13:27Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR #169 | state: rebased, in review
-- #170 .env.example vars | agent: codex-implementer | branch issue-170-env-example | PR #171 | state: in review
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -12,6 +11,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #170 .env.example: ELEVENLABS_API_KEY + SOCIETYSIM_HF_DATASET, PR #171 merged.
 - #157 Neon live (--neon on play/batch): PR #166 merged after live check. Handoffs #40 #35 #36.
 - #162 ElevenLabs narration script: PR #167 merged. Viewer follow-up filed #168 (Augustin, stretch).
 - #160 highlights finder: PR #164 merged (2 rounds). Handoffs on #38 #37.
@@ -68,6 +68,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- .env* reads are denied for agents incl. .env.example: orchestrator checks such diffs with masked values. Haiku reviewers misread review-gate failing pre-label; prefer sonnet/opus reviewers.
 - Reviewers: do NOT make live calls that load .env via the CLI unless asked (PR #80 reviewer did a 403 HF create smoke test).
 - Marcus asleep again; work autonomously, ping him only if absolutely needed.
 - Seth told (GitHub @mention on #35) not to work on PR #80 rebase/default repo or #157. LATER TODO: Discord ping for Seth needs his numeric Discord user ID (Marcus to provide; `<@ID>` in content); the webhook is Marcus personal channel, check Seth can see it.
