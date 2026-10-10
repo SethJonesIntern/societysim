@@ -1,6 +1,9 @@
-# marcus status (updated 2026-10-10T16:50Z)
+# marcus status (updated 2026-10-10T17:21Z)
 ## Active
-- IDLE: no ready non-viewer tickets (3 survey rounds + demo dry run done). Waiting on Seth: #191 gemini-flash decision (asked on #35), paid runs #35->#36, PR #80 hold. Augustin: #120/#121/#22/#168.
+- #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | state: implementing (orchestrator live-runs on PR head)
+- Survey round 4 (opus, grind time): sponsor/demo readiness, batch progress, post-batch pipeline, HF Space content. Filing up to 4.
+- gemini-flash: Marcus upgrading Gemini key to paid Tier 1 -> re-run doctor --model gemini-flash, then decide PR #191 (likely close).
+- Waiting on Seth: paid runs #35->#36, PR #80 hold. Augustin: viewer.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
