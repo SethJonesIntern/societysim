@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T04:55Z)
+# marcus status (updated 2026-10-10T04:56Z)
 ## Active
-- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
+- T1.1 #3 rules/state | agent: codex-implementer, done (no rate limit) | branch issue-3-rules-state | PR #54 | state: in review (opus). Open: doctor no-repeat relies on day advancing once per cycle; seer_results int meaning (day vs t).
 - T3.2 #18 labeler | branch issue-18-labeler | PR #52 | state: approved, auto-merge queued. Follow-up ticket after merge: wire Jev into label CLI, empty-jsonl IndexError, jev claim_role none test + retry timeouts.
 - T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus), done | branch issue-48-chore-deps | PR #53 | state: in review
 ## Queue (next up)
