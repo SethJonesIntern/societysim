@@ -1,11 +1,11 @@
-# marcus status (updated 2026-10-10T21:37Z)
+# marcus status (updated 2026-10-10T21:39Z)
 ## Active
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core + Play API | implementer (opus) | issue-280-play-server
   - #281 security/limits (Turnstile, per-IP 1 active/5 per day, 60 req/min, 4 concurrent, Neon spend ledger $2/day, allowlist, kill switch, CORS, key-leak test) | after #280 skeleton, branch from it
   - #282 deploy Docker HF Space polter-dev/societysim-play | blocked on #280/#281
   - #283 viewer play logic | blocked on #280
-  - Codex: Cloudflare Turnstile widget -> var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY
+  - Turnstile widget societysim-play DONE (managed; hosts society-sim.us, www, societysim.pages.dev, localhost); repo var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY set. NOTE: hf.space not a Turnstile host (widget renders on our site, fine).
   - Marcus TODO: dedicated spend-limited keys for visitor play (OpenAI project w/ budget, HF inference-only token, Gemini key)
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
   - 10p BATCH RUNNING: mixed_v2_10p --agents llm --neon started 2026-10-10T21:22Z, log .cache/mixed_v2_10p.log, cap $15. Afterwards: postbatch (jev? check TypeSafe), HF publish polter-dev/societysim-games, DEPLOY_SOURCE, narrate highlight game, Databricks live (#268 hold), close #37/#42/#216.
