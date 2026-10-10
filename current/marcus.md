@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T19:19Z)
+# marcus status (updated 2026-10-10T19:20Z)
 ## Active
 - Codex (computer use) in Neon console: enable Data API anonymous read (or Neon Auth anonymous tokens). Then re-test curl without auth and set repo var VITE_NEON_DATA_API_URL.
-- #244 MIT LICENSE + pyproject + README (data CC-BY-4.0) | implementer | issue-244-license | implementing
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
@@ -20,6 +19,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #244 MIT license: PR #245 merged. Handoff #33 (viewer package.json).
 - #242 deploy passes VITE_NEON_* repo vars + devui config.json: PR #243 merged. Neon Data API needs JWT (no anon) -> viewer runtime token fetch flagged on #40; Marcus to check Neon console anon toggle.
 - #234 auto-deploy on viewer/** + DEPLOY_SOURCE=hf:<dataset>: PR #238 merged; redeployed (run 38078034118) -> pages.dev + /devui/ 200. Handoff #37.
 - #236 devui/ test page: PR #239 merged (served at /devui/ after next deploy).
