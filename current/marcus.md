@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T19:12Z)
+# marcus status (updated 2026-10-10T19:15Z)
 ## Active
-- #242 deploy passes VITE_NEON_DATA_API_URL/ANON_KEY (repo vars) to viewer build + devui config | implementer | issue-242-neon-deploy-vars | implementing. Marcus .env: Data API URL set, ANON_KEY missing.
+- #242 deploy passes VITE_NEON_DATA_API_URL/ANON_KEY (repo vars) to viewer build + devui config | implementer | issue-242-neon-deploy-vars | PR #243 | in review. LIVE: Neon Data API needs JWT (400 without auth) -> viewer must fetch anon token at runtime; flagged on #40. Ask Marcus: Neon console Data API anon-access toggle? / Auth URL.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
