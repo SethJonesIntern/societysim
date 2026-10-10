@@ -1,9 +1,11 @@
-# marcus status (updated 2026-10-10T05:17Z)
+# marcus status (updated 2026-10-10T05:19Z)
 ## Active
-- T1.4 #6 observation.py + leakage | agent: implementer (opus), done | branch issue-6-observation | PR #62 | state: in review (opus, adversarial). Open: token budget is char estimate; test helper shared via test_leakage.py.
+- T1.6 #8 orchestrator (size L) | agent: implementer (opus) | branch issue-8-orchestrator | PR - | state: implementing
 ## Queue (next up)
-- Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
+- Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
+- Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T1.4 #6 observation + leakage: PR #62 merged (reviewer mutation-tested 10 branches). Handoffs posted on #8 #9. #8 unblocked.
 - T1.2 #4 engine.py: PR #61 merged (2 rounds). Self-votes illegal, now in RULES.md. Handoffs posted on #6 #8 #9. #6 unblocked.
 - T3.4 #57 Jev resilience: PR #60 merged (2 rounds). Handoffs posted on #19 #21.
 - T1.5b #58 prompts zero roles: PR #59 merged. Handoff: none. (Optional nit: 'the wolves talk' plural with 1 wolf.)
