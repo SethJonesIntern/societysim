@@ -2,7 +2,7 @@
 ## Active
 - T4.6 #28 mode toggle | agent: codex-implementer, done | branch issue-28-mode-toggle | PR #104 | state: in review
 - T4.7b #102 Inspector wolf chat | agent: codex-implementer, done | branch issue-102-inspector-wolf-chat | PR #106 | state: in review
-- T4.3 #25 speech + chat log | agent: implementer (opus) | branch issue-25-speech-chatlog | PR - | state: implementing
+- T4.3 #25 speech + chat log | agent: implementer (opus), done | branch issue-25-speech-chatlog | PR #107 | state: in review
 - T4.4 #26 arrows + tally | agent: codex-implementer | branch issue-26-arrows-tally | PR - | state: implementing
 - T4.5 #27 label pop-ups | agent: implementer (sonnet), done | branch issue-27-label-popups | PR #105 | state: in review
 - T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: changes round 1 (all 5 label types as distinct narrator-only markers), sent to same codex agent
