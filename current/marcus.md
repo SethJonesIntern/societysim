@@ -2,6 +2,7 @@
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
+- IDLE: all non-viewer coding done. Waiting on: Seth paid runs #35 -> #36; Seth hold on PR #80 (repo name, write-scoped HF token); Augustin viewer PRs #120/#121, #22, #168. Then Marcus: #42 real-data Databricks, #37 HF publish/Space, #38 demo.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
