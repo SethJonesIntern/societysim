@@ -1,15 +1,15 @@
-# seth status (updated 2026-10-11T17:00Z)
+# seth status (updated 2026-10-11T17:30Z)
 ## Active
 - T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
-- #230 utf-8 logs | PR #235 changes round 1 (cp1252 read fallback: old logs would replay paid games)
+- #230 utf-8 logs | PR #235 round 2 review (read_text_lenient in logging/textio.py)
 - T5.2 replay plan (Seth: only affected games): 11 games g0001,g0003,g0004,g0010,g0012,g0021,g0025,g0030,g0031,g0039,g0044 (all 5 gpt-oss). ~$0.45. After #235 merges.
-- #240 Windows CI job | implementer (PR with hold until #235)
+- #240 Windows CI | PR #241 hold; fixing WSL bash; rebase after #237
+- #232 Windows suite | PR #237 approved but conflicting -> rebasing
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - #231 highlights seq: PR #233 merged
-- #232 Windows suite green: PR #237 approved/merging (deploy-space rsync->tar)
 - #224 persuasion seq: PR #227 approved/merging
 - #225 Windows replace retry: PR #226 approved/merging
 - T3.5 #21 publish: PR #80 merged; live check OK -> private HF dataset Sethery32/societysim-games (10 smoke games), idempotent
