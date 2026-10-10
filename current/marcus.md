@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T22:39Z)
+# marcus status (updated 2026-10-10T22:42Z)
 ## Active
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- #282 play deploy: PR #314 | in review (opus) + HOLD. Deploy needs PLAY_* keys: Codex prepared forms (OpenAI project societysim-play $10 hard limit; HF inference-only; Gemini in 'sims') but policy needs human click -> Marcus clicks Create + pastes printf lines.
+- #282 play deploy: PR #314 | approved BUT blocker fix round (cp -R could upload untracked .env to public Space -> git ls-files allowlist + hard-fail; Dockerfile WORKDIR before USER) + HOLD. Deploy needs PLAY_* keys: Codex prepared forms (OpenAI project societysim-play $10 hard limit; HF inference-only; Gemini in 'sims') but policy needs human click -> Marcus clicks Create + pastes printf lines.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - AMD: AUP still ImagePullBackOff (auplc-code-gpu:latest not found) on 8060S - waiting AUP email reply / other link. (old) Codex chain: AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
