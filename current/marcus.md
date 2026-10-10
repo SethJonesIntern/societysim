@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T07:28Z)
 ## Active
-- T1.9b #88 widen sweep | agent: codex-implementer, done | branch issue-88-sweep-flags | PR #91 | state: in review (opus; game count fell 240->45, requiring >=240).
+- T1.9b #88 widen sweep | agent: codex-implementer | branch issue-88-sweep-flags | PR #91 | state: changes round 1 (>=240 games default, env-gated slow sweep), sent to same codex agent
 - T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 1 fixed, re-review round 2 running
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
