@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T08:38Z)
+# marcus status (updated 2026-10-10T08:40Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: doctor GREEN in-pod (json_schema 2.4s, json_object 1.7s, none 1.7s). Next: Marcus switches the box checkout to main and plays 1 selfplay_amd game.
+- T6.3b #114 verify AMD | HUMAN: 1 in-pod game done (wolves won), but 234 invalid_output / 78 fallbacks in 351 events = poor. Suspect gpt-oss reasoning eating max_tokens. Waiting on sample invalid_output lines from Marcus.
 - T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
 ## Queue (next up)
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
