@@ -1,8 +1,9 @@
-# marcus status (updated 2026-10-10T17:24Z)
+# marcus status (updated 2026-10-10T17:25Z)
 ## Active
+- T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
 - #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - Survey round 4 (opus, grind time): sponsor/demo readiness, batch progress, post-batch pipeline, HF Space content. Filing up to 4.
-- Waiting on Seth: paid runs #35->#36, PR #80 hold. Augustin: viewer.
+- Waiting on Seth: PR #80 hold. Augustin: viewer.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
