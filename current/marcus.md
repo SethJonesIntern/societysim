@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T20:47Z)
+# marcus status (updated 2026-10-10T20:48Z)
 ## Active
 - #266 Game settings Basic/Advanced backend + game_setup schema + models_catalog (stacked on #256) | implementer (opus) | issue-266-game-settings
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
-- #262 Databricks deception_pairs + notebook + heatmap | implementer | issue-262-databricks-deception
+- #262 Databricks deception: PR #268 | in review + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
 - AMD: Marcus emailed AUP about the missing image.
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
