@@ -1,12 +1,12 @@
-# seth status (updated 2026-10-10T17:20Z)
+# seth status (updated 2026-10-10T17:30Z)
 ## Active
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR - | state: implementing
-- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: approved; live Neon check passed on 2589ac1 (11/11 tests, sync-neon 118=118, idempotent); hold removed, merging
+- T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR - | state: implementing
 ## Queue (next up)
-- T3.5 #21 publish (ready, unclaimed): start after #73 merges (both edit cli.py). Needs HF write token for live check.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
+- T6.1 #39 Neon sink: PR #73 merged 2026-10-10T07:13Z (live Neon check passed)
 - T2.2 #12 registry/doctor: PR #72 merged 2026-10-10T07:03Z (doctor 9/9 live; Seth OK'd orchestrator removing hold)
 - T2.3 #13 cache: PR #71 merged 2026-10-10T06:08Z
 - T2.1 #11 client: PR #70 merged 2026-10-10T05:59Z
