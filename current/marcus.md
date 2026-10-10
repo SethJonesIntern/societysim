@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T05:00Z)
 ## Active
 - T1.1 #3 rules/state | branch issue-3-rules-state | PR #54 | state: approved round 2, auto-merge queued. After merge: handoffs #4 #6 #8 #14, unblock #4 -> codex. Open: rules allow self-vote but #50 prompts say vote targets = other living players; #4 must reconcile per RULES.md.
-- T3.3 #55 Jev wiring | agent: implementer (opus), done | branch issue-55-jev-label-wiring | PR #56 | state: in review. Handoff to #19 (filter source: jev).
+- T3.3 #55 Jev wiring | branch issue-55-jev-label-wiring | PR #56 | state: approved, auto-merge queued. After merge: handoff to #19. Optional later: 401/connection refused aborts batch with traceback; .cache/jev is cwd-relative.
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
