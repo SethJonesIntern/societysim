@@ -1,9 +1,10 @@
-# marcus status (updated 2026-10-10T07:09Z)
+# marcus status (updated 2026-10-10T07:10Z)
 ## Active
-- (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
+- T1.8 #10 play CLI + HF smoke | agent: codex-implementer | branch issue-10-play-cli | PR - | state: implementing (cli.py overlaps Seth's PR #73; additive)
+- T1.6c #74 keep meta.usage.cached across retries | agent: codex-implementer | branch issue-74-usage-cached | PR - | state: implementing
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
-- M1 is 7/8 done: only #10 T1.8 play CLI left, blocked on Seth's #12 (model registry).
+- M1: last ticket #10 now in progress (Seth's #12 merged as PR #72).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
@@ -26,8 +27,8 @@
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
-- Human setup: collaborators invited, gh scopes OK. .env created by Marcus with all keys except AMD (AMD platform spawn fails: ErrImagePull; #41 waits on AMD support). Key smoke test running. Plugins/MCPs unverified.
+- Human setup: collaborators invited, gh scopes OK. .env created by Marcus with all keys except AMD (AMD platform spawn fails: ErrImagePull; #41 waits on AMD support). Agent key check saw ALL keys MISSING and Jev live test skipped: the sandbox likely can't read .env (ls .env denied), so Marcus must verify in his own terminal. Plugins/MCPs unverified.
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
 - AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
-## Codex: available
+## Codex: available (2 agents: #10, #74)
