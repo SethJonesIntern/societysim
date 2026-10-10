@@ -2,7 +2,7 @@
 ## Active
 - T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
 - T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
-- T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
+- T4.11 #33 visual polish | agent: implementer (opus), done | PR #121 | state: in review (opus). TODO after merge: delete orphan branch screenshots/issue-33. Conflicts with #120 on App.tsx/main.tsx: second to merge rebases.
 - T6.2 #40 viewer Neon source | agent: implementer (opus), done | PR #120 | state: in review (opus). Neon proxy only if a bare anon request returns 401. Manual check for Marcus later: curl $VITE_NEON_DATA_API_URL/games?select=game_id,models&limit=3 (needs the Neon schema applied + data synced).
 ## Queue (next up)
 - Viewer: #111 leak test + #33 polish + #31 pages running in parallel (disjoint files), #40 after #31.
