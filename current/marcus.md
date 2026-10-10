@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T17:21Z)
+# marcus status (updated 2026-10-10T17:23Z)
 ## Active
-- #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | state: implementing (orchestrator live-runs on PR head)
+- #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - Survey round 4 (opus, grind time): sponsor/demo readiness, batch progress, post-batch pipeline, HF Space content. Filing up to 4.
 - gemini-flash: Marcus upgrading Gemini key to paid Tier 1 -> re-run doctor --model gemini-flash, then decide PR #191 (likely close).
 - Waiting on Seth: paid runs #35->#36, PR #80 hold. Augustin: viewer.
