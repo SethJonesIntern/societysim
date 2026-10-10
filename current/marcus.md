@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T05:07Z)
+# marcus status (updated 2026-10-10T05:08Z)
 ## Active
-- T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR #61 | state: changes round 1 (raise on illegal living seer/doctor target; RULES.md self-vote line in this PR; fuller #8 handoff), sent to same codex agent. Self-vote = illegal (Marcus may override).
+- T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR #61 | state: round 1 fixed, re-review round 2 running. Self-vote = illegal, now in RULES.md.
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
