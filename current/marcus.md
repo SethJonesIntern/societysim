@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T07:46Z)
+# marcus status (updated 2026-10-10T07:47Z)
 ## Active
 - T4.6 #28 mode toggle | agent: codex-implementer, done | branch issue-28-mode-toggle | PR #104 | state: in review
-- T4.7b #102 Inspector wolf chat | agent: codex-implementer, done | branch issue-102-inspector-wolf-chat | PR #106 | state: in review
 - T4.3 #25 speech + chat log | agent: implementer (opus), done | branch issue-25-speech-chatlog | PR #107 | state: in review
 - T4.4 #26 arrows + tally | agent: codex-implementer | branch issue-26-arrows-tally | PR - | state: implementing
 - T4.5 #27 label pop-ups | agent: implementer (sonnet), done | branch issue-27-label-popups | PR #105 | state: in review
@@ -12,6 +11,7 @@
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.7b #102 Inspector wolf chat: PR #106 merged. Handoff: none.
 - T4.2 #24 circle table: PR #101 merged. Handoffs on #25 #26 #27 #33. Unblocked+claimed #25 #26 #27.
 - T4.7 #29 inspector: PR #99 merged. Follow-up bug #102 (wolf chat under 'Said publicly').
 - T4.1 #23 viewer scaffold (Augustin's team): PR #93 merged. Handoffs posted on #24-#33 #40. Unblocked #24 #28 #29 #30 (claimed by Marcus). Admin TODO: make `viewer` a required CI check.
