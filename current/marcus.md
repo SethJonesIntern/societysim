@@ -1,9 +1,8 @@
-# marcus status (updated 2026-10-10T08:17Z)
+# marcus status (updated 2026-10-10T08:19Z)
 ## Active
-- T4.6c #111 App leak test covers Arrows/Tally/Speech | agent: codex-implementer | branch issue-111-leak-test | PR - | state: implementing
+- T4.6c #111 leak test | agent: codex-implementer (edited directly), done | PR #116 | state: in review
 - T6.3b #114 verify AMD on real R9700 | agent: HUMAN (Marcus running serve.sh now; downloads in progress) | state: waiting on Marcus's run output
-- T2.2c #112 per-model api_base | agent: codex-implementer, done | PR #115 | state: in review (opus). No .env change needed.
-- #95 (Seth's) cached cleanup remainder: drop CachedUsage + e2e replay test | agent: implementer (opus) | branch issue-95-cached-cleanup | PR - | state: implementing
+- #95 cached cleanup | agent: implementer (opus), done | PR #117 | state: in review
 - T4.9 #31 game index + leaderboard + Pages/Space deploy | agent: implementer (opus) | branch issue-31-index-leaderboard | PR - | state: implementing
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
 - T6.2 #40 viewer Neon source: CLAIMED, waiting for #31 (same pages files)
@@ -13,6 +12,7 @@
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T2.2c #112 per-model api_base: PR #115 merged. Handoffs on #34 #36 #114.
 - T4.10 #32 accessibility: PR #113 merged (axe 0 violations). Handoffs on #33 #111.
 - T6.3 #41 AMD vLLM scripts: PR #110 merged (2 rounds; key required and never logged). Handoffs on #34 #35 #36 #42. Real-GPU verification -> #114 (human). #112 unblocked.
 - T4.6b #100 App wiring: PR #109 merged. Viewer works end to end. Handoffs on #32 #33. Filed #111 (leak test must cover Arrows/Tally/Speech).
