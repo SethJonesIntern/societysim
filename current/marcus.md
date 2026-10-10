@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T18:03Z)
+# marcus status (updated 2026-10-10T18:05Z)
 ## Active
-- Survey (opus): backend->viewer integration readiness (static data paths, Neon views vs PR #120, Space build, schema sync). Marcus goal: plug UI in with no backend work left.
+- Survey (opus): backend->viewer integration readiness (static data paths, Neon views vs PR #120, Space build, schema sync). Marcus goal: plug UI in with no backend work left. + CONTRACT ticket: docs/DATA_CONTRACT.md + schema/*.schema.json for every static artifact + Neon view columns + contract tests; handoffs to Augustin (#40 #33 #168).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
