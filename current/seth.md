@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T18:30Z)
+# seth status (updated 2026-10-10T18:45Z)
 ## Active
-- T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: in review + HOLD (Seth to confirm metric definitions)
+- T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: reviewer would approve but its gh review/label/merge call was blocked by permissions (draft in scratchpad/rev82.md); HOLD; Seth to decide metric defs (#1 A self_tag, #3 keep + base rate, #4 keep, #5 OpenSkill fix as follow-up?) and approve
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
