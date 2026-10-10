@@ -1,10 +1,10 @@
-# marcus status (updated 2026-10-10T16:16Z)
+# marcus status (updated 2026-10-10T16:17Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - #174 calibrated prior | agent: implementer | branch issue-174-calibrated-prior | PR #180 | state: in review
-- #175 Neon replay + sync-neon --delete | agent: implementer | branch issue-175-neon-replay | PR #178 | state: in review + HOLD (orchestrator live check: sync-neon --delete fixture-0001 neon-live-check on PR head, then lift hold)
-- #176 unfinished games in label/report/highlights | agent: implementer | branch issue-176-unfinished-games | PR #179 | state: in review
+- #175 Neon replay + sync-neon --delete | agent: implementer | branch issue-175-neon-replay | PR #178 | state: APPROVED, live check passed (Neon test rows deleted: fixture-0001, neon-live-check-s0), hold lifted, auto-merging
+- #176 unfinished games in label/report/highlights | agent: implementer | branch issue-176-unfinished-games | PR #179 | state: APPROVED, auto-merging
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
