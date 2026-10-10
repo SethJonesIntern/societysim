@@ -1,10 +1,10 @@
-# marcus status (updated 2026-10-10T21:57Z)
+# marcus status (updated 2026-10-10T21:58Z)
 ## Active
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
   - #281 security/limits + NO LIVE NEON LEAK for visitor games (public events only until game_end) + CI --extra server | implementer (opus) | issue-281-play-security (from #280 branch)
   - #282 deploy Docker HF Space polter-dev/societysim-play | blocked on #280/#281
-  - #283 viewer play: PR #285 | fix round 1 (SetupForm onChange; 403 vs 503 messages) + HOLD
+  - #283 viewer play: PR #285 | APPROVED + HOLD (merge after #284+#281)
   - Turnstile widget societysim-play DONE (managed; hosts society-sim.us, www, societysim.pages.dev, localhost); repo var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY set. NOTE: hf.space not a Turnstile host (widget renders on our site, fine).
   - Marcus TODO: dedicated spend-limited keys for visitor play (OpenAI project w/ budget, HF inference-only token, Gemini key)
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
@@ -138,6 +138,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Play API error contract: JSON {error: code, message}; codes rate_limited, too_many_games_today, active_game_exists, at_capacity, bot_check_failed, forbidden, budget_exhausted, play_disabled, invalid_request, not_your_turn, game_not_found, unauthorized, payload_too_large (#281 implements, #285 maps). 10p batch actual ~$0.14/game -> full 100 may fit $15.
 - 2026-10-10T21:48Z 10p batch costs ~$0.33/game (est was $0.14). Marcus: option 1 = let it stop at the $15 cap (~45 games). Don't raise cap.
 - 10p stack #256/#260/#261/#269 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
 - ElevenLabs key set (free tier, restricted: TTS + voices read + user read). Marcus likes Callum + Harry (narrators), dislikes Brian. narrate.py doesn't load .env (fixed in #248).
