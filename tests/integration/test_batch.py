@@ -779,6 +779,136 @@ async def test_progress_reports_failed_game_and_budget_stop(tmp_path):
     assert events[-1]["event"] == "stopped" and events[-1]["reason"] == "budget"
 
 
+class ClockFake(PricedFake):
+    """Every model call takes `tick` fake seconds on the clock the runner reads."""
+
+    def __init__(self, clock: dict[str, float], tick: float = 1.0):
+        super().__init__()
+        self.clock, self.tick = clock, tick
+
+    async def complete(self, model, messages, response_model) -> CompletionResult:
+        self.clock["t"] += self.tick
+        return await super().complete(model, messages, response_model)
+
+
+def _fake_clock(monkeypatch) -> dict[str, float]:
+    clock = {"t": 1000.0}
+    monkeypatch.setattr(runner, "_now", lambda: clock["t"])
+    return clock
+
+
+async def test_eta_is_remaining_games_over_observed_finish_rate(tmp_path, monkeypatch):
+    clock = _fake_clock(monkeypatch)
+    events: list[dict] = []
+
+    def seen(e):
+        events.append({**e, "elapsed": clock["t"] - 1000.0})
+
+    await run_batch(
+        cfg(n_games=4, max_concurrency=1),
+        SPECS,
+        ClockFake(clock),
+        runs_dir=tmp_path,
+        on_progress=seen,
+    )
+    # Serial: after the first game the ETA is one game's time per game left.
+    assert events[0]["eta_seconds"] == pytest.approx(events[0]["seconds"] * 3)
+    for e in events:
+        assert e["eta_seconds"] == pytest.approx(e["elapsed"] / e["done"] * (4 - e["done"]))
+    assert events[-1]["eta_seconds"] == 0
+
+
+async def test_eta_uses_finish_rate_with_concurrency_not_per_game_time(tmp_path, monkeypatch):
+    clock = _fake_clock(monkeypatch)
+    events: list[dict] = []
+
+    def seen(e):
+        events.append({**e, "elapsed": clock["t"] - 1000.0})
+
+    await run_batch(
+        cfg(n_games=6, max_concurrency=3),
+        SPECS,
+        ClockFake(clock),
+        runs_dir=tmp_path,
+        on_progress=seen,
+    )
+    for e in events:
+        assert e["eta_seconds"] == pytest.approx(
+            e["elapsed"] / e["done"] * (e["total"] - e["done"])
+        )
+    assert events[-1]["eta_seconds"] == 0
+
+
+async def test_eta_is_none_until_a_game_finishes_and_skips_resumed_games(tmp_path, monkeypatch):
+    clock = _fake_clock(monkeypatch)
+
+    class Boom(PricedFake):
+        async def complete(self, model, messages, response_model):
+            raise RuntimeError("boom")
+
+    events: list[dict] = []
+    await run_batch(
+        cfg(n_games=3, max_concurrency=1),
+        SPECS,
+        Boom(),
+        runs_dir=tmp_path,
+        on_progress=events.append,
+    )
+    assert {e["event"] for e in events} == {"failed"}
+    assert [e["eta_seconds"] for e in events] == [None, None, None]  # no pace to go on
+
+    # Resume with 3 of 6 games on disk: only the games played now set the pace.
+    await run_batch(
+        cfg(batch_id="r", n_games=6, max_concurrency=1), SPECS, ClockFake(clock), runs_dir=tmp_path
+    )
+    for n in (3, 4, 5):
+        (tmp_path / f"r/r-g000{n}.jsonl").unlink()
+    clock["t"] += 500
+    events.clear()
+    await run_batch(
+        cfg(batch_id="r", n_games=6, max_concurrency=1),
+        SPECS,
+        ClockFake(clock),
+        runs_dir=tmp_path,
+        on_progress=events.append,
+    )
+    assert [e["done"] for e in events] == [4, 5, 6]
+    # If the 3 skipped games counted as finished, these would be a third of this.
+    assert events[0]["eta_seconds"] == pytest.approx(events[0]["seconds"] * 2)
+    assert events[1]["eta_seconds"] == pytest.approx(
+        (events[0]["seconds"] + events[1]["seconds"]) / 2
+    )
+    assert events[2]["eta_seconds"] == 0
+
+
+async def test_eta_only_counts_running_games_once_new_games_are_barred(tmp_path, monkeypatch):
+    clock = _fake_clock(monkeypatch)
+    events: list[dict] = []
+    await run_batch(
+        cfg(n_games=8, models=["a", "b", "c", "d"], max_concurrency=3, budget_usd=0.4),
+        PRICED,
+        ClockFake(clock),
+        runs_dir=tmp_path,
+        on_progress=events.append,
+    )
+    assert events[-1]["event"] == "stopped" and events[-1]["reason"] == "budget"
+    ends = [e for e in events if e["event"] == "finished"]
+    # Fewer games ran than were asked for; the ones that will never start are not owed.
+    assert ends[-1]["done"] < ends[-1]["total"]
+    assert ends[-1]["running"] == 0 and ends[-1]["eta_seconds"] == 0
+
+
+def test_cli_progress_line_says_estimating_until_there_is_an_eta():
+    from societysim.cli import _progress_line
+
+    e = {
+        "event": "failed", "reason": "boom", "done": 1, "total": 3, "game_id": "g", "seconds": 5,
+        "spent": 0, "budget": 5, "running": 2, "eta_seconds": None,
+    }  # fmt: skip
+    assert _progress_line(e).endswith("| ETA estimating…")
+    assert _progress_line({**e, "eta_seconds": 600}).endswith("| ETA ~10m")
+
+
 def test_cli_batch_prints_a_progress_line_per_game(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     path = write_config(tmp_path)
