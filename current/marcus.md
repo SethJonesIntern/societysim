@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T04:32Z)
 ## Active
-- T0.3 #43 (workflow dry run) | agent: implementer (sonnet), done | branch issue-43-contributing | PR #44 | state: in review
+- T0.3 #43 (workflow dry run) | branch issue-43-contributing | PR #44 | state: approved, all checks green (review-gate pass), waiting on auto-merge
 ## Queue (next up)
 - T0.2 #2 contracts (agent:opus): dispatch right after the dry run passes. Unblocks Seth (T2.1 #11) and Augustin (T4.1 #23).
 ## Done (last 10)
