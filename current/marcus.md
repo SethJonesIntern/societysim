@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T05:05Z)
 ## Active
-- T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR - | state: implementing (must settle self-vote per RULES.md)
+- T1.2 #4 engine.py | agent: codex-implementer, done | branch issue-4-engine | PR #61 | state: in review (opus). Decision: self-votes ILLEGAL (rules.py changed); RULES.md should say so explicitly (follow-up docs ticket). Engine drops illegal seer/doctor targets silently; #8 must validate.
 - T3.4 #57 Jev resilience | agent: implementer (opus) | branch issue-57-jev-resilience | PR #60 | state: changes round 1 (unlink stale agreement.json on no-Jev paths + test; malformed Jev response handled), sent to same implementer
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
