@@ -1,14 +1,15 @@
-# marcus status (updated 2026-10-10T08:10Z)
+# marcus status (updated 2026-10-10T08:12Z)
 ## Active
-- T4.10 #32 accessibility | agent: implementer (opus), done | branch issue-32-a11y | PR #113 | state: in review (opus). axe 0 violations. New pinned dev deps axe-core/jsdom (accepted by orchestrator).
+- T4.6c #111 App leak test covers Arrows/Tally/Speech | agent: codex-implementer | branch issue-111-leak-test | PR - | state: implementing
 - T6.3b #114 verify AMD on real R9700 | agent: HUMAN (Marcus running serve.sh now; downloads in progress) | state: waiting on Marcus's run output
 - T2.2c #112 per-model api_base / api_key_env | agent: codex-implementer | branch issue-112-per-model-api-base | PR - | state: implementing
 ## Queue (next up)
-- Viewer sequence (all touch viewer/src/**): #32 a11y (running) -> #111 leak test (codex) -> #33 polish (no Figma tokens yet).
+- Viewer sequence: #111 leak test (running) -> #33 polish (no Figma tokens yet).
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.10 #32 accessibility: PR #113 merged (axe 0 violations). Handoffs on #33 #111.
 - T6.3 #41 AMD vLLM scripts: PR #110 merged (2 rounds; key required and never logged). Handoffs on #34 #35 #36 #42. Real-GPU verification -> #114 (human). #112 unblocked.
 - T4.6b #100 App wiring: PR #109 merged. Viewer works end to end. Handoffs on #32 #33. Filed #111 (leak test must cover Arrows/Tally/Speech).
 - T4.8 #30 timeline: PR #103 merged (3 rounds). Handoffs on #100 #32 #33. #32 #33 now ready; run AFTER #100, sequentially (both touch viewer/src/**).
