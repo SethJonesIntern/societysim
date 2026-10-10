@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T12:51Z)
 ## Active
 - T6.4 #42 Databricks (fixture data): metrics.py SUCCESS, dashboard published (dashboardsv3/01f1c4a8de811c60854d375219a83fbb), mlflow_batches FAILED (spark.mlflow.modelRegistryUri on serverless). Real batch data still needed.
-- #158 mlflow serverless fix | agent: implementer (opus) | branch issue-158-mlflow-serverless | PR - | state: implementing. After merge: Marcus re-imports mlflow_batches + run_nb mlflow_batches
+- #158 mlflow serverless fix | agent: implementer (opus) | branch issue-158-mlflow-serverless | PR #159 (hold) | state: in review + Marcus live-testing branch notebook. After merge: Marcus re-imports mlflow_batches + run_nb mlflow_batches
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
