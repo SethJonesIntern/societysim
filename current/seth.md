@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T13:55Z)
+# seth status (updated 2026-10-10T14:30Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: APPROVED, auto-merge on, blocked only by HOLD (Seth: run doctor with real keys, then remove hold) (Seth must run `societysim doctor` with real keys, fix/drop failing models, then remove hold)
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: changes round 2 (doctor live: only gpt-5-nano/mini pass; fixing HF provider pins, Gemma id, Gemini ids) + HOLD; Seth reruns doctor after
 ## Queue (next up)
 - T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
@@ -16,4 +16,5 @@
 - #71: cache replays return CachedUsage(cached=True), but orchestrator _add() rebuilds plain Usage, so the cached flag doesn't reach event meta. Cost reports can't exclude cached calls yet; reviewer says follow-up ticket, not blocker: add cached:bool to Usage + meta.usage (schema bump), keep it in _add, drop CachedUsage. Not filed yet.
 - #72: HF model ids, provider pins (esp. Gemma-4-26B) and price overrides are guesses; doctor unverified. No .env on this machine.
 - Follow-up (client.py): fail fast without retries on missing credentials (LiteLLM treats it as 500 and retries noisily); return parsed=None on empty choices.
+- 2026-10-10 doctor run: HF credits were empty (Seth topped up). HF provider pins wrong for qwen3/llama4/deepseek; gemma id rejected; Gemini ids 404.
 ## Codex: n/a
