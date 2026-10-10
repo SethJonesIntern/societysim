@@ -1,12 +1,12 @@
 # marcus status (updated 2026-10-10T07:37Z)
 ## Active
-- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 3 fixed, re-review running
 - T4.1 #23 viewer scaffold (Augustin's team) | agent: implementer (opus), done | branch issue-23-viewer-scaffold | PR #93 | state: in review (opus). Modes narrator+villager. Needs admin: make viewer a required CI check after merge.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T1.4c #85 anti-injection: PR #87 merged (3 rounds). Handoffs on #23 #19.
 - T2.2b #83 Gemini sampling (Seth's team): PR #92 merged. Handoffs on #15 #34.
 - T1.9b #88 widen sweep: PR #91 merged (243 default games, 657 slow behind SOCIETYSIM_SLOW=1).
 - T0.6 #79 contract: meta.usage.cached, schema_version 2: PR #86 merged (2 rounds; cached optional, v1 logs still validate, LOG_SCHEMA.md v2). Handoffs on #15 #19 #20 #23 #39.
