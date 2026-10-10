@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-10T08:29Z)
+# marcus status (updated 2026-10-10T08:30Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
 - T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
-- T6.2 #40 viewer Neon source | agent: implementer (opus) | branch issue-40-neon-viewer | PR - | state: implementing (anon auth unverified; static fallback)
+- T6.2 #40 viewer Neon source | agent: implementer (opus), done | PR #120 | state: in review (opus). Neon proxy only if a bare anon request returns 401. Manual check for Marcus later: curl $VITE_NEON_DATA_API_URL/games?select=game_id,models&limit=3 (needs the Neon schema applied + data synced).
 ## Queue (next up)
 - Viewer: #111 leak test + #33 polish + #31 pages running in parallel (disjoint files), #40 after #31.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
