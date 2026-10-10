@@ -1,10 +1,9 @@
-# marcus status (updated 2026-10-10T17:52Z)
+# marcus status (updated 2026-10-10T17:55Z)
 ## Active
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #21 PR #80: live publish OK with Marcus's new token (private test repo, deleted). Rebasing on main (implementer) -> re-review -> lift hold (Marcus's call; Seth notified). Dataset proposal polter-dev/societysim-games public.
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
@@ -14,6 +13,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #21 publish (Seth's PR #80): rebased, re-approved, live-checked with Marcus's write token, hold lifted by Marcus's call, MERGED. Handoff #37. #37 + #42 moved blocked->ready (deps merged) but wait for Seth's batch data.
 - #198 Databricks --notebooks one command: PR #199 merged after Marcus live run (metrics + mlflow SUCCESS). Handoff #42.
 - #213 report/postbatch wording: PR #214 merged.
 - #209 README plain-English rewrite: PR #211 merged (2 rounds). Handoff #37 (TODO(batch) placeholders).
