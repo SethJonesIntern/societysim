@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T16:24Z)
+# marcus status (updated 2026-10-10T16:25Z)
 ## Active
 - #181 per-call timeout (URGENT: none now, ~50 min worst case/call) | agent: implementer | branch issue-181-call-timeout | state: implementing
 - #182 CLI polish (sync-neon no args, doctor unpriced warn, '1 votes') | agent: implementer | branch issue-182-cli-polish | state: implementing
-- #183 Databricks ingest skips scripted games; play records agent type | agent: implementer | branch issue-183-ingest-agent-type | state: implementing
+- #183 Databricks ingest skips scripted games; play records agent type | agent: implementer | branch issue-183-ingest-agent-type | PR #185 | state: in review
 - #177 provider-failure stop | agent: implementer (opus) | branch issue-177-provider-failure | PR #184 | state: in review (opus reviewer); urgent note posted on #35
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
