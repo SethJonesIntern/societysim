@@ -1,7 +1,6 @@
-# seth status (updated 2026-10-11T18:30Z)
+# seth status (updated 2026-10-11T19:00Z)
 ## Active
-- T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
-- T5.2 replay RUNNING on 158712a: 11 holed games moved to runs/selfplay_baseline_quarantine/, resume replays them (cap $4, ledger $1.79). Main folder detached; don't switch branches.
+- T5.2 #35 | HALF DONE: 45 games clean, $2.19, 'T5.2 done' posted (triggers Marcus post-batch). Not published to polter-dev/societysim-games (token only Sethery32; public = Seth's call). Full 90 = ~$1.70, pending Seth.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
@@ -63,4 +62,5 @@
 - Cleaned 44 agent worktrees (~700MB in OneDrive).
 - #147 (Marcus) fixed gemma: 0/120 invalid. Wolves won 15/16 live games: flagged on #35 for engine.
 - Old cp1252 logs (smoke 10, selfplay 34) read fine via read_text_lenient but deploy-space copies raw bytes -> viewer may garble them. Consider re-encoding copies at deploy, not raw logs.
+- 2026-10-10 team: 10-player games merged (schema v3, #256), configs #261. Marcus running mixed_v2_10p (100 games, cap $15). Marcus handed T5.3 (7p mixed_v1) back to Seth: his partial run 38 games/$1.93 kept local, not published.
 ## Codex: n/a
