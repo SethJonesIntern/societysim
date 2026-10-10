@@ -1,8 +1,10 @@
-# marcus status (updated 2026-10-10T13:12Z)
+# marcus status (updated 2026-10-10T13:14Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #160 societysim highlights (demo moments) | agent: implementer (opus) | branch issue-160-highlights | PR #164 | state: changes round 1 (--out option) sent
 - #161 concurrent turns | agent: implementer (opus) | branch issue-161-concurrent-turns | PR - | state: implementing. PR carries hold; merge only after Seth batch finishes. Marcus declined AMD mixed batch.
+- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR - | state: implementing
+- #21 PR #80 rebase + default dataset env var (Seth PR, Marcus request) | agent: implementer (opus) | branch issue-21-publish | state: implementing. KEEP hold; repo name + live HF check = Seth.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -64,6 +66,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Agent cap raised to 5 (Marcus). Marcus resting; autonomous mode: do all coding tickets incl. Seth runner coding work. NO paid batch runs (Seth: no paid runs while asleep).
 - Seth briefed via issue comments (his agents read them): #35 resume + post batch dir on #42/#37; #21 rebase PR #80 + publish default repo; #157 ready. Waiting on his batches.
 - Session now in bypass-permissions mode (Marcus). Still: never load/read .env, no viewer, no merging around CI, do not touch Seth held PRs.
 - Done by me 2026-10-10: ruleset main now requires python, review-gate, viewer. GitHub Pages enabled (workflow) -> https://polter-dev.github.io/societysim/. HF_SPACE=polter-dev/societysim set.
