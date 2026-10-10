@@ -1,7 +1,7 @@
-# seth status (updated 2026-10-10T17:00Z)
+# seth status (updated 2026-10-10T17:20Z)
 ## Active
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR - | state: implementing
-- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: re-review round 2 + HOLD (needs live Neon check)
+- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: approved; live Neon check passed on 2589ac1 (11/11 tests, sync-neon 118=118, idempotent); hold removed, merging
 ## Queue (next up)
 - T3.5 #21 publish (ready, unclaimed): start after #73 merges (both edit cli.py). Needs HF write token for live check.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
@@ -23,4 +23,6 @@
 - LiteLLM bug: huggingface/deepinfra/<id> posts to router/deepinfra/v1/chat/completions, which HF rejects. Use router.huggingface.co/v1 with model '<id>:deepinfra'. HF token needed Inference Providers scope + Sethery32 credits.
 - #73 reviewer: anon SELECT on events (incl. wolf channel/scratchpads) is intended per PLAN T6.2 for replay viewer.
 - 2026-10-10: moved #19, #21 (dep #18 merged) and Marcus's #10 (deps #8, #12 merged) from blocked to ready.
+- Neon DB (neondb) now holds fixture-0001 test data from the live check (1 game, 118 events, 8 labels); shows in leaderboard. Clean up before real batches.
+- pytest doesn't load .env; live Neon test needs NEON_DATABASE_URL exported.
 ## Codex: n/a
