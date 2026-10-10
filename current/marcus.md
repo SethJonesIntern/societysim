@@ -1,8 +1,8 @@
 # marcus status (updated 2026-10-10T16:48Z)
 ## Active
 - #192 label skips Jev on scripted games + shows Jev call count | agent: implementer | branch issue-192-label-jev-guard | PR #195 | state: in review
-- #193 DEMO.md refresh | agent: implementer | branch issue-193-demo-refresh | state: implementing
-- #194 review follow-ups (dry-run unpriced warn, test nits) | agent: implementer | branch issue-194-review-followups | state: implementing
+- #193 DEMO.md refresh | agent: implementer | branch issue-193-demo-refresh | PR #196 | state: in review
+- #194 review follow-ups (dry-run unpriced warn, test nits) | agent: implementer | branch issue-194-review-followups | PR #197 | state: in review
 - Waiting on Seth: #191 gemini-flash decision (asked on #35), paid runs #35->#36, PR #80 hold.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
