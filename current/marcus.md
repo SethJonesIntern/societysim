@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T20:53Z)
+# marcus status (updated 2026-10-10T20:57Z)
 ## Active
-- #266 Game settings: PR #269 | in review + HOLD (stacked on #256). n_players 7..10 (accepted).
+- #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception: PR #268 | APPROVED + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
 - AMD: Marcus emailed AUP about the missing image.
@@ -124,7 +124,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
-- 10p stack #256/#260/#261 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
+- 10p stack #256/#260/#261/#269 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
 - ElevenLabs key set (free tier, restricted: TTS + voices read + user read). Marcus likes Callum + Harry (narrators), dislikes Brian. narrate.py doesn't load .env (fixed in #248).
 - NEON AUTH (verified): GET <auth>/token/anonymous -> {token, expires_at}, role anonymous, ~1h; Data API 200 with Bearer. Auth URL https://ep-orange-river-b5l9yq6a.neonauth.c-7.us-east-2.aws.neon.tech/neondb/auth. Repo vars set: VITE_NEON_DATA_API_URL, VITE_NEON_AUTH_URL. Recipe posted on #40 for Augustin. zsh: never name a shell var `path` (clobbers PATH).
 - Seth opened Windows PRs #237 (#232 tests on Windows) + #241 (#240 Windows CI job, hold) - his; leave to his reviewer.
