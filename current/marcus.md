@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-10T13:24Z)
+# marcus status (updated 2026-10-10T13:26Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR #169 | state: rebase onto #166 (cli.py conflict) then review
-- #170 .env.example vars | agent: codex-implementer | branch issue-170-env-example | PR - | state: implementing
+- #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR #169 | state: rebased, in review
+- #170 .env.example vars | agent: codex-implementer | branch issue-170-env-example | PR #171 | state: in review
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
