@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T05:26Z)
+# marcus status (updated 2026-10-10T05:27Z)
 ## Active
 - T1.6 #8 orchestrator | agent: implementer (opus), done | branch issue-8-orchestrator | PR #63 | state: in review (opus). Touched agents/base.py + llm_agent.py (reviewer checking scope). Gaps filed as #64, #65.
-- T1.3b #64 EventLogger.close() zero sinks | agent: implementer (opus) | branch issue-64-logger-zero-sinks | PR - | state: implementing
+- T1.3b #64 EventLogger zero sinks | agent: implementer (opus), done | branch issue-64-logger-zero-sinks | PR #66 | state: in review. Handoff: #8/#9 drop JsonlSink workaround after merge.
 ## Queue (next up)
 - #65 T1.6b meta.fallback on seer/doctor + lone-wolf TargetResponse prompt (opus): blocked on #8. Touches engine.py, orchestrator.py, prompts.py.
 - After #8 merges: #9 T1.7 RandomAgent + integration test -> Codex.
