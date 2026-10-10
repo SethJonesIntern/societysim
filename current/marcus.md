@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T04:50Z)
 ## Active
-- T0.4 #46 handoff convention | branch issue-46-handoff-comments | PR #47 | state: in review
+- T0.4 #46 handoff convention | branch issue-46-handoff-comments | PR #47 | state: changes round 1 (codex-implementer.md must filter comments to OWNER/MEMBER/COLLABORATOR), sent to same implementer
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
 - T1.3 #5 EventLogger | agent: implementer (sonnet; Codex slot taken) | branch issue-5-event-logger | PR - | state: implementing
 - T1.5 #7 prompts | agent: implementer (opus) | branch issue-7-prompts | PR - | state: implementing
