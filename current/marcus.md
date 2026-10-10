@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T13:10Z)
+# marcus status (updated 2026-10-10T13:12Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #160 societysim highlights (demo moments) | agent: implementer (opus) | branch issue-160-highlights | PR - | state: implementing
@@ -7,6 +7,7 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- STRETCH (after #36/#37): #162 ElevenLabs narration, #163 human-playable seat (after #161). Label `stretch`, status:blocked.
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
