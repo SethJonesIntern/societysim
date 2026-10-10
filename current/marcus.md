@@ -1,10 +1,10 @@
-# marcus status (updated 2026-10-10T21:52Z)
+# marcus status (updated 2026-10-10T21:57Z)
 ## Active
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
-  - #280 server core: PR #284 | in review (opus) + HOLD (merge together with #281 security; never deploy core alone)
+  - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
   - #281 security/limits + NO LIVE NEON LEAK for visitor games (public events only until game_end) + CI --extra server | implementer (opus) | issue-281-play-security (from #280 branch)
   - #282 deploy Docker HF Space polter-dev/societysim-play | blocked on #280/#281
-  - #283 viewer play logic | implementer | issue-283-viewer-play (from #280 branch)
+  - #283 viewer play: PR #285 | fix round 1 (SetupForm onChange; 403 vs 503 messages) + HOLD
   - Turnstile widget societysim-play DONE (managed; hosts society-sim.us, www, societysim.pages.dev, localhost); repo var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY set. NOTE: hf.space not a Turnstile host (widget renders on our site, fine).
   - Marcus TODO: dedicated spend-limited keys for visitor play (OpenAI project w/ budget, HF inference-only token, Gemini key)
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
