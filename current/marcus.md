@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T21:13Z)
+# marcus status (updated 2026-10-10T21:15Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
   - #256 MERGED (10 seats + parse.ts). Rebasing #260/#261/#269 --onto main (implementers), then re-approve, lift holds, merge; #278 after #269. Then run mixed_v2_10p.
-  - #270 stepper: PR #277 | fixes pushed, re-review
   - #274 setup form: PR #278 | HOLD (stacked on #269), review pending
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
@@ -36,6 +35,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #270 viewer stepper + clipsForSeqRange: PR #277 merged. Port notes on #267.
 - #250 10 seats: PR #256 merged (incl. viewer parse.ts v3/p9). Handoffs #33 #40 #216 #251.
 - #273 viewer deception module: PR #279 merged. Port notes #33.
 - #271 viewer narration playback: PR #276 merged. Port notes on #168.
