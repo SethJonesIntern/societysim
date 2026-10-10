@@ -379,6 +379,10 @@
         },
         "attempts": {
           "type": "integer"
+        },
+        "cached": {
+          "default": false,
+          "type": "boolean"
         }
       },
       "required": [
@@ -420,7 +424,10 @@
       "description": "One line of <game_id>.labels.jsonl. The raw game log is never edited.",
       "properties": {
         "schema_version": {
-          "const": 1,
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer"
         },
         "game_id": {
@@ -472,7 +479,10 @@
   "description": "One line of <game_id>.jsonl.",
   "properties": {
     "schema_version": {
-      "const": 1,
+      "enum": [
+        1,
+        2
+      ],
       "type": "integer"
     },
     "game_id": {
