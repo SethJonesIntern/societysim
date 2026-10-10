@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T16:35Z)
+# seth status (updated 2026-10-10T16:50Z)
 ## Active
-- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: changes round 1 (close() timeout; direct sink error tests) + HOLD (needs live Neon check)
+- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: re-review round 2 + HOLD (needs live Neon check)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
