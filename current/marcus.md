@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T04:56Z)
+# marcus status (updated 2026-10-10T04:57Z)
 ## Active
-- T1.1 #3 rules/state | agent: codex-implementer, done (no rate limit) | branch issue-3-rules-state | PR #54 | state: in review (opus). Open: doctor no-repeat relies on day advancing once per cycle; seer_results int meaning (day vs t).
+- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR #54 | state: changes round 1 (seer_results = night number per LOG_SCHEMA; set->list for determinism; drop model shuffle; handoff rewrite), sent to same codex agent
 - T3.3 #55 wire Jev into label CLI + review follow-ups | agent: implementer (opus) | branch issue-55-jev-label-wiring | PR - | state: implementing
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
