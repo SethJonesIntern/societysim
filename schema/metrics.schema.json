@@ -3,6 +3,231 @@
   "$id": "metrics.schema.json",
   "x-contract-version": 1,
   "$defs": {
+    "DeceptionBaseline": {
+      "additionalProperties": false,
+      "properties": {
+        "heard": {
+          "type": "integer"
+        },
+        "voters": {
+          "type": "integer"
+        },
+        "followed": {
+          "type": "integer"
+        },
+        "vote_follow_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vote_follow_ci": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "heard",
+        "voters",
+        "followed",
+        "vote_follow_rate",
+        "vote_follow_ci"
+      ],
+      "title": "DeceptionBaseline",
+      "type": "object"
+    },
+    "DeceptionBySource": {
+      "additionalProperties": false,
+      "properties": {
+        "self_tag": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/DeceptionCell"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "jev": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/DeceptionCell"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "self_tag",
+        "jev"
+      ],
+      "title": "DeceptionBySource",
+      "type": "object"
+    },
+    "DeceptionCell": {
+      "additionalProperties": false,
+      "properties": {
+        "heard": {
+          "type": "integer"
+        },
+        "voters": {
+          "type": "integer"
+        },
+        "followed": {
+          "type": "integer"
+        },
+        "vote_follow_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vote_follow_ci": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparisons": {
+          "type": "integer"
+        },
+        "moved": {
+          "type": "integer"
+        },
+        "belief_shift_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "belief_shift_ci": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseline_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseline_voters": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "heard",
+        "voters",
+        "followed",
+        "vote_follow_rate",
+        "vote_follow_ci",
+        "comparisons",
+        "moved",
+        "belief_shift_rate",
+        "belief_shift_ci",
+        "baseline_rate",
+        "baseline_voters"
+      ],
+      "title": "DeceptionCell",
+      "type": "object"
+    },
+    "DeceptionMatrix": {
+      "additionalProperties": false,
+      "properties": {
+        "exploratory": {
+          "type": "boolean"
+        },
+        "pairs": {
+          "$ref": "#/$defs/DeceptionBySource"
+        },
+        "baseline": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/DeceptionBaseline"
+            },
+            "type": "object"
+          },
+          "propertyNames": {
+            "enum": [
+              "role_claim",
+              "seer_wolf",
+              "seer_clear",
+              "accusation"
+            ]
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "exploratory",
+        "pairs",
+        "baseline"
+      ],
+      "title": "DeceptionMatrix",
+      "type": "object"
+    },
     "Detection": {
       "additionalProperties": false,
       "properties": {
@@ -818,6 +1043,9 @@
     "openskill": {
       "$ref": "#/$defs/OpenSkill"
     },
+    "deception_matrix": {
+      "$ref": "#/$defs/DeceptionMatrix"
+    },
     "summary": {
       "$ref": "#/$defs/Summary"
     },
@@ -836,6 +1064,7 @@
     "models",
     "by_group",
     "openskill",
+    "deception_matrix",
     "summary",
     "speed"
   ],
