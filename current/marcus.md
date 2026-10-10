@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-10T19:17Z)
+# marcus status (updated 2026-10-10T19:19Z)
 ## Active
+- Codex (computer use) in Neon console: enable Data API anonymous read (or Neon Auth anonymous tokens). Then re-test curl without auth and set repo var VITE_NEON_DATA_API_URL.
 - #244 MIT LICENSE + pyproject + README (data CC-BY-4.0) | implementer | issue-244-license | implementing
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
