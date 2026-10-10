@@ -1,7 +1,7 @@
-# seth status (updated 2026-10-11T04:00Z)
+# seth status (updated 2026-10-11T13:00Z)
 ## Active
-- #204 batch invalid-output breaker | implementer (free)
-- T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
+- #204 breaker | PR #212 in review (CLI doesn't print the stop or exit nonzero: follow-up?)
+- T5.2 #35 selfplay | RUNNING half size (Seth): 45 games, $4 cap, batch_id selfplay_baseline, main 0257d57, scratch cfg selfplay_half.yaml; watchdog on. Extend to 90 later by running configs/selfplay_baseline.yaml (resume).
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
@@ -55,4 +55,5 @@
 - Filed #146 (team:engine): Databricks notebook must match #145 dedupe.
 - #136 (gemma suspicion) is Marcus's, in review. When merged: re-run gemma 3-game check (needs Seth OK for spend) then resume T5.2.
 - Cleaned 44 agent worktrees (~700MB in OneDrive).
+- #147 (Marcus) fixed gemma: 0/120 invalid. Wolves won 15/16 live games: flagged on #35 for engine.
 ## Codex: n/a
