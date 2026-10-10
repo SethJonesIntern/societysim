@@ -1,9 +1,10 @@
-# marcus status (updated 2026-10-10T05:08Z)
+# marcus status (updated 2026-10-10T05:10Z)
 ## Active
-- T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR #61 | state: round 1 fixed, re-review round 2 running. Self-vote = illegal, now in RULES.md.
+- T1.4 #6 observation.py + leakage tests | agent: implementer (opus) | branch issue-6-observation | PR - | state: implementing
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T1.2 #4 engine.py: PR #61 merged (2 rounds). Self-votes illegal, now in RULES.md. Handoffs posted on #6 #8 #9. #6 unblocked.
 - T3.4 #57 Jev resilience: PR #60 merged (2 rounds). Handoffs posted on #19 #21.
 - T1.5b #58 prompts zero roles: PR #59 merged. Handoff: none. (Optional nit: 'the wolves talk' plural with 1 wolf.)
 - T3.3 #55 Jev wiring: PR #56 merged. Handoff posted on #19. Follow-ups filed #57, #58.
