@@ -1,14 +1,16 @@
-# seth status (updated 2026-10-11T02:50Z)
+# seth status (updated 2026-10-11T03:15Z)
 ## Active
 - T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
-- #137 live-test guard | PR #141 approved, auto-merge
-- #138 shared HF router limit | implementer
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
-- #139 report fixes | PR #142 in review (gemma 0% = real but 1 base day, all abstains)
+- #144 base-rate dedupe | implementer (abstain decision left for Seth)
+- #138 router limit | PR #143 in review
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #137 live-test guard: PR #141 merged 10:18Z
+- #139 report games/seats: PR #142 merged 10:20Z
+- #36 mixed cap $10: PR #140 merged 10:16Z (run not started)
 - T5.1 #34 smoke: closed 2026-10-10 with results comment (no rerun, Seth's call)
 - T2.2b #122 gemma json_schema: PR #125 merged 2026-10-10T08:46Z (live: 8.8% invalid, was 48%)
 - T2.6 #16 configs: PR #97 merged 2026-10-10T08:42Z
