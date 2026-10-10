@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T08:42Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: first game invalid. EVERY call 404'd: model id mismatch (served openai/gpt-oss-20b, sent gpt-oss-20b after #115). Fix #126 (urgent, opus). Then Marcus: git pull on box, doctor, 1 game.
+- T6.3b #114 verify AMD | HUMAN: Marcus shutting the AMD server down for the night. When #126 merges, Discord him FULL relaunch steps: Basic GPU Env, R9700, 180+ min; export AMD_API_KEY; cd /opt/workspace/societysim && git checkout main && git pull && uv sync --frozen; bash infra/amd/serve.sh (local mode if #124 has merged); export AMD_VLLM_BASE_URL=http://localhost:8000/v1; doctor; play selfplay_amd.
 - #126 AMD model id fix | agent: implementer (opus) | branch issue-126-amd-model-id | PR - | state: implementing (URGENT; Marcus's server is time-boxed)
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - #126 (URGENT, opus): review -> merge -> post handoff on #114 -> Discord Marcus the exact box commands (git pull, doctor, 1 selfplay_amd game). Discord counts as important because he must act.
