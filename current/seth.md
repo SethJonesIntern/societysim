@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-11T21:00Z)
+# seth status (updated 2026-10-11T22:00Z)
 ## Active
-- PRs: #312 (#310 preview) approved/merging; #315 (#296) changes (dead-player unmark); #316 (#291) in review; #317 (#304) adding cli 'estimating…'
+- PRs: #315 (#296) approved/merging; #317 (#304) re-review; #318 (#306) review; #319 (#307) re-review r2; #320 (#298) review; #321 (#295, supersedes #120) opus review; #297 still implementing
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - T5.2 #35 | HALF DONE: 45 games clean, $2.19, 'T5.2 done' posted (triggers Marcus post-batch). Not published to polter-dev/societysim-games (token only Sethery32; public = Seth's call). Full 90 = ~$1.70, pending Seth.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
