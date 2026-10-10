@@ -1,9 +1,11 @@
-# marcus status (updated 2026-10-10T22:03Z)
+# marcus status (updated 2026-10-10T22:14Z)
 ## Active
-- #286 BUG live site has no index.json (SPA html fallback) - blocks Augustin's integrated UI | implementer | issue-286-deploy-data. After merge: redeploy + curl index.json.
+- PR #288 (Augustin frontend): our implementer pushing fixes to his branch viewer-illustrated-integration (CI leak-test timeout, DATA_CONTRACT root paths, Handoff). HOLD; merge after re-review. Supersedes most of #121; #120 needs rebase.
+- PR #289 (#281 security) | in review (opus) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
+- Seth T5.2 DONE (45 games, $2.19, 7p). Seth asking about HF write access (publish to polter-dev/societysim-games).
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
-  - #281 security/limits + NO LIVE NEON LEAK for visitor games (public events only until game_end) + CI --extra server | implementer (opus) | issue-281-play-security (from #280 branch)
+  - #281 security: PR #289 (limits: 120 rpm/IP, 1 active + 5/day per IP, 4 concurrent, 45 min, $2/day, 2048 max_tokens, allowlist qwen3/llama4/gemma/gpt-oss-120b/deepseek/flash-lite/gpt-5-nano). Needs PLAY_TRUSTED_PROXIES on deploy.
   - #282 deploy Docker HF Space polter-dev/societysim-play | blocked on #280/#281
   - #283 viewer play: PR #285 | APPROVED + HOLD (merge after #284+#281)
   - Turnstile widget societysim-play DONE (managed; hosts society-sim.us, www, societysim.pages.dev, localhost); repo var VITE_TURNSTILE_SITE_KEY + secret TURNSTILE_SECRET_KEY set. NOTE: hf.space not a Turnstile host (widget renders on our site, fine).
@@ -39,6 +41,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #286 deploy data at site root: PR #287 merged; redeployed; society-sim.us/index.json = JSON (fixture), missing .json -> 404.
 - #274 viewer setup form: PR #278 merged (Basic+Advanced outputs run via play --setup). Port notes #33.
 - #258 PR #260, #259 PR #261, #266 PR #269 merged (10p stack). #217 closed (superseded).
 - #270 viewer stepper + clipsForSeqRange: PR #277 merged. Port notes on #267.
