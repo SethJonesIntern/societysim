@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T07:57Z)
+# marcus status (updated 2026-10-10T07:59Z)
 ## Active
 - T4.6b #100 App wiring | agent: implementer (opus), done | branch issue-100-app-wiring | PR #109 | state: in review (opus)
-- T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
+- T6.3 #41 AMD vLLM | agent: implementer (opus), done | branch issue-41-amd-vllm | PR #110 | state: in review (opus). Model gpt-oss-20b; 4 vLLM install paths then llama.cpp fallback; entry llamafile/openai/gpt-oss-20b (no per-model api_base -> follow-up ticket). Marcus pinged on Discord to run serve.sh on R9700 (>=3h). Real-GPU criteria open until he runs it.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
