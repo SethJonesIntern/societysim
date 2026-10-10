@@ -1,6 +1,7 @@
-# marcus status (updated 2026-10-10T19:22Z)
+# marcus status (updated 2026-10-10T19:24Z)
 ## Active
-- #246 Neon anon JWT: deploy VITE_NEON_AUTH_URL, devui token fetch, DATA_CONTRACT auth | implementer | issue-246-neon-anon-jwt | implementing
+- Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
+- #246 Neon anon JWT: deploy VITE_NEON_AUTH_URL, devui token fetch, DATA_CONTRACT auth | implementer | issue-246-neon-anon-jwt | PR #247 | in review
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
