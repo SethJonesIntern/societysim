@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T07:51Z)
 ## Active
-- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: round 3 (distinct glyph/color per label type; mis_elimination title not 'Lie'), sent to same codex agent
+- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: round 3 fixed, re-review running
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
