@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T05:44Z)
+# marcus status (updated 2026-10-10T06:23Z)
 ## Active
 - (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
 ## Queue (next up)
@@ -26,5 +26,5 @@
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
-- Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
+- Human setup: collaborators invited (agus-marmor, SethJonesIntern), gh scopes OK. .env NOT created yet (as of 01:45 EDT). Plugins/MCPs unverified.
 ## Codex: available
