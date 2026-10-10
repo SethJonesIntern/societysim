@@ -4,7 +4,7 @@
 - T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
 - #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - #200 batch progress/ETA | implementer | issue-200-batch-progress | PR #206 | APPROVED, auto-merging
-- #201 report headlines/tables | implementer | issue-201-report-headlines | implementing
+- #201 report headlines/tables | implementer | issue-201-report-headlines | PR #210 | in review
 - #202 post-batch one command | implementer | issue-202-postbatch | PR #208 | in review (python -m societysim.analysis.postbatch runs/<batch> [--jev])
 - #203 Neon leaderboard views (excl human, per batch) | implementer | issue-203-neon-views | PR #207 | in review + HOLD (live check: on PR head, sync-neon runs/gemma-149 then --delete its 3 games; schema applies on sync)
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
