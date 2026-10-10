@@ -1,11 +1,12 @@
 # marcus status (updated 2026-10-10T04:56Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer, done (no rate limit) | branch issue-3-rules-state | PR #54 | state: in review (opus). Open: doctor no-repeat relies on day advancing once per cycle; seer_results int meaning (day vs t).
-- T3.2 #18 labeler | branch issue-18-labeler | PR #52 | state: approved, auto-merge queued. Follow-up ticket after merge: wire Jev into label CLI, empty-jsonl IndexError, jev claim_role none test + retry timeouts.
-- T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus), done | branch issue-48-chore-deps | PR #53 | state: in review
+- T0.5 #48 chore | branch issue-48-chore-deps | PR #53 | state: approved, auto-merge queued
+- T3.3 #55 wire Jev into label CLI + review follow-ups | agent: implementer (opus) | branch issue-55-jev-label-wiring | PR - | state: implementing
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - T3.1 #17 jev: PR #51 merged. Handoff posted on #18. NEEDS MARCUS: live API test (TYPESAFE_API_KEY in .env, run uv run pytest tests/unit/test_jev.py).
 - T1.3 #5 EventLogger: PR #49 merged (2 rounds; run_meta per game). Handoffs posted on #8 #39 #10 #15. Unblocked #39 (Seth), #48.
 - T1.5 #7 prompts: PR #50 merged. Handoffs posted on #6 #8.
@@ -22,5 +23,4 @@
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
 - #48 chore also gets explicit httpx dep (commented on #48).
-- TODO after #17 and #18 both merge: small ticket to wire Jev into `societysim label` (cli.py).
 ## Codex: available (in use on #3)
