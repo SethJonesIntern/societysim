@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T23:08Z)
+# marcus status (updated 2026-10-10T23:10Z)
 ## Active
 - #323 SECURITY: PR #325 (events_public view; anon revoked on events; viewer uses events_public) in REVIEW. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
-- #326 flaky test_security seed (filed from #314 review) | implementer sonnet | issue-326-server-test-seed
+- #326 flaky test_security seed | PR #327 | in review
 - #309 play alerts (unblocked by #314 merge) | implementer sonnet | issue-309-play-alerts
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
