@@ -10,9 +10,8 @@
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
-- #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
-- Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
-- Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
+- Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
+- Optional later: real token count for the observation budget.
 ## Done (last 10)
 - T4.9 #31 index + leaderboard + deploy: PR #118 merged. Handoffs on #40 #33 #37. Human TODO later: enable Pages (Actions), set HF_SPACE, pick the Space id.
 - #95 cached cleanup (Seth's): PR #117 merged. CachedUsage removed; e2e replay test.
