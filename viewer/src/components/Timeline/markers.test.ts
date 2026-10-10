@@ -80,7 +80,7 @@ describe("timeline markers", () => {
     expect(publicGroups.flatMap((group) => group.markers).some((marker) => marker.seq === 11)).toBe(false);
     expect(publicGroups.every((group) => group.startSeq !== 0)).toBe(true);
     const publicMarkers = publicGroups.flatMap((group) => group.markers);
-    expect(publicMarkers.find((marker) => marker.kind === "kill")?.appearance).toEqual({ glyph: "✝", color: "#b42318" });
-    expect(publicMarkers.find((marker) => marker.kind === "vote")?.appearance).toEqual({ glyph: "●", color: "#175cd3" });
+    expect(publicMarkers.find((marker) => marker.kind === "kill")?.appearance).toEqual({ glyph: "✝", color: "var(--marker-kill)" });
+    expect(publicMarkers.find((marker) => marker.kind === "vote")?.appearance).toEqual({ glyph: "●", color: "var(--marker-vote)" });
   });
 });

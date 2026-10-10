@@ -6,7 +6,7 @@ import { LabelPopups } from "./components/Labels/LabelPopups";
 import { ModeToggle } from "./components/ModeToggle/ModeToggle";
 import { modeFromSearch, urlWithMode } from "./components/ModeToggle/modeUrl";
 import { Speech } from "./components/Speech/Speech";
-import { Table } from "./components/Table/Table";
+import { Table, tintFor } from "./components/Table/Table";
 import { Tally } from "./components/Tally/Tally";
 import Timeline from "./components/Timeline/Timeline";
 import { fetchLabels, siblingLabelsUrl } from "./data/labels";
@@ -36,13 +36,13 @@ export function Game({ events, labels, idx, mode, selected, onSelect, onSeqChang
 
   return (
     <>
-      <p>
+      <p className="phase-line">
         Day {scene.day}, {scene.phase}
         {scene.winner && ` | winner: ${scene.winner}`}
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start" }}>
         {/* One square box: Table sets the size, the overlays fill it and share seatPosition coordinates. */}
-        <div style={{ flex: "1 1 400px", maxWidth: 640 }}>
+        <div className="stage" data-tint={tintFor(scene.phase)} style={{ flex: "1 1 400px", maxWidth: 640 }}>
           <LabelPopups scene={scene} labels={labels} mode={mode}>
             <Table scene={scene} selected={selected} onSelect={select} />
             <Arrows scene={scene} />
@@ -113,7 +113,7 @@ export default function App({ source }: { source?: GameSource } = {}) {
   const gameLabels = labels.filter((l) => l.game_id === events[0]?.game_id);
 
   return (
-    <main style={{ fontFamily: "system-ui, sans-serif", padding: 16, maxWidth: 1100 }}>
+    <main>
       <h1>SocietySim viewer</h1>
       <p>
         <input type="file" accept=".jsonl" aria-label="Open a game log (.jsonl)" onChange={(e) => onFile(e.target.files?.[0])} /> or

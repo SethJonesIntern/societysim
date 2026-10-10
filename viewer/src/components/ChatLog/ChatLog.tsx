@@ -35,7 +35,7 @@ export function ChatLog({ scene }: { scene: Scene }) {
       {groups.length === 0 && <p>No one has spoken yet.</p>}
       {groups.map((g) => (
         <section key={g.key} aria-label={g.title}>
-          <h3 style={{ position: "sticky", top: 0, margin: 0, padding: "0.25em 0", background: "Canvas", fontSize: "0.9em", zIndex: 1 }}>
+          <h3 className="chat-heading" style={{ position: "sticky", top: 0, margin: 0, padding: "0.25em 0", fontSize: "0.9em", zIndex: 1 }}>
             {g.title}
           </h3>
           <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
@@ -48,17 +48,12 @@ export function ChatLog({ scene }: { scene: Scene }) {
                   data-seq={e.seq}
                   data-channel={wolves ? "wolves" : "public"}
                   aria-current={e === last ? "true" : undefined}
-                  style={{
-                    margin: "0.25em 0",
-                    padding: "0.35em 0.5em",
-                    borderLeft: `4px solid ${p?.color ?? "#888"}`,
-                    borderRadius: 4,
-                    background: wolves ? "#3a1518" : undefined,
-                    color: wolves ? "#f6dcdc" : undefined,
-                    outline: e === last ? "1px solid currentColor" : undefined,
-                  }}
                 >
+                  {/* Colors (wolf channel, current entry) are in viewer.css; the dot is the speaker's model color. */}
                   {wolves && <small style={{ display: "block", fontWeight: 700 }}>Wolf channel</small>}
+                  <span aria-hidden style={{ color: p?.color }}>
+                    ●
+                  </span>{" "}
                   <strong>{p?.name ?? e.actor}:</strong> <SpeechText e={e} />
                 </li>
               );

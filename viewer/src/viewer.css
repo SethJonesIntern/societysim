@@ -1,0 +1,346 @@
+/*
+ * Viewer styles. Values come from tokens.css; layout that depends on the scene (seat positions,
+ * model colors) stays inline in the components. Hooks are the data-* attributes the components
+ * already set, so styling never needs to know game state the markup doesn't show.
+ */
+
+/* Page */
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.45;
+}
+main,
+.page-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.page-nav {
+  padding-bottom: 0;
+  color: var(--ink-muted);
+}
+a {
+  color: var(--focus);
+}
+
+/* Index and leaderboard tables */
+table {
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  font-variant-numeric: tabular-nums;
+}
+th,
+td {
+  padding: 0.4em 0.75em;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+th {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0.5em 0 0.4em;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin: 0 0 0.4em;
+}
+button,
+select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.55em;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease-out, border-color var(--dur-fast) ease-out;
+}
+button:hover:not(:disabled),
+select:hover {
+  border-color: var(--ink-muted);
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+input[type="range"] {
+  accent-color: var(--focus);
+}
+.phase-line {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin: 0.25em 0 0.6em;
+}
+
+/* Stage: the square box Table and its overlays share. Its width sets the type size,
+   so seat cards, bubble and pop-ups scale together on narrow screens. */
+.stage {
+  container-type: inline-size;
+}
+.stage > * {
+  font-size: clamp(10px, 2.5cqi, 16px);
+}
+
+/* Table: background color fades between tints, and two light layers crossfade on top. */
+section[data-tint] {
+  background-color: var(--table-bg);
+  color: var(--table-ink);
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--shade);
+  transition:
+    background-color var(--dur-light) var(--ease-out),
+    color var(--dur-light) var(--ease-out);
+}
+section[data-tint]::before,
+section[data-tint]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity var(--dur-light) var(--ease-out);
+}
+section[data-tint]::before {
+  background: radial-gradient(circle at 15% 10%, var(--sunlight), transparent 60%);
+}
+section[data-tint]::after {
+  background:
+    radial-gradient(circle at 80% 12%, var(--moonlight), transparent 35%),
+    radial-gradient(circle at 50% 50%, transparent 45%, var(--shade));
+  opacity: 0;
+}
+section[data-tint="night"]::before {
+  opacity: 0;
+}
+section[data-tint="night"]::after {
+  opacity: 1;
+}
+
+/* The round table: a wooden rim around a cloth top, with a candle glow at night. */
+.table-top {
+  background-color: var(--cloth);
+  background-image: radial-gradient(circle at 40% 35%, rgb(255 255 255 / 0.18), transparent 65%);
+  border: 0.9em solid var(--wood);
+  box-shadow:
+    0 0.6em 1.4em var(--shade),
+    inset 0 0 0 2px rgb(255 255 255 / 0.12),
+    inset 0 0.4em 1.2em var(--shade);
+  transition:
+    background-color var(--dur-light) var(--ease-out),
+    border-color var(--dur-light) var(--ease-out);
+}
+.table-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--candle), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur-light) var(--ease-out);
+}
+[data-tint="night"] .table-top::after {
+  opacity: 1;
+}
+
+/* Seat cards. Border color is the model's, set inline; nothing here depends on a hidden role. */
+[data-seat] > button {
+  display: block;
+  width: 100%;
+  padding: 0.4em;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--card-ink);
+  text-align: center;
+  line-height: 1.25;
+  box-shadow: 0 0.15em 0.4em var(--shade);
+  transition:
+    background-color var(--dur-light) var(--ease-out),
+    color var(--dur-light) var(--ease-out),
+    opacity var(--dur-flip) var(--ease-out),
+    filter var(--dur-flip) var(--ease-out),
+    box-shadow var(--dur-state) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+[data-seat] > button:hover {
+  transform: translateY(-2px);
+}
+[data-seat] > button[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px currentColor;
+}
+[data-seat] strong {
+  font-family: var(--font-display);
+  font-size: 1.05em;
+}
+[data-speaking] > button {
+  box-shadow: 0 0 0 0.3em var(--candle);
+}
+
+/* Role card: face down until known; flips face up when the role is revealed. */
+[data-role-card] {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85em;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  backface-visibility: hidden;
+}
+[data-revealed="true"] [data-role-card] {
+  font-weight: 700;
+  background: var(--revealed-bg);
+  color: var(--revealed-ink);
+  border-color: var(--revealed-bg);
+  animation: role-flip var(--dur-flip) var(--ease-out) both;
+}
+@keyframes role-flip {
+  from {
+    transform: perspective(20em) rotateY(180deg);
+  }
+}
+
+/* Arrows: drawn in from the accuser, head lands last. */
+[data-kind="accusation"] {
+  color: var(--arrow-accuse);
+}
+[data-kind="vote"] {
+  color: var(--arrow-vote);
+}
+[data-kind] path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  animation: draw var(--dur-draw) var(--ease-out) both;
+}
+[data-kind] polygon {
+  fill: currentColor;
+  animation: appear var(--dur-fast) ease-out var(--dur-draw) both;
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+[data-kind="abstain"] circle {
+  fill: var(--abstain);
+}
+[data-kind="abstain"][data-fallback="true"] circle {
+  fill: var(--abstain-forced);
+}
+[data-kind="abstain"] text {
+  fill: var(--abstain-ink);
+}
+[data-kind="abstain"] {
+  animation: appear var(--dur-state) ease-out both;
+}
+
+/* Speech bubble: above the table center, pointing at nobody; the speaking seat glows instead. */
+[data-speaker] {
+  margin: 0;
+  padding: 0.5em 0.75em;
+  border-radius: 12px;
+  border-width: 2px;
+  border-style: solid;
+  background: var(--bubble-bg);
+  color: var(--bubble-ink);
+  font-size: 0.85em;
+  line-height: 1.35;
+  box-shadow: var(--shadow-raised);
+  animation: pop var(--dur-state) var(--ease-out) both;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0.5em);
+  }
+}
+
+/* Label pop-ups: stacked below the table center, never over a seat. */
+aside[data-label-for] {
+  padding: 0.5em 0.7em;
+  border-radius: var(--radius-md);
+  background: var(--note-bg);
+  color: var(--note-ink);
+  border: 2px solid var(--note-border);
+  box-shadow: var(--shadow-raised);
+  font-size: 0.8em;
+  line-height: 1.3;
+  animation: appear var(--dur-state) ease-out both;
+}
+
+/* Chat log */
+[data-channel] {
+  margin: 0.25em 0;
+  padding: 0.35em 0.5em;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-state) ease-out;
+}
+[data-channel="wolves"] {
+  background: var(--wolf-bg);
+  color: var(--wolf-ink);
+}
+[data-channel][aria-current="true"] {
+  outline: 1px solid currentColor;
+}
+.chat-heading {
+  background: var(--paper);
+}
+small[data-truncated],
+[data-fallback] small {
+  color: inherit;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* Timeline */
+.timeline-group {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  background: var(--surface);
+}
+
+/* Inspector */
+.inspector {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.inspector header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.inspector meter {
+  margin: 0 0.5em;
+  vertical-align: middle;
+}

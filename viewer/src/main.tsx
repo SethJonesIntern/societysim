@@ -4,6 +4,8 @@ import App from "./App";
 import { DEFAULT_INDEX_URL, indexSource } from "./data/staticSource";
 import IndexPage from "./pages/Index";
 import LeaderboardPage from "./pages/Leaderboard";
+import "./tokens.css";
+import "./viewer.css";
 import "./a11y.css";
 
 // Routes: ?game=<id> or ?log=<url> or ?page=replay -> replay, ?page=leaderboard, else the game index.
@@ -18,18 +20,17 @@ const sibling = (name: string) => new URL(name, new URL(indexUrl, location.href)
 
 const page = params.get("page");
 const replay = params.has("game") || params.has("log") || page === "replay";
-const style = { fontFamily: "system-ui, sans-serif", padding: 16, maxWidth: 1100 };
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <nav aria-label="Pages" style={{ ...style, paddingBottom: 0 }}>
+    <nav aria-label="Pages" className="page-nav">
       <a href={href({})}>Games</a> | <a href={href({ page: "leaderboard" })}>Leaderboard</a> |{" "}
       <a href={href({ page: "replay" })}>Open a log file</a>
     </nav>
     {replay ? (
       <App source={source} />
     ) : (
-      <main style={style}>
+      <main>
         <h1>SocietySim {page === "leaderboard" ? "leaderboard" : "games"}</h1>
         {page === "leaderboard" ? (
           <LeaderboardPage leaderboardUrl={sibling("leaderboard.json")} metricsUrl={sibling("metrics.json")} />

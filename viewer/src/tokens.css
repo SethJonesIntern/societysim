@@ -1,0 +1,102 @@
+/*
+ * Design tokens. Every color, type, radius and motion value the viewer uses lives here,
+ * so the Figma pass (T4.0, #22) only edits this file. viewer.css and the components read
+ * these through var(--…); tokens.test.ts checks that each one is defined and that the
+ * arrow and marker colors keep their contrast.
+ *
+ * Tint tokens change with the phase: [data-tint] sits on the stage box (App) and on the
+ * table (Table), so the table, seats and arrows all pick up the same lighting.
+ */
+:root {
+  color-scheme: light;
+
+  /* Type */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --text-sm: 0.8125rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 2rem;
+
+  /* Page */
+  --paper: #f6f1e6;
+  --surface: #fffcf5;
+  --ink: #22201c;
+  --ink-muted: #5b5548;
+  --rule: #d8cfbb;
+  --focus: #1f4fa3;
+
+  /* Chat */
+  --wolf-bg: #3a1518;
+  --wolf-ink: #f6dcdc;
+
+  /* Speech bubble and label pop-ups (always on a light card, in both tints) */
+  --bubble-bg: #fffdf7;
+  --bubble-ink: #1c1c1c;
+  --note-bg: #fffbe6;
+  --note-ink: #1c1c1c;
+  --note-border: #c2410c;
+
+  /* Timeline markers, drawn as text on --surface (4.5:1 or more) */
+  --marker-kill: #b42318;
+  --marker-vote: #175cd3;
+  --marker-false-role-claim: #9333aa;
+  --marker-false-report: #b54708;
+  --marker-bussing: #0e7490;
+  --marker-hidden-knowledge: #6941c6;
+  --marker-mis-elimination: #475467;
+
+  /* Table lighting, crossfaded by tint in viewer.css */
+  --sunlight: rgb(255 214 140 / 0.55);
+  --moonlight: rgb(150 180 255 / 0.12);
+  --candle: rgb(255 170 80 / 0.4);
+  --shade: rgb(0 0 0 / 0.35);
+
+  /* Shape and depth */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-raised: 0 2px 8px rgb(0 0 0 / 0.25);
+
+  /* Motion. a11y.css cuts all of it under prefers-reduced-motion. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-state: 250ms;
+  --dur-flip: 600ms;
+  --dur-draw: 450ms;
+  --dur-light: 900ms;
+}
+
+/* Daylight: linen table, warm sun from the upper left. */
+[data-tint="day"] {
+  --table-bg: #efe6cf;
+  --table-ink: #22201c;
+  --cloth: #d8c9a0;
+  --wood: #8a5a32;
+  --card-bg: #fffaf0;
+  --card-ink: #22201c;
+  --revealed-bg: #22201c;
+  --revealed-ink: #fffaf0;
+  --arrow-accuse: #a3361f;
+  --arrow-vote: #1f4fa3;
+  --abstain: #5b5548;
+  --abstain-forced: #a3361f;
+  --abstain-ink: #ffffff;
+}
+
+/* Night: moonlit blue, one candle on the table. */
+[data-tint="night"] {
+  --table-bg: #141a2a;
+  --table-ink: #e8ecf4;
+  --cloth: #2a3550;
+  --wood: #3b2a22;
+  --card-bg: #1f2840;
+  --card-ink: #e8ecf4;
+  --revealed-bg: #e8ecf4;
+  --revealed-ink: #141a2a;
+  --arrow-accuse: #ff9580;
+  --arrow-vote: #8ab8ff;
+  --abstain: #b8c2d6;
+  --abstain-forced: #ff9580;
+  --abstain-ink: #141a2a;
+}

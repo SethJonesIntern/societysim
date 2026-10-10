@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { Event } from "../../types/events";
 import type { Scene } from "../../scene/deriveScene";
-import { seatPosition } from "../Table/Table";
 
 /**
  * A statement's text, with fallbacks and truncation marked.
@@ -47,24 +46,19 @@ export function Speech({ scene }: { scene: Scene }) {
   );
   if (!e || i < 0) return live();
   const p = scene.players[i];
-  const seat = seatPosition(i, scene.players.length);
-  // Halfway to the center keeps the bubble on the felt, clear of the seat cards.
+  // Above the table center, growing upward: off every seat card, and clear of the label pop-ups
+  // below the center. The speaker's seat glows (data-speaking) and the border is their color.
+  // Colors and the entrance are in viewer.css.
   const style: CSSProperties = {
     position: "absolute",
-    left: `${50 + (seat.x - 50) / 2}%`,
-    top: `${50 + (seat.y - 50) / 2}%`,
-    transform: "translate(-50%, -50%)",
-    maxWidth: "16em",
-    maxHeight: "40%",
+    left: "50%",
+    bottom: "51%",
+    transform: "translateX(-50%)",
+    width: "max-content",
+    maxWidth: "44%",
+    maxHeight: "32%",
     overflowY: "auto",
-    padding: "0.5em 0.75em",
-    borderRadius: 12,
-    border: `2px solid ${p.color}`,
-    background: "#fffdf7",
-    color: "#1c1c1c",
-    fontSize: "0.85em",
-    lineHeight: 1.35,
-    boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
+    borderColor: p.color,
     pointerEvents: "auto",
   };
   return live(

@@ -8,14 +8,15 @@ interface MarkerAppearance {
   color: string;
 }
 
+// Colors are tokens (tokens.css), so the Figma pass changes them there.
 export const MARKER_APPEARANCE = {
-  kill: { glyph: "✝", color: "#b42318" },
-  vote: { glyph: "●", color: "#175cd3" },
-  false_role_claim: { glyph: "R", color: "#9333aa" },
-  false_report: { glyph: "S", color: "#b54708" },
-  bussing: { glyph: "B", color: "#b42318" },
-  hidden_knowledge: { glyph: "K", color: "#6941c6" },
-  mis_elimination: { glyph: "X", color: "#475467" },
+  kill: { glyph: "✝", color: "var(--marker-kill)" },
+  vote: { glyph: "●", color: "var(--marker-vote)" },
+  false_role_claim: { glyph: "R", color: "var(--marker-false-role-claim)" },
+  false_report: { glyph: "S", color: "var(--marker-false-report)" },
+  bussing: { glyph: "B", color: "var(--marker-bussing)" },
+  hidden_knowledge: { glyph: "K", color: "var(--marker-hidden-knowledge)" },
+  mis_elimination: { glyph: "X", color: "var(--marker-mis-elimination)" },
 } satisfies Record<"kill" | "vote" | LabelType, MarkerAppearance>;
 
 const LABEL_TITLES: Record<LabelType, string> = {

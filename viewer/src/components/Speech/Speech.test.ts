@@ -5,20 +5,19 @@ import { describe, expect, it } from "vitest";
 import fixture from "../../../../fixtures/sample_game.jsonl?raw";
 import { parseLog } from "../../data/parse";
 import { deriveScene, type Mode } from "../../scene/deriveScene";
-import { seatPosition } from "../Table/Table";
 import { Speech } from "./Speech";
 
 const events = parseLog(fixture).events;
 const render = (idx: number, mode: Mode) => renderToStaticMarkup(createElement(Speech, { scene: deriveScene(events, idx, mode) })); // fixture seq == index
 
 describe("Speech bubble on the fixture", () => {
-  it("shows the current statement at the speaker's seat", () => {
+  it("shows the current statement above the table center, in the speaker's color", () => {
     const html = render(15, "villager"); // p4 (Eli) opens day 1
     expect(html).toContain('data-speaker="p4"');
     expect(html).toContain("Nobody died, so the Doctor guessed right");
-    const { x, y } = seatPosition(4, 7);
-    expect(html).toContain(`left:${50 + (x - 50) / 2}%`);
-    expect(html).toContain(`top:${50 + (y - 50) / 2}%`);
+    // Anchored at the center for every seat, so a side seat's bubble can't cover a seat card.
+    expect(html).toContain("left:50%;bottom:51%");
+    expect(html).toContain(`border-color:${deriveScene(events, 15, "villager").players[4].color}`);
   });
 
   it("keeps the bubble through the statement's self-tag events, then moves to the next speaker", () => {

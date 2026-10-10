@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { Label, LabelSource } from "../../data/labels";
 import type { Mode, Scene } from "../../scene/deriveScene";
-import { seatPosition } from "../Table/Table";
 
 /**
  * Labels to show at this scene: the ones whose source_seq is the current event, filtered by source.
@@ -24,8 +23,8 @@ export function visibleLabels(
 const pretty = (s: string) => s.replace(/_/g, " ");
 
 /**
- * Wraps the Table and overlays one pop-up per label, anchored at the actor's seat position.
- * The wrapper has the same box as the Table (width 100%, max 640), so seatPosition percentages line up.
+ * Wraps the Table and overlays one pop-up per label, named for the actor. Colors and the entrance are in viewer.css.
+ * The wrapper has the same box as the Table (width 100%, max 640).
  */
 export function LabelPopups({
   scene,
@@ -41,49 +40,40 @@ export function LabelPopups({
   children?: ReactNode;
 }) {
   const shown = visibleLabels(labels, scene, mode, sources);
-  const n = scene.players.length;
+  const name = (id: string) => scene.players.find((p) => p.id === id)?.name ?? id;
+  // Pop-ups stack just below the table center (the speech bubble sits just above it), on the
+  // table top and off every seat card. They hold no controls, so they never take clicks.
+  const stack: CSSProperties = {
+    position: "absolute",
+    top: "53%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "44%",
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.4em",
+    pointerEvents: "none",
+  };
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 640 }}>
       {children}
       {/* Always mounted, even empty: screen readers miss live regions that appear with their content. */}
-      <div aria-live="polite" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {shown.map((l, k) => {
-          const i = scene.players.findIndex((p) => p.id === l.actor);
-          const { x, y } = i < 0 ? { x: 50, y: 50 } : seatPosition(i, n);
-          // Pop toward the table center so it stays inside the box; stack same-seat popups.
-          const style: CSSProperties = {
-            position: "absolute",
-            left: `${x}%`,
-            top: `${y}%`,
-            transform: `translate(-50%, ${y < 50 ? "35%" : "-135%"}) translateY(${k * 8}px)`,
-            width: "15em",
-            padding: "0.5em 0.7em",
-            borderRadius: 8,
-            background: "#fffbe6",
-            color: "#1c1c1c",
-            border: "2px solid #c2410c",
-            boxShadow: "0 2px 8px rgba(0,0,0,.35)",
-            fontSize: "0.8em",
-            lineHeight: 1.3,
-            pointerEvents: "auto",
-          };
-          return (
-            <aside
-              key={`${l.label}-${l.source}-${l.actor}-${k}`}
-              role="note"
-              data-label-for={l.actor}
-              data-label-type={l.label}
-              data-label-source={l.source}
-              style={style}
-            >
-              <strong>{pretty(l.label)}</strong> · {l.actor}
-              <div>
-                {pretty(l.source)} · {Math.round(l.confidence * 100)}% confidence
-              </div>
-              <div>{l.detail}</div>
-            </aside>
-          );
-        })}
+      <div aria-live="polite" style={stack}>
+        {shown.map((l, k) => (
+          <aside
+            key={`${l.label}-${l.source}-${l.actor}-${k}`}
+            role="note"
+            data-label-for={l.actor}
+            data-label-type={l.label}
+            data-label-source={l.source}
+          >
+            <strong>{pretty(l.label)}</strong> · {name(l.actor)}
+            <div>
+              {pretty(l.source)} · {Math.round(l.confidence * 100)}% confidence
+            </div>
+            <div>{l.detail}</div>
+          </aside>
+        ))}
       </div>
     </div>
   );

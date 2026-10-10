@@ -16,7 +16,7 @@ describe("Arrows", () => {
     const html = render(41);
     expect(html).toContain('viewBox="0 0 100 100"');
     expect(html).toContain('position:absolute');
-    expect(html).toContain(`x1="${seatPosition(1, 7).x + 7 * (seatPosition(2, 7).x - seatPosition(1, 7).x) / Math.hypot(seatPosition(2, 7).x - seatPosition(1, 7).x, seatPosition(2, 7).y - seatPosition(1, 7).y)}"`);
+    expect(html).toContain(`d="M${seatPosition(1, 7).x + 7 * (seatPosition(2, 7).x - seatPosition(1, 7).x) / Math.hypot(seatPosition(2, 7).x - seatPosition(1, 7).x, seatPosition(2, 7).y - seatPosition(1, 7).y)},`);
     expect(html).toContain('aria-label="Ben accused Cleo"');
   });
 
@@ -25,7 +25,22 @@ describe("Arrows", () => {
     scene.accusations.push({ actor: "p1", target: "p2", seq: 999 });
     const html = renderToStaticMarkup(React.createElement(Arrows, { scene }));
     expect(html.match(/aria-label="Ben accused Cleo 2 times"/g)).toHaveLength(1);
-    expect(html).toMatch(/data-kind="accusation" data-count="2"[^>]*><line[^>]*stroke-width="1.05"/);
+    expect(html).toMatch(/data-kind="accusation" data-count="2"[^>]*><path[^>]*stroke-width="1.05"/);
+  });
+
+  it("draws an accusation, the reverse accusation and a vote between one pair on separate curves", () => {
+    const scene = deriveScene(events, 54, "villager");
+    const [a, b] = scene.players;
+    scene.accusations = [
+      { actor: a.id, target: b.id, seq: 997 },
+      { actor: b.id, target: a.id, seq: 998 },
+    ];
+    scene.votes = [{ actor: a.id, target: b.id, seq: 999, fallback: false }];
+    const html = renderToStaticMarkup(React.createElement(Arrows, { scene }));
+    // The curves' control points: equal ones would mean two arrows drawn on top of each other.
+    const bows = [...html.matchAll(/ d="M[^Q]+Q([^ ]+) /g)].map((m) => m[1]);
+    expect(bows).toHaveLength(3);
+    expect(new Set(bows).size).toBe(3);
   });
 
   it("reveals every vote at the result event, including the forced abstain mark", () => {

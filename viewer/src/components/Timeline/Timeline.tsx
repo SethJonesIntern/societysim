@@ -109,7 +109,7 @@ export default function Timeline({ events, labels = EMPTY_LABELS, mode, onSeqCha
       </div>
       <nav aria-label="Timeline markers" style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 12 }}>
         {groups.map((group) => (
-          <div key={`${group.day}:${group.phase}`} style={{ border: "1px solid #d0d5dd", borderRadius: 6, padding: 8 }}>
+          <div key={`${group.day}:${group.phase}`} className="timeline-group">
             <button type="button" onClick={() => setSeq(group.startSeq)}>
               {group.phase === "setup" ? "Setup" : `${group.phase} ${group.day}`}
             </button>

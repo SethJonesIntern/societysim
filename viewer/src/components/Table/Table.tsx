@@ -15,12 +15,6 @@ export function seatPosition(i: number, n: number): { x: number; y: number } {
 export const tintFor = (phase: Phase): "day" | "night" =>
   phase === "day" || phase === "vote" ? "day" : "night";
 
-// ponytail: hard-coded colors until the T4.0 design tokens land.
-const TINTS = {
-  day: { background: "#f4efe1", color: "#1c1c1c", felt: "#d9cfb0" },
-  night: { background: "#151b2b", color: "#e8ecf4", felt: "#26304a" },
-};
-
 const SR_ONLY: CSSProperties = {
   position: "absolute",
   width: 1,
@@ -37,10 +31,11 @@ interface SeatProps {
   i: number;
   n: number;
   selected: boolean;
+  speaking: boolean;
   onSelect?: (seat: string) => void;
 }
 
-function Seat({ p, i, n, selected, onSelect }: SeatProps) {
+function Seat({ p, i, n, selected, speaking, onSelect }: SeatProps) {
   const { x, y } = seatPosition(i, n);
   const place: CSSProperties = {
     position: "absolute",
@@ -49,19 +44,9 @@ function Seat({ p, i, n, selected, onSelect }: SeatProps) {
     transform: "translate(-50%, -50%)",
     width: "8.5em",
   };
+  // Colors, type and motion live in viewer.css (values in tokens.css); only per-seat values stay inline.
   const card: CSSProperties = {
-    display: "block",
-    width: "100%",
-    padding: "0.4em",
-    borderRadius: 8,
-    border: `3px solid ${p.color}`,
-    boxShadow: selected ? "0 0 0 3px currentColor" : undefined,
-    background: "transparent",
-    color: "inherit",
-    font: "inherit",
-    textAlign: "center",
-    lineHeight: 1.25,
-    cursor: "pointer",
+    borderColor: p.color,
     // 0.7 keeps dead seats' text above WCAG AA contrast on both tints.
     opacity: p.alive ? 1 : 0.7,
     filter: p.alive ? undefined : "grayscale(1)",
@@ -69,7 +54,7 @@ function Seat({ p, i, n, selected, onSelect }: SeatProps) {
   // A button may only hold phrasing content, so the card's lines are block spans.
   // Its accessible name is this text, so it can never say more than the card shows.
   return (
-    <li data-seat={p.id} data-alive={p.alive} data-revealed={p.revealed} style={place}>
+    <li data-seat={p.id} data-alive={p.alive} data-revealed={p.revealed} data-speaking={speaking || undefined} style={place}>
       <button type="button" aria-pressed={selected} onClick={() => onSelect?.(p.id)} style={card}>
         <strong style={{ display: "block" }}>{p.name}</strong>
         <span style={{ display: "block", fontSize: "0.8em" }}>
@@ -78,17 +63,7 @@ function Seat({ p, i, n, selected, onSelect }: SeatProps) {
           </span>{" "}
           {p.model}
         </span>
-        <span
-          data-role-card
-          style={{
-            display: "block",
-            marginTop: 4,
-            fontSize: "0.85em",
-            fontWeight: p.revealed ? 700 : 400,
-            border: "1px solid currentColor",
-            borderRadius: 4,
-          }}
-        >
+        <span data-role-card>
           {/* role is null whenever this mode may not know it; never guess. */}
           {p.role ? (
             roleLabel(p.role)
@@ -117,20 +92,19 @@ export function Table({
   onSelect?: (seat: string) => void;
 }) {
   const tint = tintFor(scene.phase);
-  const { felt, ...colors } = TINTS[tint];
   return (
     <section
       aria-label={`Table, day ${scene.day}, ${scene.phase}`}
       data-tint={tint}
-      style={{ ...colors, position: "relative", width: "100%", maxWidth: 640, aspectRatio: "1", borderRadius: 16 }}
+      style={{ position: "relative", width: "100%", maxWidth: 640, aspectRatio: "1", borderRadius: 16 }}
     >
-      <div
-        aria-hidden
-        style={{ position: "absolute", inset: "28%", borderRadius: "50%", background: felt }}
-      />
+      <div aria-hidden className="table-top" style={{ position: "absolute", inset: "28%", borderRadius: "50%" }} />
       <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
         {scene.players.map((p, i) => (
-          <Seat key={p.id} p={p} i={i} n={scene.players.length} selected={p.id === selected} onSelect={onSelect} />
+          <Seat key={p.id} p={p} i={i} n={scene.players.length} selected={p.id === selected}
+            speaking={p.id === scene.speaker}
+            onSelect={onSelect}
+          />
         ))}
       </ul>
     </section>
