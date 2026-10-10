@@ -1,10 +1,10 @@
-# seth status (updated 2026-10-10T13:45Z)
+# seth status (updated 2026-10-10T13:55Z)
 ## Active
 - T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: APPROVED, auto-merge on, blocked only by HOLD (Seth: run doctor with real keys, then remove hold) (Seth must run `societysim doctor` with real keys, fix/drop failing models, then remove hold)
-- T2.3 #13 | agent: implementer (sonnet) | branch issue-13-cache | PR #71 | state: re-review round 2
 ## Queue (next up)
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
+- T2.3 #13 cache: PR #71 merged 2026-10-10T06:08Z
 - T2.1 #11 client: PR #70 merged 2026-10-10T05:59Z
 - T2.4 #14 assign: PR #69 merged 2026-10-10T05:57Z
 ## Decisions / gotchas
