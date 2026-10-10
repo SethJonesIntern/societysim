@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T13:15Z)
+# marcus status (updated 2026-10-10T13:16Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #160 societysim highlights (demo moments) | agent: implementer (opus) | branch issue-160-highlights | PR #164 | state: changes round 1 (--out option) sent
 - #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR - | state: implementing
 - #21 PR #80 rebase + default dataset env var (Seth PR, Marcus request) | agent: implementer (opus) | branch issue-21-publish | state: implementing. KEEP hold; repo name + live HF check = Seth.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
@@ -13,6 +12,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #160 highlights finder: PR #164 merged (2 rounds). Handoffs on #38 #37.
 - #161 concurrent turns: CLOSED not planned; night+vote already gathered, statements must be sequential. PR #165 closed. Speed = parallel games.
 - #158 mlflow on serverless: PR #159 merged after live SUCCESS.
 - T5.5a #153 DEMO.md draft: PR #156 merged (2 rounds). Handoffs on #38 #37.
@@ -66,6 +66,8 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Marcus asleep again; work autonomously, ping him only if absolutely needed.
+- Seth told (GitHub @mention on #35) not to work on PR #80 rebase/default repo or #157. LATER TODO: Discord ping for Seth needs his numeric Discord user ID (Marcus to provide; `<@ID>` in content); the webhook is Marcus personal channel, check Seth can see it.
 - Agent cap raised to 5 (Marcus). Marcus resting; autonomous mode: do all coding tickets incl. Seth runner coding work. NO paid batch runs (Seth: no paid runs while asleep).
 - Seth briefed via issue comments (his agents read them): #35 resume + post batch dir on #42/#37; #21 rebase PR #80 + publish default repo; #157 ready. Waiting on his batches.
 - Session now in bypass-permissions mode (Marcus). Still: never load/read .env, no viewer, no merging around CI, do not touch Seth held PRs.
