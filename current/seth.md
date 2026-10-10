@@ -1,13 +1,13 @@
-# seth status (updated 2026-10-11T15:00Z)
+# seth status (updated 2026-10-11T15:40Z)
 ## Active
 - T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
-- #224 persuasion seq-index bug | implementer
-- #225 Windows os.replace retry | implementer
+- #224 persuasion | PR #227 in review
+- #225 replace retry | PR #226 in review
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
-- T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T3.5 #21 publish: PR #80 merged; live check OK -> private HF dataset Sethery32/societysim-games (10 smoke games), idempotent
 - #204 invalid-output breaker: PR #212 merged 17:48Z (CLI exit 2, postbatch WARN)
 - #138 shared HF router limit: PR #143 merged 10:21Z
 - #144 base-rate dedupe: PR #145 merged 10:28Z (abstain-in-base decision pending Seth)
