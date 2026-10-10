@@ -1,9 +1,8 @@
-# marcus status (updated 2026-10-10T21:11Z)
+# marcus status (updated 2026-10-10T21:13Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
-  - #256 head b0aaf89 has parse.ts v3/p9; RE-REVIEW (opus) running -> then merge stack #256 -> #260/#261/#269 (rebase) -> Ctrl-C mixed_v1 (no drain mechanism; partials excluded) -> run mixed_v2_10p (~$13.62, cap $15).
-  - #270 stepper: PR #277 | fix round 1 (useStepper jsdom tests; beats expose seq range + clipsForSeqRange in narration)
-  - #273 deception matrix UI | issue-273-deception-ui | implementing
+  - #256 MERGED (10 seats + parse.ts). Rebasing #260/#261/#269 --onto main (implementers), then re-approve, lift holds, merge; #278 after #269. Then run mixed_v2_10p.
+  - #270 stepper: PR #277 | fixes pushed, re-review
   - #274 setup form: PR #278 | HOLD (stacked on #269), review pending
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
@@ -17,7 +16,7 @@
   - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | APPROVED + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
-  - T5.3 #36 RUNNING (Marcus OK: 'complete Seth's path'): mixed_v1 --agents llm --neon started 2026-10-10T20:14Z, log .cache/mixed_v1.log, cap $10. Seth notified on #36. DON'T git checkout in main checkout while running.
+  - T5.3 #36: handed back to Seth (Marcus). Our run stopped: 38 finished / 8 interrupted, $1.93, runs/mixed_v1 local only (7p sample, not published).
 - (watcher for Augustin PR expired) new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
@@ -37,6 +36,8 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #250 10 seats: PR #256 merged (incl. viewer parse.ts v3/p9). Handoffs #33 #40 #216 #251.
+- #273 viewer deception module: PR #279 merged. Port notes #33.
 - #271 viewer narration playback: PR #276 merged. Port notes on #168.
 - #272 viewer neonAuth.ts: PR #275 merged (live token+leaderboard 200). Port notes on #40.
 - #263 docs/PITCH.md: PR #265 merged.
