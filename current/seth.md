@@ -1,10 +1,11 @@
-# seth status (updated 2026-10-11T01:10Z)
+# seth status (updated 2026-10-11T01:30Z)
 ## Active
-- T5.1 #34 smoke | orchestrator | results posted on #34 from live run; confirmation rerun after #125 merges
+- T5.2 #35 selfplay | implementer lowering cap $25->$8 (PR pending); then orchestrator runs 90 games --agents llm (Seth approved)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T5.1 #34 smoke: closed 2026-10-10 with results comment (no rerun, Seth's call)
 - T2.2b #122 gemma json_schema: PR #125 merged 2026-10-10T08:46Z (live: 8.8% invalid, was 48%)
 - T2.6 #16 configs: PR #97 merged 2026-10-10T08:42Z
 - T2.5 #15 batch runner: PR #90 merged 2026-10-10T08:34Z (4 review rounds + live smoke)
@@ -41,4 +42,5 @@
 - Follow-up idea: huggingface + hosted_vllm both hit the HF router, so up to 16 concurrent calls; consider a shared router limit in models.yaml.
 - THROUGHPUT (T5.1): concurrency 4 -> 19 games/h, 20 RPM total (gemma 10, qwen 5.3, deepseek 4.7), no 429s. Game 5-15 min (median ~9), ~$0.02/game (dry-run prior ~4x high). At concurrency 8 expect ~35-40 games/h -> T5.2/T5.3 ~2.5-3h each.
 - Gemma remaining invalids are semantic (suspicion missing players). Wolves won 3/3 gemma-only + 9/10 smoke: watch win balance.
+- Seth approved caps: selfplay $8, mixed $10 (expected ~$4/$5). amd-gpt-oss-20b excluded: AMD_VLLM_BASE_URL unset here (Marcus's server).
 ## Codex: n/a
