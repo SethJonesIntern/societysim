@@ -4,7 +4,7 @@
 - #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 | state: changes round 1 (background flush timer + lock). Then live check: scripted play --neon (orchestrator)
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
-- #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR - | state: implementing
+- #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR #167 | state: in review (no CLI subcommand; .env.example lacks ELEVENLABS_API_KEY; voice ids to verify on account)
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
