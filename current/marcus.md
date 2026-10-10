@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T18:08Z)
+# marcus status (updated 2026-10-10T18:10Z)
 ## Active
-- #218 deploy-space --out local stage | implementer | issue-218-deploy-out | PR #222 | in review
 - #219 Neon games.agents + views exclude scripted | implementer | issue-219-neon-agents | PR #221 | in review + HOLD (live: sync-neon from scratch worktree applies schema)
 - #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | implementing (after #219 for Neon section)
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
@@ -20,6 +19,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #218 deploy-space.sh --out local staging: PR #222 merged.
 - #21 publish (Seth's PR #80): rebased, re-approved, live-checked with Marcus's write token, hold lifted by Marcus's call, MERGED. Handoff #37. #37 + #42 moved blocked->ready (deps merged) but wait for Seth's batch data.
 - #198 Databricks --notebooks one command: PR #199 merged after Marcus live run (metrics + mlflow SUCCESS). Handoff #42.
 - #213 report/postbatch wording: PR #214 merged.
@@ -99,7 +99,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
-- Hosting: HF Space polter-dev/societysim NOT created; Pages enabled but never deployed (404); pages.yml is workflow_dispatch only, never run; repo has NO HF_TOKEN secret. Asked Marcus to set secret + OK a smoke deploy with fixture.
+- Hosting: HF Space polter-dev/societysim NOT created; Pages enabled but never deployed (404); pages.yml is workflow_dispatch only, never run; repo has NO HF_TOKEN secret. Asked Marcus to set secret + OK a smoke deploy with fixture. Recommended: Cloudflare domain -> GitHub Pages via CNAME (primary URL) + HF Space for sponsor; skip Vercel. Waiting on domain/subdomain.
 - Marcus HF token now fine-grained 'sim-write': repo.write on polter-dev OK; MISSING inference permission (HF-routed models fail on Marcus's machine). Asked Marcus to tick 'Make calls to Inference Providers'.
 - Asked Marcus: write-scoped HF token + dataset name (suggest polter-dev/societysim-games, public) to lift PR #80 hold and publish after batches.
 - While a batch runs from the main checkout, NEVER git checkout there; live-check PRs from a scratch worktree with a symlinked .env (removed after).
