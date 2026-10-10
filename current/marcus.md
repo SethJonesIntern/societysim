@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-10T11:57Z)
+# marcus status (updated 2026-10-10T11:59Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
 - #146 notebook base-rate dedupe (follow #145) | agent: codex-implementer | branch issue-146-notebook-base-dedupe | PR - | state: implementing
-- #136 gemma suspicion incomplete (blocks Seth #35) | agent: implementer (opus) | branch issue-136-gemma-suspicion | PR #147 | state: in review (option B only; A needs own ticket if live check fails). After merge: Marcus runs 3-game gemma live check (selfplay_smoke, batch gemma-136)
-- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Marcus fixing host value.
+- #136 gemma live check | HUMAN (Marcus or Seth): PR #147 merged; run 3 all-gemma games (cmd on #35), need invalid < 10%. If it fails, file option A (lenient fill) ticket.
+- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Host fixed (was doubled DATABRICKS_HOST=). Ingest now waiting, likely on warehouse start.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -12,6 +12,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #136 gemma suspicion (option B prompt): PR #147 merged. Handoff on #35.
 - T6.4b #131 Databricks dashboard + MLflow as code: PR #134 merged. Handoff on #42. #42 now = human run on real data (PAT, ingest, metrics.py, --dashboard, mlflow_batches.py).
 - T6.3f #132 dedupe served-model check: PR #133 merged.
 - T6.3d #124 AMD local mode: PR #130 merged (run_on_box.sh, 127.0.0.1). Handoffs on #114 and #21 (publish needs default repo or --repo for PUBLISH=1).
