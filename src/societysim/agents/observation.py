@@ -8,10 +8,13 @@ Two guards keep private information out:
 - every event passes through `visible()` before anything reads it;
 - rendering is a whitelist of public fields. `private_reasoning`, `suspicion` and narrator
   meta are never read, and unknown event types render nothing.
+Model-written text (statements, wolf chat) only reaches the page through `_quote()`, which
+keeps it on one line inside double quotes it cannot close, so it can't pass as engine text.
 From `state` only the viewer's own role, names, `alive`, the clock, the wolf partners (for a
 wolf) and the viewer's own Seer results are read. Revealed roles come from death events.
 """
 
+import unicodedata
 from collections.abc import Callable, Iterable, Sequence
 
 from societysim.agents.prompts import player
@@ -23,6 +26,16 @@ from societysim.roles import Phase, Role
 MAX_CHARS = 12_000
 LAST_WORDS = 25  # earlier days keep each player's last statement, cut to this many words
 OMITTED = "(Older history left out for length.)"
+# Characters a player could use to fake the end of their quote, matched by Unicode name so
+# new look-alikes are caught too; they all render as '.
+_QUOTE_NAMES = ("QUOTATION", "PRIME", "DITTO", "GERSHAYIM", "DOUBLE APOSTROPHE", "DOUBLE ACUTE")
+_BLANK_NAMES = ("FILLER", "BLANK")  # invisible letters (Hangul fillers, blank Braille)
+
+
+def quote_chars(max_words: int) -> int:
+    """Per-quote character cap: 10 chars per word (English averages ~6) plus 200 slack."""
+    return max_words * 10 + 200
+
 
 type Name = Callable[[str], str]
 
@@ -56,9 +69,10 @@ def observe(state: GameState, events: Sequence[Event], seat: str) -> str:
     def name(s: str) -> str:
         return player(s, state.names[s])
 
+    cap = quote_chars(state.config.rules.max_statement_words)
     head = [f"Now: {_now(state)}.", *_knowledge(state, seat, role, seen, name), *_dead(seen, name)]
-    days = [_summary(d, [e for e in seen if e.day == d], name) for d in range(1, state.day)]
-    today = [line for e in seen if e.day == state.day for line in _line(e, name)]
+    days = [_summary(d, [e for e in seen if e.day == d], name, cap) for d in range(1, state.day)]
+    today = [line for e in seen if e.day == state.day for line in _line(e, name, cap)]
     return _fit("\n".join(head), days, today)
 
 
@@ -130,13 +144,13 @@ def _claim(e: Event, name: Name, tense: str) -> str:
     return f"report{tense} {name(e.target)} as {result} (night {e.meta.night})"
 
 
-def _line(e: Event, name: Name) -> Iterable[str]:
+def _line(e: Event, name: Name, cap: int) -> Iterable[str]:
     """Today's history: one line per event, public fields only."""
     match e.type:
         case EventType.PHASE_START:
             yield f"[{e.public_text}]"
         case EventType.WOLF_CHAT:
-            yield f"(wolf channel) {name(e.actor)}: {e.public_text}"
+            yield f"(wolf channel) {name(e.actor)}: {_quote(e.public_text, cap)}"
         case EventType.WOLF_PROPOSAL:
             yield f"(wolf channel) {name(e.actor)} proposes killing {name(e.target)}."
         case EventType.NIGHT_KILL:
@@ -144,7 +158,7 @@ def _line(e: Event, name: Name) -> Iterable[str]:
         case EventType.DEATH_REVEAL:
             yield _death(e, name)
         case EventType.STATEMENT:
-            yield f'{name(e.actor)}: "{e.public_text}"'
+            yield f"{name(e.actor)}: {_quote(e.public_text, cap)}"
         case EventType.ACCUSATION:
             yield f"  {name(e.actor)} accuses {name(e.target)}."
         case EventType.ROLE_CLAIM | EventType.SEER_CLAIM:
@@ -156,7 +170,37 @@ def _line(e: Event, name: Name) -> Iterable[str]:
         # Seer checks and Doctor protects are in the knowledge block; the rest is never shown.
 
 
-def _summary(day: int, evs: list[Event], name: Name) -> str:
+def _char(c: str) -> str:
+    if c == "\\":  # a trailing backslash would read as an escaped closing quote
+        return "/"
+    cat, uname = unicodedata.category(c), unicodedata.name(c, "")
+    # Letters such as Hungarian o with double acute stay; modifier letters (Lm, U+02BA) do not.
+    if cat not in ("Lu", "Ll", "Lt", "Lo") and any(k in uname for k in _QUOTE_NAMES):
+        return "'"
+    # control, format (zero-width, bidi), unassigned, line breaks, invisible letters
+    if cat[0] == "C" or cat in ("Zl", "Zp") or any(k in uname for k in _BLANK_NAMES):
+        return " "
+    return c
+
+
+def _quote(text: str | None, cap: int, words: int | None = None) -> str:
+    """Model-written text as one line in double quotes it cannot forge or close.
+
+    NFKC folds look-alikes (fullwidth quotes), quote marks become ', backslashes become /,
+    control, format and invisible characters become spaces, and all whitespace collapses to
+    single spaces, so no fake event lines. Cut to `words` words if given, then to `cap`
+    chars; a cut ends in "...".
+    """
+    text = "".join(map(_char, unicodedata.normalize("NFKC", text or "")))
+    parts = text.split()
+    text = " ".join(parts[:words])
+    cut = words is not None and len(parts) > words
+    if len(text) > cap:
+        text, cut = text[:cap].rstrip(), True
+    return f'"{text}{"..." if cut else ""}"'
+
+
+def _summary(day: int, evs: list[Event], name: Name, cap: int) -> str:
     """Deterministic summary of one earlier day (night, discussion and vote)."""
     lines = [f"Day {day} summary:"]
     lines += [f"- {_death(e, name)}" for e in evs if e.type is EventType.DEATH_REVEAL]
@@ -177,9 +221,8 @@ def _summary(day: int, evs: list[Event], name: Name) -> str:
         elif e.type in (EventType.ROLE_CLAIM, EventType.SEER_CLAIM) and e.actor:
             said.setdefault(e.actor, []).append(_claim(e, name, "ed"))
     for actor in sorted(said):
-        words = last.get(actor, "").split()
-        quote = " ".join(words[:LAST_WORDS]) + ("..." if len(words) > LAST_WORDS else "")
-        parts = [*dict.fromkeys(said[actor]), f'last said: "{quote}"']  # dedupe, keep order
+        quote = _quote(last.get(actor), cap, LAST_WORDS)
+        parts = [*dict.fromkeys(said[actor]), f"last said: {quote}"]  # dedupe, keep order
         lines.append(f"- {name(actor)}: " + "; ".join(parts))
 
     votes = [f"{name(e.actor)} -> {_vote(e, name)}" for e in evs if e.type is EventType.VOTE]
