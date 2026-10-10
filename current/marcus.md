@@ -1,6 +1,5 @@
 # marcus status (updated 2026-10-10T23:20Z)
 ## Active
-- #323 PR #325 MERGED (handoffs posted incl labels_public note). LIVE APPLY + Data API verify + deploy check: general-purpose agent running.
 - #309 play alerts | PR #328 | round-1 fixes pushed; RE-REVIEW (checking tests/server flake 2/5 after change: rebase on #327? event-loop blocking?). After merge: set repo secret + Space secret PLAY_ALERT_WEBHOOK_URL (from ~/.config/societysim/discord_webhook via stdin, never print), VITE_PLAY_API_URL var after deploy.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
@@ -50,6 +49,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #323 Neon privacy: PR #325 merged, schema APPLIED LIVE (1ce1e8a) + verified via Data API (events/labels 403; running game public-only; labels_public empty for running). Site redeployed 23:18Z. Note: labels table empty in Neon (no labels synced yet).
 - Closed stale PR #120 (superseded by #321).
 - #326 PR #327 flaky server test MERGED.
 - PR #324 avatars MERGED (handoffs posted #302 #297). PR #314 play deploy MERGED (handoffs posted).
