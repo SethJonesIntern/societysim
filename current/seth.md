@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T15:10Z)
+# seth status (updated 2026-10-10T15:30Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: changes round 3 (doctor 6/9 pass; 3 deepinfra models need HF unified endpoint, LiteLLM per-provider path rejected) + HOLD
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: doctor 9/9 green live on 61f8686 (with PYTHONIOENCODING=utf-8); fixing cp1252 crash in doctor output, then review + HOLD removal by Seth
 ## Queue (next up)
 - T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
