@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T07:22Z)
 ## Active
-- T0.6 #79 contract cached + schema_version 2 | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR #86 | state: changes round 1 (cached forced-required by gen-schema; LOG_SCHEMA.md v2 docs), sent to same implementer
+- T0.6 #79 contract cached + schema_version 2 | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR #86 | state: round 1 fixed, re-review round 2 running
 - T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
 - T1.4c #85 contain model-written text in observations (anti-injection) | agent: implementer (opus) | branch issue-85-contain-model-text | PR - | state: implementing
 ## Queue (next up)
