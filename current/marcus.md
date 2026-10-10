@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T08:04Z)
+# marcus status (updated 2026-10-10T08:07Z)
 ## Active
 - T4.10 #32 accessibility pass (viewer/src/**) | agent: implementer (opus) | branch issue-32-a11y | PR - | state: implementing
-- T6.3 #41 AMD vLLM | agent: implementer (opus) | branch issue-41-amd-vllm | PR #110 | state: changes round 1 (require AMD_API_KEY, never echo or log it; README clone main; stats logger key refresh). Marcus already pinged to run serve.sh: the BRANCH version auto-generates and prints a key, so he should export AMD_API_KEY first (as instructed). Follow-up filed for per-model api_base.
+- T6.3 #41 AMD vLLM | agent: implementer (opus) | branch issue-41-amd-vllm | PR #110 | state: round 1 fixed (key required, never logged; README clones main), re-review round 2. Follow-up #112 per-model api_base.
 ## Queue (next up)
 - Viewer sequence (all touch viewer/src/**): #32 a11y (running) -> #111 leak test (codex) -> #33 polish (no Figma tokens yet).
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
