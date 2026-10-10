@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T21:25Z)
+# seth status (updated 2026-10-10T21:35Z)
 ## Active
-- T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR #96 | state: in review
+- T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR #96 | state: changes round 1 (hosted_vllm -> HF_TOKEN; real test)
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges; dry-run being added in #90; caps smoke $1 / selfplay $25 / mixed $40 need Seth OK; review after #90 round 3
 - T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR #98 | state: rebasing onto 2ac09e9 to wire exact base_rate + HOLD until #82 merges
 - T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: changes round 3 (per-model cost estimate w/ price prior; atomic run_meta) + HOLD. 2 failed rounds already; Seth told, continuing for pace
