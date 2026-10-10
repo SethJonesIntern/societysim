@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T21:22Z)
+# marcus status (updated 2026-10-10T21:26Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
   - 10p BATCH RUNNING: mixed_v2_10p --agents llm --neon started 2026-10-10T21:22Z, log .cache/mixed_v2_10p.log, cap $15. Afterwards: postbatch (jev? check TypeSafe), HF publish polter-dev/societysim-games, DEPLOY_SOURCE, narrate highlight game, Databricks live (#268 hold), close #37/#42/#216.
-  - #274 setup form: PR #278 | rebasing onto main, then review
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception: PR #268 | APPROVED + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
@@ -32,6 +31,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #274 viewer setup form: PR #278 merged (Basic+Advanced outputs run via play --setup). Port notes #33.
 - #258 PR #260, #259 PR #261, #266 PR #269 merged (10p stack). #217 closed (superseded).
 - #270 viewer stepper + clipsForSeqRange: PR #277 merged. Port notes on #267.
 - #250 10 seats: PR #256 merged (incl. viewer parse.ts v3/p9). Handoffs #33 #40 #216 #251.
