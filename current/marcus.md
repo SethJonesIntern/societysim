@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T13:19Z)
+# marcus status (updated 2026-10-10T13:22Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 | state: changes round 1 (background flush timer + lock). Then live check: scripted play --neon (orchestrator)
+- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 (hold) | state: round-2 review running; LIVE CHECK PASSED (scripted play --neon, 61 events, no warning; neg check warns + finishes). Remove hold when approved. Neon test data to clean: fixture-0001 + neon-live-check.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
 - #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR #167 | state: in review (no CLI subcommand; .env.example lacks ELEVENLABS_API_KEY; voice ids to verify on account)
