@@ -1,7 +1,9 @@
-# marcus status (updated 2026-10-10T07:10Z)
+# marcus status (updated 2026-10-10T07:13Z)
 ## Active
 - T1.8 #10 play CLI + HF smoke | agent: codex-implementer | branch issue-10-play-cli | PR - | state: implementing (cli.py overlaps Seth's PR #73; additive)
 - T1.6c #74 keep meta.usage.cached across retries | agent: codex-implementer | branch issue-74-usage-cached | PR - | state: implementing
+- T1.9 #75 invariant sweep (200+ seeded games) | agent: implementer (opus) | branch issue-75-invariant-sweep | PR - | state: implementing
+- T1.4b #76 shared test builders -> helper module | agent: implementer (sonnet) | branch issue-76-test-helpers | PR - | state: implementing
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - M1: last ticket #10 now in progress (Seth's #12 merged as PR #72).
@@ -22,7 +24,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
-- Burn window (00:48-01:30 EDT) ended; cap lift was for burn mode only. Marcus said keep going (after 01:30): normal loop continues.
+- BURN MODE until 06:20 EDT (10:20Z), timer running: cap lifted, use Codex + Claude subagents, file useful follow-ups when queue is empty. Earlier burn window 00:48-01:30 done.
 - NEW CONVENTION (Marcus, merged via #47): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
