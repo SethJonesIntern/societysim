@@ -1,10 +1,11 @@
-# seth status (updated 2026-10-10T18:45Z)
+# seth status (updated 2026-10-10T19:00Z)
 ## Active
+- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR - | state: implementing (overlaps #80 on cli.py; rebase after #80)
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: reviewer would approve but its gh review/label/merge call was blocked by permissions (draft in scratchpad/rev82.md); HOLD; Seth to decide metric defs (#1 A self_tag, #3 keep + base rate, #4 keep, #5 OpenSkill fix as follow-up?) and approve
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
+- T2.6 #16 configs: after #15 merges.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
-- T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
 - T6.1 #39 Neon sink: PR #73 merged 2026-10-10T07:13Z (live Neon check passed)
 - T2.2 #12 registry/doctor: PR #72 merged 2026-10-10T07:03Z (doctor 9/9 live; Seth OK'd orchestrator removing hold)
