@@ -1,16 +1,16 @@
-# marcus status (updated 2026-10-10T07:47Z)
+# marcus status (updated 2026-10-10T07:48Z)
 ## Active
-- T4.6 #28 mode toggle | agent: codex-implementer, done | branch issue-28-mode-toggle | PR #104 | state: in review
-- T4.3 #25 speech + chat log | agent: implementer (opus), done | branch issue-25-speech-chatlog | PR #107 | state: in review
-- T4.4 #26 arrows + tally | agent: codex-implementer | branch issue-26-arrows-tally | PR - | state: implementing
-- T4.5 #27 label pop-ups | agent: implementer (sonnet) | branch issue-27-label-popups | PR #105 | state: changes round 1 (PR body only: handoff bullet should target #30, not #33)
-- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: changes round 1 (all 5 label types as distinct narrator-only markers), sent to same codex agent
+- T4.4 #26 arrows + tally | agent: codex-implementer, done | branch issue-26-arrows-tally | PR #108 | state: in review
+- T4.5 #27 label pop-ups | branch issue-27-label-popups | PR #105 | state: round 1 fixed (body only), re-review round 2
+- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: round 1 fixed (5 label types), re-review round 2
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.3 #25 speech + chat log: PR #107 merged. Handoffs on #100 #33 #32.
+- T4.6 #28 mode toggle: PR #104 merged. Handoffs on #100 #30.
 - T4.7b #102 Inspector wolf chat: PR #106 merged. Handoff: none.
 - T4.2 #24 circle table: PR #101 merged. Handoffs on #25 #26 #27 #33. Unblocked+claimed #25 #26 #27.
 - T4.7 #29 inspector: PR #99 merged. Follow-up bug #102 (wolf chat under 'Said publicly').
