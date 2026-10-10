@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T07:18Z)
+# marcus status (updated 2026-10-10T07:19Z)
 ## Active
-- T1.8 #10 play CLI | agent: codex-implementer, done | branch issue-10-play-cli | PR #81 | state: in review (opus; requiring fail-fast on missing provider key). Manual smoke after merge: uv run societysim play --config configs/selfplay_smoke.yaml --agents llm
+- T1.8 #10 play CLI | agent: codex-implementer | branch issue-10-play-cli | PR #81 | state: changes round 1 (fail-fast on missing key; real-HF test too strict), sent to same codex agent
 - T0.6 #79 contract: meta.usage.cached + schema_version bump | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR - | state: implementing
 - T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
 ## Queue (next up)
@@ -30,7 +30,7 @@
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
-- Human setup: collaborators invited, gh scopes OK. .env created by Marcus with all keys except AMD (AMD platform spawn fails: ErrImagePull; #41 waits on AMD support). Agents can't read .env (sandbox). Marcus ran `societysim doctor` himself: all 9 models OK in all 3 modes (HF/OpenAI/Gemini keys good). Jev live test result still pending from Marcus. Gemini 3+ temperature deprecation + stray LiteLLM error filed as #83 (team:runner). Plugins/MCPs unverified.
+- Human setup: collaborators invited, gh scopes OK. .env created by Marcus with all keys except AMD (AMD platform spawn fails: ErrImagePull; #41 waits on AMD support). Agents can't read .env (sandbox). Marcus ran `societysim doctor` himself: all 9 models OK in all 3 modes (HF/OpenAI/Gemini keys good). Jev live test skipped in Marcus's terminal too: pytest doesn't load .env; told him uv run --env-file .env pytest tests/unit/test_jev.py. Gemini 3+ temperature deprecation + stray LiteLLM error filed as #83 (team:runner). Plugins/MCPs unverified.
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
 - AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
