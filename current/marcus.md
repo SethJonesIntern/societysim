@@ -1,5 +1,9 @@
-# marcus status (updated 2026-10-10T20:31Z)
+# marcus status (updated 2026-10-10T20:42Z)
 ## Active
+- #262 Databricks deception_pairs + notebook + heatmap | implementer | issue-262-databricks-deception
+- #263 docs/PITCH.md talk track + slides + sponsor beats + Q&A | implementer | issue-263-pitch
+- #264 report 'Research answers' + metrics summary.research | implementer | issue-264-research-answers
+- AMD: Marcus emailed AUP about the missing image.
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
