@@ -1,8 +1,5 @@
-# marcus status (updated 2026-10-10T16:49Z)
+# marcus status (updated 2026-10-10T16:50Z)
 ## Active
-- #192 label skips Jev on scripted games + shows Jev call count | agent: implementer | branch issue-192-label-jev-guard | PR #195 | state: APPROVED, auto-merging
-- #193 DEMO.md refresh | agent: implementer | branch issue-193-demo-refresh | PR #196 | state: in review
-- #194 review follow-ups (dry-run unpriced warn, test nits) | agent: implementer | branch issue-194-review-followups | PR #197 | state: APPROVED, auto-merging
 - Waiting on Seth: #191 gemini-flash decision (asked on #35), paid runs #35->#36, PR #80 hold.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
@@ -16,6 +13,9 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #192 label skips Jev on scripted + prints Jev count: PR #195 merged.
+- #193 DEMO.md refresh: PR #196 merged (note on #38).
+- #194 dry-run unpriced warning + test nits: PR #197 merged.
 - #188 cache skips zero-token failures (bad-parse still cached): PR #190 merged. Handoffs #35 #36 #181.
 - #181 per-call timeout 120s default, per-provider timeout_s: PR #187 merged after live doctor. Handoffs #177 #35 #36.
 - #177 provider-down stop: PR #184 merged. Handoffs #35 #36.
