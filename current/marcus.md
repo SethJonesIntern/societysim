@@ -1,8 +1,8 @@
 # marcus status (updated 2026-10-10T22:53Z)
 ## Active
-- Codex: 11 Brave tabs, Nano Banana 2 avatar prompts (running).
+- Avatars: 11 Gemini (Nano Banana, Pro high, 1:1) prompts submitted in Brave tabs; Codex now downloading -> ~/Desktop/projects/hackathons/societysim-avatars/<model>.<ext>; then implementer PR: resize/optimize -> viewer/public/avatars/<model>.png (#302 wiring = Augustin).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- #282 play deploy: PR #314 MERGED (code). LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> run scripts/deploy-play-space.sh --dry-run then real (env from .env via Codex/terminal), set VITE_PLAY_API_URL, check proxy client IPs in Space logs.
+- #282 play deploy: PR #314 APPROVED but python CI failing -> fix round; NOT merged yet. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> run scripts/deploy-play-space.sh --dry-run then real (env from .env via Codex/terminal), set VITE_PLAY_API_URL, check proxy client IPs in Space logs.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - AMD: AUP still ImagePullBackOff (auplc-code-gpu:latest not found) on 8060S - waiting AUP email reply / other link. (old) Codex chain: AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
