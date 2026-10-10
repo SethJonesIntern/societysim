@@ -136,11 +136,11 @@ section[data-tint="night"]::after {
 /* The round table: a wooden rim around a cloth top, with a candle glow at night. */
 .table-top {
   background-color: var(--cloth);
-  background-image: radial-gradient(circle at 40% 35%, rgb(255 255 255 / 0.18), transparent 65%);
+  background-image: radial-gradient(circle at 40% 35%, var(--sheen), transparent 55%);
   border: 0.9em solid var(--wood);
   box-shadow:
     0 0.6em 1.4em var(--shade),
-    inset 0 0 0 2px rgb(255 255 255 / 0.12),
+    inset 0 0 0 2px var(--sheen),
     inset 0 0.4em 1.2em var(--shade);
   transition:
     background-color var(--dur-light) var(--ease-out),
@@ -151,7 +151,7 @@ section[data-tint="night"]::after {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--candle), transparent 60%);
+  background: radial-gradient(circle, var(--candle), transparent 40%);
   opacity: 0;
   transition: opacity var(--dur-light) var(--ease-out);
 }

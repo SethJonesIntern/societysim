@@ -64,8 +64,8 @@ export function Arrows({ scene }: { scene: Scene }) {
         const tl = Math.hypot(tx, ty);
         const hx = tx / tl;
         const hy = ty / tl;
-        const width = arrow.kind === "vote" ? 1.1 : Math.min(0.65 + 0.4 * (arrow.count - 1), 2.5);
-        const wing = 1.8 + width;
+        const width = arrow.kind === "vote" ? 0.8 : Math.min(0.65 + 0.4 * (arrow.count - 1), 2.5);
+        const wing = 1.4 + width;
         const points = [
           `${end.x},${end.y}`,
           `${end.x - hx * 3 - hy * wing},${end.y - hy * 3 + hx * wing}`,

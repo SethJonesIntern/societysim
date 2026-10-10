@@ -51,6 +51,7 @@
   --moonlight: rgb(150 180 255 / 0.12);
   --candle: rgb(255 170 80 / 0.4);
   --shade: rgb(0 0 0 / 0.35);
+  --sheen: rgb(255 255 255 / 0.12);
 
   /* Shape and depth */
   --radius-sm: 4px;
