@@ -1,20 +1,20 @@
-# marcus status (updated 2026-10-10T16:17Z)
+# marcus status (updated 2026-10-10T16:19Z)
 ## Active
+- #177 provider-failure stop | agent: implementer (opus) | branch issue-177-provider-failure | state: implementing
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- #174 calibrated prior | agent: implementer | branch issue-174-calibrated-prior | PR #180 | state: in review
-- #175 Neon replay + sync-neon --delete | agent: implementer | branch issue-175-neon-replay | PR #178 | state: APPROVED, live check passed (Neon test rows deleted: fixture-0001, neon-live-check-s0), hold lifted, auto-merging
-- #176 unfinished games in label/report/highlights | agent: implementer | branch issue-176-unfinished-games | PR #179 | state: APPROVED, auto-merging
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
-- #177 provider-failure stop (agent:opus) - after #174 merges (both touch batch/runner.py).
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #174 calibrated budget prior: PR #180 merged (selfplay est $8.06/$8, mixed $9.60/$10; guard on actual spend). Handoffs #177 #35 #36.
+- #175 Neon replay + sync-neon --delete: PR #178 merged after live check; Neon test rows deleted (fixture-0001, neon-live-check-s0). Handoffs #35 #36.
+- #176 unfinished games/torn lines: PR #179 merged. Handoff #37.
 - #172 human seats out of rankings: PR #173 merged. Note on #42 (dashboard would show human row).
 - #163 human seat (CLI --human-seat pX): PR #169 merged. Handoff #40.
 - #170 .env.example: ELEVENLABS_API_KEY + SOCIETYSIM_HF_DATASET, PR #171 merged.
