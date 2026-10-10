@@ -1,10 +1,9 @@
-# marcus status (updated 2026-10-10T13:22Z)
+# marcus status (updated 2026-10-10T13:24Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 (hold) | state: round-2 review running; LIVE CHECK PASSED (scripted play --neon, 61 events, no warning; neg check warns + finishes). Remove hold when approved. Neon test data to clean: fixture-0001 + neon-live-check.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
-- #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR #167 | state: in review (no CLI subcommand; .env.example lacks ELEVENLABS_API_KEY; voice ids to verify on account)
+- #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR #169 | state: rebase onto #166 (cli.py conflict) then review
+- #170 .env.example vars | agent: codex-implementer | branch issue-170-env-example | PR - | state: implementing
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -13,6 +12,8 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #157 Neon live (--neon on play/batch): PR #166 merged after live check. Handoffs #40 #35 #36.
+- #162 ElevenLabs narration script: PR #167 merged. Viewer follow-up filed #168 (Augustin, stretch).
 - #160 highlights finder: PR #164 merged (2 rounds). Handoffs on #38 #37.
 - #161 concurrent turns: CLOSED not planned; night+vote already gathered, statements must be sequential. PR #165 closed. Speed = parallel games.
 - #158 mlflow on serverless: PR #159 merged after live SUCCESS.
