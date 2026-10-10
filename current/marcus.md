@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T18:19Z)
+# marcus status (updated 2026-10-10T18:22Z)
 ## Active
-- #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | PR #223 | fix round 1 (version-rule consistency; #120 finished-games query filter + seat_games->seats). Urgent note posted on #40.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
@@ -18,6 +17,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #220 DATA CONTRACT: PR #223 merged (2 rounds). docs/DATA_CONTRACT.md + schema/{index,leaderboard,metrics,highlights,narration_index}.schema.json + tests/contract; one version rule (CONTRACT_VERSION = doc = report.SCHEMA). Handoffs #40 #33 #168.
 - #219 Neon games.agents + views exclude scripted: PR #221 merged after live schema apply. Handoff #220.
 - #218 deploy-space.sh --out local staging: PR #222 merged.
 - #21 publish (Seth's PR #80): rebased, re-approved, live-checked with Marcus's write token, hold lifted by Marcus's call, MERGED. Handoff #37. #37 + #42 moved blocked->ready (deps merged) but wait for Seth's batch data.
