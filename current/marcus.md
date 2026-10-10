@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T12:01Z)
+# marcus status (updated 2026-10-10T12:05Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
-- #146 notebook base-rate dedupe (follow #145) | agent: codex-implementer | branch issue-146-notebook-base-dedupe | PR #148 | state: in review (fixture lacks overlapping base votes; reviewer checks on scratch data). After merge: tell Marcus to import notebooks + run metrics.py
+- T6.3b #114 verify AMD | HUMAN (in progress now, fresh pod: re-cloned repo): UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
 - #136 gemma live check | HUMAN (Marcus or Seth): PR #147 merged; run 3 all-gemma games (cmd on #35), need invalid < 10%. If it fails, file option A (lenient fill) ticket.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). Next: notebook import + metrics.py after #146 merges, then --dashboard, then mlflow.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
@@ -12,6 +11,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #146 notebook base-rate dedupe: PR #148 merged (verified on scratch overlapping data, 0 mismatches).
 - #136 gemma suspicion (option B prompt): PR #147 merged. Handoff on #35.
 - T6.4b #131 Databricks dashboard + MLflow as code: PR #134 merged. Handoff on #42. #42 now = human run on real data (PAT, ingest, metrics.py, --dashboard, mlflow_batches.py).
 - T6.3f #132 dedupe served-model check: PR #133 merged.
