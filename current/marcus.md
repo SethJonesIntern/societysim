@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T12:16Z)
+# marcus status (updated 2026-10-10T12:18Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN, running now: fresh pod, re-cloned. doctor in-pod GREEN (amd-gpt-oss-20b ok; json_schema 2672ms, json_object 1699ms, none 1754ms). 1 selfplay_amd game running. Then: post results on #114/#42/#36, serve.sh stop for hours.
-- #149 bare ids fix (regression from #147: "Dev (p0)" copied into player, 38% invalid) | agent: implementer (opus) | branch issue-149-bare-ids | PR #150 (label hold) | state: in review + live gemma check on PR head running (runs/gemma-149). Remove hold if invalid < 10%; post numbers on #35.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
@@ -11,6 +10,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #149 bare-id suspicion line: PR #150 merged. Live gemma check 0 invalid / 134 turns. #35 told to resume.
 - #146 notebook base-rate dedupe: PR #148 merged (verified on scratch overlapping data, 0 mismatches).
 - #136 gemma suspicion (option B prompt): PR #147 merged. Handoff on #35.
 - T6.4b #131 Databricks dashboard + MLflow as code: PR #134 merged. Handoff on #42. #42 now = human run on real data (PAT, ingest, metrics.py, --dashboard, mlflow_batches.py).
@@ -57,6 +57,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Live model checks: run on the PR head with `hold` BEFORE merge (orchestrator can run `uv run societysim play` itself; the CLI loads keys). #147 regressed gemma to 38% invalid because only offline tests ran.
 - BURN MODE until 06:20 EDT (10:20Z), timer running: cap lifted, use Codex + Claude subagents, file useful follow-ups when queue is empty. Earlier burn window 00:48-01:30 done.
 - NEW CONVENTION (Marcus, merged via #47): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
