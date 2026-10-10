@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T20:16Z)
+# marcus status (updated 2026-10-10T20:17Z)
 ## Active
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
-  - #250 10-player games (2 wolves+8; human: 2 wolves among 1 human+9 models), p0-p9 contract bump | implementer (opus) | issue-250-ten-players
+  - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). In review. Follow-ups: narrate.py p9; report.py SeatId (told #251).
   - #251 pairwise deception matrix (liar x listener) | implementer (opus) | issue-251-deception-matrix
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
   - Next after #250: 10p batch config + human_vs_ai 10p (fold #217) + free 7v10 scripted comparison (#216 un-parked)
