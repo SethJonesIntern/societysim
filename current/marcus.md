@@ -5,7 +5,7 @@
   - #251 deception matrix: PR #257 | in review (opus) (wolves never listeners - author decision)
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
   - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | PR #260 | APPROVED + HOLD (stacked on #256); Jude bank built live (ElevenLabs total 4337/10k chars).
-  - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | in review + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
+  - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | APPROVED + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
   - T5.3 #36 RUNNING (Marcus OK: 'complete Seth's path'): mixed_v1 --agents llm --neon started 2026-10-10T20:14Z, log .cache/mixed_v1.log, cap $10. Seth notified on #36. DON'T git checkout in main checkout while running.
@@ -117,6 +117,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- 10p stack #256/#260/#261 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
 - ElevenLabs key set (free tier, restricted: TTS + voices read + user read). Marcus likes Callum + Harry (narrators), dislikes Brian. narrate.py doesn't load .env (fixed in #248).
 - NEON AUTH (verified): GET <auth>/token/anonymous -> {token, expires_at}, role anonymous, ~1h; Data API 200 with Bearer. Auth URL https://ep-orange-river-b5l9yq6a.neonauth.c-7.us-east-2.aws.neon.tech/neondb/auth. Repo vars set: VITE_NEON_DATA_API_URL, VITE_NEON_AUTH_URL. Recipe posted on #40 for Augustin. zsh: never name a shell var `path` (clobbers PATH).
 - Seth opened Windows PRs #237 (#232 tests on Windows) + #241 (#240 Windows CI job, hold) - his; leave to his reviewer.
