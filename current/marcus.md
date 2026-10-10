@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T04:52Z)
+# marcus status (updated 2026-10-10T04:53Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T1.3 #5 EventLogger | agent: implementer (sonnet) | branch issue-5-event-logger | PR #49 | state: changes round 1 (run_meta per game at runs/<batch_id>/<game_id>.run_meta.json; fix handoff lines), sent to same implementer
+- T1.3 #5 EventLogger | agent: implementer (sonnet) | branch issue-5-event-logger | PR #49 | state: round 1 fixed, re-review round 2 running
 - T1.5 #7 prompts | agent: implementer (opus), done | branch issue-7-prompts | PR #50 | state: in review (opus). Handoff lines for #6 and #8 in PR body.
 - T3.1 #17 jev | agent: implementer (opus) | branch issue-17-jev | PR - | state: implementing
 - T3.2 #18 labeler | agent: implementer (opus) | branch issue-18-labeler | PR - | state: implementing
