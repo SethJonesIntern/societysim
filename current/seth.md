@@ -1,10 +1,12 @@
-# seth status (updated 2026-10-10T20:25Z)
+# seth status (updated 2026-10-10T20:45Z)
 ## Active
-- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: re-review round 2 + HOLD (live batch, $1 cap pending Seth OK)
+- T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR - | state: implementing
+- T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR - | state: implementing, PR to get hold until #90 merges
+- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR - | state: implementing, PR to get hold until #82 merges
+- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: changes round 3 (per-model cost estimate w/ price prior; atomic run_meta) + HOLD. 2 failed rounds already; Seth told, continuing for pace
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: changes (Seth's metric decisions) + HOLD
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
-- T2.6 #16 configs: after #15 merges.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - T6.1 #39 Neon sink: PR #73 merged 2026-10-10T07:13Z (live Neon check passed)
@@ -28,4 +30,6 @@
 - pytest doesn't load .env; live Neon test needs NEON_DATABASE_URL exported.
 - #15's issue test command uses configs/selfplay_smoke.yaml (a game config, not BatchConfig); needs a #16 batch yaml.
 - 2026-10-10 Seth's metric decisions (#82): lies reported for BOTH self_tag and jev side by side; keep 'voted as lie implied' (+ no-lie base rate); detection = last suspicion/day; OpenSkill = equal-weight sides (team mean) + side-advantage dummy, fixed in #82.
+- Filed #94 (client robustness, runner) and #95 (cached flag contract, team:engine, for Marcus).
+- 2026-10-10: Seth asked for max parallelism until 4:20 reset; stacking #16 on #90 and #20 on #82.
 ## Codex: n/a
