@@ -1,10 +1,11 @@
 # marcus status (updated 2026-10-10T05:00Z)
 ## Active
-- T1.1 #3 rules/state | branch issue-3-rules-state | PR #54 | state: approved round 2, auto-merge queued. After merge: handoffs #4 #6 #8 #14, unblock #4 -> codex. Open: rules allow self-vote but #50 prompts say vote targets = other living players; #4 must reconcile per RULES.md.
 - T3.3 #55 Jev wiring | branch issue-55-jev-label-wiring | PR #56 | state: approved, auto-merge queued. After merge: handoff to #19. Optional later: 401/connection refused aborts batch with traceback; .cache/jev is cwd-relative.
+- T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR - | state: implementing (must settle self-vote per RULES.md)
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T1.1 #3 rules/state: PR #54 merged (2 rounds: night-number contract, set->list determinism fix, model shuffle removed). Handoffs posted on #4 #6 #8 #14. #4 unblocked.
 - T0.5 #48 chore: PR #53 merged (pythonpath, jsonschema+httpx explicit, PLAN.md seat ids). Handoff: none.
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - T3.1 #17 jev: PR #51 merged. Handoff posted on #18. NEEDS MARCUS: live API test (TYPESAFE_API_KEY in .env, run uv run pytest tests/unit/test_jev.py).
