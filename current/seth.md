@@ -1,12 +1,12 @@
-# seth status (updated 2026-10-11T00:05Z)
+# seth status (updated 2026-10-11T00:15Z)
 ## Active
 - T2.2b #122 gemma json_schema | agent: implementer (sonnet) | branch issue-122-gemma-schema | PR - | state: implementing; orchestrator runs doctor + live 3-game check
-- T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges. Dry-run on 3863ec1 OK: smoke est $0.90/$1 cap, selfplay $16.79/$25, mixed $20.00/$40 (price-based). Needs review after #90.
-- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: live smoke passed (hard kill at 2 finished; resume 8 played/2 skipped, no dupes, $0.226/$1). Hold removed; merging
+- T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: rebasing onto main after #90; dry-run tests; max_concurrency 8; then review, remove hold
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T2.5 #15 batch runner: PR #90 merged 2026-10-10T08:34Z (4 review rounds + live smoke)
 - T3.4 #20 report: PR #98 merged 2026-10-10 (after #82)
 - T3.3 #19 metrics: PR #82 merged 2026-10-10T07:44Z (Seth's metric decisions)
 - T2.1b #94 client robustness: PR #96 merged 2026-10-10T07:44Z
