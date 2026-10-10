@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T23:31Z)
+# marcus status (updated 2026-10-10T23:32Z)
 ## Active
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
+- PLAY LIVE DEPLOY: Marcus added PLAY_* keys. general-purpose agent deploying play Space from worktree (dry-run, real, health/limits, CORS, client-IP check, VITE_PLAY_API_URL, site redeploy). #293 (Seth) unblocked.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
