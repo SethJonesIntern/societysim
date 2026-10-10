@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T08:54Z)
+# marcus status (updated 2026-10-10T08:56Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: Discord sent with relaunch steps (#128 merged). Waiting on Marcus to run doctor + 1 game. Send updated steps only if #124 changes them.
-- T6.3d #124 AMD local mode | agent: implementer (opus) | branch issue-124-amd-local-mode | PR - | state: implementing
+- T6.3d #124 AMD local mode | agent: implementer (opus) | branch issue-124-amd-local-mode | PR #130 | state: in review (adds run_on_box.sh; URL 127.0.0.1 not localhost). After merge: Discord Marcus updated steps
 - T6.4a #127 Databricks ingest+notebook (split from #42) | agent: implementer (opus) | branch issue-127-databricks-ingest | PR #129 | state: in review (human later: PAT + run ingest --fixture + import notebook, see notebooks/databricks/README.md)
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
