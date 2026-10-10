@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T12:43Z)
+# marcus status (updated 2026-10-10T12:45Z)
 ## Active
-- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
+- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). Marcus running notebook import + run_nb (jobs runs/submit serverless) + --dashboard + mlflow now; commands given.
 - T5.5a #153 DEMO.md draft | agent: implementer (opus) | branch issue-153-demo-draft | PR - | state: implementing
-- T5.4a #154 README draft | agent: implementer (opus) | branch issue-154-readme | PR - | state: implementing
+- T5.4a #154 README draft | agent: implementer (opus) | branch issue-154-readme | PR #155 | state: in review (publish omitted: arrives with Seth PR #80)
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -61,7 +61,7 @@
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
 - Session now in bypass-permissions mode (Marcus). Still: never load/read .env, no viewer, no merging around CI, do not touch Seth held PRs.
-- Done by me 2026-10-10: ruleset main now requires python, review-gate, viewer. GitHub Pages enabled (workflow) -> https://polter-dev.github.io/societysim/. HF_SPACE var: waiting on Marcus for HF username.
+- Done by me 2026-10-10: ruleset main now requires python, review-gate, viewer. GitHub Pages enabled (workflow) -> https://polter-dev.github.io/societysim/. HF_SPACE=polter-dev/societysim set.
 - PR #80 (Seth, #21) is DIRTY (conflicts) + hold. Seth must rebase.
 - Live model checks: run on the PR head with `hold` BEFORE merge (orchestrator can run `uv run societysim play` itself; the CLI loads keys). #147 regressed gemma to 38% invalid because only offline tests ran.
 - BURN MODE until 06:20 EDT (10:20Z), timer running: cap lifted, use Codex + Claude subagents, file useful follow-ups when queue is empty. Earlier burn window 00:48-01:30 done.
