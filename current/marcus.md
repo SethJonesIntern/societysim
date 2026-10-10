@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T16:32Z)
+# marcus status (updated 2026-10-10T16:34Z)
 ## Active
+- #189 gemini-flash models.yaml tuning | agent: implementer | branch issue-189-gemini-flash-latency | state: implementing (orchestrator runs live doctor on PR head before merge, hold)
 - #188 cache must not store failed calls | agent: implementer | branch issue-188-cache-no-errors | state: implementing
-- #181 per-call timeout (URGENT: none now, ~50 min worst case/call) | agent: implementer | branch issue-181-call-timeout | PR #187 | state: APPROVED, live doctor done (timeout fires; gemini-flash json modes >120s, none 62.7s), hold lifted, auto-merging
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
@@ -9,11 +9,11 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
-- #189 gemini-flash models.yaml tuning (blocked on #181/PR #187) - needs live doctor on PR head, <30s/call.
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #181 per-call timeout 120s default, per-provider timeout_s: PR #187 merged after live doctor. Handoffs #177 #35 #36.
 - #177 provider-down stop: PR #184 merged. Handoffs #35 #36.
 - #183 ingest skips scripted: PR #185 merged. Handoff #42.
 - #182 CLI polish: PR #186 merged.
