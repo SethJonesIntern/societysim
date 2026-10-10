@@ -1,13 +1,13 @@
-# seth status (updated 2026-10-11T18:00Z)
+# seth status (updated 2026-10-11T18:30Z)
 ## Active
 - T5.2 #35 selfplay | half run done: 44/45 played, $1.79; g0001 failed on Windows os.replace lock (#225). Report crashes (#224). Re-run g0001 by resuming after #225 merges (~$0.04).
 - T5.2 replay RUNNING on 158712a: 11 holed games moved to runs/selfplay_baseline_quarantine/, resume replays them (cap $4, ledger $1.79). Main folder detached; don't switch branches.
-- #240 Windows CI | PR #241 hold; fixing WSL bash; rebase after #237
-- #232 Windows suite | PR #237 approved but conflicting -> rebasing
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #232 Windows suite green: PR #237 merged 19:15Z
+- #240 Windows CI job (python-windows, not required): PR #241 merged 19:21Z
 - #230 UTF-8 logs + cp1252 read fallback: PR #235 merged 19:11Z
 - #231 highlights seq: PR #233 merged
 - #224 persuasion seq: PR #227 approved/merging
