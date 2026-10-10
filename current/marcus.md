@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T08:30Z)
+# marcus status (updated 2026-10-10T08:31Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
 - T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
@@ -62,4 +62,5 @@
 - Marcus: if a remaining fix after 2 rounds is small and clear, run round 3 without asking. Only escalate needs-human for real disagreements or large rework.
 - Discord webhook (URL in ~/.config/societysim/discord_webhook, chmod 600; never print it): IMPORTANT ONLY = Marcus must act now: start/run a server (e.g. AMD), provide or fix an API key/token/credential, a blocking decision, or something broken that needs immediate attention. NOT for merges, reviews, milestones or routine progress.
 - Adobe track dropped (2026-10-10). #33 (T4.11 polish) is optional and first to cut. docs/PLAN.md and scripts/setup-labels.sh still mention Adobe; fix in a small docs PR.
+- STOP VIEWER WORK (Marcus, 'wait no'): don't pick up viewer/frontend tickets. PRs #120 (#40 Neon) and #121 (#33 polish) are on HOLD, reviews stopped, auto-merge off. Waiting on Marcus: keep, close or revert the already-merged viewer PRs (#93 #99 #101 #103-#109 #113 #116 #118)?
 ## Codex: available (2 agents: #10, #74)
