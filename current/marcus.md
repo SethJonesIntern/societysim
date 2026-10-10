@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T06:59Z)
+# marcus status (updated 2026-10-10T07:07Z)
 ## Active
 - (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
 ## Queue (next up)
@@ -29,4 +29,5 @@
 - Human setup: collaborators invited (agus-marmor, SethJonesIntern), gh scopes OK. .env NOT created yet (as of 01:45 EDT). Plugins/MCPs unverified.
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
 - AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
+- Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
 ## Codex: available
