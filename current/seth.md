@@ -1,11 +1,10 @@
-# seth status (updated 2026-10-11T20:15Z)
+# seth status (updated 2026-10-11T21:00Z)
 ## Active
 - PRs: #312 (#310 preview) approved/merging; #315 (#296) changes (dead-player unmark); #316 (#291) in review; #317 (#304) adding cli 'estimating…'
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - T5.2 #35 | HALF DONE: 45 games clean, $2.19, 'T5.2 done' posted (triggers Marcus post-batch). Not published to polter-dev/societysim-games (token only Sethery32; public = Seth's call). Full 90 = ~$1.70, pending Seth.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
-- #292 Research + New game pages (after #291; App.tsx overlap)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - #232 Windows suite green: PR #237 merged 19:15Z
@@ -66,4 +65,5 @@
 - #147 (Marcus) fixed gemma: 0/120 invalid. Wolves won 15/16 live games: flagged on #35 for engine.
 - Old cp1252 logs (smoke 10, selfplay 34) read fine via read_text_lenient but deploy-space copies raw bytes -> viewer may garble them. Consider re-encoding copies at deploy, not raw logs.
 - 2026-10-10 team: 10-player games merged (schema v3, #256), configs #261. Marcus running mixed_v2_10p (100 games, cap $15). Marcus handed T5.3 (7p mixed_v1) back to Seth: his partial run 38 games/$1.93 kept local, not published.
+- #292 was done by someone else (PR #313) before we dispatched. Check for existing PRs before claiming (others work runner tickets too).
 ## Codex: n/a
