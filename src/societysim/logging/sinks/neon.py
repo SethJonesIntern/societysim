@@ -87,7 +87,8 @@ async def apply_schema(conn: Any) -> None:
 class NeonSink:
     """EventSink writing to Neon. One instance per game; `batch_id` comes from the caller.
 
-    Events are buffered and inserted `batch_size` at a time (and on end_game / close).
+    Events are buffered and inserted `batch_size` at a time, by a background timer every
+    `flush_after` seconds (so a slow LLM game shows up live), and on end_game / close.
     """
 
     def __init__(
@@ -98,7 +99,12 @@ class NeonSink:
         batch_size: int = 25,
         max_pending: int = 2000,
         timeout: float = 10,
+        flush_after: float = 1.0,
     ):
+        self._flush_after = flush_after
+        self._timer: asyncio.Task[None] | None = None
+        self._closed = False
+        self._lock = asyncio.Lock()  # one statement at a time on the connection
         self._timeout = timeout
         self.batch_id = batch_id
         self._connect = connect or connect_neon
@@ -142,12 +148,23 @@ class NeonSink:
             if len(self._pending) > self._max_pending:
                 del self._pending[: len(self._pending) - self._max_pending]
                 log.warning("NeonSink buffer full, dropped oldest events")
+            if self._timer is None and not self._closed:
+                self._timer = asyncio.create_task(self._tick())
             if len(self._pending) >= self._batch_size:
                 await self._flush()
         except Exception:
             log.exception("NeonSink.write failed")
 
+    async def _tick(self) -> None:
+        while True:
+            await asyncio.sleep(self._flush_after)
+            await self._flush()  # never raises; close() cancels this task
+
     async def _flush(self) -> None:
+        async with self._lock:
+            await self._flush_now()
+
+    async def _flush_now(self) -> None:
         if not self._pending:
             return
         rows = list(self._pending)
@@ -160,12 +177,13 @@ class NeonSink:
 
     async def _finish(self, status: str, winner: str | None) -> None:
         try:
-            await self._flush()
-            if self._game_id is None or self._ended:
-                return
-            conn = await self._conn_ready()
-            await self._t(conn.execute, _END_GAME, self._game_id, status, winner)
-            self._ended = True
+            async with self._lock:
+                await self._flush_now()
+                if self._game_id is None or self._ended:
+                    return
+                conn = await self._conn_ready()
+                await self._t(conn.execute, _END_GAME, self._game_id, status, winner)
+                self._ended = True
         except Exception:
             log.exception("NeonSink could not set game status")
 
@@ -173,6 +191,11 @@ class NeonSink:
         await self._finish("finished", winner)
 
     async def close(self) -> None:
+        self._closed = True
+        if self._timer is not None:
+            self._timer.cancel()
+            await asyncio.gather(self._timer, return_exceptions=True)
+            self._timer = None
         await self._finish("failed", None)  # no-op when end_game already ran
         if self._conn is not None:
             try:
