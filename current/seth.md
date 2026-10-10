@@ -1,8 +1,10 @@
-# seth status (updated 2026-10-11T19:00Z)
+# seth status (updated 2026-10-11T19:30Z)
 ## Active
+- WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - T5.2 #35 | HALF DONE: 45 games clean, $2.19, 'T5.2 done' posted (triggers Marcus post-batch). Not published to polter-dev/societysim-games (token only Sethery32; public = Seth's call). Full 90 = ~$1.70, pending Seth.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
+- #292 Research + New game pages (after #291; App.tsx overlap)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - #232 Windows suite green: PR #237 merged 19:15Z
