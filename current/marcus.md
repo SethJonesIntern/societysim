@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T08:09Z)
+# marcus status (updated 2026-10-10T08:10Z)
 ## Active
-- T4.10 #32 accessibility pass (viewer/src/**) | agent: implementer (opus) | branch issue-32-a11y | PR - | state: implementing
+- T4.10 #32 accessibility | agent: implementer (opus), done | branch issue-32-a11y | PR #113 | state: in review (opus). axe 0 violations. New pinned dev deps axe-core/jsdom (accepted by orchestrator).
 - T6.3b #114 verify AMD on real R9700 | agent: HUMAN (Marcus running serve.sh now; downloads in progress) | state: waiting on Marcus's run output
 - T2.2c #112 per-model api_base / api_key_env | agent: codex-implementer | branch issue-112-per-model-api-base | PR - | state: implementing
 ## Queue (next up)
