@@ -1,7 +1,7 @@
-# seth status (updated 2026-10-11T23:55Z)
+# seth status (updated 2026-10-12T00:20Z)
 ## Active
-- #293 play from website | implementer; gated behind VITE_PLAY_API_URL (play server not deployed; Marcus pinged on Discord)
-- 10p selfplay config PR for #35 | implementer
+- #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
+- #35 10p config: PR #329 approved/merging (fingerprint ff44a523b8a74550 = live run)
 - #319 approved/merging (prune; migrate only via --migrate --apply). #315 approved/merging.
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - T5.2 #35 | RUNNING 10p self-play: 90 games, cap $12 (est $11.52), batch selfplay_baseline_10p, main 1ce1e8a, scratch cfg selfplay_10p.yaml. Main folder detached; don't switch branches. 7p 45-game run = early sample.
@@ -72,4 +72,5 @@
 - #292 was done by someone else (PR #313) before we dispatched. Check for existing PRs before claiming (others work runner tickets too).
 - Filed #323 (engine): anon can read private fields of running batch games in Neon (no RLS).
 - 2026-10-10 Seth: ALWAYS 10 players from now on. Discord: Marcus=polterr, Augustin=agus_marmor (@ for blockers; webhook needs numeric IDs to ping).
+- Marcus Discord user ID 687018559851069520 (real pings via notify.sh <msg> <id>).
 ## Codex: n/a
