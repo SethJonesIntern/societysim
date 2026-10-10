@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T21:39Z)
+# marcus status (updated 2026-10-10T21:48Z)
 ## Active
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core + Play API | implementer (opus) | issue-280-play-server
@@ -138,6 +138,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- 2026-10-10T21:48Z 10p batch costs ~$0.33/game (est was $0.14). Marcus: option 1 = let it stop at the $15 cap (~45 games). Don't raise cap.
 - 10p stack #256/#260/#261/#269 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
 - ElevenLabs key set (free tier, restricted: TTS + voices read + user read). Marcus likes Callum + Harry (narrators), dislikes Brian. narrate.py doesn't load .env (fixed in #248).
 - NEON AUTH (verified): GET <auth>/token/anonymous -> {token, expires_at}, role anonymous, ~1h; Data API 200 with Bearer. Auth URL https://ep-orange-river-b5l9yq6a.neonauth.c-7.us-east-2.aws.neon.tech/neondb/auth. Repo vars set: VITE_NEON_DATA_API_URL, VITE_NEON_AUTH_URL. Recipe posted on #40 for Augustin. zsh: never name a shell var `path` (clobbers PATH).
