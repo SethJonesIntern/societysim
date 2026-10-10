@@ -1,13 +1,13 @@
-# seth status (updated 2026-10-11T13:00Z)
+# seth status (updated 2026-10-11T14:00Z)
 ## Active
-- #204 breaker | PR #212 in review (CLI doesn't print the stop or exit nonzero: follow-up?)
+- #205 price prior for unseen models | implementer
 - T5.2 #35 selfplay | RUNNING half size (Seth): 45 games, $4 cap, batch_id selfplay_baseline, main 0257d57, scratch cfg selfplay_half.yaml; watchdog on. Extend to 90 later by running configs/selfplay_baseline.yaml (resume).
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
-- #205 price prior for unseen models (after #204; both edit runner.py)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #204 invalid-output breaker: PR #212 merged 17:48Z (CLI exit 2, postbatch WARN)
 - #138 shared HF router limit: PR #143 merged 10:21Z
 - #144 base-rate dedupe: PR #145 merged 10:28Z (abstain-in-base decision pending Seth)
 - #137 live-test guard: PR #141 merged 10:18Z
