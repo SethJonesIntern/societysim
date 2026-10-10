@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-10T11:53Z)
+# marcus status (updated 2026-10-10T11:57Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
 - #146 notebook base-rate dedupe (follow #145) | agent: codex-implementer | branch issue-146-notebook-base-dedupe | PR - | state: implementing
-- #136 gemma suspicion incomplete (blocks Seth #35) | agent: implementer (opus) | branch issue-136-gemma-suspicion | PR - | state: implementing (option B prompt; A only if no schema change; live check by human/Seth)
-- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Waiting on result.
+- #136 gemma suspicion incomplete (blocks Seth #35) | agent: implementer (opus) | branch issue-136-gemma-suspicion | PR #147 | state: in review (option B only; A needs own ticket if live check fails). After merge: Marcus runs 3-game gemma live check (selfplay_smoke, batch gemma-136)
+- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Marcus fixing host value.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
