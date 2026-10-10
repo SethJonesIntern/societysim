@@ -1,5 +1,12 @@
-# marcus status (updated 2026-10-10T20:02Z)
+# marcus status (updated 2026-10-10T20:10Z)
 ## Active
+- MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
+  - #250 10-player games (2 wolves+8; human: 2 wolves among 1 human+9 models), p0-p9 contract bump | implementer (opus) | issue-250-ten-players
+  - #251 pairwise deception matrix (liar x listener) | implementer (opus) | issue-251-deception-matrix
+  - #252 README research question near top | implementer | issue-252-readme-research
+  - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
+  - Next after #250: 10p batch config + human_vs_ai 10p (fold #217) + free 7v10 scripted comparison (#216 un-parked)
+  - Codex chain (bg): HF token sim-write add Inference Providers -> then AMD 8060S pod launch + probe + background downloads (llama.cpp Vulkan zip + gpt-oss-20b GGUF), then STOP. Relay probe to #253.
 - Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
