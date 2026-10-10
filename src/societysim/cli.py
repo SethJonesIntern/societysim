@@ -109,6 +109,100 @@ def play(
 
 
 @app.command()
+def batch(
+    config: Annotated[Path, typer.Option("--config", help="Batch config YAML file.")],
+    agents: Annotated[AgentMode, typer.Option("--agents", help="Agent type.")] = AgentMode.SCRIPTED,
+    registry: Annotated[Path, typer.Option("--registry", help="Model registry file.")] = Path(
+        "configs/models.yaml"
+    ),
+    dry_run: Annotated[
+        bool, typer.Option("--dry-run", help="Print the game plan and cost estimate; run nothing.")
+    ] = False,
+) -> None:
+    """Play a batch of games in parallel into runs/<batch_id>/. Re-run to resume.
+
+    Stops starting games when the budget would be exceeded; Ctrl-C stops cleanly.
+    """
+    from societysim.batch.runner import BatchMismatch, plan, run_batch
+    from societysim.config import BatchConfig, load_yaml
+    from societysim.models.registry import load_registry
+
+    for path in (config, registry):
+        if not path.is_file():
+            typer.echo(f"config file not found: {path}")
+            raise typer.Exit(1)
+    cfg = load_yaml(config, BatchConfig)
+    load_dotenv()
+    reg = load_registry(registry)
+    reg.apply_env()
+    try:
+        specs = {s.name: s for s in reg.resolve(sorted(set(cfg.models)))}
+    except KeyError as exc:
+        typer.echo(exc.args[0])
+        raise typer.Exit(1) from None
+
+    if dry_run:
+        rows = plan(cfg, specs)
+        for row in rows:
+            seats = " ".join(f"{seat}={model}/{role}" for seat, model, role in row["seats"])
+            typer.echo(f"{row['game_id']} seed={row['seed']} ${row['est_usd']:.4f} {seats}")
+        total = sum(row["est_usd"] for row in rows)
+        typer.echo(
+            f"{len(rows)} games, estimated ${total:.2f} (price-based guess) "
+            f"against a ${cfg.budget_usd:.2f} budget"
+        )
+        return
+
+    client = None
+    if agents is AgentMode.LLM:
+        provider_keys = {
+            "huggingface": ("HF_TOKEN", "HUGGINGFACE_API_KEY"),
+            "hosted_vllm": ("HOSTED_VLLM_API_KEY",),
+            "gemini": ("GEMINI_API_KEY", "GOOGLE_API_KEY"),
+            "openai": ("OPENAI_API_KEY",),
+        }
+        providers = {spec.provider for spec in specs.values()}
+        missing = [
+            " or ".join(keys)
+            for provider, keys in provider_keys.items()
+            if provider in providers and not any(os.environ.get(key) for key in keys)
+        ]
+        if missing:
+            typer.echo(f"missing provider key: {', '.join(missing)}")
+            raise typer.Exit(1)
+
+        from societysim.models.client import LiteLLMClient
+
+        client = LiteLLMClient(limits=reg.limits())
+
+    try:
+        result = asyncio.run(
+            run_batch(
+                cfg,
+                specs,
+                client,
+                provider_concurrency={p: c.concurrency for p, c in reg.providers.items()},
+            )
+        )
+    except KeyboardInterrupt:
+        typer.echo(f"interrupted; re-run to resume: runs/{cfg.batch_id}")
+        raise typer.Exit(130) from None
+    except BatchMismatch as exc:
+        typer.echo(str(exc))
+        raise typer.Exit(1) from None
+    typer.echo(Path("runs") / cfg.batch_id)
+    typer.echo(
+        f"{result['status']} ({agents.value}): {len(result['finished'])} played, "
+        f"{len(result['skipped'])} skipped, "
+        f"{len(result['not_started'])} not started; "
+        f"spent ${result['spent_usd']:.4f} of ${cfg.budget_usd:.2f}"
+    )
+    if result["failed"]:
+        typer.echo(f"failed games: {', '.join(result['failed'])}")
+        raise typer.Exit(1)
+
+
+@app.command()
 def doctor(
     model: Annotated[
         str, typer.Option("--model", help="Glob of model names from models.yaml.")
