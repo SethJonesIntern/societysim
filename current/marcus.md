@@ -1,5 +1,13 @@
-# marcus status (updated 2026-10-10T20:57Z)
+# marcus status (updated 2026-10-10T21:07Z)
 ## Active
+- MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
+  - #256 now also gets viewer parse.ts v3/p9 (msg to implementer) -> then merge stack #256 -> #260/#261/#269 (rebase) -> Ctrl-C mixed_v1 (no drain mechanism; partials excluded) -> run mixed_v2_10p (~$13.62, cap $15).
+  - #270 stepper | issue-270-stepper | implementing
+  - #271 narration playback | issue-271-narration-playback | implementing
+  - #272 neon auth: PR #275 | in review
+  - #273 deception matrix UI | NOT dispatched yet (agent cap)
+  - #274 setup form | issue-274-setup-form (stacked on #269) | implementing
+- Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception: PR #268 | APPROVED + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
