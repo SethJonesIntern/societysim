@@ -1,11 +1,11 @@
 # marcus status (updated 2026-10-10T21:10Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
-  - #256 now also gets viewer parse.ts v3/p9 (msg to implementer) -> then merge stack #256 -> #260/#261/#269 (rebase) -> Ctrl-C mixed_v1 (no drain mechanism; partials excluded) -> run mixed_v2_10p (~$13.62, cap $15).
-  - #270 stepper | issue-270-stepper | implementing
-  - #271 narration playback | issue-271-narration-playback | implementing
-  - #273 deception matrix UI | NOT dispatched yet (agent cap)
-  - #274 setup form | issue-274-setup-form (stacked on #269) | implementing
+  - #256 head b0aaf89 has parse.ts v3/p9; RE-REVIEW (opus) running -> then merge stack #256 -> #260/#261/#269 (rebase) -> Ctrl-C mixed_v1 (no drain mechanism; partials excluded) -> run mixed_v2_10p (~$13.62, cap $15).
+  - #270 stepper: PR #277 | in review
+  - #271 narration playback: PR #276 | in review
+  - #273 deception matrix UI | issue-273-deception-ui | implementing
+  - #274 setup form: PR #278 | HOLD (stacked on #269), review pending
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
 - #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
@@ -19,7 +19,7 @@
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
   - T5.3 #36 RUNNING (Marcus OK: 'complete Seth's path'): mixed_v1 --agents llm --neon started 2026-10-10T20:14Z, log .cache/mixed_v1.log, cap $10. Seth notified on #36. DON'T git checkout in main checkout while running.
-- Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
+- (watcher for Augustin PR expired) new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
