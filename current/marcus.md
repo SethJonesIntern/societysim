@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T13:17Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR - | state: implementing
+- #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR #166 | state: in review (no live Neon run yet; flush now ~1s)
 - #21 PR #80 rebased (SOCIETYSIM_HF_DATASET default) | reviewer (opus) running | hold stays (Seth). .env.example lacks SOCIETYSIM_HF_DATASET (follow-up).
 - #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
 - #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR - | state: implementing
