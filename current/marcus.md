@@ -2,7 +2,7 @@
 ## Active
 - T4.2 #24 circle table | agent: implementer (opus) | branch issue-24-circle-table | PR - | state: implementing
 - T4.6 #28 mode toggle (+App.tsx) | agent: codex-implementer | branch issue-28-mode-toggle | PR - | state: implementing
-- T4.7 #29 inspector | agent: implementer (sonnet) | branch issue-29-player-inspector | PR - | state: implementing
+- T4.7 #29 inspector | agent: implementer (sonnet), done | branch issue-29-player-inspector | PR #99 | state: in review. App wiring -> new wiring ticket (blocked on #24 #28 #29 #30).
 - T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR - | state: implementing
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
