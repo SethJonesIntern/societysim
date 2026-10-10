@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T07:24Z)
+# marcus status (updated 2026-10-10T07:25Z)
 ## Active
 - T1.9b #88 widen invariant sweep (doctor/reveal/chat flags) | agent: codex-implementer | branch issue-88-sweep-flags | PR - | state: implementing
-- T1.4c #85 anti-injection | agent: implementer (opus), done | branch issue-85-contain-model-text | PR #87 | state: in review (opus, adversarial). Cap 800 chars.
+- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: changes round 1 (trailing backslash; more quote lookalikes; cap from max_statement_words), sent to same implementer
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
@@ -35,4 +35,5 @@
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
 - AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
+- Marcus 03:25 EDT: keep going until rate limited, no permission needed. Tried to claim idle other-team tickets #23 (viewer scaffold) and #83 (runner): BLOCKED by auto-mode classifier (External System Writes). Not worked around; asked Marcus to allow it or claim them himself.
 ## Codex: available (2 agents: #10, #74)
