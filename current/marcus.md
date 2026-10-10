@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T05:01Z)
+# marcus status (updated 2026-10-10T05:02Z)
 ## Active
 - T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR - | state: implementing (must settle self-vote per RULES.md)
 - T3.4 #57 label CLI Jev resilience + cache path | agent: implementer (opus) | branch issue-57-jev-resilience | PR - | state: implementing
-- T1.5b #58 prompts omit zero-count roles | agent: implementer (opus) | branch issue-58-prompts-zero-roles | PR - | state: implementing
+- T1.5b #58 prompts zero roles | agent: implementer (opus), done | branch issue-58-prompts-zero-roles | PR #59 | state: in review
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
