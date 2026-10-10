@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T22:53Z)
+# marcus status (updated 2026-10-10T22:57Z)
 ## Active
-- Avatars: 11 Gemini (Nano Banana, Pro high, 1:1) prompts submitted in Brave tabs; Codex now downloading -> ~/Desktop/projects/hackathons/societysim-avatars/<model>.<ext>; then implementer PR: resize/optimize -> viewer/public/avatars/<model>.png (#302 wiring = Augustin).
+- Avatars: 11 JPEGs saved in ~/Desktop/projects/hackathons/societysim-avatars/ (Codex). Implementer making 512px webp -> viewer/public/avatars/ chore PR + contact sheet in scratchpad.
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 play deploy: PR #314 APPROVED but python CI failing -> fix round; NOT merged yet. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> run scripts/deploy-play-space.sh --dry-run then real (env from .env via Codex/terminal), set VITE_PLAY_API_URL, check proxy client IPs in Space logs.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
