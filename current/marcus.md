@@ -1,10 +1,10 @@
-# marcus status (updated 2026-10-10T17:46Z)
+# marcus status (updated 2026-10-10T17:52Z)
 ## Active
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
-- #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
+- #21 PR #80: live publish OK with Marcus's new token (private test repo, deleted). Rebasing on main (implementer) -> re-review -> lift hold (Marcus's call; Seth notified). Dataset proposal polter-dev/societysim-games public.
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
@@ -92,6 +92,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Marcus HF token now fine-grained 'sim-write': repo.write on polter-dev OK; MISSING inference permission (HF-routed models fail on Marcus's machine). Asked Marcus to tick 'Make calls to Inference Providers'.
 - Asked Marcus: write-scoped HF token + dataset name (suggest polter-dev/societysim-games, public) to lift PR #80 hold and publish after batches.
 - While a batch runs from the main checkout, NEVER git checkout there; live-check PRs from a scratch worktree with a symlinked .env (removed after).
 - 2026-10-10: survey agent accidentally ran `label` WITHOUT --no-jev on 10 scripted games -> 248 paid Jev (TypeSafe) calls. CLI loads .env itself, so unsetting env vars doesn't protect. Always tell agents: label --no-jev only.
