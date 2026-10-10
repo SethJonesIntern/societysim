@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T05:42Z)
+# marcus status (updated 2026-10-10T05:43Z)
 ## Active
-- T1.7 #9 RandomAgent + integration test | agent: codex-implementer | branch issue-9-scripted-agent | PR - | state: implementing
+- T1.7 #9 RandomAgent + integration | agent: codex-implementer, done | branch issue-9-scripted-agent | PR #68 | state: in review (opus). Handles lone_wolf generically.
 - T1.6b #65 fallback meta + lone wolf | agent: implementer (opus), done | branch issue-65-fallback-meta-lone-wolf | PR #67 | state: in review (opus). Concern: new lone_wolf action + 4th source file, possible contract change (rule 3). Urgent handoff sent to #9.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
@@ -25,4 +25,4 @@
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
-## Codex: available (in use on #9)
+## Codex: available
