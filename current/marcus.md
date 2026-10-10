@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T08:19Z)
+# marcus status (updated 2026-10-10T08:21Z)
 ## Active
-- T4.6c #111 leak test | agent: codex-implementer (edited directly), done | PR #116 | state: in review
-- T6.3b #114 verify AMD on real R9700 | agent: HUMAN (Marcus running serve.sh now; downloads in progress) | state: waiting on Marcus's run output
+- T6.3b #114 verify AMD on real R9700 | HUMAN: serve.sh done, Marcus put the 2 lines in .env; he's running doctor --model 'amd-*' + 1 play game from his laptop; waiting on his output
 - #95 cached cleanup | agent: implementer (opus), done | PR #117 | state: in review
 - T4.9 #31 game index + leaderboard + Pages/Space deploy | agent: implementer (opus) | branch issue-31-index-leaderboard | PR - | state: implementing
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
@@ -12,6 +11,7 @@
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.6c #111 leak test covers Arrows/Tally/Speech: PR #116 merged. Handoff: none.
 - T2.2c #112 per-model api_base: PR #115 merged. Handoffs on #34 #36 #114.
 - T4.10 #32 accessibility: PR #113 merged (axe 0 violations). Handoffs on #33 #111.
 - T6.3 #41 AMD vLLM scripts: PR #110 merged (2 rounds; key required and never logged). Handoffs on #34 #35 #36 #42. Real-GPU verification -> #114 (human). #112 unblocked.
