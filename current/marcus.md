@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T05:03Z)
+# marcus status (updated 2026-10-10T05:04Z)
 ## Active
 - T1.2 #4 engine.py | agent: codex-implementer | branch issue-4-engine | PR - | state: implementing (must settle self-vote per RULES.md)
-- T3.4 #57 label CLI Jev resilience + cache path | agent: implementer (opus) | branch issue-57-jev-resilience | PR - | state: implementing
+- T3.4 #57 Jev resilience | agent: implementer (opus), done | branch issue-57-jev-resilience | PR #60 | state: in review (question: stale agreement.json left on Jev failure). Handoffs for #21, #19.
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
