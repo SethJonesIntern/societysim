@@ -29,6 +29,7 @@ from societysim.config import BatchConfig, ModelSpec
 from societysim.logging.events import EventType
 from societysim.logging.sinks.jsonl import JsonlSink
 from societysim.logging.sinks.neon import Connect, NeonSink
+from societysim.logging.textio import read_text_lenient
 from societysim.models.client import CompletionResult, ModelClient
 from societysim.orchestrator import run_game
 
@@ -100,7 +101,7 @@ class MeteredClient:
 def game_costs(path: Path) -> Counter[str] | None:
     """USD per model in a finished game log, or None if the game did not finish."""
     try:
-        lines = path.read_text().splitlines()
+        lines = read_text_lenient(path).splitlines()
         if not lines or json.loads(lines[-1])["type"] != EventType.GAME_END:
             return None
         events = [json.loads(line) for line in lines]
@@ -119,7 +120,7 @@ def game_invalid(path: Path, models: list[str]) -> dict[str, list[int]]:
     game's model per seat p0..; a log that cannot be read counts as nothing."""
     out: dict[str, list[int]] = defaultdict(lambda: [0, 0])
     try:
-        for line in path.read_text().splitlines():
+        for line in read_text_lenient(path).splitlines():
             e = json.loads(line)
             if e["type"] == EventType.INVALID_OUTPUT and e.get("actor"):
                 out[models[int(e["actor"][1:])]][0] += 1
@@ -181,10 +182,10 @@ def _replace(src: Path, dst: Path) -> None:
 
 def _tag_agents(path: Path, agents: str) -> None:
     """Record the agent type in a game's run_meta.json, next to its finished JSONL."""
-    meta = json.loads(path.read_text())
+    meta = json.loads(read_text_lenient(path))
     meta["agents"] = agents
     tmp = path.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(meta, indent=2))
+    tmp.write_text(json.dumps(meta, indent=2), encoding="utf-8")
     _replace(tmp, path)
 
 
@@ -220,7 +221,7 @@ def _read_meta(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     try:
-        meta = json.loads(path.read_text())
+        meta = json.loads(read_text_lenient(path))
     except (OSError, ValueError):
         meta = None
     if not isinstance(meta, dict):
@@ -330,6 +331,11 @@ async def run_batch(
 
     finished: list[str] = []
     failed: dict[str, str] = {}
+    # game_id -> events its JSONL sink could not write (holes in the log). On resume only the
+    # finished games keep theirs; a game played again starts from a fresh log.
+    write_errors: dict[str, int] = {
+        g: n for g, n in (old.get("write_errors") or {}).items() if g in skipped
+    }
     down: list[str] = []  # ProviderDown messages; any one stops new games
     started_ids: list[str] = []
     in_flight = 0
@@ -365,6 +371,7 @@ async def run_batch(
             "finished": finished,
             "skipped": skipped,
             "failed": failed,
+            "write_errors": write_errors,
             "provider_down": down,
             "invalid_output": {m: {"invalid": b, "calls": c} for m, (b, c) in invalid.items()},
             "invalid_stop": invalid_stop[0] if invalid_stop else None,
@@ -372,7 +379,7 @@ async def run_batch(
             "config": cfg.model_dump(mode="json"),
         }
         tmp = meta_path.with_suffix(".json.tmp")
-        tmp.write_text(json.dumps(s, indent=2))
+        tmp.write_text(json.dumps(s, indent=2), encoding="utf-8")
         _replace(tmp, meta_path)  # a hard kill leaves the old file, never half of one
         return s
 
@@ -411,8 +418,9 @@ async def run_batch(
         _game.set(a.game_id)
         t0 = time.monotonic()
         outcome: dict[str, Any] = {}
+        jsonl = JsonlSink(cfg.batch_id, runs_dir)
         try:
-            sinks: list[Any] = [JsonlSink(cfg.batch_id, runs_dir)]
+            sinks: list[Any] = [jsonl]
             if neon_connect:
                 sinks.append(NeonSink(cfg.batch_id, connect=neon_connect, agents=agents))
             game = await run_game(a.game_config(cfg.game), make_agent, sinks, a.game_id, colors)
@@ -445,6 +453,11 @@ async def run_batch(
                 t.cancel()
             await asyncio.gather(*stray, return_exceptions=True)
         finally:
+            if jsonl.write_errors:
+                write_errors[a.game_id] = jsonl.write_errors
+                log.error(
+                    "game %s: %d events missing from its JSONL log", a.game_id, jsonl.write_errors
+                )
             in_flight -= 1
             reserved.pop(a.game_id, None)
             solo.discard(a.game_id)

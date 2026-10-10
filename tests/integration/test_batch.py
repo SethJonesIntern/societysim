@@ -170,6 +170,57 @@ async def test_cancellation_stops_cleanly_and_rerun_resumes(tmp_path):
 async def test_scripted_batch_needs_no_client(tmp_path):
     res = await run_batch(cfg(n_games=3), SPECS, None, runs_dir=tmp_path)
     assert res["status"] == "completed" and res["spent_usd"] == 0
+    assert res["write_errors"] == {}
+
+
+async def test_lost_event_writes_are_counted_in_batch_meta(tmp_path, monkeypatch, caplog):
+    class Broken:
+        def write(self, s):
+            raise OSError("disk says no")
+
+    real_write = runner.JsonlSink.write
+
+    async def write(self, event):  # game t-g0001 loses its event seq 3
+        if event.game_id == "t-g0001" and event.seq == 3:
+            f, self._f = self._f, Broken()
+            try:
+                return await real_write(self, event)
+            finally:
+                self._f = f
+        return await real_write(self, event)
+
+    monkeypatch.setattr(runner.JsonlSink, "write", write)
+    res = await run_batch(cfg(n_games=2), SPECS, None, runs_dir=tmp_path)
+    assert res["status"] == "completed" and res["write_errors"] == {"t-g0001": 1}
+    meta = json.loads((tmp_path / "t/run_meta.json").read_text(encoding="utf-8"))
+    assert meta["write_errors"] == {"t-g0001": 1}
+    game = json.loads((tmp_path / "t/t-g0001.run_meta.json").read_text(encoding="utf-8"))
+    assert game["write_errors"] == 1 and game["agents"] == "scripted"
+    assert "t-g0001: 1 events missing" in caplog.text
+
+    monkeypatch.setattr(runner.JsonlSink, "write", real_write)
+    res = await run_batch(cfg(n_games=2), SPECS, None, runs_dir=tmp_path)
+    assert res["write_errors"] == {"t-g0001": 1}  # a finished game keeps its count on resume
+    (tmp_path / "t/t-g0001.jsonl").unlink()
+    res = await run_batch(cfg(n_games=2), SPECS, None, runs_dir=tmp_path)
+    assert res["finished"] == ["t-g0001"] and res["write_errors"] == {}  # replayed: fresh log
+
+
+async def test_resume_skips_a_finished_cp1252_log(tmp_path):
+    # Before T230 Windows wrote logs in cp1252 with \r\n; resume must not replay (and overwrite)
+    # such a finished, paid-for game.
+    await run_batch(cfg(n_games=2), SPECS, None, runs_dir=tmp_path)
+    log = tmp_path / "t/t-g0000.jsonl"
+    events = [json.loads(x) for x in log.read_text(encoding="utf-8").splitlines()]
+    say = next(e for e in events if e["type"] == "statement")
+    say["public_text"] = "it’s p3 — trust me"
+    text = "".join(json.dumps(e, ensure_ascii=False) + "\r\n" for e in events)
+    log.write_bytes(text.encode("cp1252"))
+    old_bytes = log.read_bytes()
+    res = await run_batch(cfg(n_games=2), SPECS, None, runs_dir=tmp_path)
+    assert res["skipped"] == ["t-g0000", "t-g0001"] and res["finished"] == []
+    assert log.read_bytes() == old_bytes
+    assert runner.game_costs(log) is not None
 
 
 async def test_crashed_game_is_reported_not_lost(tmp_path):
