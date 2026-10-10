@@ -1,7 +1,7 @@
-# seth status (updated 2026-10-10T18:10Z)
+# seth status (updated 2026-10-10T18:20Z)
 ## Active
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: in review + HOLD (Seth to confirm metric definitions)
-- T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: changes round 1 (--private default) + HOLD (live HF check needs write token + repo from Seth)
+- T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: re-review round 2 + HOLD (live HF check needs write token + repo from Seth)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
