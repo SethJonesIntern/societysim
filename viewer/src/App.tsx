@@ -99,6 +99,25 @@ export default function App({ source }: { source?: GameSource } = {}) {
   // Stable, so Timeline's effect only fires when its seq changes.
   const onSeqChange = useCallback((_seq: number, index: number) => setIdx(index), []);
 
+  // Live spectating (T6.2): a ?game= with no game_end yet polls the source every 2 s.
+  // New events join the same list, so deriveScene's mode filtering covers them too.
+  const last = log?.events.at(-1);
+  const game = source && last && last.type !== "game_end" ? new URLSearchParams(location.search).get("game") : null;
+  const liveGame = game && last?.game_id === game ? game : null;
+  const afterSeq = last?.seq ?? -1;
+  useEffect(() => {
+    if (!source || !liveGame) return;
+    const timer = setInterval(() => {
+      source.pollEvents(liveGame, afterSeq).then(
+        (more) =>
+          more.length > 0 &&
+          setLog((l) => l && { ...l, events: [...l.events, ...more.filter((e) => e.seq > (l.events.at(-1)?.seq ?? -1))] }),
+        () => {}, // a failed poll is retried on the next tick
+      );
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [source, liveGame, afterSeq]);
+
   const changeMode = (nextMode: Mode) => {
     window.history.replaceState(window.history.state, "", urlWithMode(window.location.href, nextMode));
     setMode(nextMode);

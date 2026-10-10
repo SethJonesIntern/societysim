@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { neonSource } from "./data/neonSource";
 import { DEFAULT_INDEX_URL, indexSource } from "./data/staticSource";
 import IndexPage from "./pages/Index";
 import LeaderboardPage from "./pages/Leaderboard";
@@ -11,7 +12,10 @@ import "./a11y.css";
 const params = new URLSearchParams(location.search);
 const indexParam = params.get("index");
 const indexUrl = indexParam ?? DEFAULT_INDEX_URL;
-const source = indexSource(indexUrl);
+// Neon when the build has a Data API URL (T6.2), unless ?index= asks for static files; else the static deploy.
+const neonUrl = import.meta.env.VITE_NEON_DATA_API_URL;
+const neon = neonUrl && !indexParam ? neonSource(neonUrl, import.meta.env.VITE_NEON_ANON_KEY || undefined) : null;
+const source = neon ?? indexSource(indexUrl);
 const href = (extra: Record<string, string>) =>
   "?" + new URLSearchParams({ ...(indexParam ? { index: indexParam } : {}), ...extra });
 const sibling = (name: string) => new URL(name, new URL(indexUrl, location.href)).href;
@@ -32,7 +36,11 @@ createRoot(document.getElementById("root")!).render(
       <main style={style}>
         <h1>SocietySim {page === "leaderboard" ? "leaderboard" : "games"}</h1>
         {page === "leaderboard" ? (
-          <LeaderboardPage leaderboardUrl={sibling("leaderboard.json")} metricsUrl={sibling("metrics.json")} />
+          <LeaderboardPage
+            leaderboardUrl={sibling("leaderboard.json")}
+            metricsUrl={sibling("metrics.json")}
+            loadBoard={neon?.loadBoard}
+          />
         ) : (
           <IndexPage source={source} href={(id) => href({ game: id })} />
         )}

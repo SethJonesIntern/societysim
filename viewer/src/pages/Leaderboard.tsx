@@ -45,8 +45,10 @@ export function LeaderboardTable({ board, bySide = {} }: { board: Board; bySide?
   return (
     <>
       <p>
-        {board.games} games. Ranked by OpenSkill ordinal (mu minus three sigma). Win rates carry a Wilson 95% interval;
-        small batches are noisy.
+        {board.games} games.{" "}
+        {board.models.some((r) => r.openskill)
+          ? "Ranked by OpenSkill ordinal (mu minus three sigma). Win rates carry a Wilson 95% interval; small batches are noisy."
+          : "Ranked by win rate; small batches are noisy."}
         {side && ` Wolf-side advantage: mu ${num(side.mu)} (0 means the sides are even).`}
       </p>
       <table>
@@ -89,19 +91,34 @@ export function LeaderboardTable({ board, bySide = {} }: { board: Board; bySide?
   );
 }
 
-/** Loads leaderboard.json, plus metrics.json for OpenSkill by side when it is there. */
-export default function LeaderboardPage({ leaderboardUrl, metricsUrl }: { leaderboardUrl: string; metricsUrl: string }) {
+/**
+ * Loads leaderboard.json, plus metrics.json for OpenSkill by side when it is there.
+ * `loadBoard` replaces both, e.g. the win-rate board built from Neon's leaderboard view.
+ */
+export default function LeaderboardPage({
+  leaderboardUrl,
+  metricsUrl,
+  loadBoard,
+}: {
+  leaderboardUrl: string;
+  metricsUrl: string;
+  loadBoard?: () => Promise<Board>;
+}) {
   const [board, setBoard] = useState<Board | null>(null);
   const [bySide, setBySide] = useState<BySide>({});
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (loadBoard) {
+      loadBoard().then(setBoard, (err: Error) => setError(err.message));
+      return;
+    }
     fetchJson<Board>(leaderboardUrl).then(setBoard, (err: Error) => setError(err.message));
     fetchJson<{ openskill?: BySide }>(metricsUrl).then(
       (m) => setBySide(m.openskill ?? {}),
       () => {}, // optional: the by-side columns show n/a
     );
-  }, [leaderboardUrl, metricsUrl]);
+  }, [leaderboardUrl, metricsUrl, loadBoard]);
 
   if (error) return <p role="alert">Could not load the leaderboard: {error}</p>;
   if (!board) return <p>Loading leaderboard...</p>;
