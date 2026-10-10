@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T23:10Z)
+# marcus status (updated 2026-10-10T23:11Z)
 ## Active
-- #323 SECURITY: PR #325 (events_public view; anon revoked on events; viewer uses events_public) in REVIEW. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
+- #323 SECURITY: PR #325 CHANGES round 1: failed games must stay redacted (resume reruns same seed). Fix sent to the same implementer. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
 - #326 flaky test_security seed | PR #327 | in review
 - #309 play alerts (unblocked by #314 merge) | implementer sonnet | issue-309-play-alerts
 - AGENT CAP raised to 5 for this wave (Marcus).
