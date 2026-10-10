@@ -1,12 +1,15 @@
-# marcus status (updated 2026-10-10T05:29Z)
+# marcus status (updated 2026-10-10T05:30Z)
 ## Active
-- T1.6 #8 orchestrator | agent: implementer (opus) | branch issue-8-orchestrator | PR #63 | state: round 1 fixed, re-review round 2 running
+- (nothing in flight; burn window ended 01:30 EDT, holding dispatch for Marcus)
 ## Queue (next up)
-- #65 T1.6b meta.fallback on seer/doctor + lone-wolf TargetResponse prompt (opus): blocked on #8. Touches engine.py, orchestrator.py, prompts.py.
-- After #8 merges: #9 T1.7 RandomAgent + integration test -> Codex.
+- READY: #9 T1.7 RandomAgent + seeded integration test (agent:codex) -> Codex.
+- READY: #65 T1.6b meta.fallback seer/doctor + lone-wolf prompt (opus).
+- #9 and #65 may both touch tests/unit/test_orchestrator.py / orchestrator.py: check overlap before running in parallel.
+- #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T1.6 #8 orchestrator: PR #63 merged 01:30 EDT (2 rounds; None-color crash fixed). Handoffs posted on #9 #10 #11 #15 #65. #9, #65 ready.
 - T1.3b #64 EventLogger zero sinks: PR #66 merged. Handoff posted on #8 #9 #65.
 - T1.4 #6 observation + leakage: PR #62 merged (reviewer mutation-tested 10 branches). Handoffs posted on #8 #9. #8 unblocked.
 - T1.2 #4 engine.py: PR #61 merged (2 rounds). Self-votes illegal, now in RULES.md. Handoffs posted on #6 #8 #9. #6 unblocked.
@@ -24,7 +27,7 @@
 - T0.3 #43 workflow dry run: PR #44 auto-merged 04:33Z.
 - T0.1 #1 repo bootstrap (closed)
 ## Decisions / gotchas
-- Marcus 00:48 EDT: burn tokens until 01:30 EDT (05:30Z). Timer running. Use opus implementers. Marcus lifted the 3-implementer cap (burn mode): dispatch everything ready.
+- Burn window (00:48-01:30 EDT) ended. Use opus implementers. Marcus lifted the 3-implementer cap (burn mode): dispatch everything ready.
 - NEW CONVENTION (Marcus, merged via #47): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
