@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-11T01:30Z)
+# seth status (updated 2026-10-11T01:45Z)
 ## Active
-- T5.2 #35 selfplay | implementer lowering cap $25->$8 (PR pending); then orchestrator runs 90 games --agents llm (Seth approved)
+- T5.2 #35 selfplay | RUNNING in main folder (detached at db78681), started ~09:10Z, runs/selfplay_baseline, $8 cap, --agents llm; watchdog kills at >20% invalid/model or projected >$8. Don't switch branches in main folder until done. Resume = same command.
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
