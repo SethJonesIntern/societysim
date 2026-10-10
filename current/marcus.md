@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T08:37Z)
+# marcus status (updated 2026-10-10T08:38Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: Cloudflare tunnels BLOCKED from AUP pods (TLS on 7844 reset; QUIC times out; 443 OK). New path: run games on the box vs localhost:8000. Marcus running uv sync + doctor + selfplay_amd play on the box now.
+- T6.3b #114 verify AMD | HUMAN: doctor GREEN in-pod (json_schema 2.4s, json_object 1.7s, none 1.7s). Next: Marcus switches the box checkout to main and plays 1 selfplay_amd game.
 - T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
 ## Queue (next up)
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
