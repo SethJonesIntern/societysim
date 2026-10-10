@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T18:30Z)
+# marcus status (updated 2026-10-10T18:31Z)
 ## Active
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
@@ -99,6 +99,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- 2026-10-10T18:31Z society-sim.us (Porkbun, registered 18:21Z): DNS set by Codex (4 GitHub A + www CNAME), verified at authoritative NS; public resolvers NXDOMAIN-cached up to 30 min. GitHub Pages cname=society-sim.us set; HTTPS enforce pending cert. Pages never deployed yet; Space not created. Waiting on Marcus 'deploy' for smoke deploy (pages.yml workflow_dispatch).
 - 2026-10-10T18:30Z Marcus standing OK: Codex (computer use) may confirm DNS record deletions/edits on society-sim.us (Porkbun) by itself in future runs. Scope: that domain's DNS records only. Still no purchases/billing/nameservers/other domains. Prompt template: scratchpad codex_dns3.md (add the standing confirmation line).
 - Hosting: HF Space polter-dev/societysim NOT created; Pages enabled but never deployed (404); pages.yml is workflow_dispatch only, never run; repo has NO HF_TOKEN secret. Asked Marcus to set secret + OK a smoke deploy with fixture. Recommended: Cloudflare domain -> GitHub Pages via CNAME (primary URL) + HF Space for sponsor; skip Vercel. Domain = society-sim.us on Porkbun (moved from GoDaddy/MLH), bare domain; Codex+computer use setting Porkbun DNS (4 A + www CNAME). HF_TOKEN repo secret SET 18:08Z; gave him GitHub Pages A records + www CNAME. Next: set Pages cname via gh api once full domain known.
 - Marcus HF token now fine-grained 'sim-write': repo.write on polter-dev OK; MISSING inference permission (HF-routed models fail on Marcus's machine). Asked Marcus to tick 'Make calls to Inference Providers'.
