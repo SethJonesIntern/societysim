@@ -2,7 +2,7 @@
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
 - T3.2 #18 labeler | agent: implementer (opus), done | branch issue-18-labeler | PR #52 | state: in review (opus). Jev wiring in cli.py deferred until #17 merges (one-line follow-up: label_batch(batch_dir, jev_for=...)).
-- T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus) | branch issue-48-chore-deps | PR - | state: implementing
+- T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus), done | branch issue-48-chore-deps | PR #53 | state: in review
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
