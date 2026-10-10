@@ -1,10 +1,14 @@
-# marcus status (updated 2026-10-10T08:12Z)
+# marcus status (updated 2026-10-10T08:17Z)
 ## Active
 - T4.6c #111 App leak test covers Arrows/Tally/Speech | agent: codex-implementer | branch issue-111-leak-test | PR - | state: implementing
 - T6.3b #114 verify AMD on real R9700 | agent: HUMAN (Marcus running serve.sh now; downloads in progress) | state: waiting on Marcus's run output
-- T2.2c #112 per-model api_base / api_key_env | agent: codex-implementer | branch issue-112-per-model-api-base | PR - | state: implementing
+- T2.2c #112 per-model api_base | agent: codex-implementer, done | PR #115 | state: in review (opus). No .env change needed.
+- #95 (Seth's) cached cleanup remainder: drop CachedUsage + e2e replay test | agent: implementer (opus) | branch issue-95-cached-cleanup | PR - | state: implementing
+- T4.9 #31 game index + leaderboard + Pages/Space deploy | agent: implementer (opus) | branch issue-31-index-leaderboard | PR - | state: implementing
+- T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
+- T6.2 #40 viewer Neon source: CLAIMED, waiting for #31 (same pages files)
 ## Queue (next up)
-- Viewer sequence: #111 leak test (running) -> #33 polish (no Figma tokens yet).
+- Viewer: #111 leak test + #33 polish + #31 pages running in parallel (disjoint files), #40 after #31.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
