@@ -51,4 +51,5 @@
 - PR #89 (Marcus's README edit): my approve was blocked by the classifier (Self-Approval). Gave Marcus the commands, or he can ask for a reviewer.
 - Marcus: if a remaining fix after 2 rounds is small and clear, run round 3 without asking. Only escalate needs-human for real disagreements or large rework.
 - Discord webhook (URL in ~/.config/societysim/discord_webhook, chmod 600; never print it): IMPORTANT ONLY = Marcus must act now: start/run a server (e.g. AMD), provide or fix an API key/token/credential, a blocking decision, or something broken that needs immediate attention. NOT for merges, reviews, milestones or routine progress.
+- Adobe track dropped (2026-10-10). #33 (T4.11 polish) is optional and first to cut. docs/PLAN.md and scripts/setup-labels.sh still mention Adobe; fix in a small docs PR.
 ## Codex: available (2 agents: #10, #74)
