@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T18:07Z)
+# marcus status (updated 2026-10-10T18:08Z)
 ## Active
 - #218 deploy-space --out local stage | implementer | issue-218-deploy-out | implementing
-- #219 Neon games.agents + views exclude scripted | implementer | issue-219-neon-agents | implementing (orchestrator applies schema live)
+- #219 Neon games.agents + views exclude scripted | implementer | issue-219-neon-agents | PR #221 | in review + HOLD (live: sync-neon from scratch worktree applies schema)
 - #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | implementing (after #219 for Neon section)
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
@@ -99,6 +99,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Hosting: HF Space polter-dev/societysim NOT created; Pages enabled but never deployed (404); pages.yml is workflow_dispatch only, never run; repo has NO HF_TOKEN secret. Asked Marcus to set secret + OK a smoke deploy with fixture.
 - Marcus HF token now fine-grained 'sim-write': repo.write on polter-dev OK; MISSING inference permission (HF-routed models fail on Marcus's machine). Asked Marcus to tick 'Make calls to Inference Providers'.
 - Asked Marcus: write-scoped HF token + dataset name (suggest polter-dev/societysim-games, public) to lift PR #80 hold and publish after batches.
 - While a batch runs from the main checkout, NEVER git checkout there; live-check PRs from a scratch worktree with a symlinked .env (removed after).
