@@ -1,8 +1,10 @@
-# marcus status (updated 2026-10-10T07:42Z)
+# marcus status (updated 2026-10-10T07:44Z)
 ## Active
-- T4.2 #24 circle table | agent: implementer (opus), done | branch issue-24-circle-table | PR #101 | state: in review. Wiring -> #100.
 - T4.6 #28 mode toggle (+App.tsx) | agent: codex-implementer | branch issue-28-mode-toggle | PR - | state: implementing
-- T4.7 #29 inspector | agent: implementer (sonnet), done | branch issue-29-player-inspector | PR #99 | state: in review. App wiring -> new wiring ticket (blocked on #24 #28 #29 #30).
+- T4.7b #102 Inspector wolf chat mislabeled | agent: codex-implementer | branch issue-102-inspector-wolf-chat | PR - | state: implementing
+- T4.3 #25 speech + chat log | agent: implementer (opus) | branch issue-25-speech-chatlog | PR - | state: implementing
+- T4.4 #26 arrows + tally | agent: codex-implementer | branch issue-26-arrows-tally | PR - | state: implementing
+- T4.5 #27 label pop-ups | agent: implementer (sonnet) | branch issue-27-label-popups | PR - | state: implementing
 - T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR - | state: implementing
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
@@ -10,6 +12,8 @@
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.2 #24 circle table: PR #101 merged. Handoffs on #25 #26 #27 #33. Unblocked+claimed #25 #26 #27.
+- T4.7 #29 inspector: PR #99 merged. Follow-up bug #102 (wolf chat under 'Said publicly').
 - T4.1 #23 viewer scaffold (Augustin's team): PR #93 merged. Handoffs posted on #24-#33 #40. Unblocked #24 #28 #29 #30 (claimed by Marcus). Admin TODO: make `viewer` a required CI check.
 - T1.4c #85 anti-injection: PR #87 merged (3 rounds). Handoffs on #23 #19.
 - T2.2b #83 Gemini sampling (Seth's team): PR #92 merged. Handoffs on #15 #34.
