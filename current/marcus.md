@@ -1,7 +1,6 @@
-# marcus status (updated 2026-10-10T22:14Z)
+# marcus status (updated 2026-10-10T22:19Z)
 ## Active
-- PR #288 (Augustin frontend): our implementer pushing fixes to his branch viewer-illustrated-integration (CI leak-test timeout, DATA_CONTRACT root paths, Handoff). HOLD; merge after re-review. Supersedes most of #121; #120 needs rebase.
-- PR #289 (#281 security) | in review (opus) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
+- PR #289 (#281 security) | fix round 1 (provider error text leak, worst-case reservation for $2 cap, fail closed w/o PLAY_TRUSTED_PROXIES on Space) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
@@ -41,6 +40,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- PR #288 Augustin's illustrated frontend: our fixes pushed to his branch, merged, auto-deployed (society-sim.us live with his UI + index.json). Handoffs #40 #267 #121 #33 #120.
 - #286 deploy data at site root: PR #287 merged; redeployed; society-sim.us/index.json = JSON (fixture), missing .json -> 404.
 - #274 viewer setup form: PR #278 merged (Basic+Advanced outputs run via play --setup). Port notes #33.
 - #258 PR #260, #259 PR #261, #266 PR #269 merged (10p stack). #217 closed (superseded).
@@ -142,6 +142,8 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- HF ORG 'societysim' created (free); Sethery32 invited (write, pending); public dataset societysim/societysim-games. Chore PR switching refs from polter-dev/societysim-games.
+- Don't git pull in main checkout while a batch runs there (10p batch running).
 - Play API error contract: JSON {error: code, message}; codes rate_limited, too_many_games_today, active_game_exists, at_capacity, bot_check_failed, forbidden, budget_exhausted, play_disabled, invalid_request, not_your_turn, game_not_found, unauthorized, payload_too_large (#281 implements, #285 maps). 10p batch actual ~$0.14/game -> full 100 may fit $15.
 - 2026-10-10T21:48Z 10p batch costs ~$0.33/game (est was $0.14). Marcus: option 1 = let it stop at the $15 cap (~45 games). Don't raise cap.
 - 10p stack #256/#260/#261/#269 all APPROVED+HOLD; only blocker = viewer parse.ts accept schema_version 3 + p9 (Augustin; offered on #40). Ask Marcus on return: OK for us to make the minimal parse.ts change if Augustin silent? mixed_v1 early: wolves 5/7, 6/7 end day 2.
