@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T22:38Z)
+# marcus status (updated 2026-10-10T22:39Z)
 ## Active
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 play deploy: PR #314 | in review (opus) + HOLD. Deploy needs PLAY_* keys: Codex prepared forms (OpenAI project societysim-play $10 hard limit; HF inference-only; Gemini in 'sims') but policy needs human click -> Marcus clicks Create + pastes printf lines.
@@ -150,6 +150,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- HEARTBEAT: background `sleep 1200` re-armed on each wake -> rescan open PRs (ours), team:engine/infra ready issues, batch progress. Loop stops only if the session closes; on resume run 'continue' from this file.
 - Marcus: API-key and Neon console tasks -> Codex with computer use (desktop).
 - HF ORG 'societysim' created (free); Sethery32 invited (write, pending); public dataset societysim/societysim-games. PR #290 merged: refs now societysim/societysim-games.
 - Don't git pull in main checkout while a batch runs there (10p batch running).
