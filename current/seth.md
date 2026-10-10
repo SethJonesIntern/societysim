@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T14:30Z)
+# seth status (updated 2026-10-10T15:10Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: changes round 2 (doctor live: only gpt-5-nano/mini pass; fixing HF provider pins, Gemma id, Gemini ids) + HOLD; Seth reruns doctor after
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: changes round 3 (doctor 6/9 pass; 3 deepinfra models need HF unified endpoint, LiteLLM per-provider path rejected) + HOLD
 ## Queue (next up)
 - T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
@@ -17,4 +17,5 @@
 - #72: HF model ids, provider pins (esp. Gemma-4-26B) and price overrides are guesses; doctor unverified. No .env on this machine.
 - Follow-up (client.py): fail fast without retries on missing credentials (LiteLLM treats it as 500 and retries noisily); return parsed=None on empty choices.
 - 2026-10-10 doctor run: HF credits were empty (Seth topped up). HF provider pins wrong for qwen3/llama4/deepseek; gemma id rejected; Gemini ids 404.
+- LiteLLM bug: huggingface/deepinfra/<id> posts to router/deepinfra/v1/chat/completions, which HF rejects. Use router.huggingface.co/v1 with model '<id>:deepinfra'. HF token needed Inference Providers scope + Sethery32 credits.
 ## Codex: n/a
