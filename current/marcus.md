@@ -1,6 +1,8 @@
-# marcus status (updated 2026-10-10T13:08Z)
+# marcus status (updated 2026-10-10T13:09Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
+- #160 societysim highlights (demo moments) | agent: implementer (opus) | branch issue-160-highlights | PR - | state: implementing
+- Offered Marcus (awaiting answer): concurrent turns in orchestrator (after Seth batches finish), AMD mixed batch in-pod.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
