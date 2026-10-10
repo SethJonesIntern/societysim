@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T18:56Z)
+# marcus status (updated 2026-10-10T18:57Z)
 ## Active
-- #236 devui/ throwaway contract test page (static + Neon), served at /devui/ | implementer | issue-236-devui | PR #239 | in review (Neon mode untested live)
 - #234 auto-deploy on viewer/** push + CI deploy from HF dataset | implementer | issue-234-auto-deploy | PR #238 | fix round 1 (HF errors -> fallback to sample w/ warning; per-game labeling)
 - HOSTING LIVE (2026-10-10T18:50Z): deploy.yml run 38077307294 OK. https://societysim.pages.dev 200 (CF project 'societysim' created, custom domains society-sim.us + www attached). HF Space polter-dev/societysim 200. GH Pages mirror polter-dev.github.io/societysim 200. society-sim.us waiting on CF zone activation (NS drew/ines). Content = current main viewer + sample game. Re-run deploy when Augustin's UI lands; real batches deploy locally (wrangler).
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
@@ -20,6 +19,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #236 devui/ test page: PR #239 merged (served at /devui/ after next deploy).
 - #220 DATA CONTRACT: PR #223 merged (2 rounds). docs/DATA_CONTRACT.md + schema/{index,leaderboard,metrics,highlights,narration_index}.schema.json + tests/contract; one version rule (CONTRACT_VERSION = doc = report.SCHEMA). Handoffs #40 #33 #168.
 - #219 Neon games.agents + views exclude scripted: PR #221 merged after live schema apply. Handoff #220.
 - #218 deploy-space.sh --out local staging: PR #222 merged.
