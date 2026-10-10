@@ -2,10 +2,7 @@
 ## Active
 - T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
 - T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
-- T4.11 #33 visual polish | agent: implementer (opus), done | PR #121 | state: in review (opus). TODO after merge: delete orphan branch screenshots/issue-33. Conflicts with #120 on App.tsx/main.tsx: second to merge rebases.
-- T6.2 #40 viewer Neon source | agent: implementer (opus), done | PR #120 | state: in review (opus). Neon proxy only if a bare anon request returns 401. Manual check for Marcus later: curl $VITE_NEON_DATA_API_URL/games?select=game_id,models&limit=3 (needs the Neon schema applied + data synced).
 ## Queue (next up)
-- Viewer: #111 leak test + #33 polish + #31 pages running in parallel (disjoint files), #40 after #31.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
@@ -62,5 +59,5 @@
 - Marcus: if a remaining fix after 2 rounds is small and clear, run round 3 without asking. Only escalate needs-human for real disagreements or large rework.
 - Discord webhook (URL in ~/.config/societysim/discord_webhook, chmod 600; never print it): IMPORTANT ONLY = Marcus must act now: start/run a server (e.g. AMD), provide or fix an API key/token/credential, a blocking decision, or something broken that needs immediate attention. NOT for merges, reviews, milestones or routine progress.
 - Adobe track dropped (2026-10-10). #33 (T4.11 polish) is optional and first to cut. docs/PLAN.md and scripts/setup-labels.sh still mention Adobe; fix in a small docs PR.
-- STOP VIEWER WORK (Marcus, 'wait no'): don't pick up viewer/frontend tickets. PRs #120 (#40 Neon) and #121 (#33 polish) are on HOLD, reviews stopped, auto-merge off. Waiting on Marcus: keep, close or revert the already-merged viewer PRs (#93 #99 #101 #103-#109 #113 #116 #118)?
+- VIEWER = AUGUSTIN ONLY (Marcus): never pick up team:viewer tickets. #33/#40 unassigned and handed back; PRs #120/#121 on hold for him; summary posted on #22. Merged viewer PRs stay as they are unless Marcus says otherwise.
 ## Codex: available (2 agents: #10, #74)
