@@ -2,6 +2,8 @@
 ## Active
 - LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 play Space deploy | implementer | issue-282-play-deploy
+- #292 Research + New game pages | implementer | issue-292-research-newgame-pages
+- Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - Codex chain (bg): AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
 - PR #289 (#281 security) APPROVED (adversarial re-review) | rebasing onto main after #284 (was DIRTY) + HOLD. Then #285 rebase -> merge, then #282 deploy (need PLAY_* keys; Codex creating). NOTE: HF proxy behaviour unverified -> check logs after first deploy. Merge order: #284 -> #289 -> #285, then #282 deploy.
