@@ -1,8 +1,8 @@
-# seth status (updated 2026-10-10T21:05Z)
+# seth status (updated 2026-10-10T21:15Z)
 ## Active
 - T2.1b #94 client robustness | agent: implementer (sonnet) | branch issue-94-client-robustness | PR #96 | state: in review
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges; dry-run being added in #90; caps smoke $1 / selfplay $25 / mixed $40 need Seth OK; review after #90 round 3
-- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR - | state: implementing, PR to get hold until #82 merges
+- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR #98 | state: HOLD; built before #82 revisions. Base-rate column guesses key containing 'base' (fragile). After #82 pushes: resume #20 implementer to rebase and wire exact keys, then review
 - T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: changes round 3 (per-model cost estimate w/ price prior; atomic run_meta) + HOLD. 2 failed rounds already; Seth told, continuing for pace
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: changes (Seth's metric decisions) + HOLD
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
