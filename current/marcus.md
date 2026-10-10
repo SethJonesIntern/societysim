@@ -1,10 +1,10 @@
-# marcus status (updated 2026-10-10T20:20Z)
+# marcus status (updated 2026-10-10T20:22Z)
 ## Active
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
   - #251 deception matrix: PR #257 | in review (opus) (wolves never listeners - author decision)
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
-  - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | implementer | issue-258-seat-followups (stacked on #256)
+  - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | PR #260 | in review + HOLD (stacked on #256). Needs live bank build: 9 Jude lines, 370 chars.
   - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | implementer | issue-259-ten-player-experiment (stacked on #256)
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
