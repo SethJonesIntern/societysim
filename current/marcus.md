@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T12:24Z)
+# marcus status (updated 2026-10-10T12:35Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN, running now: fresh pod, re-cloned. doctor in-pod GREEN (amd-gpt-oss-20b ok; json_schema 2672ms, json_object 1699ms, none 1754ms). 1 selfplay_amd game running but SLOW: 33 tok/s single stream, 32 log lines after ~15+ min. Then: post results on #114/#42/#36, serve.sh stop for hours.
+- T6.3b #114 verify AMD | HUMAN: doctor GREEN in-pod; 1 game COMPLETE on #151 branch (wolves, 62 events, 0 invalid, 0 fallback, tarball 12:29). Need: stats (tok/s, game time), serve.sh stop hours, tarball download; then post on #114/#42/#36 and close #114.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
-- #151 AMD gpt-oss too slow: reasoning_effort low + max_tokens | agent: implementer (opus) | branch issue-151-amd-reasoning-low | PR #152 (hold) | state: in review + Marcus live-testing branch on box (reasoning_effort low, max_tokens 4096->2048). Release hold if game runs fast and valid. After merge: Marcus stops game, git pull, re-run run_on_box.sh
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -11,6 +10,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #151 AMD reasoning_effort low + max_tokens 2048: PR #152 merged after live box check (game done in minutes, 62 events, 0 invalid, 0 fallback).
 - #149 bare-id suspicion line: PR #150 merged. Live gemma check 0 invalid / 134 turns. #35 told to resume.
 - #146 notebook base-rate dedupe: PR #148 merged (verified on scratch overlapping data, 0 mismatches).
 - #136 gemma suspicion (option B prompt): PR #147 merged. Handoff on #35.
