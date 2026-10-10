@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T18:08Z)
 ## Active
-- #218 deploy-space --out local stage | implementer | issue-218-deploy-out | implementing
+- #218 deploy-space --out local stage | implementer | issue-218-deploy-out | PR #222 | in review
 - #219 Neon games.agents + views exclude scripted | implementer | issue-219-neon-agents | PR #221 | in review + HOLD (live: sync-neon from scratch worktree applies schema)
 - #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | implementing (after #219 for Neon section)
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
