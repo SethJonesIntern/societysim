@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T18:12Z)
+# marcus status (updated 2026-10-10T18:15Z)
 ## Active
-- #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | implementing (after #219 for Neon section)
+- #220 CONTRACT docs/DATA_CONTRACT.md + schemas + contract tests | implementer (opus) | issue-220-data-contract | PR #223 | in review (opus): DATA_CONTRACT.md + 5 schemas + tests/contract; no contract_version field, one documented version rule
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
