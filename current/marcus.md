@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T12:00Z)
+# marcus status (updated 2026-10-10T12:01Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
-- #146 notebook base-rate dedupe (follow #145) | agent: codex-implementer | branch issue-146-notebook-base-dedupe | PR - | state: implementing
+- #146 notebook base-rate dedupe (follow #145) | agent: codex-implementer | branch issue-146-notebook-base-dedupe | PR #148 | state: in review (fixture lacks overlapping base votes; reviewer checks on scratch data). After merge: tell Marcus to import notebooks + run metrics.py
 - #136 gemma live check | HUMAN (Marcus or Seth): PR #147 merged; run 3 all-gemma games (cmd on #35), need invalid < 10%. If it fails, file option A (lenient fill) ticket.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). Next: notebook import + metrics.py after #146 merges, then --dashboard, then mlflow.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
