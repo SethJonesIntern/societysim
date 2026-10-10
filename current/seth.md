@@ -1,12 +1,13 @@
-# seth status (updated 2026-10-11T22:00Z)
+# seth status (updated 2026-10-11T23:00Z)
 ## Active
-- PRs: #315 (#296) approved/merging; #317 (#304) re-review; #318 (#306) review; #319 (#307) re-review r2; #320 (#298) review; #321 (#295, supersedes #120) opus review; #297 still implementing
+- PRs: #315 (#296) + #322 (#297) approved but conflicting -> rebasing; #319 (#307) final opus review r3 (inserted_at migration; ask which commands auto-apply schema); #320 (#298) re-review
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - T5.2 #35 | HALF DONE: 45 games clean, $2.19, 'T5.2 done' posted (triggers Marcus post-batch). Not published to polter-dev/societysim-games (token only Sethery32; public = Seth's call). Full 90 = ~$1.70, pending Seth.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- 2026-10-10 merged: #312 (#310 preview CI), #316 (#291 stepper/narration), #317 (#304 ETA), #318 (#306 GPT config, run needs Marcus), #321 (#295 live mode)
 - #232 Windows suite green: PR #237 merged 19:15Z
 - #240 Windows CI job (python-windows, not required): PR #241 merged 19:21Z
 - #230 UTF-8 logs + cp1252 read fallback: PR #235 merged 19:11Z
@@ -66,4 +67,5 @@
 - Old cp1252 logs (smoke 10, selfplay 34) read fine via read_text_lenient but deploy-space copies raw bytes -> viewer may garble them. Consider re-encoding copies at deploy, not raw logs.
 - 2026-10-10 team: 10-player games merged (schema v3, #256), configs #261. Marcus running mixed_v2_10p (100 games, cap $15). Marcus handed T5.3 (7p mixed_v1) back to Seth: his partial run 38 games/$1.93 kept local, not published.
 - #292 was done by someone else (PR #313) before we dispatched. Check for existing PRs before claiming (others work runner tickets too).
+- Filed #323 (engine): anon can read private fields of running batch games in Neon (no RLS).
 ## Codex: n/a
