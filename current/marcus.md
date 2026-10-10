@@ -1,6 +1,7 @@
-# marcus status (updated 2026-10-10T08:26Z)
+# marcus status (updated 2026-10-10T08:29Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: box OK (local vLLM 200, cloudflared up, tunnel meetup-pittsburgh-technologies-thick). Laptop doctor got Cloudflare 530: likely stale URL in .env. Told Marcus to set AMD_VLLM_BASE_URL=<tunnel>/v1 and retry; restart serve.sh if 530 persists.
+- T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
+- T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
 - T6.2 #40 viewer Neon source | agent: implementer (opus) | branch issue-40-neon-viewer | PR - | state: implementing (anon auth unverified; static fallback)
 ## Queue (next up)
