@@ -1,12 +1,13 @@
-# marcus status (updated 2026-10-10T07:51Z)
+# marcus status (updated 2026-10-10T07:53Z)
 ## Active
-- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR #103 | state: round 3 fixed, re-review running
+- T4.6b #100 wire Table/Inspector/Timeline/Speech/ChatLog/Arrows/Tally/Labels into App.tsx | agent: implementer (opus) | branch issue-100-app-wiring | PR - | state: implementing
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.8 #30 timeline: PR #103 merged (3 rounds). Handoffs on #100 #32 #33. #32 #33 now ready; run AFTER #100, sequentially (both touch viewer/src/**).
 - T4.4 #26 arrows + tally: PR #108 merged. Handoffs on #100 #33.
 - T4.5 #27 label pop-ups: PR #105 merged (2 rounds). Handoffs on #100 #30.
 - T4.3 #25 speech + chat log: PR #107 merged. Handoffs on #100 #33 #32.
