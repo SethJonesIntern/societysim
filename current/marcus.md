@@ -1,6 +1,8 @@
-# marcus status (updated 2026-10-10T16:23Z)
+# marcus status (updated 2026-10-10T16:24Z)
 ## Active
-- Survey round 2 (opus): gemini-flash latency/timeouts, review nits, scale check for #37/#42. Filing up to 3 tickets.
+- #181 per-call timeout (URGENT: none now, ~50 min worst case/call) | agent: implementer | branch issue-181-call-timeout | state: implementing
+- #182 CLI polish (sync-neon no args, doctor unpriced warn, '1 votes') | agent: implementer | branch issue-182-cli-polish | state: implementing
+- #183 Databricks ingest skips scripted games; play records agent type | agent: implementer | branch issue-183-ingest-agent-type | state: implementing
 - #177 provider-failure stop | agent: implementer (opus) | branch issue-177-provider-failure | PR #184 | state: in review (opus reviewer); urgent note posted on #35
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
@@ -75,6 +77,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Survey round 2: 100-game scripted batch -> label/report/highlights/ingest dry-run all fine at scale.
 - .env* reads are denied for agents incl. .env.example: orchestrator checks such diffs with masked values. Haiku reviewers misread review-gate failing pre-label; prefer sonnet/opus reviewers.
 - Reviewers: do NOT make live calls that load .env via the CLI unless asked (PR #80 reviewer did a 403 HF create smoke test).
 - Marcus asleep again; work autonomously, ping him only if absolutely needed.
