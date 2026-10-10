@@ -1,9 +1,11 @@
-# seth status (updated 2026-10-11T03:40Z)
+# seth status (updated 2026-10-11T04:00Z)
 ## Active
+- #204 batch invalid-output breaker | implementer (free)
 - T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
+- #205 price prior for unseen models (after #204; both edit runner.py)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - #138 shared HF router limit: PR #143 merged 10:21Z
@@ -51,4 +53,6 @@
 - Seth approved caps: selfplay $8, mixed $10 (expected ~$4/$5). amd-gpt-oss-20b excluded: AMD_VLLM_BASE_URL unset here (Marcus's server).
 - Free pipeline check: `label --no-jev` + `report` on runs/smoke_batch works end to end. self_tag lie rate deepseek 24%, gemma 19%, qwen3 40%.
 - Filed #146 (team:engine): Databricks notebook must match #145 dedupe.
+- #136 (gemma suspicion) is Marcus's, in review. When merged: re-run gemma 3-game check (needs Seth OK for spend) then resume T5.2.
+- Cleaned 44 agent worktrees (~700MB in OneDrive).
 ## Codex: n/a
