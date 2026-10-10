@@ -1,7 +1,8 @@
-# seth status (updated 2026-10-10T23:30Z)
+# seth status (updated 2026-10-11T00:05Z)
 ## Active
+- T2.2b #122 gemma json_schema | agent: implementer (sonnet) | branch issue-122-gemma-schema | PR - | state: implementing; orchestrator runs doctor + live 3-game check
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges. Dry-run on 3863ec1 OK: smoke est $0.90/$1 cap, selfplay $16.79/$25, mixed $20.00/$40 (price-based). Needs review after #90.
-- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: APPROVED round 4 (9ea7897, agent-type fingerprint; verified live). Live smoke: hard-killed at 2 finished/$0.061, resuming. Remove HOLD if resume clean.
+- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: live smoke passed (hard kill at 2 finished; resume 8 played/2 skipped, no dupes, $0.226/$1). Hold removed; merging
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
@@ -35,4 +36,5 @@
 - Windows MAX_PATH: don't make worktrees under the scratchpad (litellm paths too long).
 - Paid tests: only test_real_hf_selfplay (HF_TOKEN) and test_real_jev_on_fixture (TYPESAFE_API_KEY); skipped unless key exported. Proposed live marker + SOCIETYSIM_LIVE=1 guard (awaiting Seth).
 - `batch` defaults to --agents scripted (free); real runs need --agents llm.
+- Live smoke (runs/smoke_batch, kept locally): invalid output gemma4-26b 48% (suspicion returned as object; json_object mode), deepseek 1%, qwen3 3%. Wolves won 9/10. Calls avg 11-20s; ~8-14 min/game; consider max_concurrency 8 in #97 configs.
 ## Codex: n/a
