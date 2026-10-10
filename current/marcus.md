@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T04:33Z)
+# marcus status (updated 2026-10-10T04:45Z)
 ## Active
-- T0.2 #2 contracts | agent: implementer (opus) | branch issue-2-contracts | PR - | state: implementing (critical path: tell Marcus the moment it merges)
+- T0.2 #2 contracts | agent: implementer (opus), done | branch issue-2-contracts | PR #45 | state: in review (opus reviewer). Tell Marcus the moment it merges.
 ## Queue (next up)
 - When T0.2 merges, these become ready: #3 T1.1 (codex), #5 T1.3 (codex), #7 T1.5 (opus), #17 T3.1 (sonnet), #18 T3.2 (opus).
 - Wave 1 (critical chain toward #8 orchestrator): #3 -> Codex, #5 -> Sonnet (only one Codex agent), #7 -> Opus. Then #17 and #18 as slots free up. Check Files touched for overlaps first.
@@ -12,4 +12,6 @@
 - Workflow verified end to end (implementer -> PR -> reviewer -> label -> auto-merge squash). Quirk: reviewer can't gh pr checkout a branch that is checked out in the implementer's worktree; it fetched the head instead.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones, and T0.2 merge.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
+- T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas avoid pattern/min/max, all fields required; mis_elimination labels every voter incl. wolves.
+- Follow-ups from T0.2 (for Marcus): add pythonpath=["tests"] to pyproject; jsonschema only arrives transitively via litellm; gen-schema.sh needs npx.
 ## Codex: available
