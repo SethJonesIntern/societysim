@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T07:35Z)
 ## Active
 - T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 3 (skip letters in DOUBLE ACUTE match), sent to same implementer
-- T4.1 #23 viewer scaffold (Augustin's team, claimed by Marcus) | agent: implementer (opus) | branch issue-23-viewer-scaffold | PR - | state: implementing
+- T4.1 #23 viewer scaffold (Augustin's team) | agent: implementer (opus), done | branch issue-23-viewer-scaffold | PR #93 | state: in review (opus). Modes narrator+villager. Needs admin: make viewer a required CI check after merge.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
