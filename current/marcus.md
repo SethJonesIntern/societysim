@@ -3,7 +3,7 @@
 - T1.8 #10 play CLI + HF smoke | agent: codex-implementer | branch issue-10-play-cli | PR - | state: implementing (cli.py overlaps Seth's PR #73; additive)
 - T1.6c #74 cached across retries | agent: codex-implementer, done | branch issue-74-usage-cached | PR #77 | state: in review. cached still dropped at write (Usage extra=forbid, no schema key): contract ticket filed, blocked on #74.
 - T1.9 #75 invariant sweep (200+ seeded games) | agent: implementer (opus) | branch issue-75-invariant-sweep | PR - | state: implementing
-- T1.4b #76 shared test builders -> helper module | agent: implementer (sonnet) | branch issue-76-test-helpers | PR - | state: implementing
+- T1.4b #76 test helpers | agent: implementer (sonnet), done | branch issue-76-test-helpers | PR #78 | state: in review (717 tests before/after).
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - M1: last ticket #10 now in progress (Seth's #12 merged as PR #72).
