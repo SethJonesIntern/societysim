@@ -1,7 +1,6 @@
 # marcus status (updated 2026-10-10T08:21Z)
 ## Active
 - T6.3b #114 verify AMD on real R9700 | HUMAN: serve.sh done, Marcus put the 2 lines in .env; he's running doctor --model 'amd-*' + 1 play game from his laptop; waiting on his output
-- #95 cached cleanup | agent: implementer (opus), done | PR #117 | state: in review
 - T4.9 #31 game index + leaderboard + Pages/Space deploy | agent: implementer (opus) | branch issue-31-index-leaderboard | PR - | state: implementing
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
 - T6.2 #40 viewer Neon source: CLAIMED, waiting for #31 (same pages files)
@@ -11,6 +10,7 @@
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- #95 cached cleanup (Seth's): PR #117 merged. CachedUsage removed; e2e replay test.
 - T4.6c #111 leak test covers Arrows/Tally/Speech: PR #116 merged. Handoff: none.
 - T2.2c #112 per-model api_base: PR #115 merged. Handoffs on #34 #36 #114.
 - T4.10 #32 accessibility: PR #113 merged (axe 0 violations). Handoffs on #33 #111.
