@@ -1,8 +1,9 @@
-# marcus status (updated 2026-10-10T08:36Z)
+# marcus status (updated 2026-10-10T08:37Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
+- T6.3b #114 verify AMD | HUMAN: Cloudflare tunnels BLOCKED from AUP pods (TLS on 7844 reset; QUIC times out; 443 OK). New path: run games on the box vs localhost:8000. Marcus running uv sync + doctor + selfplay_amd play on the box now.
 - T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
 ## Queue (next up)
+- AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
