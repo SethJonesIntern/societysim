@@ -1,7 +1,7 @@
-# seth status (updated 2026-10-10T13:35Z)
+# seth status (updated 2026-10-10T13:40Z)
 ## Active
 - T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: re-review round 2 + HOLD (Seth must run `societysim doctor` with real keys, fix/drop failing models, then remove hold)
-- T2.3 #13 | agent: implementer (sonnet) | branch issue-13-cache | PR #71 | state: changes round 1 (add full run_game record/replay test)
+- T2.3 #13 | agent: implementer (sonnet) | branch issue-13-cache | PR #71 | state: re-review round 2
 ## Queue (next up)
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
