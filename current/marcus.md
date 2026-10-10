@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T06:47Z)
+# marcus status (updated 2026-10-10T06:49Z)
 ## Active
 - (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
 ## Queue (next up)
@@ -28,4 +28,5 @@
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Human setup: collaborators invited (agus-marmor, SethJonesIntern), gh scopes OK. .env NOT created yet (as of 01:45 EDT). Plugins/MCPs unverified.
 - Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Posted to #39 (grant + verify) and #40 (no anon key, no Authorization header).
+- AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
 ## Codex: available
