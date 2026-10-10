@@ -1,7 +1,8 @@
-# seth status (updated 2026-10-10T15:30Z)
+# seth status (updated 2026-10-10T15:45Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: doctor 9/9 green live on 61f8686 (with PYTHONIOENCODING=utf-8); fixing cp1252 crash in doctor output, then review + HOLD removal by Seth
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: re-review round 3; doctor 9/9 green live on a508baf (default console, exit 0) + HOLD
 ## Queue (next up)
+- NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
