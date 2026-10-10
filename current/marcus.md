@@ -3,6 +3,11 @@
 - T6.3b #114 verify AMD | HUMAN: first game invalid. EVERY call 404'd: model id mismatch (served openai/gpt-oss-20b, sent gpt-oss-20b after #115). Fix #126 (urgent, opus). Then Marcus: git pull on box, doctor, 1 game.
 - #126 AMD model id fix | agent: implementer (opus) | branch issue-126-amd-model-id | PR - | state: implementing (URGENT; Marcus's server is time-boxed)
 - T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
+## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
+- #126 (URGENT, opus): review -> merge -> post handoff on #114 -> Discord Marcus the exact box commands (git pull, doctor, 1 selfplay_amd game). Discord counts as important because he must act.
+- #123 (#119 tunnel http2): reviewer running -> merge -> unblock #124 (AMD local mode, opus) -> dispatch.
+- No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
+- When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
