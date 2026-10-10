@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T17:31Z)
 ## Active
-- #209 README plain-English rewrite (Marcus request) | implementer | issue-209-readme | PR #211 | in review (readability + facts)
+- #209 README plain-English rewrite (Marcus request) | implementer | issue-209-readme | PR #211 | fix round 1 (6 readability/fact fixes)
 - T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
 - #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
