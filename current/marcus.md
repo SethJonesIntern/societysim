@@ -1,8 +1,8 @@
 # marcus status (updated 2026-10-10T04:53Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T1.3 #5 EventLogger | agent: implementer (sonnet) | branch issue-5-event-logger | PR #49 | state: round 1 fixed, re-review round 2 running
-- T1.5 #7 prompts | agent: implementer (opus), done | branch issue-7-prompts | PR #50 | state: in review (opus). Handoff lines for #6 and #8 in PR body.
+- T1.3 #5 EventLogger | branch issue-5-event-logger | PR #49 | state: approved round 2, auto-merge queued. After merge: post handoffs (#8 #39 #10 #15), unblock #39 #48.
+- T1.5 #7 prompts | branch issue-7-prompts | PR #50 | state: approved, auto-merge queued. After merge: post handoffs (#6 #8). Optional follow-up: 0 seers/doctors still described in rules summary.
 - T3.1 #17 jev | agent: implementer (opus), done | branch issue-17-jev | PR #51 | state: in review (opus). Real-API test skipped (no TYPESAFE_API_KEY); needs a live check by someone with the key.
 - T3.2 #18 labeler | agent: implementer (opus) | branch issue-18-labeler | PR - | state: implementing
 ## Queue (next up)
