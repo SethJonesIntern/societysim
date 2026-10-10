@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T12:09Z)
+# marcus status (updated 2026-10-10T12:12Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN (in progress now, fresh pod: re-cloned repo): UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
-- #149 bare ids fix (regression from #147: "Dev (p0)" copied into player, 38% invalid) | agent: implementer (opus) | branch issue-149-bare-ids | PR - | state: implementing. After merge: I re-run 3 gemma games (runs/gemma-149), post numbers on #35.
+- #149 bare ids fix (regression from #147: "Dev (p0)" copied into player, 38% invalid) | agent: implementer (opus) | branch issue-149-bare-ids | PR #150 (label hold) | state: in review + live gemma check on PR head running (runs/gemma-149). Remove hold if invalid < 10%; post numbers on #35.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
