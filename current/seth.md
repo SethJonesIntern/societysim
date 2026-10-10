@@ -1,12 +1,14 @@
-# seth status (updated 2026-10-10T12:40Z)
+# seth status (updated 2026-10-10T12:50Z)
 ## Active
-- T2.1 #11 | agent: implementer (opus) | branch issue-11-client | PR #70 | state: in review
+- (nothing in flight)
 ## Queue (next up)
-- T2.2 #12 (must set real per-minute limits in models.yaml; #70 guessed gemini 60/hf 300/openai 500), T2.3 #13 (after #11); T2.5 #15 (#14 merged; still waiting on Marcus's #10).
+- T2.2 #12 registry (ready; set real RPM limits, Gemini free tier ~10-15) and T2.3 #13 cache (ready). T2.5 #15 waits on Marcus's #10.
 ## Done (last 10)
+- T2.1 #11 client: PR #70 merged 2026-10-10T05:59Z
 - T2.4 #14 assign: PR #69 merged 2026-10-10T05:57Z
 ## Decisions / gotchas
 - gh is at "C:/Program Files/GitHub CLI" and isn't on the Bash PATH; prepend it.
 - PR #69 adds an empty batch/__init__.py (package didn't exist; not in Files touched).
 - uv isn't installed here; agents use `python -m uv`.
+- Follow-up from #70 review: client.py raises IndexError when a provider returns no choices; should return parsed=None with an error.
 ## Codex: n/a
