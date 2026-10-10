@@ -1,7 +1,9 @@
-# seth status (updated 2026-10-10T16:50Z)
+# seth status (updated 2026-10-10T17:00Z)
 ## Active
+- T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR - | state: implementing
 - T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR #73 | state: re-review round 2 + HOLD (needs live Neon check)
 ## Queue (next up)
+- T3.5 #21 publish (ready, unclaimed): start after #73 merges (both edit cli.py). Needs HF write token for live check.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
@@ -20,4 +22,5 @@
 - 2026-10-10 doctor run: HF credits were empty (Seth topped up). HF provider pins wrong for qwen3/llama4/deepseek; gemma id rejected; Gemini ids 404.
 - LiteLLM bug: huggingface/deepinfra/<id> posts to router/deepinfra/v1/chat/completions, which HF rejects. Use router.huggingface.co/v1 with model '<id>:deepinfra'. HF token needed Inference Providers scope + Sethery32 credits.
 - #73 reviewer: anon SELECT on events (incl. wolf channel/scratchpads) is intended per PLAN T6.2 for replay viewer.
+- 2026-10-10: moved #19, #21 (dep #18 merged) and Marcus's #10 (deps #8, #12 merged) from blocked to ready.
 ## Codex: n/a
