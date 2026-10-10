@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-10T23:45Z)
 ## Active
-- DEVPOST: Codex (codex_devpost.md) filling the Devpost submission text in Brave (plain English; no final submit, no uploads/legal fields; visitor play described as built-not-live; no batch results claimed).
+- DEVPOST draft SAVED by Codex (3/5 steps): name, pitch, story, 11 built-with tags, links, tech feedback, AI-use; prizes HF/AMD/Databricks/Neon selected. Marcus TODO: schools, GoDaddy domain Q, Gemini project number, video+images, other prize tracks, terms box, submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - PLAY SPACE DEPLOYED (cpu-basic): https://polter-dev-societysim-play.hf.space ; VITE_PLAY_API_URL set; site redeployed (run 38096020089). NOT PLAYABLE: Neon ledger FileNotFound (schema.sql not shipped) -> remaining_today 0 (fails closed). Client IP = HF proxy 10.16.x.x. HF proxy echoes any CORS origin. -> #332 (opus implementer, issue-332-play-live-fixes). After merge: redeploy (same deploy agent recipe) + live verify.
