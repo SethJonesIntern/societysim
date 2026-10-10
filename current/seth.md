@@ -1,12 +1,12 @@
-# seth status (updated 2026-10-10T23:05Z)
+# seth status (updated 2026-10-10T23:30Z)
 ## Active
 - T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: HOLD until #90 merges. Dry-run on 3863ec1 OK: smoke est $0.90/$1 cap, selfplay $16.79/$25, mixed $20.00/$40 (price-based). Needs review after #90.
-- T3.4 #20 report | agent: implementer (sonnet) | branch issue-20-report (stacked on issue-19-metrics) | PR #98 | state: approved on stacked base; rebasing onto main after #82 squash (conflicts) + small notes; then quick re-review, remove hold
-- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: live check found bug: fingerprint ignores agent type (scripted logs skip an llm rerun). Fix round 4; then live smoke batch with --agents llm ($1 cap, Seth approved) + HOLD
+- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: APPROVED round 4 (9ea7897, agent-type fingerprint; verified live). Live smoke: hard-killed at 2 finished/$0.061, resuming. Remove HOLD if resume clean.
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T3.4 #20 report: PR #98 merged 2026-10-10 (after #82)
 - T3.3 #19 metrics: PR #82 merged 2026-10-10T07:44Z (Seth's metric decisions)
 - T2.1b #94 client robustness: PR #96 merged 2026-10-10T07:44Z
 - T6.1 #39 Neon sink: PR #73 merged 2026-10-10T07:13Z (live Neon check passed)
