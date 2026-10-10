@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T07:19Z)
+# marcus status (updated 2026-10-10T07:20Z)
 ## Active
 - T1.8 #10 play CLI | agent: codex-implementer | branch issue-10-play-cli | PR #81 | state: changes round 1 (fail-fast on missing key; real-HF test too strict), sent to same codex agent
-- T0.6 #79 contract: meta.usage.cached + schema_version bump | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR - | state: implementing
+- T0.6 #79 contract cached + schema_version 2 | agent: implementer (opus), done | branch issue-79-usage-cached-contract | PR #86 | state: in review (opus). Concerns: JSON schema makes cached required (v1 compat); LOG_SCHEMA.md not updated.
 - T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
 - T1.4c #85 contain model-written text in observations (anti-injection) | agent: implementer (opus) | branch issue-85-contain-model-text | PR - | state: implementing
 ## Queue (next up)
