@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T08:59Z)
+# marcus status (updated 2026-10-10T09:01Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
 - T6.4b #131 Databricks dashboard + MLflow as code | agent: implementer (opus) | branch issue-131-databricks-dashboard | PR - | state: implementing (+ find_logs skip-incomplete nit from #129)
-- T6.3f #132 dedupe served-model check | agent: codex-implementer | branch issue-132-dedupe-served-check | PR - | state: implementing
+- T6.3f #132 dedupe served-model check | agent: codex-implementer | branch issue-132-dedupe-served-check | PR #133 | state: in review
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
