@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T07:29Z)
 ## Active
 - T1.9b #88 widen sweep | agent: codex-implementer | branch issue-88-sweep-flags | PR #91 | state: changes round 1 (>=240 games default, env-gated slow sweep), sent to same codex agent
-- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 1 fixed, re-review round 2 running
+- T1.4c #85 anti-injection | branch issue-85-contain-model-text | PR #87 | state: NEEDS-HUMAN after 2 failed rounds. Last fix is tiny: DOUBLE ACUTE name match (observation.py:177) turns letters like ő/ű/ӳ into ' ("Győr"->"Gy'r"); skip Lu/Ll/Lo + test. Waiting on Marcus OK for round 3.
 - T4.1 #23 viewer scaffold (Augustin's team, claimed by Marcus) | agent: implementer (opus) | branch issue-23-viewer-scaffold | PR - | state: implementing
 - T2.2b #83 Gemini 3+ sampling deprecation (Seth's team, claimed by Marcus) | agent: codex-implementer | branch issue-83-gemini-sampling | PR - | state: implementing
 ## Queue (next up)
