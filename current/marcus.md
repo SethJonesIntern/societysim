@@ -1,14 +1,14 @@
-# marcus status (updated 2026-10-10T04:53Z)
+# marcus status (updated 2026-10-10T04:54Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T1.3 #5 EventLogger | branch issue-5-event-logger | PR #49 | state: approved round 2, auto-merge queued. After merge: post handoffs (#8 #39 #10 #15), unblock #39 #48.
-- T1.5 #7 prompts | branch issue-7-prompts | PR #50 | state: approved, auto-merge queued. After merge: post handoffs (#6 #8). Optional follow-up: 0 seers/doctors still described in rules summary.
 - T3.1 #17 jev | agent: implementer (opus), done | branch issue-17-jev | PR #51 | state: in review (opus). Real-API test skipped (no TYPESAFE_API_KEY); needs a live check by someone with the key.
-- T3.2 #18 labeler | agent: implementer (opus) | branch issue-18-labeler | PR - | state: implementing
+- T3.2 #18 labeler | agent: implementer (opus), done | branch issue-18-labeler | PR #52 | state: in review (opus). Jev wiring in cli.py deferred until #17 merges (one-line follow-up: label_batch(batch_dir, jev_for=...)).
+- T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus) | branch issue-48-chore-deps | PR - | state: implementing
 ## Queue (next up)
-- #48 T0.5 chore (pythonpath, jsonschema dep, PLAN.md seat ids): blocked on #5.
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T1.3 #5 EventLogger: PR #49 merged (2 rounds; run_meta per game). Handoffs posted on #8 #39 #10 #15. Unblocked #39 (Seth), #48.
+- T1.5 #7 prompts: PR #50 merged. Handoffs posted on #6 #8.
 - T0.4 #46 handoff convention: PR #47 merged (2 review rounds). Now in AGENTS.md + agent defs on main. Handoff: none.
 - T0.2 #2 contracts: PR #45 merged ~04:50Z. Unblocked #3 #5 #7 #11 #14 #17 #18 #23. Posted handoff comments on #5 #7 #11 #14 #18 #23. Marcus told.
 - T0.3 #43 workflow dry run: PR #44 auto-merged 04:33Z.
@@ -22,4 +22,5 @@
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
 - #48 chore also gets explicit httpx dep (commented on #48).
+- TODO after #17 and #18 both merge: small ticket to wire Jev into `societysim label` (cli.py).
 ## Codex: available (in use on #3)
