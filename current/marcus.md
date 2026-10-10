@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-10T19:26Z)
+# marcus status (updated 2026-10-10T19:47Z)
 ## Active
+- #248 narration v2 (Callum day / Harry night narrators, phrase bank, per-model voices configs/voices.yaml, categories) | implementer (opus) | issue-248-narration-v2 | implementing. Orchestrator runs live --build-bank after review (ElevenLabs free tier 10k chars, 0 used).
 - Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
@@ -106,6 +107,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- ElevenLabs key set (free tier, restricted: TTS + voices read + user read). Marcus likes Callum + Harry (narrators), dislikes Brian. narrate.py doesn't load .env (fixed in #248).
 - NEON AUTH (verified): GET <auth>/token/anonymous -> {token, expires_at}, role anonymous, ~1h; Data API 200 with Bearer. Auth URL https://ep-orange-river-b5l9yq6a.neonauth.c-7.us-east-2.aws.neon.tech/neondb/auth. Repo vars set: VITE_NEON_DATA_API_URL, VITE_NEON_AUTH_URL. Recipe posted on #40 for Augustin. zsh: never name a shell var `path` (clobbers PATH).
 - Seth opened Windows PRs #237 (#232 tests on Windows) + #241 (#240 Windows CI job, hold) - his; leave to his reviewer.
 - 2026-10-10T18:31Z society-sim.us (Porkbun, registered 18:21Z): DNS set by Codex (4 GitHub A + www CNAME), verified at authoritative NS; public resolvers NXDOMAIN-cached up to 30 min. GitHub Pages cname=society-sim.us set; HTTPS enforce pending cert. Pages never deployed yet; Space not created. Waiting on Marcus 'deploy' for smoke deploy (pages.yml workflow_dispatch).
