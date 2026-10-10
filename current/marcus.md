@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T07:22Z)
+# marcus status (updated 2026-10-10T07:23Z)
 ## Active
 - T0.6 #79 contract cached + schema_version 2 | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR #86 | state: round 1 fixed, re-review round 2 running
 - T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
-- T1.4c #85 contain model-written text in observations (anti-injection) | agent: implementer (opus) | branch issue-85-contain-model-text | PR - | state: implementing
+- T1.4c #85 anti-injection | agent: implementer (opus), done | branch issue-85-contain-model-text | PR #87 | state: in review (opus, adversarial). Cap 800 chars.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
