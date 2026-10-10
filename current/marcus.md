@@ -1,13 +1,14 @@
-# marcus status (updated 2026-10-10T13:16Z)
+# marcus status (updated 2026-10-10T13:17Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #157 Neon live sink (Seth issue, taken at Marcus request) | agent: implementer (opus) | branch issue-157-neon-live | PR - | state: implementing
-- #21 PR #80 rebase + default dataset env var (Seth PR, Marcus request) | agent: implementer (opus) | branch issue-21-publish | state: implementing. KEEP hold; repo name + live HF check = Seth.
+- #21 PR #80 rebased (SOCIETYSIM_HF_DATASET default) | reviewer (opus) running | hold stays (Seth). .env.example lacks SOCIETYSIM_HF_DATASET (follow-up).
+- #163 human seat (stretch, pulled forward) | agent: implementer (opus) | branch issue-163-human-seat | PR - | state: implementing
+- #162 ElevenLabs narration script (stretch, pulled forward) | agent: implementer (opus) | branch issue-162-narration | PR - | state: implementing
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
-- STRETCH (after #36/#37): #162 ElevenLabs narration, #163 human-playable seat (#161 closed, no wait). Label `stretch`, status:blocked.
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
