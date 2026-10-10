@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T12:50Z)
+# marcus status (updated 2026-10-10T12:51Z)
 ## Active
-- T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). Marcus running notebook import + run_nb (jobs runs/submit serverless) + --dashboard + mlflow now; commands given.
-- T5.5a #153 DEMO.md draft | agent: implementer (opus) | branch issue-153-demo-draft | PR #156 | state: changes round 1 (narrator view steps, Neon live overclaim, Figma tokens/axe overclaim) sent. Open questions: Neon live not wired (filed #157 for Seth), AMD self-play only, Adobe depends on held #121
+- T6.4 #42 Databricks (fixture data): metrics.py SUCCESS, dashboard published (dashboardsv3/01f1c4a8de811c60854d375219a83fbb), mlflow_batches FAILED (spark.mlflow.modelRegistryUri on serverless). Real batch data still needed.
+- #158 mlflow serverless fix | agent: implementer (opus) | branch issue-158-mlflow-serverless | PR - | state: implementing. After merge: Marcus re-imports mlflow_batches + run_nb mlflow_batches
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -10,6 +10,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- T5.5a #153 DEMO.md draft: PR #156 merged (2 rounds). Handoffs on #38 #37.
 - T5.4a #154 README draft: PR #155 merged (2 rounds). Handoff on #37.
 - T6.3b #114 AMD verified + CLOSED: doctor green, 1 valid game (0 invalid), stats posted on #114, handoffs on #42 #36. Server stopped ~12:38 box time (0.41 h served, $0).
 - #151 AMD reasoning_effort low + max_tokens 2048: PR #152 merged after live box check (game done in minutes, 62 events, 0 invalid, 0 fallback).
