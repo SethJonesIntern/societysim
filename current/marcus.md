@@ -1,18 +1,15 @@
-# marcus status (updated 2026-10-10T21:15Z)
+# marcus status (updated 2026-10-10T21:22Z)
 ## Active
 - MARCUS SPLIT (2026-10-10T21:07Z): we own viewer LOGIC (headless + unstyled components) in files not in Augustin's PRs #120/#121; Augustin = UI design only; PR bodies carry 'Port notes for Augustin'.
-  - #256 MERGED (10 seats + parse.ts). Rebasing #260/#261/#269 --onto main (implementers), then re-approve, lift holds, merge; #278 after #269. Then run mixed_v2_10p.
-  - #274 setup form: PR #278 | HOLD (stacked on #269), review pending
+  - 10p BATCH RUNNING: mixed_v2_10p --agents llm --neon started 2026-10-10T21:22Z, log .cache/mixed_v2_10p.log, cap $15. Afterwards: postbatch (jev? check TypeSafe), HF publish polter-dev/societysim-games, DEPLOY_SOURCE, narrate highlight game, Databricks live (#268 hold), close #37/#42/#216.
+  - #274 setup form: PR #278 | rebasing onto main, then review
 - Credits advice given: HF top up ~$10, OpenAI >= $5, Gemini pay-as-you-go, check TypeSafe (~5000 Jev calls/100 games).
-- #266 Game settings: PR #269 | APPROVED + HOLD (stacked on #256). n_players 7..10 (accepted).
 - Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception: PR #268 | APPROVED + HOLD (live check with real mixed_v1 data after batch: Marcus pastes --runs + --notebooks + --dashboard from PR head worktree)
 - AMD: Marcus emailed AUP about the missing image.
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
-  - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | PR #260 | APPROVED + HOLD (stacked on #256); Jude bank built live (ElevenLabs total 4337/10k chars).
-  - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | APPROVED + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
   - HF token sim-write: Inference Providers ticked (Codex). doctor: all 9 cloud models OK.
   - AMD 8060S pod: AUP ImagePullBackOff (auplc-code-gpu:latest not found) - platform issue; retry later / AUP support. PR #255 (#253 llama.cpp mode) MERGED (offline-tested only; live check pending a working AUP pod).
   - T5.3 #36: handed back to Seth (Marcus). Our run stopped: 38 finished / 8 interrupted, $1.93, runs/mixed_v1 local only (7p sample, not published).
@@ -35,6 +32,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #258 PR #260, #259 PR #261, #266 PR #269 merged (10p stack). #217 closed (superseded).
 - #270 viewer stepper + clipsForSeqRange: PR #277 merged. Port notes on #267.
 - #250 10 seats: PR #256 merged (incl. viewer parse.ts v3/p9). Handoffs #33 #40 #216 #251.
 - #273 viewer deception module: PR #279 merged. Port notes #33.
