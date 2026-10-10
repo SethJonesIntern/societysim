@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T17:44Z)
+# marcus status (updated 2026-10-10T17:46Z)
 ## Active
-- T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
+- T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
 - #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
