@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T23:11Z)
+# marcus status (updated 2026-10-10T23:12Z)
 ## Active
 - #323 SECURITY: PR #325 CHANGES round 1: failed games must stay redacted (resume reruns same seed). Fix sent to the same implementer. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
 - #326 flaky test_security seed | PR #327 | in review
@@ -8,7 +8,7 @@
 - #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
-- AMD: POD RUNNING (SJC hub, Basic GPU notebook, 8060S gfx1151, 180-min runtime, started ~23:10Z). serve.sh --backend llamacpp downloading ~12GB model, log ~/amd-serve.out. Follow-up Codex (codex_amd4.md) launched early (Marcus said download done): wait ready -> doctor -> run_on_box selfplay_amd_strix 5 games (#308).
+- AMD: POD RUNNING (SJC, Basic GPU notebook, 8060S gfx1151, 180-min runtime from ~23:10Z). llamacpp server READY, doctor PASSED (incl json_schema). 5-game run_on_box batch STARTED; Codex (codex_amd4.out) monitoring. Next: collect outputs, Speed table numbers (#308).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
