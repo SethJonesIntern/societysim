@@ -1,11 +1,10 @@
-# marcus status (updated 2026-10-10T23:29Z)
+# marcus status (updated 2026-10-10T23:31Z)
 ## Active
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
-- AMD #308: 5 games done (8060S, llama.cpp, gpt-oss-20b MXFP4): avg 7.30s/call, 39.5 tok/s, 138s/game. Tarball ~/Desktop/projects/hackathons/societysim-amd/selfplay_amd_strix.tar.gz. PR #331 (docs) in review; after merge post the #253 comment drafted in the PR body. All 5 games: wolf wins by parity on day 2. Pod still running (180m from ~23:10Z).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
@@ -48,6 +47,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #308 AMD: PR #331 MERGED (README/PITCH numbers); results posted on #253. Pod (SJC 8060S) still up until ~02:10Z.
 - #309 PR #328 play alerts MERGED; repo secret PLAY_ALERT_WEBHOOK_URL set (Space secret at deploy). Closed #168 (done via #276+#291). Note on #294: sync labels to Neon (live labels table empty).
 - #323 Neon privacy: PR #325 merged, schema APPLIED LIVE (1ce1e8a) + verified via Data API (events/labels 403; running game public-only; labels_public empty for running). Site redeployed 23:18Z. Note: labels table empty in Neon (no labels synced yet).
 - Closed stale PR #120 (superseded by #321).
