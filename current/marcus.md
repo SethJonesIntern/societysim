@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T13:28Z)
+# marcus status (updated 2026-10-10T13:32Z)
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- #172 human out of rankings + abandoned->failed in Neon | agent: implementer (sonnet) | branch issue-172-human-filter | PR - | state: implementing
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -11,6 +10,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #172 human seats out of rankings: PR #173 merged. Note on #42 (dashboard would show human row).
 - #163 human seat (CLI --human-seat pX): PR #169 merged. Handoff #40.
 - #170 .env.example: ELEVENLABS_API_KEY + SOCIETYSIM_HF_DATASET, PR #171 merged.
 - #157 Neon live (--neon on play/batch): PR #166 merged after live check. Handoffs #40 #35 #36.
