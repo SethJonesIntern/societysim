@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T18:53Z)
+# marcus status (updated 2026-10-10T18:54Z)
 ## Active
 - #236 devui/ throwaway contract test page (static + Neon), served at /devui/ | implementer | issue-236-devui | implementing
-- #234 auto-deploy on viewer/** push + CI deploy from HF dataset | implementer | issue-234-auto-deploy | implementing
+- #234 auto-deploy on viewer/** push + CI deploy from HF dataset | implementer | issue-234-auto-deploy | PR #238 | in review (opus)
 - HOSTING LIVE (2026-10-10T18:50Z): deploy.yml run 38077307294 OK. https://societysim.pages.dev 200 (CF project 'societysim' created, custom domains society-sim.us + www attached). HF Space polter-dev/societysim 200. GH Pages mirror polter-dev.github.io/societysim 200. society-sim.us waiting on CF zone activation (NS drew/ines). Content = current main viewer + sample game. Re-run deploy when Augustin's UI lands; real batches deploy locally (wrangler).
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
