@@ -1,8 +1,9 @@
-# marcus status (updated 2026-10-10T20:42Z)
+# marcus status (updated 2026-10-10T20:45Z)
 ## Active
+- #266 Game settings Basic/Advanced backend + game_setup schema + models_catalog (stacked on #256) | implementer (opus) | issue-266-game-settings
+- Discord ping to Augustin sent (204): UI to reflect 10 seats/v3, settings screen, Neon token, narration, deception heatmap.
 - #262 Databricks deception_pairs + notebook + heatmap | implementer | issue-262-databricks-deception
-- #263 docs/PITCH.md talk track + slides + sponsor beats + Q&A | implementer | issue-263-pitch
-- #264 report 'Research answers' + metrics summary.research | implementer | issue-264-research-answers
+- #263 pitch: PR #265 | fix round 1 (exact hook quote)
 - AMD: Marcus emailed AUP about the missing image.
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
@@ -31,6 +32,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #264 research answers: CLOSED not planned (Marcus: don't worry about answers portion).
 - #251 deception matrix: PR #257 merged (2 rounds). Early: gemini-flash, qwen3 lies followed often; gpt-oss-120b, gpt-5-nano, gemma fool nobody (n small). Handoffs #33 #250, note #216.
 - #252 README research question: PR #254 merged.
 - #248 narration v2: PR #249 merged with live bank (106 clips, 3967/10k ElevenLabs chars used). Handoff #168.
