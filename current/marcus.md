@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T20:00Z)
+# marcus status (updated 2026-10-10T20:02Z)
 ## Active
-- #248 narration v2 (Callum day / Harry night narrators, phrase bank, per-model voices configs/voices.yaml, categories) | implementer (opus) | issue-248-narration-v2 | PR #249 | APPROVED (opus) + HOLD. Bank BUILT LIVE (106 clips, 2.7MB, 3967 chars used of 10k) in scratch wt249; implementer committing narration/bank/ -> then re-approve + lift hold. Fixture narrated 13/13 from bank, 0 chars.
 - Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
@@ -20,6 +19,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #248 narration v2: PR #249 merged with live bank (106 clips, 3967/10k ElevenLabs chars used). Handoff #168.
 - #246 Neon anon JWT wiring: PR #247 merged; redeployed with VITE_NEON_* vars. Handoff #40.
 - #244 MIT license: PR #245 merged. Handoff #33 (viewer package.json).
 - #242 deploy passes VITE_NEON_* repo vars + devui config.json: PR #243 merged. Neon Data API needs JWT (no anon) -> viewer runtime token fetch flagged on #40; Marcus to check Neon console anon toggle.
