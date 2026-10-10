@@ -1,8 +1,9 @@
-# seth status (updated 2026-10-10T12:50Z)
+# seth status (updated 2026-10-10T12:55Z)
 ## Active
-- (nothing in flight)
+- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR - | state: implementing
+- T2.3 #13 | agent: implementer (sonnet) | branch issue-13-cache | PR - | state: implementing
 ## Queue (next up)
-- T2.2 #12 registry (ready; set real RPM limits, Gemini free tier ~10-15) and T2.3 #13 cache (ready). T2.5 #15 waits on Marcus's #10.
+- T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
 - T2.1 #11 client: PR #70 merged 2026-10-10T05:59Z
 - T2.4 #14 assign: PR #69 merged 2026-10-10T05:57Z
