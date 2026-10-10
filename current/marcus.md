@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T20:26Z)
+# marcus status (updated 2026-10-10T20:31Z)
 ## Active
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player: PR #256 | HOLD (viewer parse.ts rejects p9 + schema_version 3 -> breaks live site; urgent on #40 for Augustin). APPROVED (opus), HOLD stays until viewer parse.ts accepts v3/p9.
-  - #251 deception matrix: PR #257 | in review (opus) (wolves never listeners - author decision)
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
   - #258 seat follow-ups (narrate/report/publish p9 + bank lines 'Jude') | PR #260 | APPROVED + HOLD (stacked on #256); Jude bank built live (ElevenLabs total 4337/10k chars).
   - #259 10p experiment configs + human_vs_ai_10p + free 7v10 comparison (posts on #216, supersedes #217) | PR #261 | APPROVED + HOLD (stacked on #256). 7v10 scripted: days 2.65->4.38, statements 20.5->53.4, votes 10.2->26.7, wolf win 90%->80%. mixed_v2_10p: 100 games, est $13.62/$15; GPT pairs sparse.
@@ -28,6 +27,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #251 deception matrix: PR #257 merged (2 rounds). Early: gemini-flash, qwen3 lies followed often; gpt-oss-120b, gpt-5-nano, gemma fool nobody (n small). Handoffs #33 #250, note #216.
 - #252 README research question: PR #254 merged.
 - #248 narration v2: PR #249 merged with live bank (106 clips, 3967/10k ElevenLabs chars used). Handoff #168.
 - #246 Neon anon JWT wiring: PR #247 merged; redeployed with VITE_NEON_* vars. Handoff #40.
