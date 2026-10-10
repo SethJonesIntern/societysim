@@ -1,10 +1,10 @@
-# seth status (updated 2026-10-11T02:20Z)
+# seth status (updated 2026-10-11T02:50Z)
 ## Active
 - T5.2 #35 selfplay | PAUSED after 1 game ($0.016): watchdog hit gemma 16/74 invalid (suspicion missing players). Engine issue #136 filed. Seth to choose: continue w/ gemma (30% limit) / drop gemma / wait for #136. NO PAID RUNS while Seth asleep (2026-10-11 night).
-- #137 live-test guard (infra) | implementer | no spend
+- #137 live-test guard | PR #141 approved, auto-merge
 - #138 shared HF router limit | implementer
-- #36 mixed cap $40->$10 | implementer (config only, no run)
-- #139 report games-vs-seats + base-rate denominator | implementer
+- #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
+- #139 report fixes | PR #142 in review (gemma 0% = real but 1 base day, all abstains)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
