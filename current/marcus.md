@@ -1,10 +1,8 @@
-# marcus status (updated 2026-10-10T05:30Z)
+# marcus status (updated 2026-10-10T05:39Z)
 ## Active
-- (nothing in flight; burn window ended 01:30 EDT, holding dispatch for Marcus)
+- T1.7 #9 RandomAgent + integration test | agent: codex-implementer | branch issue-9-scripted-agent | PR - | state: implementing
+- T1.6b #65 fallback meta + lone wolf | agent: implementer (opus) | branch issue-65-fallback-meta-lone-wolf | PR - | state: implementing
 ## Queue (next up)
-- READY: #9 T1.7 RandomAgent + seeded integration test (agent:codex) -> Codex.
-- READY: #65 T1.6b meta.fallback seer/doctor + lone-wolf prompt (opus).
-- #9 and #65 may both touch tests/unit/test_orchestrator.py / orchestrator.py: check overlap before running in parallel.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Chain: #8 -> #9 (codex) -> #10 (also needs Seth's #12).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
@@ -21,10 +19,10 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
-- Burn window (00:48-01:30 EDT) ended; cap lift was for burn mode only. Ask Marcus before resuming at full speed.
+- Burn window (00:48-01:30 EDT) ended; cap lift was for burn mode only. Marcus said keep going (after 01:30): normal loop continues.
 - NEW CONVENTION (Marcus, merged via #47): implementers write a "## Handoff" section in the PR body; after merge, the orchestrator posts each line as an issue comment "**Handoff from #N (PR #M):**" on the target issue. Urgent ones go out right away. Implementers read issue comments before starting. Do this for every merge from now on.
 - Workflow verified end to end. Reviewer can't gh pr checkout a branch held by the implementer's worktree, so fetch the head instead.
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Collaborators not invited yet; plugins/MCPs and .env are human setup steps.
-## Codex: available (idle; no rate limit hit tonight)
+## Codex: available (in use on #9)
