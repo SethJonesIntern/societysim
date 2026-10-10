@@ -2,7 +2,7 @@
 ## Active
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
-- #174 calibrated prior | agent: implementer | branch issue-174-calibrated-prior | state: implementing
+- #174 calibrated prior | agent: implementer | branch issue-174-calibrated-prior | PR #180 | state: in review
 - #175 Neon replay + sync-neon --delete | agent: implementer | branch issue-175-neon-replay | PR #178 | state: in review + HOLD (orchestrator live check: sync-neon --delete fixture-0001 neon-live-check on PR head, then lift hold)
 - #176 unfinished games in label/report/highlights | agent: implementer | branch issue-176-unfinished-games | PR #179 | state: in review
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
