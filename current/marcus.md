@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-10T21:58Z)
+# marcus status (updated 2026-10-10T22:03Z)
 ## Active
+- #286 BUG live site has no index.json (SPA html fallback) - blocks Augustin's integrated UI | implementer | issue-286-deploy-data. After merge: redeploy + curl index.json.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
   - #280 server core: PR #284 | APPROVED (opus, no leak across all roles) + HOLD (merge together with #281 security; never deploy core alone)
   - #281 security/limits + NO LIVE NEON LEAK for visitor games (public events only until game_end) + CI --extra server | implementer (opus) | issue-281-play-security (from #280 branch)
