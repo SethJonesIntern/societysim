@@ -1,5 +1,7 @@
-# seth status (updated 2026-10-12T00:20Z)
+# seth status (updated 2026-10-12T00:50Z)
 ## Active
+- #334 test env isolation (opus) | INCIDENT 2026-10-10: #319 agent's pytest found the repo .env via dotenv walking up from .claude/worktrees and ran live-Neon tests. Verified read-only: no schema change, no test rows, Marcus's batch unaffected. All agent pytest runs must prefix empty creds + PYTHON_DOTENV_DISABLED=1 until #334 merges.
+- #319 | final review after view fix (inserted_at last col of events_public)
 - #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
 - #35 10p config: PR #329 approved/merging (fingerprint ff44a523b8a74550 = live run)
 - #319 approved/merging (prune; migrate only via --migrate --apply). #315 approved/merging.
