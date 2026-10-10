@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-10T19:00Z)
+# seth status (updated 2026-10-10T19:30Z)
 ## Active
-- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR - | state: implementing (overlaps #80 on cli.py; rebase after #80)
+- T2.5 #15 | agent: implementer (sonnet) | branch issue-15-batch | PR #90 | state: in review + HOLD (live 10-game mixed batch needs keys + batch yaml from #16; may conflict with #80 on cli.py)
 - T3.3 #19 | agent: implementer (opus) | branch issue-19-metrics | PR #82 | state: reviewer would approve but its gh review/label/merge call was blocked by permissions (draft in scratchpad/rev82.md); HOLD; Seth to decide metric defs (#1 A self_tag, #3 keep + base rate, #4 keep, #5 OpenSkill fix as follow-up?) and approve
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
@@ -26,4 +26,5 @@
 - 2026-10-10: moved #19, #21 (dep #18 merged) and Marcus's #10 (deps #8, #12 merged) from blocked to ready.
 - Neon DB (neondb) now holds fixture-0001 test data from the live check (1 game, 118 events, 8 labels); shows in leaderboard. Clean up before real batches.
 - pytest doesn't load .env; live Neon test needs NEON_DATABASE_URL exported.
+- #15's issue test command uses configs/selfplay_smoke.yaml (a game config, not BatchConfig); needs a #16 batch yaml.
 ## Codex: n/a
