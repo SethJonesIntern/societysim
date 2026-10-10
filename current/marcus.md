@@ -1,6 +1,5 @@
 # marcus status (updated 2026-10-10T18:02Z)
 ## Active
-- #217 configs/human_vs_ai.yaml (human + 6 models) | implementer | issue-217-human-vs-ai | implementing
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
@@ -11,6 +10,7 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- #217 human_vs_ai.yaml - PARKED by Marcus (just curious; later for demo).
 - #216 balance proposal (9p / day-first) - PARKED until after #36; Marcus wants to test whether models win more depending on others' lies. Free scripted comparison first, then ~$1-2 paid pilot (needs approval).
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
