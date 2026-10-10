@@ -2,7 +2,7 @@
 ## Active
 - #323 SECURITY: PR #325 CHANGES round 1: failed games must stay redacted (resume reruns same seed). Fix sent to the same implementer. Live mode verified OK on events_public. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
 - #326 flaky test_security seed | PR #327 | in review
-- #309 play alerts (unblocked by #314 merge) | implementer sonnet | issue-309-play-alerts
+- #309 play alerts | PR #328 | in review. After merge: set repo secret + Space secret PLAY_ALERT_WEBHOOK_URL (from ~/.config/societysim/discord_webhook via stdin, never print), VITE_PLAY_API_URL var after deploy.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
