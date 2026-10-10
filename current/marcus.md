@@ -2,7 +2,7 @@
 ## Active
 - T1.8 #10 play CLI | agent: codex-implementer, done | branch issue-10-play-cli | PR #81 | state: in review (opus; requiring fail-fast on missing provider key). Manual smoke after merge: uv run societysim play --config configs/selfplay_smoke.yaml --agents llm
 - T0.6 #79 contract: meta.usage.cached + schema_version bump | agent: implementer (opus) | branch issue-79-usage-cached-contract | PR - | state: implementing
-- T1.9 #75 invariant sweep (200+ seeded games) | agent: implementer (opus) | branch issue-75-invariant-sweep | PR - | state: implementing
+- T1.9 #75 invariant sweep | agent: implementer (opus), done | branch issue-75-invariant-sweep | PR #84 | state: in review (opus, mutation-testing). 240 games, 0 invariant failures, ~7 s.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - M1: last ticket #10 now in progress (Seth's #12 merged as PR #72).
