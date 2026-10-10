@@ -1,11 +1,11 @@
-# marcus status (updated 2026-10-10T07:44Z)
+# marcus status (updated 2026-10-10T07:45Z)
 ## Active
 - T4.6 #28 mode toggle (+App.tsx) | agent: codex-implementer | branch issue-28-mode-toggle | PR - | state: implementing
 - T4.7b #102 Inspector wolf chat mislabeled | agent: codex-implementer | branch issue-102-inspector-wolf-chat | PR - | state: implementing
 - T4.3 #25 speech + chat log | agent: implementer (opus) | branch issue-25-speech-chatlog | PR - | state: implementing
 - T4.4 #26 arrows + tally | agent: codex-implementer | branch issue-26-arrows-tally | PR - | state: implementing
 - T4.5 #27 label pop-ups | agent: implementer (sonnet) | branch issue-27-label-popups | PR - | state: implementing
-- T4.8 #30 timeline | agent: codex-implementer | branch issue-30-timeline | PR - | state: implementing
+- T4.8 #30 timeline | agent: codex-implementer, done | branch issue-30-timeline | PR #103 | state: in review (opus; deciding lie-marker scope; implementer's filter edit was classifier-denied, not worked around).
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
