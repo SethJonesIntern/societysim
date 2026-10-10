@@ -102,7 +102,6 @@ section[data-tint] {
   background-color: var(--table-bg);
   color: var(--table-ink);
   isolation: isolate;
-  overflow: hidden;
   box-shadow: inset 0 0 0 1px var(--shade);
   transition:
     background-color var(--dur-light) var(--ease-out),
@@ -113,6 +112,7 @@ section[data-tint]::after {
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   z-index: -1;
   pointer-events: none;
   transition: opacity var(--dur-light) var(--ease-out);
