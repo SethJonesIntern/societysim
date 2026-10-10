@@ -1,11 +1,11 @@
-# seth status (updated 2026-10-10T15:45Z)
+# seth status (updated 2026-10-10T16:10Z)
 ## Active
-- T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: re-review round 3; doctor 9/9 green live on a508baf (default console, exit 0) + HOLD
+- T6.1 #39 | agent: implementer (sonnet) | branch issue-39-neon | PR - | state: implementing
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
-- T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
+- T2.2 #12 registry/doctor: PR #72 merged 2026-10-10T07:03Z (doctor 9/9 live; Seth OK'd orchestrator removing hold)
 - T2.3 #13 cache: PR #71 merged 2026-10-10T06:08Z
 - T2.1 #11 client: PR #70 merged 2026-10-10T05:59Z
 - T2.4 #14 assign: PR #69 merged 2026-10-10T05:57Z
