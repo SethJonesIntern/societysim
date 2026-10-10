@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-10T23:34Z)
+# marcus status (updated 2026-10-10T23:36Z)
 ## Active
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- PLAY LIVE DEPLOY: BLOCKED on TURNSTILE_SECRET_KEY missing from .env (PLAY_* x3 present; dry-run clean; CORS hardcoded OK; trusted proxies = private ranges). Codex opened CF Turnstile widget societysim-play page; Marcus to click Show -> copy -> pbpaste into .env. Then re-dispatch deploy agent.
+- PLAY LIVE DEPLOY: Marcus added TURNSTILE_SECRET_KEY. Deploy agent RETRY running (deploy, health/limits, CORS, client IP, VITE_PLAY_API_URL, site redeploy).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
