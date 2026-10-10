@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T22:42Z)
+# marcus status (updated 2026-10-10T22:44Z)
 ## Active
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- #282 play deploy: PR #314 | approved BUT blocker fix round (cp -R could upload untracked .env to public Space -> git ls-files allowlist + hard-fail; Dockerfile WORKDIR before USER) + HOLD. Deploy needs PLAY_* keys: Codex prepared forms (OpenAI project societysim-play $10 hard limit; HF inference-only; Gemini in 'sims') but policy needs human click -> Marcus clicks Create + pastes printf lines.
+- #282 play deploy: PR #314 | fix round 3 (Dockerfile CMD must be --factory create_app; refuse dirty allowlisted files / use git archive) + HOLD. Upload allowlist verified (no .env/symlink leaks).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - AMD: AUP still ImagePullBackOff (auplc-code-gpu:latest not found) on 8060S - waiting AUP email reply / other link. (old) Codex chain: AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
@@ -150,6 +150,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Avatar prompts given to Marcus (storybook painterly, #03271e bg, circle-croppable 1024px, 11 characters, MJ/GPT-image/FLUX/SDXL variants) -> files to viewer/public/avatars/<model>.png (#302).
 - HEARTBEAT: background `sleep 1200` re-armed on each wake -> rescan open PRs (ours), team:engine/infra ready issues, batch progress. Loop stops only if the session closes; on resume run 'continue' from this file.
 - Marcus: API-key and Neon console tasks -> Codex with computer use (desktop).
 - HF ORG 'societysim' created (free); Sethery32 invited (write, pending); public dataset societysim/societysim-games. PR #290 merged: refs now societysim/societysim-games.
