@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T12:06Z)
+# marcus status (updated 2026-10-10T12:08Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN (in progress now, fresh pod: re-cloned repo): UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
-- #136 gemma live check | HUMAN (Marcus or Seth): PR #147 merged; run 3 all-gemma games (cmd on #35), need invalid < 10%. If it fails, file option A (lenient fill) ticket.
+- #136 gemma live check | FAILED: 50 invalid / 133 turns (38%, worse than 8.8-22% before). Diagnosing reasons from runs/gemma-136 (opus agent), then likely option A ticket. #35 stays paused.
 - T6.4 #42 Databricks: HUMAN: Marcus has keys; gave him fixture live-test steps (source .env, ingest --fixture, import notebooks, run metrics, --dashboard, mlflow). Fixture ingest: rows built OK; upload failed on DATABRICKS_HOST (had ?o= query, then DNS error). Fixture ingest LIVE OK (4 tables created). ON HOLD by Marcus (#146 merged; next = notebook import, metrics.py, --dashboard, mlflow). Do not prompt until he resumes.
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
