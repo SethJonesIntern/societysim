@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T06:23Z)
+# marcus status (updated 2026-10-10T06:45Z)
 ## Active
 - (nothing in flight: every remaining engine/infra ticket is blocked on other teams)
 ## Queue (next up)
@@ -27,4 +27,5 @@
 - T0.2 decisions: seat ids in accuse/vote; one death event each (death_reveal at night end, target null if none, or elimination); wolf turn = wolf_chat then wolf_proposal; meta.usage covers all attempts; response schemas closed, all fields required, no pattern/min/max; mis_elimination labels every voter incl. wolves.
 - Marcus: max 3 implementers, one Codex agent, prefer Codex for agent:codex. Only interrupt for needs-human, rate limits, milestones.
 - Human setup: collaborators invited (agus-marmor, SethJonesIntern), gh scopes OK. .env NOT created yet (as of 01:45 EDT). Plugins/MCPs unverified.
+- Neon project created (id lucky-recipe-36397516, branch production, us-east-2). Data API has NO anon key: requests without an Authorization header run as Postgres role `anonymous` (GRANT USAGE/SELECT; no Neon Auth). Docs conflict on whether it still needs a JWT, so the Neon spike must verify. VITE_NEON_ANON_KEY likely unused. Not yet posted to #39.
 ## Codex: available
