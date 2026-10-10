@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T16:47Z)
+# marcus status (updated 2026-10-10T16:48Z)
 ## Active
-- #192 label skips Jev on scripted games + shows Jev call count | agent: implementer | branch issue-192-label-jev-guard | state: implementing
+- #192 label skips Jev on scripted games + shows Jev call count | agent: implementer | branch issue-192-label-jev-guard | PR #195 | state: in review
 - #193 DEMO.md refresh | agent: implementer | branch issue-193-demo-refresh | state: implementing
 - #194 review follow-ups (dry-run unpriced warn, test nits) | agent: implementer | branch issue-194-review-followups | state: implementing
 - Waiting on Seth: #191 gemini-flash decision (asked on #35), paid runs #35->#36, PR #80 hold.
