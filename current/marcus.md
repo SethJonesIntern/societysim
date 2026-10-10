@@ -1,5 +1,7 @@
-# marcus status (updated 2026-10-10T22:23Z)
+# marcus status (updated 2026-10-10T22:29Z)
 ## Active
+- MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
+- Codex chain (bg): AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
 - PR #289 (#281 security) | fix round 1 (provider error text leak, worst-case reservation for $2 cap, fail closed w/o PLAY_TRUSTED_PROXIES on Space) + HOLD. Merge order: #284 -> #289 -> #285, then #282 deploy.
 - Seth T5.2 DONE (45 games, $2.19, 7p; detection: gemini-flash .91, deepseek .85, llama4 .81). NOT published. Asked Seth on #35 to publish to Sethery32/societysim-games (--public). Then: fetch_hf_batch -> postbatch -> Databricks live (#268) -> DEPLOY_SOURCE. Recommended Marcus create HF org for team write.
 - VISITOR PLAY (Marcus approved 2026-10-10T21:37Z: HF Docker Space, $2/day, rate limits + security):
@@ -142,6 +144,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Marcus: API-key and Neon console tasks -> Codex with computer use (desktop).
 - HF ORG 'societysim' created (free); Sethery32 invited (write, pending); public dataset societysim/societysim-games. PR #290 merged: refs now societysim/societysim-games.
 - Don't git pull in main checkout while a batch runs there (10p batch running).
 - Play API error contract: JSON {error: code, message}; codes rate_limited, too_many_games_today, active_game_exists, at_capacity, bot_check_failed, forbidden, budget_exhausted, play_disabled, invalid_request, not_your_turn, game_not_found, unauthorized, payload_too_large (#281 implements, #285 maps). 10p batch actual ~$0.14/game -> full 100 may fit $15.
