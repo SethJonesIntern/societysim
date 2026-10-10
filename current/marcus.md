@@ -1,6 +1,7 @@
-# marcus status (updated 2026-10-10T08:40Z)
+# marcus status (updated 2026-10-10T08:41Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: 1 in-pod game done (wolves won), but 234 invalid_output / 78 fallbacks in 351 events = poor. Suspect gpt-oss reasoning eating max_tokens. Waiting on sample invalid_output lines from Marcus.
+- T6.3b #114 verify AMD | HUMAN: first game invalid. EVERY call 404'd: model id mismatch (served openai/gpt-oss-20b, sent gpt-oss-20b after #115). Fix #126 (urgent, opus). Then Marcus: git pull on box, doctor, 1 game.
+- #126 AMD model id fix | agent: implementer (opus) | branch issue-126-amd-model-id | PR - | state: implementing (URGENT; Marcus's server is time-boxed)
 - T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
 ## Queue (next up)
 - AMD local-mode ticket filed (blocked on #119/PR #123): serve.sh local mode + run_on_box.sh + README.
