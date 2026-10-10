@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T07:53Z)
+# marcus status (updated 2026-10-10T07:57Z)
 ## Active
-- T4.6b #100 wire Table/Inspector/Timeline/Speech/ChatLog/Arrows/Tally/Labels into App.tsx | agent: implementer (opus) | branch issue-100-app-wiring | PR - | state: implementing
+- T4.6b #100 App wiring | agent: implementer (opus), done | branch issue-100-app-wiring | PR #109 | state: in review (opus)
 - T6.3 #41 AMD vLLM serve script + amd-* model entry | agent: implementer (opus) | branch issue-41-amd-vllm | PR - | state: implementing (scripts only; Marcus runs on box; cloudflared tunnel for reachability; default model gpt-oss-20b)
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
