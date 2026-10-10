@@ -374,6 +374,14 @@ files.
   it here with a schema.
 - `agreement.json` (self-tag vs Jev agreement), `report/report.md`, the report PNGs and `.cache/`.
 
+## Static assets
+
+`/avatars/<model>.webp` (512x512) is one portrait per model name in `configs/models.yaml`, plus
+`/avatars/human.webp`. They live in `viewer/public/avatars/` and ship with the viewer build, not
+the data batch. If a model has no file, the UI should fall back to its current monogram medallion
+(wiring in #302), so a missing file is never an error. `amd-strix-gpt-oss-20b` reuses
+`amd-gpt-oss-20b.webp` (alias handled in the UI, #302). These are images, not JSON, so they are outside the contract version: no bump.
+
 ## Game setup
 
 The settings screen has two modes. Both produce one **setup JSON**, a `GameSetup`
