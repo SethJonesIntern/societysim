@@ -2,6 +2,7 @@
 ## Active
 - T2.2 #12 | agent: implementer (sonnet) | branch issue-12-registry | PR #72 | state: APPROVED, auto-merge on, blocked only by HOLD (Seth: run doctor with real keys, then remove hold) (Seth must run `societysim doctor` with real keys, fix/drop failing models, then remove hold)
 ## Queue (next up)
+- T6.1 #39 Neon sink (ready, unclaimed): start right after #72 merges (both edit cli.py). Seth chose to wait.
 - T2.5 #15 batch runner: waits on Marcus's T1.8 #10.
 ## Done (last 10)
 - T2.3 #13 cache: PR #71 merged 2026-10-10T06:08Z
