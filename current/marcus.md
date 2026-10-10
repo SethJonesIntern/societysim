@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T18:41Z)
+# marcus status (updated 2026-10-10T18:43Z)
 ## Active
-- HOSTING = CLOUDFLARE PAGES (Marcus decision): #228 workflow wrangler deploy | PR #229 (new .github/workflows/deploy.yml; `gh workflow run deploy.yml -f targets=cloudflare`) | fix round 1 (CI = sample only; real data via local deploy-space --out + wrangler login/deploy; commit-dirty; token off cmdline). Codex (computer use) doing: CF zone society-sim.us Free, API token -> secret CLOUDFLARE_API_TOKEN (via pbpaste), var CLOUDFLARE_ACCOUNT_ID, Porkbun NS -> Cloudflare. Then: unset GitHub Pages cname, run deploy.
+- HOSTING = CLOUDFLARE PAGES: PR #229 merged (deploy.yml). CF zone society-sim.us Free, NS drew/ines.ns.cloudflare.com set at Porkbun (zone pending). CLOUDFLARE_ACCOUNT_ID var set. CLOUDFLARE_API_TOKEN NOT set (Codex policy needs human approval) -> Marcus creates token + pbpaste|gh secret set. GitHub Pages cname removed. Then: gh workflow run deploy.yml.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
 - T5.2 #35: Seth is running it himself. Marcus's run STOPPED at Marcus's request (Ctrl-C, 19 done/8 interrupted, $0.91). Partial runs/selfplay_baseline local only - don't publish/ingest. Neon: our 27 game ids get overwritten by Seth's --neon/sync-neon; delete if he runs without Neon. Don't run #36 unless asked.
