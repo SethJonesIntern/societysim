@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T16:34Z)
+# marcus status (updated 2026-10-10T16:37Z)
 ## Active
-- #189 gemini-flash models.yaml tuning | agent: implementer | branch issue-189-gemini-flash-latency | state: implementing (orchestrator runs live doctor on PR head before merge, hold)
-- #188 cache must not store failed calls | agent: implementer | branch issue-188-cache-no-errors | PR #190 | state: fix round 1 (keep caching bad-parse replies; only skip zero-token failures)
+- #189 gemini-flash | PR #191 (structured: none) | HOLD: live none 37.7s, json_schema 85s, json_object 429 (rate-limited key). Seth decides drop/keep/paid key (asked on #35).
+- #188 cache must not store failed calls | agent: implementer | branch issue-188-cache-no-errors | PR #190 | state: fixed (bad-parse still cached), in review
 - T6.4 #42 Databricks: all 4 steps work live on fixture (ingest, metrics SUCCESS, dashboard published, mlflow SUCCESS). Remaining: re-run on real T5.2/T5.3 batches.
 - #21 PR #80: rebased + APPROVED, auto-merge on, HOLD stays (Seth). HF token in Marcus .env = 403 on create (no write scope). Follow-ups after merge: .env.example var, friendly hub error.
 - Preflight for #35/#36 posted on #35: doctor 9/9 ok (gemini-flash 45-389s/call!), dry-run est 4x high but guard uses actual spend.
