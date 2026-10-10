@@ -9,7 +9,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
-- T6.3b #114 AMD verified + CLOSED: doctor green, 1 valid game (0 invalid), stats posted on #114, handoffs on #42 #36. Server stopped ~12:38 box time (~0.55 h).
+- T6.3b #114 AMD verified + CLOSED: doctor green, 1 valid game (0 invalid), stats posted on #114, handoffs on #42 #36. Server stopped ~12:38 box time (0.41 h served, $0).
 - #151 AMD reasoning_effort low + max_tokens 2048: PR #152 merged after live box check (game done in minutes, 62 events, 0 invalid, 0 fallback).
 - #149 bare-id suspicion line: PR #150 merged. Live gemma check 0 invalid / 134 turns. #35 told to resume.
 - #146 notebook base-rate dedupe: PR #148 merged (verified on scratch overlapping data, 0 mismatches).
