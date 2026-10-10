@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T09:03Z)
+# marcus status (updated 2026-10-10T09:06Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
-- T6.4b #131 Databricks dashboard + MLflow as code | agent: implementer (opus) | branch issue-131-databricks-dashboard | PR - | state: implementing (+ find_logs skip-incomplete nit from #129)
+- T6.4b #131 Databricks dashboard + MLflow as code | agent: implementer (opus) | branch issue-131-databricks-dashboard | PR #134 | state: in review (untested against a real workspace)
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
