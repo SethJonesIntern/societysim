@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Node
+node_modules/
+viewer/dist/
+
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Game output
+runs/
+.cache/
+
+# Agent scratch
+.codex/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

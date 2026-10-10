@@ -1,0 +1,32 @@
+name: review-gate
+
+# Required check. Passes only when the review agent has added `review:approved`.
+# A new push removes the label, so every change gets re-reviewed.
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  review-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Drop stale approval on new commits
+        if: github.event.action == 'synchronize' && contains(github.event.pull_request.labels.*.name, 'review:approved')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --remove-label review:approved
+          echo "New commits after approval; needs another review."
+          exit 1
+      - name: Check approval and hold labels
+        if: github.event.action != 'synchronize' || !contains(github.event.pull_request.labels.*.name, 'review:approved')
+        env:
+          LABELS: ${{ toJson(github.event.pull_request.labels.*.name) }}
+        run: |
+          echo "Labels: $LABELS"
+          if echo "$LABELS" | grep -q '"hold"'; then echo "PR is on hold."; exit 1; fi
+          if echo "$LABELS" | grep -q '"review:approved"'; then echo "Approved."; exit 0; fi
+          echo "Waiting for review:approved."; exit 1
