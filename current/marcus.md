@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T17:35Z)
+# marcus status (updated 2026-10-10T17:37Z)
 ## Active
-- #213 report/postbatch wording nits | implementer | issue-213-report-wording | PR #214 | in review
 - T5.2 #35 RUNNING (Marcus OK'd, Marcus keys): `batch --config configs/selfplay_baseline.yaml --agents llm --neon` started 2026-10-10T17:25Z, log .cache/selfplay_baseline.log, out runs/selfplay_baseline/. Cap $8. Next: label (Jev), report, highlights, post results on #35, then unblock #36 (Marcus said keep going -> run #36 too).
 - #198 Databricks one-command notebook runner | agent: implementer | branch issue-198-databricks-run | PR #199 | state: in review + HOLD. Dry-run OK on head 19f98c7. Live check = Marcus pastes: fixture --notebooks on PR head (script needs exported env; I don't source .env).
 - Waiting on Seth: PR #80 hold. Augustin: viewer.
@@ -16,6 +15,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #213 report/postbatch wording: PR #214 merged.
 - #209 README plain-English rewrite: PR #211 merged (2 rounds). Handoff #37 (TODO(batch) placeholders).
 - #201 report headlines/speed table: PR #210 merged. Handoffs #37 #38.
 - #202 postbatch: PR #208 merged (python -m societysim.analysis.postbatch runs/<b> [--jev]). Handoffs #37 #38.
