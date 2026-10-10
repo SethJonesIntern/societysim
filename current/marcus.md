@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T04:58Z)
+# marcus status (updated 2026-10-10T04:59Z)
 ## Active
-- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR #54 | state: changes round 1 (seer_results = night number per LOG_SCHEMA; set->list for determinism; drop model shuffle; handoff rewrite), sent to same codex agent
+- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR #54 | state: round 1 fixed, re-review round 2 running
 - T3.3 #55 Jev wiring | agent: implementer (opus), done | branch issue-55-jev-label-wiring | PR #56 | state: in review. Handoff to #19 (filter source: jev).
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
