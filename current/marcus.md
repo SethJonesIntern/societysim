@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T23:00Z)
+# marcus status (updated 2026-10-10T23:02Z)
 ## Active
 - #323 SECURITY: Neon anon can read private fields of RUNNING batch games (our 10p batch streaming now) | implementer (opus) | issue-323-neon-anon-privacy | option A (views/grants). Orchestrator applies live + verifies via Data API.
-- Avatars: PR #324 fix round (no false fallback claim) then merge.
+- Avatars: PR #324 re-APPROVED, auto-merge queued (CI pending). Then post handoffs (#302 Augustin wiring).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 play deploy: PR #314 APPROVED but python CI failing -> fix round; NOT merged yet. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> run scripts/deploy-play-space.sh --dry-run then real (env from .env via Codex/terminal), set VITE_PLAY_API_URL, check proxy client IPs in Space logs.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
