@@ -1,8 +1,7 @@
-# marcus status (updated 2026-10-10T09:01Z)
+# marcus status (updated 2026-10-10T09:03Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: UPDATED Discord sent (in-pod: serve.sh + run_on_box.sh, read -rs key). Waiting on Marcus to run it and post results on #114.
 - T6.4b #131 Databricks dashboard + MLflow as code | agent: implementer (opus) | branch issue-131-databricks-dashboard | PR - | state: implementing (+ find_logs skip-incomplete nit from #129)
-- T6.3f #132 dedupe served-model check | agent: codex-implementer | branch issue-132-dedupe-served-check | PR #133 | state: in review
 ## Overnight plan (Marcus asleep from ~08:50Z; keep going until rate-limited)
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
@@ -11,6 +10,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- T6.3f #132 dedupe served-model check: PR #133 merged.
 - T6.3d #124 AMD local mode: PR #130 merged (run_on_box.sh, 127.0.0.1). Handoffs on #114 and #21 (publish needs default repo or --repo for PUBLISH=1).
 - T6.4a #127 Databricks ingest + notebook: PR #129 merged (0 metric mismatches locally). Handoff on #42. Human later: PAT + ingest + import notebook (notebooks/databricks/README.md). Nit: find_logs picks up in-progress batch logs.
 - T6.3e #126 AMD model id: PR #128 merged (kept served id openai/openai/gpt-oss-20b). Handoffs on #114 #124. Optional nits: play checks /models once per seat; doctor prints name twice.
