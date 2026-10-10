@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T04:59Z)
+# marcus status (updated 2026-10-10T05:00Z)
 ## Active
-- T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR #54 | state: round 1 fixed, re-review round 2 running
+- T1.1 #3 rules/state | branch issue-3-rules-state | PR #54 | state: approved round 2, auto-merge queued. After merge: handoffs #4 #6 #8 #14, unblock #4 -> codex. Open: rules allow self-vote but #50 prompts say vote targets = other living players; #4 must reconcile per RULES.md.
 - T3.3 #55 Jev wiring | agent: implementer (opus), done | branch issue-55-jev-label-wiring | PR #56 | state: in review. Handoff to #19 (filter source: jev).
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
