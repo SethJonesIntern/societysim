@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-10T19:16Z)
+# marcus status (updated 2026-10-10T19:17Z)
 ## Active
+- #244 MIT LICENSE + pyproject + README (data CC-BY-4.0) | implementer | issue-244-license | implementing
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
