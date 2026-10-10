@@ -1,14 +1,14 @@
-# marcus status (updated 2026-10-10T07:31Z)
+# marcus status (updated 2026-10-10T07:34Z)
 ## Active
-- T1.9b #88 widen sweep | agent: codex-implementer | branch issue-88-sweep-flags | PR #91 | state: round 1 fixed (243 default, 657 slow), re-review round 2 running
 - T1.4c #85 anti-injection | branch issue-85-contain-model-text | PR #87 | state: NEEDS-HUMAN after 2 failed rounds. Last fix is tiny: DOUBLE ACUTE name match (observation.py:177) turns letters like ő/ű/ӳ into ' ("Győr"->"Gy'r"); skip Lu/Ll/Lo + test. Waiting on Marcus OK for round 3.
 - T4.1 #23 viewer scaffold (Augustin's team, claimed by Marcus) | agent: implementer (opus) | branch issue-23-viewer-scaffold | PR - | state: implementing
-- T2.2b #83 Gemini sampling (Seth's team) | agent: codex-implementer (edited directly, Codex not used) | branch issue-83-gemini-sampling | PR #92 | state: in review
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T2.2b #83 Gemini sampling (Seth's team): PR #92 merged. Handoffs on #15 #34.
+- T1.9b #88 widen sweep: PR #91 merged (243 default games, 657 slow behind SOCIETYSIM_SLOW=1).
 - T0.6 #79 contract: meta.usage.cached, schema_version 2: PR #86 merged (2 rounds; cached optional, v1 logs still validate, LOG_SCHEMA.md v2). Handoffs on #15 #19 #20 #23 #39.
 - T1.9 #75 invariant sweep: PR #84 merged (240 games, 14/14 mutations caught). Handoffs on #15 #34. Follow-up #88.
 - **M1 Engine + self-play COMPLETE (8/8).** T1.8 #10 play CLI: PR #81 merged (2 rounds; fail-fast on missing keys). Handoffs on #15 #34 #23. Marcus told.
@@ -38,4 +38,5 @@
 - AMD = AUP Learning Cloud Dublin (hosted Jupyter/VSCode GPU, 60k-minute quota, likely no public port). #41 probably runs vLLM on localhost inside the workspace. VSCode Server GPU spawn failed with ErrImagePull (platform-side, 02:59 EDT); trying LLM Course notebook. Waiting on Marcus's probe output (GPU/VRAM, vllm, HF access). Note posted on #41.
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
 - Marcus 03:25 EDT: keep going until rate limited, no permission needed. Marcus claimed #23 and #83 himself (classifier blocked me) and is adding Bash(gh issue:*)/Bash(gh pr:*) allow rules. Cross-team work OK: take idle ready tickets from other teams.
+- PR #89 (Marcus's README edit): my approve was blocked by the classifier (Self-Approval). Gave Marcus the commands, or he can ask for a reviewer.
 ## Codex: available (2 agents: #10, #74)
