@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T04:52Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T1.3 #5 EventLogger | agent: implementer (sonnet), done | branch issue-5-event-logger | PR #49 | state: in review (opus). Open question: run_meta per batch vs per game, reviewer decides.
+- T1.3 #5 EventLogger | agent: implementer (sonnet) | branch issue-5-event-logger | PR #49 | state: changes round 1 (run_meta per game at runs/<batch_id>/<game_id>.run_meta.json; fix handoff lines), sent to same implementer
 - T1.5 #7 prompts | agent: implementer (opus) | branch issue-7-prompts | PR - | state: implementing
 - T3.1 #17 jev | agent: implementer (opus) | branch issue-17-jev | PR - | state: implementing
 - T3.2 #18 labeler | agent: implementer (opus) | branch issue-18-labeler | PR - | state: implementing
