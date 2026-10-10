@@ -1,15 +1,15 @@
-# marcus status (updated 2026-10-10T08:23Z)
+# marcus status (updated 2026-10-10T08:26Z)
 ## Active
-- T6.3b #114 verify AMD | HUMAN: doctor --model 'amd-*' hung (blinking cursor). Gave Marcus a curl /models probe (200 = slow first compile, 401 = key mismatch, 000 = tunnel dead or URL changed, 404 = missing /v1). Waiting on result.
-- T4.9 #31 index + leaderboard + deploy | agent: implementer (opus), done | PR #118 | state: in review (opus). Human TODO later (not urgent): enable GitHub Pages (Actions source), set HF_SPACE, pick the Space id.
+- T6.3b #114 verify AMD | HUMAN: box OK (local vLLM 200, cloudflared up, tunnel meetup-pittsburgh-technologies-thick). Laptop doctor got Cloudflare 530: likely stale URL in .env. Told Marcus to set AMD_VLLM_BASE_URL=<tunnel>/v1 and retry; restart serve.sh if 530 persists.
 - T4.11 #33 visual polish + design tokens | agent: implementer (opus) | branch issue-33-visual-polish | PR - | state: implementing (avoids pages/, data/, App.test.ts)
-- T6.2 #40 viewer Neon source: CLAIMED, waiting for #31 (same pages files)
+- T6.2 #40 viewer Neon source | agent: implementer (opus) | branch issue-40-neon-viewer | PR - | state: implementing (anon auth unverified; static fallback)
 ## Queue (next up)
 - Viewer: #111 leak test + #33 polish + #31 pages running in parallel (disjoint files), #40 after #31.
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
 - Optional later: move shared test game builder from test_leakage.py into conftest; real token count for observation budget.
 ## Done (last 10)
+- T4.9 #31 index + leaderboard + deploy: PR #118 merged. Handoffs on #40 #33 #37. Human TODO later: enable Pages (Actions), set HF_SPACE, pick the Space id.
 - #95 cached cleanup (Seth's): PR #117 merged. CachedUsage removed; e2e replay test.
 - T4.6c #111 leak test covers Arrows/Tally/Speech: PR #116 merged. Handoff: none.
 - T2.2c #112 per-model api_base: PR #115 merged. Handoffs on #34 #36 #114.
