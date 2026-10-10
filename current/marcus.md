@@ -1,9 +1,8 @@
-# marcus status (updated 2026-10-10T20:10Z)
+# marcus status (updated 2026-10-10T20:13Z)
 ## Active
 - MARCUS AWAY (2026-10-10T20:10Z). Balance/research push:
   - #250 10-player games (2 wolves+8; human: 2 wolves among 1 human+9 models), p0-p9 contract bump | implementer (opus) | issue-250-ten-players
   - #251 pairwise deception matrix (liar x listener) | implementer (opus) | issue-251-deception-matrix
-  - #252 README research question near top | implementer | issue-252-readme-research
   - #253 AMD llama.cpp mode for Strix Halo 8060S | implementer | issue-253-amd-llamacpp
   - Next after #250: 10p batch config + human_vs_ai 10p (fold #217) + free 7v10 scripted comparison (#216 un-parked)
   - Codex chain (bg): HF token sim-write add Inference Providers -> then AMD 8060S pod launch + probe + background downloads (llama.cpp Vulkan zip + gpt-oss-20b GGUF), then STOP. Relay probe to #253.
@@ -26,6 +25,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #252 README research question: PR #254 merged.
 - #248 narration v2: PR #249 merged with live bank (106 clips, 3967/10k ElevenLabs chars used). Handoff #168.
 - #246 Neon anon JWT wiring: PR #247 merged; redeployed with VITE_NEON_* vars. Handoff #40.
 - #244 MIT license: PR #245 merged. Handoff #33 (viewer package.json).
