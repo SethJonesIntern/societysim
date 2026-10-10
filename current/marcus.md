@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-10T08:31Z)
+# marcus status (updated 2026-10-10T08:36Z)
 ## Active
 - T6.3b #114 verify AMD | HUMAN: root cause = pod blocks UDP so QUIC tunnel never registers (530). Marcus restarted cloudflared with --protocol http2 -> new URL screensaver-converted-installing-campus; waiting for registration count + doctor.
-- T6.3c #119 serve.sh: http2 tunnel + registration/e2e check | agent: codex-implementer | branch issue-119-tunnel-http2 | PR - | state: implementing
+- T6.3c #119 tunnel http2 fix | agent: codex-implementer, done | PR #123 | state: in review (opus). Needs a real pod re-run later.
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
 - Other blocked: #37 (needs #20 #21), #38 human (demo), #41 (needs #12), #42 (needs #19 #21 #34).
