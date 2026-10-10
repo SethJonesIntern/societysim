@@ -1,6 +1,5 @@
-# marcus status (updated 2026-10-10T18:57Z)
+# marcus status (updated 2026-10-10T19:01Z)
 ## Active
-- #234 auto-deploy on viewer/** push + CI deploy from HF dataset | implementer | issue-234-auto-deploy | PR #238 | fix round 1 (HF errors -> fallback to sample w/ warning; per-game labeling)
 - HOSTING LIVE (2026-10-10T18:50Z): deploy.yml run 38077307294 OK. https://societysim.pages.dev 200 (CF project 'societysim' created, custom domains society-sim.us + www attached). HF Space polter-dev/societysim 200. GH Pages mirror polter-dev.github.io/societysim 200. society-sim.us waiting on CF zone activation (NS drew/ines). Content = current main viewer + sample game. Re-run deploy when Augustin's UI lands; real batches deploy locally (wrangler).
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
 - Watcher (bg, started 2026-10-10T17:57Z, 10h max): polls #35 every 5 min for close or Seth comment 'done/finished/complete' -> Discord webhook to Marcus with next steps. Asked Seth on #35 to post 'T5.2 done' + publish to polter-dev/societysim-games.
@@ -19,6 +18,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #234 auto-deploy on viewer/** + DEPLOY_SOURCE=hf:<dataset>: PR #238 merged; redeployed (run 38078034118) -> pages.dev + /devui/ 200. Handoff #37.
 - #236 devui/ test page: PR #239 merged (served at /devui/ after next deploy).
 - #220 DATA CONTRACT: PR #223 merged (2 rounds). docs/DATA_CONTRACT.md + schema/{index,leaderboard,metrics,highlights,narration_index}.schema.json + tests/contract; one version rule (CONTRACT_VERSION = doc = report.SCHEMA). Handoffs #40 #33 #168.
 - #219 Neon games.agents + views exclude scripted: PR #221 merged after live schema apply. Handoff #220.
@@ -102,6 +102,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- society-sim.us 404: CF zone imported GitHub A records (proxied to GitHub). Codex fixing CF DNS: @ and www CNAME -> societysim.pages.dev (proxied). Standing DNS permission extends to Cloudflare DNS for society-sim.us.
 - 2026-10-10T18:31Z society-sim.us (Porkbun, registered 18:21Z): DNS set by Codex (4 GitHub A + www CNAME), verified at authoritative NS; public resolvers NXDOMAIN-cached up to 30 min. GitHub Pages cname=society-sim.us set; HTTPS enforce pending cert. Pages never deployed yet; Space not created. Waiting on Marcus 'deploy' for smoke deploy (pages.yml workflow_dispatch).
 - 2026-10-10T18:30Z Marcus standing OK: Codex (computer use) may confirm DNS record deletions/edits on society-sim.us (Porkbun) by itself in future runs. Scope: that domain's DNS records only. Still no purchases/billing/nameservers/other domains. Prompt template: scratchpad codex_dns3.md (add the standing confirmation line).
 - Hosting: HF Space polter-dev/societysim NOT created; Pages enabled but never deployed (404); pages.yml is workflow_dispatch only, never run; repo has NO HF_TOKEN secret. Asked Marcus to set secret + OK a smoke deploy with fixture. Recommended: Cloudflare domain -> GitHub Pages via CNAME (primary URL) + HF Space for sponsor; skip Vercel. Domain = society-sim.us on Porkbun (moved from GoDaddy/MLH), bare domain; Codex+computer use setting Porkbun DNS (4 A + www CNAME). HF_TOKEN repo secret SET 18:08Z; gave him GitHub Pages A records + www CNAME. Next: set Pages cname via gh api once full domain known.
