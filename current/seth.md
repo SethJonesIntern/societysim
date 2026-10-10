@@ -1,11 +1,12 @@
-# seth status (updated 2026-10-11T00:50Z)
+# seth status (updated 2026-10-11T01:00Z)
 ## Active
+- T5.1 #34 smoke | orchestrator | results posted on #34 from live run; confirmation rerun after #125 merges
 - T2.2b #122 gemma json_schema | agent: implementer (sonnet) | branch issue-122-gemma-schema | PR #125 | state: in review + HOLD; doctor ok (json_schema); live 3-game all-gemma check running (cap $0.50)
-- T2.6 #16 configs | agent: implementer (sonnet) | branch issue-16-configs (stacked on issue-15-batch) | PR #97 | state: approved; hold removed; merging
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T2.6 #16 configs: PR #97 merged 2026-10-10T08:42Z
 - T2.5 #15 batch runner: PR #90 merged 2026-10-10T08:34Z (4 review rounds + live smoke)
 - T3.4 #20 report: PR #98 merged 2026-10-10 (after #82)
 - T3.3 #19 metrics: PR #82 merged 2026-10-10T07:44Z (Seth's metric decisions)
@@ -38,4 +39,5 @@
 - `batch` defaults to --agents scripted (free); real runs need --agents llm.
 - Live smoke (runs/smoke_batch, kept locally): invalid output gemma4-26b 48% (suspicion returned as object; json_object mode), deepseek 1%, qwen3 3%. Wolves won 9/10. Calls avg 11-20s; ~8-14 min/game; consider max_concurrency 8 in #97 configs.
 - Follow-up idea: huggingface + hosted_vllm both hit the HF router, so up to 16 concurrent calls; consider a shared router limit in models.yaml.
+- THROUGHPUT (T5.1): concurrency 4 -> 19 games/h, 20 RPM total (gemma 10, qwen 5.3, deepseek 4.7), no 429s. Game 5-15 min (median ~9), ~$0.02/game (dry-run prior ~4x high). At concurrency 8 expect ~35-40 games/h -> T5.2/T5.3 ~2.5-3h each.
 ## Codex: n/a
