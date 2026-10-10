@@ -2,7 +2,6 @@
 ## Active
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 play deploy: PR #314 | in review (opus) + HOLD. Deploy needs PLAY_* keys: Codex prepared forms (OpenAI project societysim-play $10 hard limit; HF inference-only; Gemini in 'sims') but policy needs human click -> Marcus clicks Create + pastes printf lines.
-- #292: PR #313 | in review
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - AMD: AUP still ImagePullBackOff (auplc-code-gpu:latest not found) on 8060S - waiting AUP email reply / other link. (old) Codex chain: AMD pod setup (pick non-890M; llamacpp if Strix; start download in bg, stop) -> PLAY_* keys (OpenAI project $10 budget, HF inference-only, Gemini restricted) appended to .env via pbpaste.
@@ -48,6 +47,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #292 Research + New game pages: PR #313 merged (auto-deploys). Styling note to Augustin on #301.
 - PR #288 Augustin's illustrated frontend: our fixes pushed to his branch, merged, auto-deployed (society-sim.us live with his UI + index.json). Handoffs #40 #267 #121 #33 #120.
 - #286 deploy data at site root: PR #287 merged; redeployed; society-sim.us/index.json = JSON (fixture), missing .json -> 404.
 - #274 viewer setup form: PR #278 merged (Basic+Advanced outputs run via play --setup). Port notes #33.
