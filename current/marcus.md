@@ -1,9 +1,11 @@
-# marcus status (updated 2026-10-10T23:04Z)
+# marcus status (updated 2026-10-10T23:08Z)
 ## Active
-- #323 SECURITY: Neon anon can read private fields of RUNNING batch games (our 10p batch streaming now) | implementer (opus) | issue-323-neon-anon-privacy | option A (views/grants). Orchestrator applies live + verifies via Data API.
-- Avatars: PR #324 re-APPROVED, auto-merge queued (CI pending). Then post handoffs (#302 Augustin wiring).
+- #323 SECURITY: PR #325 (events_public view; anon revoked on events; viewer uses events_public) in REVIEW. Asked reviewer to confirm #321 live-mode paths use events_public. After merge: orchestrator applies neon/schema.sql live from worktree + verify anon denied via Data API.
+- #326 flaky test_security seed (filed from #314 review) | implementer sonnet | issue-326-server-test-seed
+- #309 play alerts (unblocked by #314 merge) | implementer sonnet | issue-309-play-alerts
+- AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- #282 play deploy: PR #314 CI green (Windows-only skips on 3 staging tests); re-review dispatched. Flaky: test_security one-active-game timeout once. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> run scripts/deploy-play-space.sh --dry-run then real (env from .env via Codex/terminal), set VITE_PLAY_API_URL, check proxy client IPs in Space logs.
+- #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - AMD: POD RUNNING (SJC hub, Basic GPU notebook, 8060S gfx1151, 180-min runtime, started ~23:10Z). serve.sh --backend llamacpp downloading ~12GB model, log ~/amd-serve.out. Follow-up Codex (codex_amd4.md) launched early (Marcus said download done): wait ready -> doctor -> run_on_box selfplay_amd_strix 5 games (#308).
@@ -49,6 +51,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- PR #324 avatars MERGED (handoffs posted #302 #297). PR #314 play deploy MERGED (handoffs posted).
 - #292 Research + New game pages: PR #313 merged (auto-deploys). Styling note to Augustin on #301.
 - PR #288 Augustin's illustrated frontend: our fixes pushed to his branch, merged, auto-deployed (society-sim.us live with his UI + index.json). Handoffs #40 #267 #121 #33 #120.
 - #286 deploy data at site root: PR #287 merged; redeployed; society-sim.us/index.json = JSON (fixture), missing .json -> 404.
