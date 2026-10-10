@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-10T04:54Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T3.1 #17 jev | agent: implementer (opus), done | branch issue-17-jev | PR #51 | state: in review (opus). Real-API test skipped (no TYPESAFE_API_KEY); needs a live check by someone with the key.
+- T3.1 #17 jev | branch issue-17-jev | PR #51 | state: approved, auto-merge queued. Live API test never run (no .env / TYPESAFE_API_KEY): needs Marcus. Optional follow-ups: claim_role none test, retry timeouts.
 - T3.2 #18 labeler | agent: implementer (opus), done | branch issue-18-labeler | PR #52 | state: in review (opus). Jev wiring in cli.py deferred until #17 merges (one-line follow-up: label_batch(batch_dir, jev_for=...)).
 - T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus) | branch issue-48-chore-deps | PR - | state: implementing
 ## Queue (next up)
