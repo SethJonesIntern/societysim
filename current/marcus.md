@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T23:20Z)
+# marcus status (updated 2026-10-10T23:21Z)
 ## Active
-- #309 play alerts | PR #328 | round-1 fixes pushed; RE-REVIEW (checking tests/server flake 2/5 after change: rebase on #327? event-loop blocking?). After merge: set repo secret + Space secret PLAY_ALERT_WEBHOOK_URL (from ~/.config/societysim/discord_webhook via stdin, never print), VITE_PLAY_API_URL var after deploy.
+- #309 play alerts | PR #328 APPROVED, auto-merge queued. Repo secret PLAY_ALERT_WEBHOOK_URL SET. Still TODO at play deploy: same value as Space secret; VITE_PLAY_API_URL var enables uptime cron.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
 - #282 PR #314 MERGED. LIVE DEPLOY pending Marcus's 3 PLAY_* keys -> deploy-play-space.sh --dry-run then real, set VITE_PLAY_API_URL, check proxy IPs. #293 unblocked (Seth).
