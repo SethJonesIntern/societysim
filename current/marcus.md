@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T19:47Z)
+# marcus status (updated 2026-10-10T19:55Z)
 ## Active
-- #248 narration v2 (Callum day / Harry night narrators, phrase bank, per-model voices configs/voices.yaml, categories) | implementer (opus) | issue-248-narration-v2 | implementing. Orchestrator runs live --build-bank after review (ElevenLabs free tier 10k chars, 0 used).
+- #248 narration v2 (Callum day / Harry night narrators, phrase bank, per-model voices configs/voices.yaml, categories) | implementer (opus) | issue-248-narration-v2 | PR #249 | in review (opus) + HOLD. Bank: 106 lines, 3967 chars, committed to git (~2-3MB). After approval: orchestrator runs --build-bank --yes on PR head (scratch worktree + .env symlink), implementer commits narration/bank/.
 - Watcher (bg, 3h): new viewer PR by Augustin -> run a contract-compat check (reviewer agent, comment only, no approve/edit): build branch, real pipeline outputs + Neon anon-token flow vs DATA_CONTRACT.
 - HOSTING LIVE (2026-10-10T19:03Z): https://society-sim.us (+www, /devui/) 200 via Cloudflare Pages project 'societysim' (CF DNS @/www CNAME -> societysim.pages.dev proxied; custom domains verifying). HF Space + GH Pages mirror also live. Content = main viewer + sample game. Auto-redeploy on viewer/** merges; set DEPLOY_SOURCE=hf:polter-dev/societysim-games after Seth publishes.
 - Viewer mismatches posted to Augustin on #40 (highlights.json unused, Neon narration, leaderboard_by_batch, BoardRow seats, labels.ts type).
