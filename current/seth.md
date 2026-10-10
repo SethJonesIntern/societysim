@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-11T14:00Z)
+# seth status (updated 2026-10-11T14:30Z)
 ## Active
-- #205 price prior for unseen models | implementer
+- #205 | PR #215 approved, auto-merge
 - T5.2 #35 selfplay | RUNNING half size (Seth): 45 games, $4 cap, batch_id selfplay_baseline, main 0257d57, scratch cfg selfplay_half.yaml; watchdog on. Extend to 90 later by running configs/selfplay_baseline.yaml (resume).
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 - T3.5 #21 | agent: implementer (sonnet) | branch issue-21-publish | PR #80 | state: APPROVED + HOLD (live HF check: HF_TOKEN 'hackathon' has inference scopes only, no repo write; needs Seth's OK + repo name)
