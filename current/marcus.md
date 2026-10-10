@@ -1,12 +1,12 @@
-# marcus status (updated 2026-10-10T04:54Z)
+# marcus status (updated 2026-10-10T04:55Z)
 ## Active
 - T1.1 #3 rules/state | agent: codex-implementer | branch issue-3-rules-state | PR - | state: implementing
-- T3.1 #17 jev | branch issue-17-jev | PR #51 | state: approved, auto-merge queued. Live API test never run (no .env / TYPESAFE_API_KEY): needs Marcus. Optional follow-ups: claim_role none test, retry timeouts.
 - T3.2 #18 labeler | agent: implementer (opus), done | branch issue-18-labeler | PR #52 | state: in review (opus). Jev wiring in cli.py deferred until #17 merges (one-line follow-up: label_batch(batch_dir, jev_for=...)).
 - T0.5 #48 chore deps/pythonpath/PLAN | agent: implementer (opus) | branch issue-48-chore-deps | PR - | state: implementing
 ## Queue (next up)
 - Chain: #3 -> #4 -> #6 -> #8 (needs #5, #7) -> #9; #10 also needs Seth's #12. #39 (Seth) needs #5.
 ## Done (last 10)
+- T3.1 #17 jev: PR #51 merged. Handoff posted on #18. NEEDS MARCUS: live API test (TYPESAFE_API_KEY in .env, run uv run pytest tests/unit/test_jev.py).
 - T1.3 #5 EventLogger: PR #49 merged (2 rounds; run_meta per game). Handoffs posted on #8 #39 #10 #15. Unblocked #39 (Seth), #48.
 - T1.5 #7 prompts: PR #50 merged. Handoffs posted on #6 #8.
 - T0.4 #46 handoff convention: PR #47 merged (2 review rounds). Now in AGENTS.md + agent defs on main. Handoff: none.
