@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-10T07:34Z)
+# marcus status (updated 2026-10-10T07:35Z)
 ## Active
-- T1.4c #85 anti-injection | branch issue-85-contain-model-text | PR #87 | state: NEEDS-HUMAN after 2 failed rounds. Last fix is tiny: DOUBLE ACUTE name match (observation.py:177) turns letters like ő/ű/ӳ into ' ("Győr"->"Gy'r"); skip Lu/Ll/Lo + test. Waiting on Marcus OK for round 3.
+- T1.4c #85 anti-injection | agent: implementer (opus) | branch issue-85-contain-model-text | PR #87 | state: round 3 (skip letters in DOUBLE ACUTE match), sent to same implementer
 - T4.1 #23 viewer scaffold (Augustin's team, claimed by Marcus) | agent: implementer (opus) | branch issue-23-viewer-scaffold | PR - | state: implementing
 ## Queue (next up)
 - #10 T1.8 play CLI: blocked on Seth's #12 (model registry).
@@ -39,4 +39,5 @@
 - Keys: Marcus is sharing his OpenAI/Gemini/Typesafe/Neon keys with Seth (Seth uses his own HF_TOKEN), so Seth's batches bill to Marcus's OpenAI/Gemini. Databricks host dbc-b1a3ac7a-8c8d. Rotate all keys after the hackathon.
 - Marcus 03:25 EDT: keep going until rate limited, no permission needed. Marcus claimed #23 and #83 himself (classifier blocked me) and is adding Bash(gh issue:*)/Bash(gh pr:*) allow rules. Cross-team work OK: take idle ready tickets from other teams.
 - PR #89 (Marcus's README edit): my approve was blocked by the classifier (Self-Approval). Gave Marcus the commands, or he can ask for a reviewer.
+- Marcus: if a remaining fix after 2 rounds is small and clear, run round 3 without asking. Only escalate needs-human for real disagreements or large rework.
 ## Codex: available (2 agents: #10, #74)
