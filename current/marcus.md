@@ -2,7 +2,7 @@
 ## Active
 - 09:45Z: #647 MERGED (server code NOT deployed; awaiting Seth deploy/hold). Pre-demo DEMO.md rehearsal agent running -> #616. #513 closed. Poller re-armed (had lapsed 09:05-09:45; no missed mentions).
 - JEV REPUBLISH FULLY LIVE 09:3xZ (#648 merged, deploy 38128699918, agreement.json 200, Jev lie rates populated); #645 closed; Discord + #616 posted.
-- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 APPROVED r6 auto-merge
+- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 MERGED (#649 closed)
 - Viewer fixes: #638 (#635+#636) and #639 MERGED; Neon cold-start checked: 0.27 s after 7 min idle, no change needed; #638 APPROVED auto-merge; #637 -> PR #644 MERGED
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
 - #626 trailer -> PR #650 (Fable) reviewer; merge before 15:00Z; frames artifact private to Marcus
