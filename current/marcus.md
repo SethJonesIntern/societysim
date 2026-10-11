@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:12Z)
+# marcus status (updated 2026-10-11T13:13Z)
 ## Active
+- 13:13Z: MERGED #676 (#622) and #677 (#640). Handoffs: none. No blocked dependents. #640 server change NOT deployed (after demo).
 - 13:12Z: PR #677 (#640 fallback tagging) APPROVED, auto-merge queued. Only the budget fallback writes model=scripted; real LLM, human and Watch games stay llm. PLAY SERVER DEPLOY HELD until after the demo.
 - 13:10Z: PR #676 (#622 mobile nav) APPROVED, auto-merge queued. Desktop verified unchanged.
 - 13:09Z: LIVE TEST 2 DONE: your-turn panel PASS (night/speak/accuse/vote), doctor seat, wolves won D4, 08:45-09:09 EDT, no Turnstile click, games_running 0. Posted on #616 and Discord. Leads sent to viewer bug hunter: narration toggled off once, stale 'Move sent' after elimination, floating menu overlaps event counter in narrow window. Marcus asked for a trailer voiceover: video agent told to write a 40-60 word teaser, ElevenLabs narrator voice (max 2 calls, <600 chars, key only via silent subshell) or fallback macOS say. NO MORE PAID PLAY GAMES approved.
