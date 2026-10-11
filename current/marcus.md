@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
+- Augustin PR #532 (#299 play page design) -> reviewer (no approve yet) -> send thoughts to Augustin on Discord (no numeric ID known for him; text @agus_marmor only)
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
 - #516 Games restyle PR #523 MERGED? (no date col: data lacks it; lifts main.tsx 1100px left cap for Games only) -> APPROVED auto-merge
 - SETH-ASSIGNED (all polter-dev): #504 visitor games failing: root cause = every main push redeploys play server (not visitor_starts; 42501 is expected anon deny) -> PR #525 render.yaml build filter APPROVED auto-merge (blueprint-managed per DEPLOYMENT.md); Codex 00:27 checks Render Build Filters read-only; #510 leave-game + demo limits -> opus issue-510-leave-game (env values need Marcus OK; DEMO line via handoff), #498 (after Seth's #496 merges, schema.sql), #511 freeze (at 11:00 EDT only), #512 narration audio (needs Marcus: CF token?), #513 bug runs: part 2+3 engine/labeler/CI hunt -> opus agent filing issues; part 1 live DEMO walkthrough -> Codex at 00:27 (prompt scratchpad/codex_live_0030.md)
