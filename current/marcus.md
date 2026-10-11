@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-11T01:07Z)
+# marcus status (updated 2026-10-11T01:10Z)
 ## Active
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
@@ -171,6 +171,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- CODE FREEZE 11:00 local (Marcus). Render autoDeploy stays ON. No merges after 11:00.
 - Seth (fully parallel, last ~2.5h): took #359 (n_players default 7->10, team:engine), drafting #38 DEMO.md, README results generator for #37, live-site smoke check. No collision; #294 will RUN his README generator. Note posted on #37.
 - Avatar prompts given to Marcus (storybook painterly, #03271e bg, circle-croppable 1024px, 11 characters, MJ/GPT-image/FLUX/SDXL variants) -> files to viewer/public/avatars/<model>.png (#302).
 - HEARTBEAT: background `sleep 1200` re-armed on each wake -> rescan open PRs (ours), team:engine/infra ready issues, batch progress. Loop stops only if the session closes; on resume run 'continue' from this file.
