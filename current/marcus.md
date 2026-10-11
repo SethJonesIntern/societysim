@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:45Z)
+# marcus status (updated 2026-10-11T13:46Z)
 ## Active
+- 13:46Z: PR #707 fixes pushed (rebased, kept both sides' tests). Re-review round 2 requested from same reviewer.
 - 13:45Z: PR #707 CHANGES (round 1): catch-all ValueError masks real errors; add malformed-labels test. Fix list sent to same implementer, rebase on main.
 - 13:45Z: #709 MERGED. PR #704 (#694 batch-id) APPROVED, CLEAN, auto-merging. #707 still mergeable, review pending.
 - 13:45Z: PR #709 (#697) APPROVED, auto-merge queued; deploy labelling output unchanged with cache. GOTCHA: #707 and #709 both touch cli.py + test_cli_output.py; watch for conflict after the first merges.
