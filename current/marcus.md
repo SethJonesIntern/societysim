@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T04:48Z)
 ## RESUME HERE (session stopped ~01:00 EDT Oct 11 for token limits; Seth in control, Marcus asleep)
 Agents possibly still running at stop (their output lands on GitHub; check PR state, don't assume):
-- Augustin PR #532 (#299): opus rebase+fix on his branch. Check if pushed and status:review, then dispatch a reviewer.
+- Augustin PR #532 (#299): rebased clean (after #551 merged), Augustin had fixed all 4 findings, we added small cleanups; 433 tests pass; status:review -> NEEDS a reviewer, then merge. #551 MERGED.
 - PR #563 (#545 open-log card) OPEN status:review -> NEEDS a reviewer.
 - PR #559 (#553 deploy-when-idle): APPROVED r2 at 2d39902, auto-merge queued, HOLD kept on purpose (left for the next session/Seth: merging means autoDeploy off and then manual idle deploys, which needs someone watching). Next: remove hold -> merge (one auto deploy) -> set Render autoDeploy=no via API (PATCH /v1/services/srv-db5dvg8473hc73aqg0k0 {"autoDeploy":"no"}, silent .env subshell) -> then deploy manually via API (POST .../deploys) only when /api/health games_running==0. No Render login tonight, so no hook secret.
 - PR #562 (#546 replay scaling): CHANGES r1, one item: viewer.css Event Details font floor (body max(13px,1.4cqw), time line ~11-12px; box scrolls inside). Re-dispatch implementer on branch issue-546-replay-scale with this fix, then re-review.
