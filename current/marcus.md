@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T01:34Z)
+# marcus status (updated 2026-10-11T01:35Z)
 ## Active
+- #385 themed in-page dropdown (replace native selects in Advanced Setup) | opus implementer | issue-385-themed-select
 - Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 -> PR #384 in review.
 - BUG HUNT WAVE (Marcus): Codex `codex review` on main worktree (codex_review.out); Opus hunt agent (verified bugs only); Fable hunt agent (same scope); Codex playtest #2 queued: waits for PR #374 merge + 8 min redeploy, then plays Normal game + Advanced/Watch (codex_playtest2.out). File issues from findings.
 - PR #380 CHANGES r1 (test env leak GEMINI_API_KEY) -> fix sent to same implementer.
@@ -177,6 +178,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Marcus: take UI work off Augustin where possible (more UI components coming). Our agents do UI tickets too now (themed, matching his art), with port notes.
 - CODE FREEZE 11:00 AM EDT Sun Oct 11 (Marcus clarified). Render autoDeploy stays ON (merges restart server, kill live games).
 - Seth (fully parallel, last ~2.5h): took #359 (n_players default 7->10, team:engine), drafting #38 DEMO.md, README results generator for #37, live-site smoke check. No collision; #294 will RUN his README generator. Note posted on #37.
 - Avatar prompts given to Marcus (storybook painterly, #03271e bg, circle-croppable 1024px, 11 characters, MJ/GPT-image/FLUX/SDXL variants) -> files to viewer/public/avatars/<model>.png (#302).
