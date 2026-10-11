@@ -686,6 +686,13 @@ Limits, all set by env on the server (defaults in brackets):
 | `actor` | text | Seat id or null |
 | `schema_version` | integer | |
 | `event` | jsonb | The full event, exactly the JSONL line (`schema/events.schema.json`) |
+| `inserted_at` | timestamp with time zone | Database clock at insert. Used by `sync-neon --prune` to find stalled games |
+
+`inserted_at` is in `create table` for fresh databases. An existing database gets it from
+`neon/migrations/001_events_inserted_at.sql`. No command applies that file implicitly (not
+`play --neon`, `batch --neon`, `sync-neon BATCH_DIR` or the server). `societysim sync-neon --migrate`
+prints the migrations; `--migrate --apply` runs them. Running it against the live Neon database needs
+Seth's and Marcus's OK. `sync-neon --prune` refuses until the column exists.
 
 `labels`, one row per line of `<game_id>.labels.jsonl`. Writer only: `anonymous` reads
 `labels_public` (below).
@@ -703,7 +710,8 @@ Limits, all set by env on the server (defaults in brackets):
 
 ### Views
 
-`events_public`: what `anonymous` reads instead of `events`, with the same columns (#323). A
+`events_public`: what `anonymous` reads instead of `events`, with the same columns except
+`inserted_at`, which is an internal server timestamp (#323). A
 `finished` game reads in full. A `running` or `failed` game gives only its events with
 `visibility = 'public'`, with `private_reasoning` and `suspicion` set to null inside `event`, so
 `seq` has gaps and there is no `game_start`. Failed counts as unfinished because batch resume

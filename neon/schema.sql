@@ -21,6 +21,10 @@ create table if not exists events (
     actor          text,
     schema_version integer not null,
     event          jsonb not null,
+    -- Database clock at insert; `sync-neon --prune` uses it to tell a stalled game from a live
+    -- one. Fresh databases only: an existing events table gets it from
+    -- neon/migrations/001_events_inserted_at.sql (`sync-neon --migrate`), never from this file.
+    inserted_at    timestamptz not null default now(),
     primary key (game_id, seq)
 );
 

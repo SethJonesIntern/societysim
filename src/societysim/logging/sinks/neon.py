@@ -11,7 +11,7 @@ import json
 import logging
 import os
 from collections.abc import Awaitable, Callable
-from datetime import datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -86,6 +86,22 @@ async def connect_neon(dsn: str | None = None) -> Any:
 
 async def apply_schema(conn: Any) -> None:
     await conn.execute(SCHEMA_PATH.read_text(encoding="utf-8"))
+
+
+MIGRATIONS_DIR = SCHEMA_PATH.parent / "migrations"
+
+
+def list_migrations() -> list[tuple[str, str]]:
+    """(file name, sql) of neon/migrations/*.sql in order. Read-only."""
+    return [(p.name, p.read_text(encoding="utf-8")) for p in sorted(MIGRATIONS_DIR.glob("*.sql"))]
+
+
+async def apply_migrations(conn: Any) -> None:
+    """Run every migration, all in one transaction. Only `sync-neon --migrate --apply` calls this:
+    schema.sql, NeonSink and batch start never alter an existing table."""
+    async with conn.transaction():
+        for _, sql in list_migrations():
+            await conn.execute(sql)
 
 
 class NeonSink:
@@ -302,3 +318,99 @@ async def delete_games(conn: Any, game_ids: list[str]) -> dict[str, Any]:
         "events": n_events if deleted else 0,
         "labels": n_labels if deleted else 0,
     }
+
+
+# Game ids in fixtures/sample_game.jsonl. Exact ids only: a real batch may start with "fixture".
+FIXTURE_GAME_IDS = frozenset({"fixture-0001"})
+
+_HAS_INSERTED_AT = """
+select exists (
+    select 1 from information_schema.columns
+    where table_schema = current_schema() and table_name = 'events'
+      and column_name = 'inserted_at'
+)
+"""
+
+
+class PruneBlocked(RuntimeError):
+    """--prune can't run safely; the message says what to do."""
+
+
+_PRUNE_CANDIDATES = """
+select g.game_id, g.batch_id, g.status,
+       now() as db_now,
+       (select max(e.inserted_at) from events e where e.game_id = g.game_id) as last_activity,
+       exists (
+           select 1 from events e where e.game_id = g.game_id and e.type = 'game_end'
+       ) as has_end,
+       (select count(*) from events e where e.game_id = g.game_id) as events,
+       (select count(*) from labels l where l.game_id = g.game_id) as labels
+from games g
+order by g.batch_id, g.game_id
+"""
+
+
+async def find_prunable(
+    conn: Any,
+    *,
+    older_than_hours: float = 6,
+    batch_ids: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    """Read-only. Games that should not reach the live leaderboard, each with the reason why.
+
+    Reasons: `test batch <id>` (exact batch id given by the caller), `fixture` (a game id in
+    FIXTURE_GAME_IDS, exact match), and `partial`: status running or failed, no game_end event,
+    and no new event for more than `older_than_hours`. Activity is max(events.inserted_at)
+    and the age is measured against the database's now(); client clocks and the event
+    payload's own timestamps are never used. A finished game is never partial, even if its
+    game_end row was lost. A game with no events is left alone.
+
+    Raises PruneBlocked if events.inserted_at does not exist yet (migration not applied).
+    """
+    if not await conn.fetchval(_HAS_INSERTED_AT):
+        raise PruneBlocked(
+            "events.inserted_at is missing, so stalled games can't be told from live ones. "
+            "Apply neon/migrations/001_events_inserted_at.sql first "
+            "(`societysim sync-neon --migrate` shows it; `--migrate --apply` runs it)."
+        )
+    test_batches = set(batch_ids or [])
+    found = []
+    for r in await conn.fetch(_PRUNE_CANDIDATES):
+        last = r["last_activity"]
+        if last is not None and last.tzinfo is None:
+            last = last.replace(tzinfo=UTC)
+        if r["batch_id"] in test_batches:
+            reason = f"test batch {r['batch_id']}"
+        elif r["game_id"] in FIXTURE_GAME_IDS:
+            reason = "fixture"
+        elif (
+            r["status"] in ("running", "failed")
+            and not r["has_end"]
+            and last is not None
+            and last < r["db_now"] - timedelta(hours=older_than_hours)
+        ):
+            reason = f"partial: no game_end, last activity {last:%Y-%m-%d %H:%M} UTC"
+        else:
+            continue
+        found.append(
+            {
+                "game_id": r["game_id"],
+                "batch_id": r["batch_id"],
+                "status": r["status"],
+                "events": r["events"],
+                "labels": r["labels"],
+                "reason": reason,
+            }
+        )
+    return found
+
+
+async def prune_games(conn: Any, game_ids: list[str]) -> None:
+    """Delete exactly these games, with their events and labels, in one transaction."""
+    ids = list(dict.fromkeys(game_ids))
+    if not ids:
+        return
+    async with conn.transaction():
+        await conn.execute("delete from events where game_id = any($1)", ids)
+        await conn.execute("delete from labels where game_id = any($1)", ids)
+        await conn.execute("delete from games where game_id = any($1)", ids)

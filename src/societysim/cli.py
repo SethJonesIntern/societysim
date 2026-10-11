@@ -532,22 +532,84 @@ def sync_neon(
     delete: Annotated[
         list[str] | None, typer.Option("--delete", help="Delete this game id (repeatable).")
     ] = None,
+    prune: Annotated[
+        bool,
+        typer.Option(
+            "--prune",
+            help="List partial, fixture and --batch test games. Deletes nothing without --apply.",
+        ),
+    ] = False,
+    migrate: Annotated[
+        bool,
+        typer.Option(
+            "--migrate",
+            help="Print neon/migrations/*.sql. Runs them only with --apply (needs Seth and "
+            "Marcus's OK on the live database).",
+        ),
+    ] = False,
+    apply: Annotated[
+        bool,
+        typer.Option("--apply", help="With --prune: delete the listed games. With --migrate: run."),
+    ] = False,
+    older_than_hours: Annotated[
+        float, typer.Option("--older-than-hours", help="With --prune: partial-game age cutoff.")
+    ] = 6,
+    batch: Annotated[
+        list[str] | None,
+        typer.Option("--batch", help="With --prune: also prune this test batch id (repeatable)."),
+    ] = None,
 ) -> None:
-    """Backfill BATCH_DIR into Neon, or --delete games. Needs NEON_DATABASE_URL."""
+    """Backfill BATCH_DIR into Neon, or --delete, --prune, --migrate. Needs NEON_DATABASE_URL."""
     from societysim.logging.sinks.neon import (
+        PruneBlocked,
+        apply_migrations,
         apply_schema,
         connect_neon,
         delete_games,
+        find_prunable,
+        list_migrations,
+        prune_games,
         sync_batch,
     )
 
     load_dotenv()
-    if delete:
+    if migrate:
+        if batch_dir is not None or delete or prune or batch:
+            typer.echo("--migrate takes no BATCH_DIR, --delete, --prune or --batch")
+            raise typer.Exit(1)
+        migrations = list_migrations()
+        for name, sql in migrations:
+            typer.echo(f"-- {name}\n{sql.rstrip()}")
+        if not apply:
+            typer.echo("dry run: nothing was run. Re-run with --apply to run these.")
+            return
+        if not os.environ.get("NEON_DATABASE_URL"):
+            typer.echo("NEON_DATABASE_URL is not set")
+            raise typer.Exit(1)
+
+        async def migrate_db():
+            conn = await connect_neon()
+            try:
+                await apply_migrations(conn)
+            finally:
+                await conn.close()
+
+        asyncio.run(migrate_db())
+        typer.echo(f"ran {len(migrations)} migrations")
+        return
+    if prune:
+        if batch_dir is not None or delete:
+            typer.echo("--prune takes no BATCH_DIR and no --delete")
+            raise typer.Exit(1)
+    elif apply or batch:
+        typer.echo("--apply only works with --prune or --migrate, --batch only with --prune")
+        raise typer.Exit(1)
+    elif delete:
         if batch_dir is not None:
             typer.echo("give either BATCH_DIR or --delete, not both")
             raise typer.Exit(1)
     elif batch_dir is None:
-        typer.echo("give a batch dir to sync, or --delete GAME_ID")
+        typer.echo("give a batch dir to sync, or --delete GAME_ID, or --prune")
         raise typer.Exit(1)
     elif not batch_dir.is_dir():
         typer.echo(f"not a directory: {batch_dir}")
@@ -559,6 +621,13 @@ def sync_neon(
     async def run():
         conn = await connect_neon()
         try:
+            if prune:
+                found = await find_prunable(
+                    conn, older_than_hours=older_than_hours, batch_ids=batch
+                )
+                if apply:
+                    await prune_games(conn, [g["game_id"] for g in found])
+                return found
             if delete:
                 return await delete_games(conn, delete)
             await apply_schema(conn)
@@ -566,7 +635,23 @@ def sync_neon(
         finally:
             await conn.close()
 
-    n = asyncio.run(run())
+    try:
+        n = asyncio.run(run())
+    except PruneBlocked as e:
+        typer.echo(f"refusing to prune: {e}")
+        raise typer.Exit(1) from e
+    if prune:
+        for g in n:
+            typer.echo(
+                f"{g['game_id']}  batch={g['batch_id']}  status={g['status']}  "
+                f"{g['events']} events, {g['labels']} labels  ({g['reason']})"
+            )
+        events, labels = sum(g["events"] for g in n), sum(g["labels"] for g in n)
+        verb = "deleted" if apply else "would delete"
+        typer.echo(f"{verb} {len(n)} games, {events} events, {labels} labels")
+        if not apply:
+            typer.echo("dry run: nothing was deleted. Re-run with --apply to delete.")
+        return
     if delete:
         typer.echo(f"deleted {len(n['deleted'])} games, {n['events']} events, {n['labels']} labels")
         if n["missing"]:
