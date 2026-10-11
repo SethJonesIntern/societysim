@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T13:45Z)
 ## Active
+- 13:45Z: PR #707 CHANGES (round 1): catch-all ValueError masks real errors; add malformed-labels test. Fix list sent to same implementer, rebase on main.
 - 13:45Z: #709 MERGED. PR #704 (#694 batch-id) APPROVED, CLEAN, auto-merging. #707 still mergeable, review pending.
 - 13:45Z: PR #709 (#697) APPROVED, auto-merge queued; deploy labelling output unchanged with cache. GOTCHA: #707 and #709 both touch cli.py + test_cli_output.py; watch for conflict after the first merges.
 - 13:41Z: Viewer hunt round 2 PRs #705 (#699), #706 (#700), #708 (#701) -> one reviewer for all three. #702 (Escape doesn't close pop-ups) and #703 (trailer focus) in progress by viewer hunter.
