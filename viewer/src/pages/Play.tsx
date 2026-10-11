@@ -30,7 +30,7 @@ export function PlayComingSoon({ gamesHref }: { gamesHref: string }) {
 
 /** Start screen. Advanced settings need the model list; if it won't load, Basic and Watch still work. */
 export default function PlayPage({
-  catalogUrl, schemaUrl, gamesHref, gameHref, initialMode = "basic", go = (url) => window.location.assign(url),
+  catalogUrl, schemaUrl, gamesHref, gameHref, initialMode = "basic", go = (url) => window.location.replace(url),
 }: { initialMode?: "basic" | "watch" | "advanced"; catalogUrl: string; schemaUrl: string; gamesHref: string; gameHref: (id: string) => string; go?: (url: string) => void }) {
   const on = playEnabled();
   const status = usePlayStatus();
@@ -47,11 +47,12 @@ export default function PlayPage({
       </section>
     );
   // startGame saves the seat token in sessionStorage; the live table opens on the game page.
+  // `go` replaces this history entry, so Back from the game can't land here and auto-start another.
   return (
     <>
       <h2>{initialMode === "watch" ? "Watch the village" : "Join the village"}</h2>
 <p>{initialMode === "watch" ? "Start an all-AI game and spectate live." : "Play one seat against nine AI models. You see your own role and private information; the full reveal comes at the end."}</p>
-      <PlayStart modeLocked initialMode={initialMode} assets={assets} onStarted={(game) => go(gameHref(game.game_id))} />
+      <PlayStart autoStart={initialMode !== "advanced"} modeLocked initialMode={initialMode} assets={assets} onStarted={(game) => go(gameHref(game.game_id))} />
     </>
   );
 }
