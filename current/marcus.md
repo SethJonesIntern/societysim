@@ -1,11 +1,11 @@
 # marcus status (updated 2026-10-11T09:45Z)
 ## Active
-- 09:45Z: #647 MERGED (server code NOT deployed; awaiting Seth deploy/hold). Rehearsal DONE (all steps pass <5s; 3 doc mismatches: Jev now shown, Turnstile may show checkbox, /api/limits is on play host) -> docs fix PR (sonnet docs-rehearsal-fixes). #513 closed. Poller re-armed (had lapsed 09:05-09:45; no missed mentions).
+- 09:45Z: #647 MERGED (server code NOT deployed; awaiting Seth deploy/hold). Rehearsal DONE (all steps pass <5s; 3 doc mismatches: Jev now shown, Turnstile may show checkbox, /api/limits is on play host) -> PR #652 reviewer. #513 closed. Poller re-armed (had lapsed 09:05-09:45; no missed mentions).
 - JEV REPUBLISH FULLY LIVE 09:3xZ (#648 merged, deploy 38128699918, agreement.json 200, Jev lie rates populated); #645 closed; Discord + #616 posted.
 - Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 MERGED (#649 closed)
 - Viewer fixes: #638 (#635+#636) and #639 MERGED; Neon cold-start checked: 0.27 s after 7 min idle, no change needed; #638 APPROVED auto-merge; #637 -> PR #644 MERGED
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
-- #626 trailer -> PR #650 APPROVED auto-merge (Discord posted); verify ?page=trailer live after merge
+- #626 trailer MERGED + LIVE at ?page=trailer (Discord posted)
 - Round 3 bug runs (Seth #616): visitor flow e2e mocked (opus), viewer pages DONE -> #634 (slow Neon hang; sonnet issue-634-neon-timeout), #635+#636 (Research/LB nulls; sonnet issue-635-636-research-nulls), #637 (wording; queued after #635/636: Leaderboard.tsx overlap); batch runner DONE: #630 #631 #632 #633 filed (Seth's); -> summaries on #616; if a round finds nothing tell Seth and switch to improvements
 - Seth's PR #627 (#620 autoplay waits for clips) approved, his
 - #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 APPROVED r2 auto-merge; #618/#619 after demo; #622 low
