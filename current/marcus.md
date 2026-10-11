@@ -1,10 +1,8 @@
-# marcus status (updated 2026-10-11T00:24Z)
+# marcus status (updated 2026-10-11T00:25Z)
 ## Active
 - #344 GLOBAL LEADERBOARD real-time (detectors/liars, finished games incl visitor) | implementer opus | issue-344-global-leaderboard. After merge: apply neon/schema.sql live + verify.
 - #345 PLAY WITHOUT JSON (form inputs, optional human suspicion = null) | implementer opus | issue-345-play-no-json
 - llama4 poor outputs: investigation agent (where it runs: AMD vs provider; failure modes; fix ticket). Marcus thinks it's on AMD; AMD pod ran gpt-oss-20b.
-- #338 play offline state | PR #342 | APPROVED, auto-merge (site redeploys on viewer push). Port notes for Augustin in PR body.
-- #339 ip_hint | PR #341 | APPROVED, auto-merge
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
 - HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render: PR #343 CHANGES r1 (CF-range trust spoofable via Worker/WARP -> opt-in PLAY_CLIENT_IP_HEADER=CF-Connecting-IP, trust 10/8 only). APPROVED, auto-merge. Marcus decides Render ($7/mo Starter) setup. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
@@ -55,6 +53,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- PR #341 (#339 ip_hint) and PR #342 (#338 play offline state) MERGED.
 - Discord ping to Augustin re #33 leftovers + #22 Figma link/tokens.
 - Audit: closed #40 (PR #321/#325) and #267 (PR #277/#276/#316). #216 partial (needs 10p results). #33 not done (viewer polish: role flip, arrow draw-in, night arrow contrast, bussing color, bubble overlap; Augustin area). #22 Augustin Figma.
 - GitHub social preview set to societysim-media/main.jpeg (Codex). Social-image Codex job stopped by Marcus.
