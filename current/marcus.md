@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T14:03Z)
+# marcus status (updated 2026-10-11T14:05Z)
 ## Active
+- 14:05Z: #716 and #718 MERGED. Site deploy f0e38541 success at 14:05Z. Live smoke test agent dispatched (read-only, no Play games), shots/smoke/, report by 14:30Z.
 - 14:03Z: Seth merged #707 himself (stray -e file removed first; only cli.py + test file). #698 closed. #716 merged (#714 closed). Removed stale needs-human/changes labels from #707. Waiting on #718 merge + deploy, then live smoke test.
 - 14:01Z: PR #718 (#717) APPROVED, auto-merge queued; all 81 cells per source unchanged, top-left 78% n=23 in both sources.
 - 13:58Z: #717 -> PR #718 (thin models sort last; Jev top-left 78% n=23). Reviewer dispatched.
