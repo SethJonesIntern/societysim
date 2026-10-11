@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T09:45Z)
 ## Active
 - #647 DEPLOYED 11:54Z via deploy hook (dep-db5nh64s728c738e0q70, fb496f01; rollback dep-db5kdfqjnfac73aqco40). Codex live Watch + Play test running in Brave; games_running logged to scratchpad/games_running.log.
-- #657 follow-up: Seth's #667 expands narration/bank to all 30 names (295 lines) -> sonnet issue-657-bank-sync re-copies viewer/public/narration-bank + drift test (after #667 merges; no pushes after 14:30Z). Seth: narration = ElevenLabs narrator lines only; no browser TTS.
+- #657 follow-up: Seth's #667 expands narration/bank to all 30 names (295 lines) -> PR #669 APPROVED auto-merge (296 files identical, drift test). Seth: narration = ElevenLabs narrator lines only; no browser TTS.
 - #661 trailer v2 (real voices + MP4 to pre-release trailer-v2) -> PR #665 APPROVED auto-merge; MP4 at release trailer-v2 (69 s) posted to Discord
 - #657 (Seth top task) narrator for every game from phrase bank -> PR #660 APPROVED auto-merge (Play covered via Replay); follow-up PR #664 (live narration queues) APPROVED auto-merge
 - CODE CUTOFF ALARM 10:45 EDT (14:45Z), background timer. At alarm: TaskStop all running agents, add `hold` to our open PRs, no new code dispatches; no commits after 11:00 EDT (presentation). If the session restarts, re-arm or do it manually.
