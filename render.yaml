@@ -1,0 +1,48 @@
+# Render blueprint for the visitor-play server (#340): fallback host while Hugging Face
+# reviews the Space. Dashboard: New > Blueprint > pick this repo. Secret values are pasted
+# in the dashboard (sync: false); none live in this file.
+services:
+  - type: web
+    name: societysim-play
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: .
+    plan: starter
+    numInstances: 1 # game state is in memory: never scale out or autoscale
+    healthCheckPath: /api/health
+    envVars:
+      - key: PLAY_OPENAI_API_KEY
+        sync: false
+      - key: PLAY_HF_TOKEN
+        sync: false
+      - key: PLAY_GEMINI_API_KEY
+        sync: false
+      - key: TURNSTILE_SECRET_KEY
+        sync: false
+      - key: NEON_DATABASE_URL
+        sync: false
+      - key: PLAY_ALERT_WEBHOOK_URL
+        sync: false
+      # Trust only Render's private hop, and take the client from CF-Connecting-IP, which
+      # Render always sets. Trusting Cloudflare's ranges would let a visitor's own Cloudflare
+      # Worker or WARP exit forge X-Forwarded-For. See README, "Deploy on Render".
+      - key: PLAY_TRUSTED_PROXIES
+        value: "10.0.0.0/8"
+      - key: PLAY_CLIENT_IP_HEADER
+        value: "CF-Connecting-IP"
+      - key: PLAY_ALLOWED_MODELS
+        value: "qwen3-235b,llama4-maverick,gemma4-26b,gpt-oss-120b,deepseek-v3.1,gemini-flash-lite,gpt-5-nano"
+      - key: PLAY_RATE_PER_MIN
+        value: "120"
+      - key: PLAY_MAX_ACTIVE_PER_IP
+        value: "1"
+      - key: PLAY_MAX_GAMES_PER_IP_DAY
+        value: "5"
+      - key: PLAY_MAX_CONCURRENT
+        value: "4"
+      - key: PLAY_MAX_GAME_MINUTES
+        value: "45"
+      - key: PLAY_DAILY_BUDGET_USD
+        value: "2.0"
+      - key: PLAY_MAX_TOKENS
+        value: "2048"

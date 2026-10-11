@@ -834,3 +834,46 @@ async def test_real_neon_ledger_roundtrip():
     finally:
         await conn.execute("delete from visitor_spend where game_id = $1", gid)
         await conn.close()
+
+
+# --- Render: private hop, client in CF-Connecting-IP (PLAY_CLIENT_IP_HEADER) -------------------
+
+
+def _render_play() -> PlayConfig:
+    import pathlib
+
+    import yaml
+
+    root = pathlib.Path(__file__).resolve().parents[2]
+    envs = yaml.safe_load((root / "render.yaml").read_text())["services"][0]["envVars"]
+    return PlayConfig.from_env({e["key"]: e["value"] for e in envs if "value" in e})
+
+
+def test_client_ip_behind_render_proxy():
+    play = _render_play()
+    assert play.client_ip_header == "cf-connecting-ip"
+
+    def ip(peer, headers):
+        return security.client_ip(scope(peer, headers), play.trusted_proxies, play.client_ip_header)
+
+    # Render shape: peer is a 10.x hop, CF-Connecting-IP is the real client.
+    real = {"CF-Connecting-IP": "203.0.113.50", "X-Forwarded-For": "203.0.113.50, 172.71.10.4"}
+    assert ip("10.20.0.7", real) == "203.0.113.50"
+    # A forged X-Forwarded-For (even naming a Cloudflare address) doesn't matter.
+    forged = {"CF-Connecting-IP": "203.0.113.50", "X-Forwarded-For": "6.6.6.6, 104.28.1.1"}
+    assert ip("10.20.0.7", forged) == "203.0.113.50"
+    # A peer outside 10/8 (e.g. Cloudflare's own address) is not trusted: headers ignored.
+    assert ip("104.28.1.1", forged) == "104.28.1.1"
+
+
+def test_client_ip_header_is_opt_in():
+    """With PLAY_CLIENT_IP_HEADER unset (HF Spaces), a client-sent CF-Connecting-IP is ignored."""
+    space = PlayConfig.from_env({"PLAY_TRUSTED_PROXIES": security.HF_PROXIES})
+    assert space.client_ip_header == ""
+    hdr = {"CF-Connecting-IP": "6.6.6.6", "X-Forwarded-For": "198.51.100.20"}
+    got = security.client_ip(scope("10.16.4.2", hdr), space.trusted_proxies, space.client_ip_header)
+    assert got == "198.51.100.20"
+    # And set but sent by an untrusted peer: ignored too.
+    assert security.client_ip(
+        scope("203.0.113.1", hdr), space.trusted_proxies, "cf-connecting-ip"
+    ) == ("203.0.113.1")
