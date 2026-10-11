@@ -2,7 +2,7 @@
 ## Active
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 player profile dialog (shrink 30-40%, avatar in empty portrait, headings, compact empty states) | opus | issue-445-profile-dialog
-- #430 PR #439 -> reviewer dispatched (conflicts with #444 on config.py import line)
+- #430 PR #439 APPROVED, auto-merge (then #444 needs rebase on config.py import)
 - #429 PR #444 (reject last_words:true at load) -> reviewer dispatched
 - #427 PR #436 APPROVED, auto-merge
 - #421 PR #437 APPROVED, auto-merge. After merge: dispatch agent to re-run Databricks metrics notebook + dashboard
