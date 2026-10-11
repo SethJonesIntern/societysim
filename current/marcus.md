@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T09:45Z)
 ## Active
+- #657 (Seth top task) narrator for every game from phrase bank -> opus issue-657-bank-narrator (PR by 13:30Z; cutoff 14:45Z)
 - CODE CUTOFF ALARM 10:45 EDT (14:45Z), background timer. At alarm: TaskStop all running agents, add `hold` to our open PRs, no new code dispatches; no commits after 11:00 EDT (presentation). If the session restarts, re-arm or do it manually.
 - 09:45Z: #647 MERGED (server code NOT deployed; awaiting Seth deploy/hold). Rehearsal DONE (all steps pass <5s; 3 doc mismatches: Jev now shown, Turnstile may show checkbox, /api/limits is on play host) -> PR #652 APPROVED auto-merge (nit not taken: 'same GPT-5 pairs' -> '12 GPT-5 pairs'). #513 closed. Poller re-armed (had lapsed 09:05-09:45; no missed mentions).
 - JEV REPUBLISH FULLY LIVE 09:3xZ (#648 merged, deploy 38128699918, agreement.json 200, Jev lie rates populated); #645 closed; Discord + #616 posted.
