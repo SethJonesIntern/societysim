@@ -1,4 +1,4 @@
-# seth status (updated 2026-10-12T07:40Z)
+# seth status (updated 2026-10-12T08:10Z)
 ## Active
 - #405 fallback/retry metrics | implementer. #399 (#394) re-review r2.
 - #353: PR #360 approved/merging
@@ -88,4 +88,5 @@
 - Marcus asks: publish T5.2 to Sethery32/societysim-games --public (avoids org access). Needs Seth OK (public). HF paused Marcus's play Space (flagged abusive); appeal + Render fallback (#340).
 - Filed #355 (infra, Marcus/admin): make python-windows a required check once stable. Seth: 'if you see tasks, create tickets and run them'. Publish to Sethery32 public: SKIPPED for now (Seth).
 - Fingerprint note: #363 models.yaml changes moved selfplay_baseline_10p fingerprint ff44a523 -> ca7672fc on main; the 20-game run can't be resumed (intended).
+- 2026-10-12 Marcus replies: (1) HF publish of mixed_v2_10p done by Marcus in #294 close-out; not ours. (2) Neon `sync-neon --migrate --apply`: OK but HOLD until Marcus pings (his close-out is running sync-neon on live now). (3) #306 run: Marcus undecided; wait for ping.
 ## Codex: n/a
