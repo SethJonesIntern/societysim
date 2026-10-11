@@ -1,5 +1,8 @@
-# marcus status (updated 2026-10-11T00:22Z)
+# marcus status (updated 2026-10-11T00:24Z)
 ## Active
+- #344 GLOBAL LEADERBOARD real-time (detectors/liars, finished games incl visitor) | implementer opus | issue-344-global-leaderboard. After merge: apply neon/schema.sql live + verify.
+- #345 PLAY WITHOUT JSON (form inputs, optional human suspicion = null) | implementer opus | issue-345-play-no-json
+- llama4 poor outputs: investigation agent (where it runs: AMD vs provider; failure modes; fix ticket). Marcus thinks it's on AMD; AMD pod ran gpt-oss-20b.
 - #338 play offline state | PR #342 | APPROVED, auto-merge (site redeploys on viewer push). Port notes for Augustin in PR body.
 - #339 ip_hint | PR #341 | APPROVED, auto-merge
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
