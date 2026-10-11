@@ -3,7 +3,7 @@
 - #446 visitor game visitor-95bb7a14ac169bf3 failed ~2.5min (Seth) -> opus diagnosing via Render logs API + fix | issue-446-visitor-fail
 - #451 README rewrite (short, plain, research questions) | codex-implementer | issue-451-readme-rewrite (overlaps Seth PR #431 README)
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
-- URGENT #445 player profile dialog (shrink 30-40%, avatar in empty portrait, headings, compact empty states) | opus | issue-445-profile-dialog
+- URGENT #445 PR #452 (PlayerProfile.tsx/.css, 806px@1920, modelNames.ts helper) -> reviewer dispatched. #440 told: reuse modelNames.ts, delete dead .inspector-* CSS, re-push screenshots to pr-assets-440.
 - #429 PR #444 approved, DIRTY after #439 -> same agent rebasing, then re-review
 - #421 merged (PR #437); Databricks re-run agent dispatched
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
