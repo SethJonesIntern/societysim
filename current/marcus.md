@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
 - #555 relabel mixed_v2_10p after #539 -> sonnet agent, worktree, NO API keys in env (cache-only), backup first; then I publish (HF token) + site redeploy
-- #553 root cause: ALL 20 failed visitor games = redeploys (budget/timeouts/day-2 exception ruled out; game started 04:28 reached day 4). PR #559 (autoDeploy off + deploy-play.yml calls Render deploy hook when /api/health games_running==0) MARCUS CHOSE: deploy only when no game running. Codex hook copy FAILED (Chrome computer-use timeout); asked Marcus to copy hook himself or restart Chrome. Plan: reviewer verdict -> hook to clipboard -> pbpaste|gh secret set RENDER_DEPLOY_HOOK_URL -> remove hold/merge -> autoDeploy off via API (currently yes); live steps: RENDER_DEPLOY_HOOK_URL GH secret, autoDeploy off, check VITE_PLAY_API_URL. #559 r1 fixes pushed -> re-review r2 (hold stays). Render login is Augustin's: asked him on Discord to set GH secret RENDER_DEPLOY_HOOK_URL (or DM Marcus) + report Build Filters. Check: gh secret list for RENDER_DEPLOY_HOOK_URL
+- #553 root cause: ALL 20 failed visitor games = redeploys (budget/timeouts/day-2 exception ruled out; game started 04:28 reached day 4). PR #559 (autoDeploy off + deploy-play.yml calls Render deploy hook when /api/health games_running==0) MARCUS CHOSE: deploy only when no game running. Codex hook copy FAILED (Chrome computer-use timeout); asked Marcus to copy hook himself or restart Chrome. Plan: reviewer verdict -> hook to clipboard -> pbpaste|gh secret set RENDER_DEPLOY_HOOK_URL -> remove hold/merge -> autoDeploy off via API (currently yes); live steps: RENDER_DEPLOY_HOOK_URL GH secret, autoDeploy off, check VITE_PLAY_API_URL. #559 r1 fixes pushed -> re-review r2 (hold stays). NO Render login tonight (Marcus asleep, SETH IN CONTROL ~00:50 EDT). New plan: #559 skips (not fails) when hook secret missing; merge #559 (one deploy) -> set autoDeploy=no via API -> orchestrator runs a deploy-when-idle watcher (API deploy when games_running==0 and main has new server commits)
 - Augustin PR #551 leaderboard fullscreen: fixed by us, APPROVED auto-merge
 - New ready for us: #538 purge old run_meta copies (infra, agent:cloud) - not yet dispatched
 - #541 leave docs+401 tests -> PR #552 (touches app.py -> redeploy) APPROVED; hold removed (no live game)
@@ -219,6 +219,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- ~00:50 EDT Oct 11: Marcus asleep; Seth in control of this session. No Render dashboard login available.
 - Augustin Discord user ID 391338075122302976.
 - 00:2x EDT Oct 11: Marcus hit rate limits playtesting -> Render env set: PLAY_MAX_ACTIVE_PER_IP 1->3, PLAY_MAX_GAMES_PER_IP_DAY 5->50, PLAY_RATE_PER_MIN 120->600, PLAY_DAILY_BUDGET_USD 2->5 (PLAY_MAX_CONCURRENT stays 4); redeploy triggered.
 - main.tsx caps every page at 1100px left-aligned: likely root of 'pages break full screen'. Games date column needs a data ticket.
