@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-11T01:41Z)
+# marcus status (updated 2026-10-11T01:42Z)
 ## Active
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage token counts leak roles in running games (opus implementer issue-387-usage-leak; apply schema live after); #388 lone surrogate crash + IPv6 /64 (sonnet issue-388-surrogate-ipv6); timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
@@ -181,6 +181,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- DESKTOP ONLY (Marcus): no mobile work anywhere. #303 retitled to accessibility only. Told #390 agent + #391 reviewer.
 - Marcus: take UI work off Augustin where possible (more UI components coming). Our agents do UI tickets too now (themed, matching his art), with port notes.
 - CODE FREEZE 11:00 AM EDT Sun Oct 11 (Marcus clarified). Render autoDeploy stays ON (merges restart server, kill live games).
 - Seth (fully parallel, last ~2.5h): took #359 (n_players default 7->10, team:engine), drafting #38 DEMO.md, README results generator for #37, live-site smoke check. No collision; #294 will RUN his README generator. Note posted on #37.
