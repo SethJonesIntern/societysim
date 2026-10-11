@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-11T00:55Z)
+# marcus status (updated 2026-10-11T00:58Z)
 ## Active
-- PLAY HOST DECISION pending Marcus: recommended Cloudflare Tunnel (free; Mac stays on; PLAY_CLIENT_IP_HEADER=CF-Connecting-IP, trusted 127.0.0.1) now; Render or CF Containers ($5/mo Workers Paid) later. cloudflared not installed.
+- PLAY HOST: RENDER chosen (Marcus signed in). Codex (codex_render.md) creating Blueprint societysim-play, Starter instance, secrets EMPTY; then opens API Keys page. Next: Marcus creates Render API key -> .env RENDER_API_KEY via pbpaste; agent sets env vars via Render API from .env (no printing), redeploy, live checks (limits/client_ip_hint/spoof/Origin 403), VITE_PLAY_API_URL, site redeploy.
 - #356 model selection UX | PR #357 in review (allowed_models in /api/limits, human seat sync, names+avatars). model_pool multi-select skipped.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
