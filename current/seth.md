@@ -1,5 +1,6 @@
-# seth status (updated 2026-10-12T09:00Z)
+# seth status (updated 2026-10-12T09:20Z)
 ## Active
+- BUG FIXES: Neon #417-#420 (opus, one PR), client #422-#424 (opus, one PR), docs #425/#426/#428 (one PR; README results block left to Marcus's #416). #421 Databricks + #427 DATA_CONTRACT left for Marcus.
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
 - BUG HUNT (Seth 2026-10-12): 8 read-only agents (engine, leaks, batch/CLI, analysis, viewer/live site, neon/data, models/client, docs drift) filing type:bug issues (max 5 each, confirmed repros).
 - #353: PR #360 approved/merging
