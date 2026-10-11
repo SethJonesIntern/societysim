@@ -2,8 +2,8 @@
 ## Active
 - #344 GLOBAL LEADERBOARD real-time (detectors/liars, finished games incl visitor) | implementer opus | issue-344-global-leaderboard. After merge: apply neon/schema.sql live + verify.
 - #345 PLAY WITHOUT JSON (form inputs, optional human suspicion = null) | implementer opus | issue-345-play-no-json
-- llama4 poor outputs: investigation agent (where it runs: AMD vs provider; failure modes; fix ticket). Marcus thinks it's on AMD; AMD pod ran gpt-oss-20b.
-- #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
+- #348 llama4 rejects (NOT AMD: HF novita; suspicion as object -> 24.8% first-attempt rejects, retry fixes) + gpt-5-nano 14% | implementer sonnet | issue-348-llama4-suspicion-shape
+- #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED (unheld) without rebase -> agent verifying main.
 - HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render: PR #343 CHANGES r1 (CF-range trust spoofable via Worker/WARP -> opt-in PLAY_CLIENT_IP_HEADER=CF-Connecting-IP, trust 10/8 only). APPROVED, auto-merge. Marcus decides Render ($7/mo Starter) setup. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
