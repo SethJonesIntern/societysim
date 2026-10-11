@@ -1,16 +1,13 @@
-# marcus status (updated 2026-10-11T04:48Z)
-## RESUME HERE (session stopped ~01:00 EDT Oct 11 for token limits; Seth in control, Marcus asleep)
-Agents possibly still running at stop (their output lands on GitHub; check PR state, don't assume):
-- Augustin PR #532 (#299): rebased clean (after #551 merged), Augustin had fixed all 4 findings, we added small cleanups; 433 tests pass; status:review -> NEEDS a reviewer, then merge. #551 MERGED.
-- PR #563 (#545 open-log card) OPEN status:review -> NEEDS a reviewer.
-- PR #559 (#553 deploy-when-idle): APPROVED r2 at 2d39902, auto-merge queued, HOLD kept on purpose (left for the next session/Seth: merging means autoDeploy off and then manual idle deploys, which needs someone watching). Next: remove hold -> merge (one auto deploy) -> set Render autoDeploy=no via API (PATCH /v1/services/srv-db5dvg8473hc73aqg0k0 {"autoDeploy":"no"}, silent .env subshell) -> then deploy manually via API (POST .../deploys) only when /api/health games_running==0. No Render login tonight, so no hook secret.
-- PR #562 (#546 replay scaling): CHANGES r1, one item: viewer.css Event Details font floor (body max(13px,1.4cqw), time line ~11-12px; box scrolls inside). Re-dispatch implementer on branch issue-546-replay-scale with this fix, then re-review.
-- #555: no Jev labels in batch (--no-jev). Keyless relabel+postbatch done locally: bussing unchanged 76; only new report fields + small OpenSkill shifts. Commented on #555. Republish OPTIONAL (needs HF_TOKEN), not done.
-Approved, auto-merging (post handoffs after merge): #551 (Augustin leaderboard), #558 (#556 days), #560 (#557 short names).
-Queue (assigned to us by Seth): #538 purge old run_meta copies; #512 narration audio (needs CF token?); #498 schema.sql locks (after Seth's #519/#496 merges); #511 FREEZE at 11:00 EDT (autoDeploy off, tag v1.0-demo); follow-up: model page heading in main.tsx shows raw id (after #532).
-Unverified: Render Build Filters (no dashboard login). Live Render env: ACTIVE_PER_IP 3, GAMES_PER_IP_DAY 50, RATE_PER_MIN 600, DAILY_BUDGET_USD 5.
-
+# marcus status (updated 2026-10-11T07:04Z)
 ## Active
+- Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
+- #585: read-only Neon pre-check OK (neondb_owner owns all 5 tables), posted. Removed hold on #577 + #519, auto-merge on. Watcher: when both merged -> deploy_when_idle -> then post-checks (health/limits 200, anon read OK, anon PATCH games refused, site_smoke 67/67) and comment on #585.
+- #573 day-1 summary in 10p prompts -> opus issue-573-day1-summary
+- #584 claimed role in Decision history -> sonnet issue-584-claimed-role-history
+- #586 narrator-only audio (0 ElevenLabs, no keys) -> sonnet issue-586-narrator-audio
+- #587 DEMO/PITCH docs -> sonnet issue-587-demo-pitch-docs (DEMO.md shared w/ #586 one line)
+- #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
+- #511 freeze at 11:00 EDT
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
 - #553 root cause: ALL 20 failed visitor games = redeploys (budget/timeouts/day-2 exception ruled out; game started 04:28 reached day 4). PR #559 (autoDeploy off + deploy-play.yml calls Render deploy hook when /api/health games_running==0) MARCUS CHOSE: deploy only when no game running. Codex hook copy FAILED (Chrome computer-use timeout); asked Marcus to copy hook himself or restart Chrome. Plan: reviewer verdict -> hook to clipboard -> pbpaste|gh secret set RENDER_DEPLOY_HOOK_URL -> remove hold/merge -> autoDeploy off via API (currently yes); live steps: RENDER_DEPLOY_HOOK_URL GH secret, autoDeploy off, check VITE_PLAY_API_URL. #559 r1 fixes pushed -> re-review r2 (hold stays). NO Render login tonight (Marcus asleep, SETH IN CONTROL ~00:50 EDT). New plan: #559 now skips when hook missing (pushed) -> fresh re-review r2; merge #559 (one deploy) -> set autoDeploy=no via API -> orchestrator runs a deploy-when-idle watcher (API deploy when games_running==0 and main has new server commits)
 - Augustin PR #551 leaderboard fullscreen: fixed by us, APPROVED auto-merge
