@@ -1,8 +1,9 @@
-# marcus status (updated 2026-10-11T00:29Z)
+# marcus status (updated 2026-10-11T00:35Z)
 ## Active
-- #344 GLOBAL LEADERBOARD real-time (detectors/liars, finished games incl visitor) | implementer opus | issue-344-global-leaderboard. After merge: apply neon/schema.sql live + verify.
+- HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
+- #344 GLOBAL LEADERBOARD | PR #350 in review (views global_detectors/global_liars; visitor labels at game end; 45s polling). After merge: apply neon/schema.sql live + verify anon reads only finished. Urgent handoff to #345 posted (_label before _backfill).
 - #345 PLAY WITHOUT JSON (form inputs, optional human suspicion = null) | implementer opus | issue-345-play-no-json
-- #348 llama4 rejects | PR #349 (prompt list example; 0/10 live rejects after; models.yaml unchanged) | in review. gpt-5-nano 8/63 rejects = votes for dead/invalid players (possible follow-up: list living targets explicitly).
+- #348 llama4 rejects | PR #349 APPROVED, auto-merge. gpt-5-nano 8/63 rejects = votes for dead/invalid players (possible follow-up: list living targets explicitly).
 - #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED; main verified OK (78 deception_pairs rows).
 - HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render: PR #343 CHANGES r1 (CF-range trust spoofable via Worker/WARP -> opt-in PLAY_CLIENT_IP_HEADER=CF-Connecting-IP, trust 10/8 only). APPROVED, auto-merge. Marcus decides Render ($7/mo Starter) setup. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
