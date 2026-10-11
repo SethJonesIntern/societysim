@@ -1,7 +1,7 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import type { GlobalBoard } from "../../data/globalBoard";
+import { EMPTY_BOARD, type GlobalBoard } from "../../data/globalBoard";
 import { GlobalLeaderboard } from "./GlobalLeaderboard";
 
 const board: GlobalBoard = {
@@ -23,6 +23,7 @@ const board: GlobalBoard = {
       ranked: true,
     },
   ],
+  errors: {},
 };
 
 const render = (props: Partial<React.ComponentProps<typeof GlobalLeaderboard>> = {}) =>
@@ -43,11 +44,31 @@ describe("GlobalLeaderboard", () => {
     expect(html).toContain("<td>30%</td><td>83%</td><td>1.00</td><td>n/a (n=0)</td><td>75% (n=4)</td>");
   });
 
-  it("loading, empty and error states", () => {
-    expect(render({ board: null })).toContain("Loading the leaderboard");
-    expect(render({ board: { detectors: [], liars: [] } })).toContain("No finished games yet.");
-    const failed = render({ error: "HTTP 503" });
-    expect(failed).toContain('role="alert"');
-    expect(failed).toContain("<td>0.45</td>"); // the last board stays up
+  it("loading and empty states", () => {
+    expect(render({ board: EMPTY_BOARD })).toContain("Loading the leaderboard");
+    expect(render({ board: { detectors: [], liars: [], errors: {} } })).toContain("No finished games yet.");
+  });
+
+  // #447: global_liars timed out (HTTP 500) while global_detectors answered.
+  const liarsDown: GlobalBoard = { ...board, liars: null, errors: { liars: "Neon global_liars: HTTP 500" } };
+
+  it("a failed liars view leaves the detectors tab working", () => {
+    const html = render({ board: liarsDown });
+    expect(html).toContain("<td>0.45</td><td>50% (n=8)</td>");
+    expect(html).not.toContain("temporarily unavailable");
+    expect(html).not.toContain('role="alert"');
+  });
+
+  it("the failed tab says it is temporarily unavailable", () => {
+    const html = render({ board: liarsDown, initialTab: "liars" });
+    expect(html).toContain("This ranking is temporarily unavailable.");
+    expect(html).not.toContain("Loading the leaderboard");
+    expect(html).not.toContain("<table");
+  });
+
+  it("a tab that fails a later poll keeps its last rows", () => {
+    const html = render({ board: { ...board, errors: { detectors: "timed out" } } });
+    expect(html).toContain("Couldn&#x27;t refresh this ranking just now");
+    expect(html).toContain("<td>0.45</td>");
   });
 });

@@ -3,17 +3,19 @@ import { ModelAvatar, useModelLabel } from "../ModelAvatar/ModelAvatar";
 import { BOARD_TABS, DETECTOR_COLUMNS, LIAR_COLUMNS, type BoardTab, type Column, type GlobalBoard } from "../../data/globalBoard";
 
 export interface GlobalLeaderboardProps {
-  board: GlobalBoard | null;
-  error?: string | null;
+  board: GlobalBoard;
   initialTab?: BoardTab;
 }
 
 /**
- * Unstyled global leaderboard with two tabs. Feed it from `useGlobalBoard()`. Rows below the
- * games threshold carry `data-ranked="false"`; style via the data attributes.
+ * Unstyled global leaderboard with two tabs. Feed it from `useGlobalBoard()`. Each tab shows its
+ * own state: loading, its table, or "temporarily unavailable" when its view failed (#447), so one
+ * failing view never hides the other. Rows below the games threshold carry `data-ranked="false"`;
+ * style via the data attributes.
  */
-export function GlobalLeaderboard({ board, error = null, initialTab = "detectors" }: GlobalLeaderboardProps) {
+export function GlobalLeaderboard({ board, initialTab = "detectors" }: GlobalLeaderboardProps) {
   const [tab, setTab] = useState<BoardTab>(initialTab);
+  const failed = board.errors[tab];
   return (
     <section className="global-leaderboard" data-tab={tab}>
       <div role="tablist" aria-label="Leaderboard">
@@ -23,15 +25,42 @@ export function GlobalLeaderboard({ board, error = null, initialTab = "detectors
           </button>
         ))}
       </div>
-      {error && <p role="alert">Couldn't refresh the leaderboard: {error}</p>}
-      {!board ? (
-        !error && <p>Loading the leaderboard…</p>
-      ) : tab === "detectors" ? (
-        <Table rows={board.detectors} columns={DETECTOR_COLUMNS} caption="Best wolf detectors, as villagers" />
+      {tab === "detectors" ? (
+        <TabBody rows={board.detectors} failed={failed} columns={DETECTOR_COLUMNS} caption="Best wolf detectors, as villagers" />
       ) : (
-        <Table rows={board.liars} columns={LIAR_COLUMNS} caption="Best liars, as wolves" />
+        <TabBody rows={board.liars} failed={failed} columns={LIAR_COLUMNS} caption="Best liars, as wolves" />
       )}
     </section>
+  );
+}
+
+interface TabBodyProps<T> {
+  rows: T[] | null;
+  /** Why this tab's last load failed, if it did. */
+  failed: string | undefined;
+  columns: Column<T>[];
+  caption: string;
+}
+
+function TabBody<T extends { model: string; ranked: boolean }>({ rows, failed, columns, caption }: TabBodyProps<T>) {
+  if (rows === null) {
+    return failed ? (
+      <p role="status" data-error={failed}>
+        This ranking is temporarily unavailable. It will try again shortly.
+      </p>
+    ) : (
+      <p>Loading the leaderboard…</p>
+    );
+  }
+  return (
+    <>
+      {failed && (
+        <p role="status" data-error={failed}>
+          Couldn't refresh this ranking just now, so it shows the last copy.
+        </p>
+      )}
+      <Table rows={rows} columns={columns} caption={caption} />
+    </>
   );
 }
 

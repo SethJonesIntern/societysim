@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { loadGlobalBoard, parseDetector, parseLiar, sortDetectors, sortLiars, type DetectorRow, type LiarRow } from "./globalBoard";
+import { VIEW_TIMEOUT_MS, loadDetectors, loadLiars, parseDetector, parseLiar, sortDetectors, sortLiars, type DetectorRow, type LiarRow } from "./globalBoard";
 import { resetNeonAuth } from "./neonAuth";
 
 const AUTH = "https://auth.test/neonauth";
@@ -43,7 +43,8 @@ describe("sort", () => {
   });
 });
 
-describe("loadGlobalBoard", () => {
+describe("loadDetectors / loadLiars", () => {
+  const token = () => new Response(JSON.stringify({ token: "jwt", expires_at: new Date(Date.now() + 3_600_000).toISOString() }));
   beforeEach(() => {
     vi.stubEnv("VITE_NEON_AUTH_URL", AUTH);
     vi.stubEnv("VITE_NEON_DATA_API_URL", API);
@@ -54,26 +55,37 @@ describe("loadGlobalBoard", () => {
     vi.unstubAllGlobals();
   });
 
-  it("reads both views and sorts them", async () => {
+  it("each reads its own view and sorts it", async () => {
     const asked: string[] = [];
     vi.stubGlobal("fetch", async (url: string) => {
-      if (url === `${AUTH}/token/anonymous`)
-        return new Response(JSON.stringify({ token: "jwt", expires_at: new Date(Date.now() + 3_600_000).toISOString() }));
+      if (url === `${AUTH}/token/anonymous`) return token();
       asked.push(url);
       return new Response(JSON.stringify(url.includes("global_detectors") ? DETECTORS : LIARS));
     });
-    const board = await loadGlobalBoard();
-    expect(asked.sort()).toEqual([`${API}/global_detectors?select=*`, `${API}/global_liars?select=*`]);
-    expect(board.detectors.map((r) => r.model)).toEqual(["a", "b", "none", "few"]);
-    expect(board.liars[0]).toMatchObject({ model: "y", survival_rate: 0.833 });
+    expect((await loadDetectors()).map((r) => r.model)).toEqual(["a", "b", "none", "few"]);
+    expect((await loadLiars())[0]).toMatchObject({ model: "y", survival_rate: 0.833 });
+    expect(asked).toEqual([`${API}/global_detectors?select=*`, `${API}/global_liars?select=*`]);
   });
 
-  it("throws on an HTTP error", async () => {
-    vi.stubGlobal("fetch", async (url: string) =>
-      url.endsWith("/token/anonymous")
-        ? new Response(JSON.stringify({ token: "jwt", expires_at: new Date(Date.now() + 3_600_000).toISOString() }))
-        : new Response("no", { status: 503 }),
-    );
-    await expect(loadGlobalBoard()).rejects.toThrow("HTTP 503");
+  it("a 500 on global_liars fails only the liars load", async () => {
+    vi.stubGlobal("fetch", async (url: string) => {
+      if (url === `${AUTH}/token/anonymous`) return token();
+      if (url.includes("global_liars")) return new Response('{"code":"57014"}', { status: 500 });
+      return new Response(JSON.stringify(DETECTORS));
+    });
+    await expect(loadLiars()).rejects.toThrow("Neon global_liars: HTTP 500");
+    expect(await loadDetectors()).toHaveLength(4);
+  });
+
+  it("gives up on a view that doesn't answer in time", async () => {
+    let signal: AbortSignal | undefined;
+    vi.stubGlobal("fetch", async (url: string, init?: RequestInit) => {
+      if (url === `${AUTH}/token/anonymous`) return token();
+      signal = init?.signal ?? undefined;
+      return new Response("[]");
+    });
+    await loadLiars();
+    expect(signal).toBeInstanceOf(AbortSignal);
+    expect(VIEW_TIMEOUT_MS).toBeLessThanOrEqual(15_000);
   });
 });

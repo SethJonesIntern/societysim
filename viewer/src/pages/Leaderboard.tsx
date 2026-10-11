@@ -129,8 +129,7 @@ export function GlobalSection({ enabled }: { enabled: boolean }) {
 
 // Separate component so the polling hook only runs when Neon is configured.
 function LiveGlobalBoard() {
-  const { board, error } = useGlobalBoard();
-  return <GlobalLeaderboard board={board} error={error} />;
+  return <GlobalLeaderboard board={useGlobalBoard()} />;
 }
 
 /**

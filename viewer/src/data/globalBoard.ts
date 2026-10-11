@@ -1,5 +1,6 @@
 // Global leaderboard (#344): the Neon views global_detectors and global_liars
-// (docs/DATA_CONTRACT.md "Global leaderboard views"), parsed, sorted and polled.
+// (docs/DATA_CONTRACT.md "Global leaderboard views"), parsed, sorted and polled,
+// one view per tab, each loading and failing on its own (#447).
 import { useEffect, useState } from "react";
 import { neonFetch } from "./neonAuth";
 
@@ -25,10 +26,17 @@ export interface LiarRow {
   ranked: boolean;
 }
 
+/**
+ * One table per tab. Each view loads and fails on its own (#447): a tab is null until its view
+ * has loaded once, and `errors` says which tabs failed their last load, keeping their last rows.
+ */
 export interface GlobalBoard {
-  detectors: DetectorRow[];
-  liars: LiarRow[];
+  detectors: DetectorRow[] | null;
+  liars: LiarRow[] | null;
+  errors: Partial<Record<BoardTab, string>>;
 }
+
+export const EMPTY_BOARD: GlobalBoard = { detectors: null, liars: null, errors: {} };
 
 export type BoardTab = "detectors" | "liars";
 export const BOARD_TABS: readonly { id: BoardTab; label: string }[] = [
@@ -38,6 +46,8 @@ export const BOARD_TABS: readonly { id: BoardTab; label: string }[] = [
 
 /** How often the board is re-read while the tab is visible. */
 export const POLL_MS = 45_000;
+/** A view that hasn't answered by then counts as failed for this poll. */
+export const VIEW_TIMEOUT_MS = 15_000;
 
 type Raw = Record<string, unknown>;
 // numeric columns may arrive as strings ("0.571").
@@ -87,15 +97,24 @@ export const sortDetectors = (rows: DetectorRow[]) => rank(rows, (r) => r.suspic
 export const sortLiars = (rows: LiarRow[]) => rank(rows, (r) => r.suspicion_received, false);
 
 async function get(path: string): Promise<Raw[]> {
-  const res = await neonFetch(`/${path}`);
+  const res = await neonFetch(`/${path}`, { signal: AbortSignal.timeout(VIEW_TIMEOUT_MS) });
   if (!res.ok) throw new Error(`Neon ${path.split("?")[0]}: HTTP ${res.status}`);
   return (await res.json()) as Raw[];
 }
 
-export async function loadGlobalBoard(): Promise<GlobalBoard> {
-  const [detectors, liars] = await Promise.all([get("global_detectors?select=*"), get("global_liars?select=*")]);
-  return { detectors: sortDetectors(detectors.map(parseDetector)), liars: sortLiars(liars.map(parseLiar)) };
+export const loadDetectors = async () => sortDetectors((await get("global_detectors?select=*")).map(parseDetector));
+export const loadLiars = async () => sortLiars((await get("global_liars?select=*")).map(parseLiar));
+
+/** One loader per tab; `useGlobalBoard` runs them side by side and never lets one wait on the other. */
+export interface BoardLoaders {
+  detectors: () => Promise<DetectorRow[]>;
+  liars: () => Promise<LiarRow[]>;
 }
+export const NEON_LOADERS: BoardLoaders = { detectors: loadDetectors, liars: loadLiars };
+
+// AbortSignal.timeout rejects with a DOMException named TimeoutError.
+const reason = (e: unknown) =>
+  (e as { name?: unknown } | null)?.name === "TimeoutError" ? "timed out" : e instanceof Error ? e.message : String(e);
 
 // --- display: the columns each tab shows, so the component only renders --------------------
 
@@ -140,33 +159,36 @@ export const LIAR_COLUMNS: Column<LiarRow>[] = [
 
 // --- polling ---------------------------------------------------------------------------------
 
-export interface GlobalBoardState {
-  board: GlobalBoard | null;
-  /** The last poll's error; the previous board stays shown. */
-  error: string | null;
-}
-
 /**
- * Loads the board now and every `intervalMs` while the page is visible. A hidden tab stops
- * polling; it reloads at once when the tab is shown again.
+ * Loads both tabs now and every `intervalMs` while the page is visible. Each tab's result lands
+ * as soon as its view answers; a failed tab keeps its last rows and gets an entry in `errors`.
+ * A hidden tab stops polling; it reloads at once when the tab is shown again.
  */
-export function useGlobalBoard(load: () => Promise<GlobalBoard> = loadGlobalBoard, intervalMs = POLL_MS): GlobalBoardState {
-  const [state, setState] = useState<GlobalBoardState>({ board: null, error: null });
+export function useGlobalBoard(loaders: BoardLoaders = NEON_LOADERS, intervalMs = POLL_MS): GlobalBoard {
+  const [board, setBoard] = useState<GlobalBoard>(EMPTY_BOARD);
 
   useEffect(() => {
     let stopped = false;
     let busy = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
+    const loadTab = async <K extends BoardTab>(tab: K, load: () => Promise<GlobalBoard[K]>) => {
+      try {
+        const rows = await load();
+        if (stopped) return;
+        setBoard((b) => {
+          const errors = { ...b.errors };
+          delete errors[tab];
+          return { ...b, [tab]: rows, errors };
+        });
+      } catch (e) {
+        if (!stopped) setBoard((b) => ({ ...b, errors: { ...b.errors, [tab]: reason(e) } }));
+      }
+    };
     const tick = async () => {
       timer = undefined;
       if (stopped || busy || document.hidden) return; // a hidden tab resumes on visibilitychange
       busy = true;
-      try {
-        const board = await load();
-        if (!stopped) setState({ board, error: null });
-      } catch (e) {
-        if (!stopped) setState((s) => ({ ...s, error: e instanceof Error ? e.message : String(e) }));
-      }
+      await Promise.all([loadTab("detectors", loaders.detectors), loadTab("liars", loaders.liars)]);
       busy = false;
       if (!stopped && !document.hidden) timer = setTimeout(tick, intervalMs);
     };
@@ -180,7 +202,7 @@ export function useGlobalBoard(load: () => Promise<GlobalBoard> = loadGlobalBoar
       clearTimeout(timer);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [load, intervalMs]);
+  }, [loaders, intervalMs]);
 
-  return state;
+  return board;
 }
