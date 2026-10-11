@@ -29,7 +29,7 @@ interface GameRow {
  * A tiny PostgREST stand-in: games, events (with `alias:event->field` selects and the
  * `event->>visibility` filter), labels and leaderboard. Records every Data API URL asked for.
  */
-function fakeNeon(games: Record<string, GameRow>) {
+function fakeNeon(games: Record<string, GameRow>, endMode: "ok" | "deny" | "hang" = "ok") {
   const asked: string[] = [];
   const json = (v: unknown) => new Response(JSON.stringify(v));
   vi.stubGlobal("fetch", async (input: string) => {
@@ -46,6 +46,16 @@ function fakeNeon(games: Record<string, GameRow>) {
       if (p.get("status") === "eq.finished")
         return json(all.filter(([, g]) => g.status === "finished" && g.agents !== "scripted").map(([g]) => ({ game_id: g })));
       return json(all.map(([g, v]) => ({ game_id: g, models: v.models, status: v.status, winner: v.winner ?? null })));
+    }
+    if (table === "events_public" && p.get("type") === "eq.game_end") {
+      if (endMode === "deny") return new Response("", { status: 403 });
+      if (endMode === "hang") return new Promise<Response>(() => {});
+      const ids = p.get("game_id")!.replace(/^in\.\(|\)$/g, "").split(",");
+      return json(
+        Object.entries(games)
+          .filter(([g, v]) => v.status === "finished" && ids.includes(g))
+          .map(([g, v]) => ({ game_id: g, day: v.rows.find((e) => e.type === "game_end")?.day })),
+      );
     }
     if (table === "events_public") {
       let rows = games[id!]?.rows ?? [];
@@ -108,7 +118,51 @@ describe("neonSource, finished games", () => {
       models: [...new Set(MODELS)].sort(),
       live: false,
       winner: "wolves",
+      days: full.find((e) => e.type === "game_end")!.day,
     });
+    expect(games.find((g) => g.id === "g2")).not.toHaveProperty("days");
+  });
+
+  it("lists games with no days when the game_end lookup is denied", async () => {
+    fakeNeon({ [ID]: { status: "finished", models: MODELS, rows: full, winner: "wolves" } }, "deny");
+    const games = await neonSource().listGames();
+    expect(games).toHaveLength(1);
+    expect(games[0].days).toBeUndefined();
+  });
+
+  it("lists games with no days when the game_end lookup hangs", async () => {
+    vi.useFakeTimers();
+    try {
+      fakeNeon({ [ID]: { status: "finished", models: MODELS, rows: full, winner: "wolves" } }, "hang");
+      const pending = neonSource().listGames();
+      await vi.advanceTimersByTimeAsync(2500);
+      const games = await pending;
+      expect(games[0].id).toBe(ID);
+      expect(games[0].days).toBeUndefined();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("scopes the days lookup to finished ids and skips it when none finished", async () => {
+    let asked = fakeNeon({ [ID]: { status: "finished", models: MODELS, rows: full }, g2: running() });
+    await neonSource().listGames();
+    expect(asked.at(-1)).toBe(`${API}/events_public?select=game_id,day&type=eq.game_end&game_id=in.(${ID})&limit=1`);
+    asked = fakeNeon({ g2: running() });
+    await neonSource().listGames();
+    expect(asked.some((u) => u.includes("game_end"))).toBe(false);
+  });
+
+  it("chunks the days lookup past 100 finished games and merges the days", async () => {
+    const end = full.find((e) => e.type === "game_end")!;
+    const many = Object.fromEntries(
+      Array.from({ length: 230 }, (_, i) => [`g${i}`, { status: "finished", models: MODELS, rows: [end] }]),
+    );
+    const asked = fakeNeon(many);
+    const games = await neonSource().listGames();
+    expect(asked.filter((u) => u.includes("game_end"))).toHaveLength(3);
+    expect(games).toHaveLength(230);
+    expect(games.every((g) => g.days === end.day)).toBe(true);
   });
 
   it("builds the board from the leaderboard view and counts finished non-scripted games", async () => {
