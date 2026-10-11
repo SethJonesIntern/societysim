@@ -1,11 +1,11 @@
-# marcus status (updated 2026-10-11T01:46Z)
+# marcus status (updated 2026-10-11T01:47Z)
 ## Active
 - Augustin PR #386 (T4.0 Figma flows + design tokens, docs only, closes #22): fixed (Figma link https://www.figma.com/design/eWOVhSAOmFM0jycNu3TTPd/Werewolf---Game-Viewer ; live viewer uses Georgia/system-ui, no CSS vars); REVIEWER running.
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage leak -> PR #396 in review (strips meta.usage + meta.ts for running/failed; apply schema.sql live after merge); #388 -> PR #393 CHANGES r1 (ipv4-mapped bucketed to ::) fix sent; timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
 - #389 avatars | PR #392 APPROVED, auto-merge (ModelAvatar + AvatarMedallion; screenshot scratchpad/agents-after.png). Your-turn buttons need play API Player.model (follow-up).
 - PR #380 APPROVED, auto-merge (Render redeploys; hotfix env stays).
-- #385 themed dropdown | PR #391 fix pushed (0fa4dfe) -> re-review sent. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
+- #385 themed dropdown | PR #391 APPROVED, auto-merge. After merge delete branch pr-assets/issue-385. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
 - Codex review findings -> #382 -> PR #397 in review (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt RUNNING. Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
