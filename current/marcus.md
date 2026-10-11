@@ -1,7 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
 - 07:36Z Seth asks on PR #604: (A) Fable verdict POSTED: real bug, #604 correct (optional: match "I'm not a wolf"), republish before 9AM; lead with gemini-flash 52% n=253; (B) prep POSTED on #604 (Liars 67%->~56% n=421; g0031 drops out of top 3; site redeploy = deploy.yml; pages.yml mirrors HF Space). DON'T merge/republish/deploy until Seth confirms.
-- Augustin PR #603 (themed event illustrations) + Seth's #606: merged main (no force-push), death_reveal icon by phase -> APPROVED auto-merge; watcher closes #606 on merge
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) APPROVED (precision ~99%, recall ~95%), HOLD. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
 - #591 CLOSED: runs 1,2,5 nothing found; run3 -> #593 (done) + #600 (hold); run4 -> #596 (PR #604 hold) + #605
@@ -89,6 +88,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged Augustin #603 (event illustrations) + closed #606
 - merged #597 (#587 DEMO/PITCH; handoff -> #511), #599 (#593 unfinished-game log; deployed 07:29Z), #602 (#601 model header)
 - merged #589 (#584 claimed role), #590 (#586 narration g0008/g0031), #592 (smoke selector), #595 (#588 reasoning panel); handoff -> #38 posted
 - merged #547 (#536), #548 (#543), #554 (#542; handoff -> #299 posted)
