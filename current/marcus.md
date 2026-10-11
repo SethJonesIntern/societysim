@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T09:45Z)
+# marcus status (updated 2026-10-11T12:00Z)
 ## Active
+- RESUME NOTES (12:01Z, before /compact): Running = Codex live Watch+Play test in Brave (scratchpad/codex_livetest.out; games_running=2 at 12:00Z), games_running logger (scratchpad/games_running.log), poller (scratchpad/poll3.sh, re-arm on exit), 10:45 EDT cutoff alarm (14:45Z; on fire: TaskStop all agents, hold our open PRs, no new code). Pending merges: #669 (bank sync), #665 (trailer v2) auto-merge. After Codex test: post results + deploy ids on #616 and Discord (scratchpad/discord.sh pings Seth). #594 stays on hold. Seth OK'd #647 deploy (done).
 - #647 DEPLOYED 11:54Z via deploy hook (dep-db5nh64s728c738e0q70, fb496f01; rollback dep-db5kdfqjnfac73aqco40). Codex live Watch + Play test running in Brave; games_running logged to scratchpad/games_running.log.
 - #657 follow-up: Seth's #667 expands narration/bank to all 30 names (295 lines) -> PR #669 APPROVED auto-merge (296 files identical, drift test). Seth: narration = ElevenLabs narrator lines only; no browser TTS.
 - #661 trailer v2 (real voices + MP4 to pre-release trailer-v2) -> PR #665 APPROVED auto-merge; MP4 at release trailer-v2 (69 s) posted to Discord
