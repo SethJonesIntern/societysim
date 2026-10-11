@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:23Z)
+# marcus status (updated 2026-10-11T13:24Z)
 ## Active
+- 13:24Z: PR #686 (#684 narration switch survives live log swap) APPROVED, auto-merge queued. Narration still defaults off; trailer page unaffected.
 - 13:23Z: PR #687 (#685 EventLogger.close) APPROVED, auto-merge queued; close() bounded by one timeout, no schema change. Server uses this: deploy after demo.
 - 13:22Z: #682 MERGED (#680 closed). PR #689 (#688 bottom bar overlap) -> reviewer dispatched. #691 (cut-off replay ends frozen with no notice) in progress by viewer hunter. #690 is Seth's (skip).
 - 13:22Z: Engine bug hunt round 1 DONE: #678/#679 merged, #681/#683 merged, #685/#687 in review; 1,500-game fuzz + leak checks clean. Round 2 dispatched (server HTTP API edge cases, CLI, metrics edge logs), PRs by 14:30Z.
