@@ -861,6 +861,26 @@ async def test_eta_uses_finish_rate_with_concurrency_not_per_game_time(tmp_path,
     assert events[-1]["eta_seconds"] == 0
 
 
+async def test_progress_callback_that_cannot_encode_text_does_not_kill_the_batch(tmp_path):
+    import io
+
+    class Boom(PricedFake):
+        async def complete(self, model, messages, response_model):
+            raise RuntimeError("503 → 日本語: provider busy")
+
+    raw = io.BytesIO()
+    out = io.TextIOWrapper(raw, encoding="cp1252", errors="strict")  # a piped Windows console
+
+    def show(e):
+        out.write(str(e.get("reason", e["event"])))  # raises UnicodeEncodeError on the arrow
+
+    res = await run_batch(
+        cfg(n_games=3, max_concurrency=1), SPECS, Boom(), runs_dir=tmp_path, on_progress=show
+    )
+    assert res["status"] == "failed"
+    assert len(res["failed"]) >= 1  # the batch wrote its summary instead of crashing
+
+
 async def test_eta_is_none_until_a_game_finishes_and_skips_resumed_games(tmp_path, monkeypatch):
     clock = _fake_clock(monkeypatch)
 

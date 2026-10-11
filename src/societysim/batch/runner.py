@@ -361,7 +361,12 @@ async def run_batch(
 
     def progress(event: str, **info: Any) -> None:
         if on_progress:
-            on_progress({"event": event, "spent": spent(), "budget": cfg.budget_usd, **info})
+            try:
+                on_progress({"event": event, "spent": spent(), "budget": cfg.budget_usd, **info})
+            except Exception as exc:
+                # Showing progress must not kill paid games. A failed game's reason holds
+                # provider text, which a cp1252 pipe may not encode (cli.py's _echo handles that).
+                log.warning("batch %s: progress callback failed: %r", cfg.batch_id, exc)
 
     def spent() -> float:
         return prior_spend + (metered.spent if metered else 0.0)
