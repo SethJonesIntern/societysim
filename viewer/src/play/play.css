@@ -674,3 +674,39 @@
   font: 13px/1.5 system-ui, sans-serif;
   color: #faedd0;
 }
+
+/* Watch games: a top-nav item, so it flows with the other controls at any width */
+.site-nav .watch-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em; /* flex collapses the space between "Stop" and "watching" */
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background: #2a1413;
+  color: #fad1cb;
+  border: 1px solid #7b3630;
+  border-radius: 8px;
+  font: 600 14px system-ui, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.site-nav .watch-stop:hover {
+  background: #3e1b19;
+  border-color: #b04941;
+}
+.site-nav .watch-stop:focus-visible {
+  outline: 3px solid #ffe499;
+  outline-offset: 3px;
+}
+
+/* Narrow screens: just "Stop", so the nav keeps room for its other links */
+@media (max-width: 1199px) {
+  .site-nav .watch-stop {
+    padding: 8px 4px;
+  }
+  .watch-stop__more {
+    display: none;
+  }
+}
