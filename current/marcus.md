@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-11T00:16Z)
+# marcus status (updated 2026-10-11T00:17Z)
 ## Active
-- #338 play offline state | PR #342 | in review
+- #338 play offline state | PR #342 | APPROVED, auto-merge (site redeploys on viewer push). Port notes for Augustin in PR body.
 - #339 ip_hint | PR #341 | in review
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
 - HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render (render.yaml, trusted proxies) | implementer sonnet | issue-340-render-deploy. Render Starter ~$7/mo needs Marcus OK.
@@ -52,6 +52,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- Discord ping to Augustin re #33 leftovers + #22 Figma link/tokens.
 - Audit: closed #40 (PR #321/#325) and #267 (PR #277/#276/#316). #216 partial (needs 10p results). #33 not done (viewer polish: role flip, arrow draw-in, night arrow contrast, bussing color, bubble overlap; Augustin area). #22 Augustin Figma.
 - GitHub social preview set to societysim-media/main.jpeg (Codex). Social-image Codex job stopped by Marcus.
 - #308 AMD: PR #331 MERGED (README/PITCH numbers); results posted on #253. Pod (SJC 8060S) still up until ~02:10Z.
