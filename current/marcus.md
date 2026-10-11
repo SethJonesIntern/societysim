@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-11T01:03Z)
+# marcus status (updated 2026-10-11T01:04Z)
 ## Active
+- #294 PREP: agent building close-out runbook (dry-run on finished 10p games, HF org write check, Neon label sync cmd) -> comment on #294. Batch 81/100 $8.68, ETA ~50m.
 - PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. RENDER_API_KEY in .env (Marcus). Agent running: sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
-- #356 model selection | PR #357 APPROVED, auto-merge. Minor: shrinking seats below human seat -> 422.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
 - #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED; main verified OK (78 deception_pairs rows).
@@ -54,6 +54,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- PR #357 (#356 model selection) and PR #352 (#347 retry error) MERGED. #355 (python-windows required) deferred to post-hackathon (comment posted).
 - #345 play without JSON: PR #351 MERGED, handoffs posted.
 - #344 global leaderboard: PR #350 MERGED, views APPLIED LIVE + verified (top detector gemini-flash-lite gap .284; top liar gemini-flash .325 susp received). lie_success null until labels backfilled to Neon (noted on #294). Site redeployed.
 - PR #343 Render fallback MERGED (#340). PR #349 llama4 prompt fix MERGED (#348).
