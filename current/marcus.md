@@ -11,7 +11,7 @@
 - #573 day-1 summary -> PR #594 (hold per Seth: no merge before demo) reviewer
 - #584 claimed role -> PR #589 CHANGES r1 (wolf key; hasOwn guard) fix sent
 - #586 narrator audio -> PR #590 (g0008 21 clips, g0031 11; leak check 0; 0 chars) reviewer
-- #587 DEMO/PITCH docs -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
+- #587 DEMO/PITCH docs -> PR #597 reviewer (handoff -> #511 hook unset, manual deploys)
 - #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
 - #511 freeze at 11:00 EDT
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
