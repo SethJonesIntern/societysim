@@ -120,6 +120,21 @@ def _self_tags(game: _Game) -> list[_Tag]:
     ]
 
 
+# "I checked Ava", "I've investigated Cleo", "my check stands": the speaker reports their own
+# check. Jev's seer_report fires on any mention of a check, including relayed ones ("we know Elif
+# is safe thanks to Iris's check"), so a Jev report counts only with a Seer claim or this wording.
+_OWN_CHECK = re.compile(
+    r"\bI(?:'ve|’ve| have)?\s+(?:also\s+|just\s+|already\s+)?"
+    r"(?:checked|investigated|inspected|scanned)\b"
+    r"|\bmy\s+(?:check|result|investigation|inspection|vision)",
+    re.I,
+)
+
+
+def _own_report(v: JevVerdict, text: str) -> bool:
+    return v.claim_role is Role.SEER or bool(_OWN_CHECK.search(text))
+
+
 def _jev_tags(game: _Game, jev: Jev) -> list[_Tag]:
     tags = []
     for s in game.statements:
@@ -130,7 +145,7 @@ def _jev_tags(game: _Game, jev: Jev) -> list[_Tag]:
         tags += [_Tag(EventType.ACCUSATION, target=t, **base) for t in v.accuse]
         if v.claim_role:
             tags.append(_Tag(EventType.ROLE_CLAIM, role=v.claim_role, **base))
-        if v.seer_report:
+        if v.seer_report and _own_report(v, s.public_text or ""):
             r = v.seer_report
             tags.append(_Tag(EventType.SEER_CLAIM, target=r.target, result=r.result, **base))
     return tags

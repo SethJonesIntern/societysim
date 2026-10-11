@@ -394,3 +394,63 @@ def test_jev_villager_claim_needs_no_wording():
     jev = {17: JevVerdict(claim_role=Role.VILLAGER)}
     events = _villager_tag("Ava dodged the question. Vote Ava.")
     assert ("false_role_claim", "p5", 17, "jev") in _keys(label_game(events, jev))
+
+
+def _jev_false_reports(events, jev) -> set[tuple]:
+    return {k for k in _keys(label_game(events, jev)) if k[0] == "false_report" and k[3] == "jev"}
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Ava checked Cleo and found a wolf. Cleo throwing Finn under the bus doesn't change that.",
+        "We know Elif is safe thanks to Ava's check. Cleo first, then Finn.",
+        "Ava has claimed Seer and cleared Elif, so I trust Elif. I believe Ava checked Cleo too.",
+    ],
+)
+def test_jev_relayed_seer_result_is_not_a_false_report(text):
+    """#611: villager Gia (p6) repeats someone else's check. Jev hears a report, no claim."""
+    events = _events()
+    events[73].public_text = text
+    jev = {73: JevVerdict(seer_report=JevReport(target="p2", result="wolf"))}
+    assert _jev_false_reports(events, jev) == set()
+
+
+@pytest.mark.parametrize(
+    ("claim_role", "text"),
+    [
+        (Role.SEER, "I'll be direct: I'm the Seer. Ava is a wolf. Vote Ava today."),
+        (None, "I checked Ava last night and she is a wolf. Vote Ava today."),
+        (None, "I’ve investigated Ava and she is a wolf."),
+        (None, "My check stands. Ava is a wolf. Vote Ava."),
+    ],
+)
+def test_jev_fake_seer_report_is_a_false_report(claim_role, text):
+    """Wolf Finn (p5) reports a check as his own: a Seer claim or first-person wording."""
+    events = _events()
+    events[17].public_text = text
+    report = JevReport(target="p0", result="wolf")
+    jev = {17: JevVerdict(claim_role=claim_role, seer_report=report)}
+    assert _jev_false_reports(events, jev) == {("false_report", "p5", 17, "jev")}
+
+
+def _answers(claim: str, target: str) -> dict:
+    """A /v1/systemone response body in the shape Jev returns (see jev.parse_response)."""
+    return {
+        "answers": {
+            "accuse_p1": {"noul": 0.1},
+            "claim_role": {"choice": claim, "confidence": 0.9},
+            "seer_report": {"noul": 0.95},
+            "seer_target": {"choice": target},
+            "seer_result": {"choice": "wolf"},
+        }
+    }
+
+
+def test_jev_false_report_from_response_bodies():
+    """Same two cases through Jev's parser: Finn's fake Seer claim (17), Gia's relay (73)."""
+    events = _events()
+    fake = jev_mod.parse_response(events[17], _answers("seer", "p0"))
+    relay = jev_mod.parse_response(events[73], _answers("none", "p2"))
+    jev = jev_verdicts([fake, relay])
+    assert _jev_false_reports(events, jev) == {("false_report", "p5", 17, "jev")}
