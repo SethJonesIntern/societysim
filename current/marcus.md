@@ -1,12 +1,10 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
 - Augustin PR #479 (Normal/Watch start right after bot check) -> opus review+fix on his branch, then reviewer approve
-- CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 PR #471 APPROVED r2 auto-merge. (visitor seed -> #475)
+- CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
 - URGENT #440 PR #465 APPROVED auto-merge (all sizes clean). Next: Codex live playtest on society-sim.us after deploy (Marcus clicks Turnstile).
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
-- #37 PR #474 APPROVED auto-merge
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
-- #475 PR #476 APPROVED auto-merge
 - #477 PR #478 APPROVED auto-merge
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
@@ -67,6 +65,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #471 (#438 seed privacy), #474 (#37 README prior art, closes #37), #476 (#475 visitor seed 53-bit); handoffs posted
 - merged #397 (#382 ledger fail-closed: fail-open, midnight, per-IP restart fixed), #398 (#395 JSON-only LB + timeline names), #472 (results regen after #467); handoffs posted
 - merged #467 (#441-443/#433 analysis) and #470 (#468 LB tabs); #466 live applied
 - merged #455 (README rewrite + docs/DEPLOYMENT.md), #463 (DEMO nav), #464 (#422-424 client retries), #466 (#447 SQL), #469 (#462 viewer polish); handoffs posted; Seth replied on Discord
