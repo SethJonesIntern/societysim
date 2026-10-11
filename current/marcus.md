@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- #617 round-2 bug runs: 1 merge re-review (opus), 2 live walkthrough (sonnet; 390x844 low-pri), 3 narration audio (sonnet), 4 play server: nothing found (clean 4xx, CORS OK); run 5 data consistency AFTER republish
+- #617 round-2 bug runs: 1 merge re-review (opus), 2 live walkthrough (sonnet; 390x844 low-pri), 3 narration: nothing found (55 clips OK), 4 play server: nothing found (clean 4xx, CORS OK); run 5 data consistency AFTER republish
 - #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 freeze at 15:00Z. Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
 - #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
 - #604 MERGED 08:11Z by Seth (GO). Numbers now: false_role_claim 295, lies 356, followed vs base 40.4% vs 71.2%. NEXT (ours, after Seth's #608 deception-matrix PR merges; watcher waiting): backup -> label --no-jev + postbatch (keyless) -> HF publish polter-dev/societysim-games (manifest 100) -> sync-neon -> anon read check -> deploy.yml -> check LB/Research/g0043 seq49 + smoke -> update DEMO.md -> post final numbers on #604.
