@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:50Z)
+# marcus status (updated 2026-10-11T13:53Z)
 ## Active
+- 13:53Z: Round 3 DONE: all demo numbers verified against the 100 published logs. PR #713 (#712 who-fools-whom small samples sorted first) -> reviewer. Claimed #714 (wolf win 0% on 2-3 seats, no count) -> implementer, branch issue-714-wolf-win-count, PR by 14:20Z. #715 (README Jev) is team:runner, told Seth on Discord.
 - 13:50Z: MERGED #705, #708, #710, #711 (issues #699-#703 closed).
 - 13:49Z: PRs #710 (#702 Escape) and #711 (#703 trailer focus) APPROVED, auto-merge queued. Mouse flows unchanged, arrow keys still step replay.
 - 13:48Z: PRs #705, #706, #708 APPROVED, auto-merge queued (no conflicts; g0043, published batch 100 games, Research default 5 unchanged).
