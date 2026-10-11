@@ -186,9 +186,12 @@ def test_migrate_cli_dry_run_prints_sql_and_touches_no_database(monkeypatch):
 
 
 def test_migrate_cli_apply_runs_migrations_in_a_transaction(fake_neon):
+    from societysim.logging.sinks.neon import list_migrations
+
     res = CliRunner().invoke(app, ["sync-neon", "--migrate", "--apply"])
     assert res.exit_code == 0, res.output
-    assert [s for s, _ in fake_neon.committed] == [fake_neon.statements[0][0]]
+    assert [s for s, _ in fake_neon.committed] == [s for s, _ in fake_neon.statements]
+    assert [s for s, _ in fake_neon.committed] == [sql for _, sql in list_migrations()]
     assert "alter table events add column if not exists inserted_at" in fake_neon.committed[0][0]
     assert fake_neon.closed
 

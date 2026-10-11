@@ -127,6 +127,35 @@ async def apply_migrations(conn: Any) -> None:
             await conn.execute(sql)
 
 
+# global_detectors and global_liars are materialized views once migration 002 has run (#447);
+# before that they are plain views and there is nothing to refresh. CONCURRENTLY keeps the old
+# rows readable while the new ones are computed.
+_REFRESH_GLOBAL_BOARD = """
+do $$
+begin
+    if exists (select 1 from pg_matviews
+               where schemaname = current_schema() and matviewname = 'global_detectors') then
+        refresh materialized view concurrently global_detectors;
+    end if;
+    if exists (select 1 from pg_matviews
+               where schemaname = current_schema() and matviewname = 'global_liars') then
+        refresh materialized view concurrently global_liars;
+    end if;
+end $$
+"""
+
+
+async def refresh_global_board(conn: Any) -> bool:
+    """Recompute the global leaderboard after games were added or removed. Never raises: a
+    failed refresh leaves the last board up and the next refresh catches up. True on success."""
+    try:
+        await conn.execute(_REFRESH_GLOBAL_BOARD)
+        return True
+    except Exception as exc:  # the message may hold the DSN, so log only the type
+        log.warning("global board refresh failed (%s)", type(exc).__name__)
+        return False
+
+
 class NeonSink:
     """EventSink writing to Neon. One instance per game; `batch_id` comes from the caller.
 
@@ -285,6 +314,7 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 async def sync_batch(batch_dir: Path, conn: Any, chunk: int = 500) -> dict[str, int]:
     """Backfill every game in batch_dir (and its labels file) into Neon. Safe to re-run.
+    Refreshes the global leaderboard once at the end.
 
     Returns counts of games, events and labels read from the JSONL files.
     """
@@ -292,16 +322,21 @@ async def sync_batch(batch_dir: Path, conn: Any, chunk: int = 500) -> dict[str, 
     for path in sorted(batch_dir.glob("*.jsonl")):
         if path.name.endswith(".labels.jsonl"):
             continue
-        counts = await sync_game(path, conn, chunk)
+        counts = await sync_game(path, conn, chunk, refresh=False)
         if counts:
             totals["games"] += 1
             totals["events"] += counts["events"]
             totals["labels"] += counts["labels"]
+    if totals["games"]:
+        await refresh_global_board(conn)
     return totals
 
 
-async def sync_game(path: Path, conn: Any, chunk: int = 500) -> dict[str, int] | None:
+async def sync_game(
+    path: Path, conn: Any, chunk: int = 500, *, refresh: bool = True
+) -> dict[str, int] | None:
     """Backfill one game's log (and its labels file) into Neon; batch_id is the dir name.
+    With `refresh`, then refreshes the global leaderboard (a visitor game's backfill).
     Returns its event and label counts, or None for an empty log."""
     batch_dir = path.parent
     events = _read_jsonl(path)
@@ -336,6 +371,8 @@ async def sync_game(path: Path, conn: Any, chunk: int = 500) -> dict[str, int] |
     labels = _read_jsonl(labels_path) if labels_path.is_file() else []
     if labels:
         await conn.executemany(_INSERT_LABEL, [label_row(i, lb) for i, lb in enumerate(labels)])
+    if refresh:
+        await refresh_global_board(conn)
     return {"events": len(events), "labels": len(labels)}
 
 
@@ -349,6 +386,8 @@ async def delete_games(conn: Any, game_ids: list[str]) -> dict[str, Any]:
     n_labels = await conn.fetchval("select count(*) from labels where game_id = any($1)", ids)
     rows = await conn.fetch("delete from games where game_id = any($1) returning game_id", ids)
     deleted = sorted(r["game_id"] for r in rows)
+    if deleted:
+        await refresh_global_board(conn)
     return {
         "deleted": deleted,
         "missing": [i for i in ids if i not in deleted],
@@ -443,7 +482,8 @@ async def find_prunable(
 
 
 async def prune_games(conn: Any, game_ids: list[str]) -> None:
-    """Delete exactly these games, with their events and labels, in one transaction."""
+    """Delete exactly these games, with their events and labels, in one transaction. Then
+    refresh the global leaderboard."""
     ids = list(dict.fromkeys(game_ids))
     if not ids:
         return
@@ -451,3 +491,4 @@ async def prune_games(conn: Any, game_ids: list[str]) -> None:
         await conn.execute("delete from events where game_id = any($1)", ids)
         await conn.execute("delete from labels where game_id = any($1)", ids)
         await conn.execute("delete from games where game_id = any($1)", ids)
+    await refresh_global_board(conn)

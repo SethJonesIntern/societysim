@@ -48,12 +48,15 @@ def sql_table_columns(name: str) -> list[tuple[str, str]]:
     return cols + [(c, SQL_TYPES.get(t, t)) for c, t in added]
 
 
+# A plain view, or a materialized one (global_detectors, global_liars since #447).
+VIEW_DDL = (
+    r"create (?:or replace view|materialized view if not exists) {name}(?: with \(\w+\))? as\n"
+)
+
+
 def sql_view_columns(name: str) -> list[str]:
     """Output column names of the view's top-level (unindented) select."""
-    body = (
-        "\n"
-        + re.search(rf"create or replace view {name}(?: with \(\w+\))? as\n(.*?);\n", SQL, re.S)[1]
-    )
+    body = "\n" + re.search(VIEW_DDL.format(name=name) + r"(.*?);\n", SQL, re.S)[1]
     select = body[body.rindex("\nselect ") + 8 :].split("\nfrom ", 1)[0]
     items, depth, cur = [], 0, ""
     for ch in select:
@@ -115,10 +118,16 @@ def test_live_columns_match_doc():
     async def run():
         conn = await connect_neon()
         try:
+            # pg_attribute, not information_schema.columns: that one leaves out
+            # materialized views (global_detectors, global_liars since #447).
             return await conn.fetch(
-                "select table_name, column_name, data_type from information_schema.columns"
-                " where table_schema = 'public' and table_name = any($1)"
-                " order by table_name, ordinal_position",
+                "select c.relname as table_name, a.attname as column_name,"
+                " format_type(a.atttypid, a.atttypmod) as data_type"
+                " from pg_attribute a join pg_class c on c.oid = a.attrelid"
+                " join pg_namespace n on n.oid = c.relnamespace"
+                " where n.nspname = 'public' and c.relname = any($1)"
+                " and a.attnum > 0 and not a.attisdropped"
+                " order by c.relname, a.attnum",
                 [*TABLES, *VIEWS],
             )
         finally:

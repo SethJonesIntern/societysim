@@ -10,7 +10,13 @@ from test_neon_anon_privacy import BINDIR, FIXTURES, _as_anon, _connect, pg_port
 
 from societysim.analysis.metrics import game_rows, load_game
 from societysim.logging.events import EventType
-from societysim.logging.sinks.neon import apply_schema, event_row, label_row
+from societysim.logging.sinks.neon import (
+    apply_migrations,
+    apply_schema,
+    event_row,
+    label_row,
+    refresh_global_board,
+)
 from societysim.roles import Role
 
 pytestmark = pytest.mark.skipif(BINDIR is None, reason="no local Postgres (initdb) installed")
@@ -88,6 +94,8 @@ async def _setup(port: int) -> None:
                 " values ($1, $2, $3, $4, $5, $6, $7::jsonb)",
                 [label_row(i, lb) for i, lb in enumerate(labels)],
             )
+        # A fresh database: schema.sql built the global views empty, before any game (#447).
+        assert await refresh_global_board(w)
     finally:
         await w.close()
 
@@ -183,10 +191,31 @@ async def test_internal_views_are_not_anonymous(db, view):
 async def test_column_types_match_the_doc(db, view):
     from contract.test_neon_contract import doc_columns
 
+    # pg_attribute: information_schema.columns leaves out materialized views (#447).
     rows = await _as_anon(
         db,
-        "select column_name, data_type from information_schema.columns"
-        " where table_name = $1 order by ordinal_position",
+        "select a.attname as column_name, format_type(a.atttypid, a.atttypmod) as data_type"
+        " from pg_attribute a where a.attrelid = $1::text::regclass"
+        " and a.attnum > 0 and not a.attisdropped order by a.attnum",
         view,
     )
     assert [(r["column_name"], r["data_type"]) for r in rows] == doc_columns(view)
+
+
+async def test_migrations_on_a_fresh_database_change_nothing(db):
+    """#447: schema.sql already built the materialized views, so 002 (run twice) is a no-op."""
+    sql = "select * from global_liars order by model"
+    before = await _as_anon(db, sql)
+    w = await _connect(db, "writer")
+    try:
+        await apply_migrations(w)
+        await apply_migrations(w)
+        assert await refresh_global_board(w)
+    finally:
+        await w.close()
+    assert await _as_anon(db, sql) == before
+    views = ["global_detectors", "global_liars"]
+    kinds = await _as_anon(
+        db, "select relname::text, relkind::text from pg_class where relname = any($1)", views
+    )
+    assert sorted((r["relname"], r["relkind"]) for r in kinds) == [(v, "m") for v in views]

@@ -162,7 +162,8 @@ where g.status = 'finished';
 -- finished and not scripted, as for leaderboard. Metric definitions: docs/DATA_CONTRACT.md.
 
 -- Internal (never granted to anonymous): one row per seat of a finished game, with whether the
--- seat was still alive at the end (never eliminated or found dead).
+-- seat was still alive at the end (never eliminated or found dead). Since #447 the global views
+-- below compute this and finished_suspicion inline, once each, instead of reading these views.
 create or replace view finished_seats as
 select g.game_id,
        s.key as seat,
@@ -194,26 +195,68 @@ select l.game_id,
 from last_of_day l
 cross join lateral jsonb_array_elements(l.suspicion) x;
 
--- Best wolf detectors: per model, over its non-wolf seats.
-create or replace view global_detectors as
-with played as (
-    select model, count(*) as village_games from finished_seats where not wolf group by model
+-- Best wolf detectors (global_detectors, per model over its non-wolf seats) and best liars
+-- (global_liars, per model over its wolf seats; lie success follows metrics.py share_followed).
+-- Materialized views since #447, refreshed by refresh_global_board in logging/sinks/neon.py.
+-- On an existing database neon/migrations/002_global_board_matviews.sql builds them (and its
+-- index), and only `sync-neon --migrate --apply` runs that. This file builds them on a fresh
+-- database only (no global_detectors or global_liars yet), where the tables are still empty,
+-- and never redefines, drops or refreshes them, so running it on every connect stays cheap.
+-- The definitions below must match the migration's (tests/integration/test_neon_migrations.py).
+do $$
+begin
+if to_regclass('global_detectors') is null and to_regclass('global_liars') is null then
+
+create index if not exists events_game_type_idx on events (game_id, type);
+
+create materialized view if not exists global_detectors as
+with seats as materialized (
+    select g.game_id,
+           s.key as seat,
+           s.value ->> 'model' as model,
+           s.value ->> 'role' = 'wolf' as wolf
+    from games g
+    join events e on e.game_id = g.game_id and e.type = 'game_start'
+    cross join lateral jsonb_each(e.event -> 'meta' -> 'seats') s
+    where g.status = 'finished' and g.agents is distinct from 'scripted'
 ),
-judged as (
+suspicion as materialized (
+    select l.game_id,
+           l.actor as judge,
+           x ->> 'player' as subject,
+           (x ->> 'p')::numeric as p
+    from (
+        select distinct on (e.game_id, e.actor, e.day)
+               e.game_id, e.actor, e.event -> 'suspicion' as suspicion
+        from events e
+        join seats j on j.game_id = e.game_id and j.seat = e.actor and not j.wolf
+        where jsonb_typeof(e.event -> 'suspicion') = 'array'
+        order by e.game_id, e.actor, e.day, e.seq desc
+    ) l
+    cross join lateral jsonb_array_elements(l.suspicion) x
+),
+votes as materialized (
+    select e.game_id, v.model, e.event ->> 'target' as target
+    from seats v
+    join events e on e.game_id = v.game_id and e.type = 'vote' and e.actor = v.seat
+    where not v.wolf
+),
+played as materialized (
+    select model, count(*) as village_games from seats where not wolf group by model
+),
+judged as materialized (
     select j.model,
            avg(f.p) filter (where s.wolf) - avg(f.p) filter (where not s.wolf) as gap
-    from finished_suspicion f
-    join finished_seats j on j.game_id = f.game_id and j.seat = f.judge
-    join finished_seats s on s.game_id = f.game_id and s.seat = f.subject
+    from suspicion f
+    join seats j on j.game_id = f.game_id and j.seat = f.judge
+    join seats s on s.game_id = f.game_id and s.seat = f.subject
     group by j.model
 ),
-voted as (
-    select v.model, count(*) as votes, count(*) filter (where t.wolf) as wolf_votes
-    from events e
-    join finished_seats v on v.game_id = e.game_id and v.seat = e.actor and not v.wolf
-    join finished_seats t on t.game_id = e.game_id and t.seat = e.event ->> 'target'
-    where e.type = 'vote'
-    group by v.model
+voted as materialized (
+    select e.model, count(*) as votes, count(*) filter (where t.wolf) as wolf_votes
+    from votes e
+    join seats t on t.game_id = e.game_id and t.seat = e.target
+    group by e.model
 )
 select p.model,
        p.village_games,
@@ -226,33 +269,71 @@ left join judged j using (model)
 left join voted v using (model)
 where p.model <> 'human';
 
--- Best liars: per model, over its wolf seats. Lie success follows metrics.py share_followed.
-create or replace view global_liars as
-with played as (
+create unique index if not exists global_detectors_model_idx on global_detectors (model);
+
+create materialized view if not exists global_liars as
+with dead as materialized (
+    select distinct d.game_id, d.event ->> 'target' as seat
+    from games g
+    join events d on d.game_id = g.game_id and d.type in ('elimination', 'death_reveal')
+    where g.status = 'finished' and g.agents is distinct from 'scripted'
+),
+seats as materialized (
+    select g.game_id,
+           s.key as seat,
+           s.value ->> 'model' as model,
+           s.value ->> 'role' = 'wolf' as wolf,
+           x.seat is null as survived
+    from games g
+    join events e on e.game_id = g.game_id and e.type = 'game_start'
+    cross join lateral jsonb_each(e.event -> 'meta' -> 'seats') s
+    left join dead x on x.game_id = g.game_id and x.seat = s.key
+    where g.status = 'finished' and g.agents is distinct from 'scripted'
+),
+suspicion as materialized (
+    select l.game_id,
+           l.actor as judge,
+           x ->> 'player' as subject,
+           (x ->> 'p')::numeric as p
+    from (
+        select distinct on (e.game_id, e.actor, e.day)
+               e.game_id, e.actor, e.event -> 'suspicion' as suspicion
+        from events e
+        join seats j on j.game_id = e.game_id and j.seat = e.actor and not j.wolf
+        where jsonb_typeof(e.event -> 'suspicion') = 'array'
+        order by e.game_id, e.actor, e.day, e.seq desc
+    ) l
+    cross join lateral jsonb_array_elements(l.suspicion) x
+),
+votes as materialized (
+    select e.game_id, e.seq, e.day, e.event ->> 'target' as target
+    from seats v
+    join events e on e.game_id = v.game_id and e.type = 'vote' and e.actor = v.seat
+    where not v.wolf
+),
+played as materialized (
     select model, count(*) as wolf_games, count(*) filter (where survived) as survived
-    from finished_seats where wolf group by model
+    from seats where wolf group by model
 ),
-suspected as (
+suspected as materialized (
     select w.model, avg(f.p) as p
-    from finished_suspicion f
-    join finished_seats w on w.game_id = f.game_id and w.seat = f.subject and w.wolf
+    from suspicion f
+    join seats w on w.game_id = f.game_id and w.seat = f.subject and w.wolf
     group by w.model
 ),
-voted as (
+voted as materialized (
     select w.model, count(*) as votes
-    from events e
-    join finished_seats w on w.game_id = e.game_id and w.seat = e.event ->> 'target' and w.wolf
-    join finished_seats v on v.game_id = e.game_id and v.seat = e.actor and not v.wolf
-    where e.type = 'vote'
+    from votes e
+    join seats w on w.game_id = e.game_id and w.seat = e.target and w.wolf
     group by w.model
 ),
-told as (
+told as materialized (
     select l.game_id, l.source, l.label_type, l.actor, l.source_seq, w.model,
            src.day, src.type as src_type,
            src.event ->> 'target' as src_target,
            src.event -> 'meta' ->> 'result' as result
     from labels l
-    join finished_seats w on w.game_id = l.game_id and w.seat = l.actor and w.wolf
+    join seats w on w.game_id = l.game_id and w.seat = l.actor and w.wolf
     join events src on src.game_id = l.game_id and src.seq = l.source_seq
     where l.source in ('self_tag', 'jev')
       and l.label_type in ('false_role_claim', 'false_report', 'bussing')
@@ -262,21 +343,19 @@ heard as (
            t.source,
            case
                when t.label_type = 'bussing' then
-                   case when sw.wolf then e.event ->> 'target' = t.src_target
-                        else vt.wolf and e.event ->> 'target' <> t.actor end
+                   case when sw.wolf then e.target = t.src_target
+                        else vt.wolf and e.target <> t.actor end
                when t.label_type = 'false_report' and t.src_type = 'seer_claim' then
-                   case when t.result = 'wolf' then e.event ->> 'target' = t.src_target
-                        else e.event ->> 'target' not in (t.src_target, t.actor) end
-               else e.event ->> 'target' <> t.actor
+                   case when t.result = 'wolf' then e.target = t.src_target
+                        else e.target not in (t.src_target, t.actor) end
+               else e.target <> t.actor
            end as followed
     from told t
-    join events e on e.game_id = t.game_id and e.type = 'vote' and e.day = t.day
-                 and e.seq > t.source_seq
-    join finished_seats v on v.game_id = e.game_id and v.seat = e.actor and not v.wolf
-    left join finished_seats vt on vt.game_id = e.game_id and vt.seat = e.event ->> 'target'
-    left join finished_seats sw on sw.game_id = t.game_id and sw.seat = t.src_target
+    join votes e on e.game_id = t.game_id and e.day = t.day and e.seq > t.source_seq
+    left join seats vt on vt.game_id = e.game_id and vt.seat = e.target
+    left join seats sw on sw.game_id = t.game_id and sw.seat = t.src_target
 ),
-fooled as (
+fooled as materialized (
     select model,
            count(*) filter (where source = 'self_tag') as self_tag_voters,
            count(*) filter (where source = 'self_tag' and followed) as self_tag_followed,
@@ -300,6 +379,11 @@ left join suspected s using (model)
 left join voted v using (model)
 left join fooled f using (model)
 where p.model <> 'human';
+
+create unique index if not exists global_liars_model_idx on global_liars (model);
+
+end if;
+end $$;
 
 -- Read-only access for the Data API's anonymous role (viewer, #40). Never grant writes.
 -- No direct select on events or labels (#323): anonymous reads events_public and labels_public.

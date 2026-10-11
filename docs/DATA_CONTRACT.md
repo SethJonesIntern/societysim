@@ -885,8 +885,14 @@ What the metrics mean:
 | `jev_lie_success` | numeric | |
 | `ranked` | boolean | `wolf_games >= 5` |
 
-Both read two internal views, `finished_seats` and `finished_suspicion`, which `anonymous`
-can't select and which are not part of the contract.
+Both are materialized views once `neon/migrations/002_global_board_matviews.sql` has run
+(#447; plain views before that, same columns and rows). They are refreshed after `sync-neon`,
+after each visitor game's backfill, and after `--delete` / `--prune --apply`, so a batch game
+streamed with `--neon` shows up at the next refresh, not the moment it ends. They compute the
+same seats and suspicion pairs as the internal views `finished_seats` and
+`finished_suspicion`, which `anonymous` can't select and which are not part of the contract.
+Column checks must read `pg_attribute`: `information_schema.columns` leaves out materialized
+views.
 
 ### Requests the viewer makes
 
