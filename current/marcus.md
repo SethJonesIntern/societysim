@@ -3,7 +3,7 @@
 - #411 refresh mid-game resumes same game (sessionStorage credential, ended state, no new start) | opus | issue-411-refresh-resume. Files: play server session lookup/view route + viewer play page client state (cloud: avoid)
 - #301 control styling (StepControls, NarrationControls, DeceptionMatrix, Speed select, SetupForm -> ThemedSelect) | opus | issue-301-control-styling
 - #303 a11y pass desktop (avoids #301 controls, Leaderboard, names) | opus | issue-303-a11y
-- #407 PR #409 (inspector.css .roster scrollbar/padding) -> reviewer dispatched (checking 10p). After merge: delete branch pr-assets (generic name, verify it's only #409's)
+- #407 PR #409 APPROVED, auto-merge (10p checked). After merge: delete branch pr-assets if only #409's
 - #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
