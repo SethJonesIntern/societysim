@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #453 Neon sink disabled after deploy (DeadlockDetectedError at startup) | opus | issue-453-neon-startup-deadlock
+- #453 PR #456 (advisory xact lock on schema apply + background retry; manager.py/app.py) -> reviewer dispatched (checking cap not bypassed while ledger unloaded)
 - #451 PR #455 (README 216->85 lines, 6 research questions) -> reviewer dispatched. Conflicts w/ Seth #431 (README). Follow-up: docs/PITCH.md slide 9 pointer 'What we're asking' -> 'Research questions'.
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 PR #452 APPROVED, auto-merge (fits 1280-2560, avatar, names, no leaks). #440 told to drop dead .inspector-* CSS + 3.9MB image.
