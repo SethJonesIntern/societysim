@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:48Z)
+# marcus status (updated 2026-10-11T13:49Z)
 ## Active
+- 13:49Z: PRs #710 (#702 Escape) and #711 (#703 trailer focus) APPROVED, auto-merge queued. Mouse flows unchanged, arrow keys still step replay.
 - 13:48Z: PRs #705, #706, #708 APPROVED, auto-merge queued (no conflicts; g0043, published batch 100 games, Research default 5 unchanged).
 - 13:47Z: PR #707 CHANGES round 2 (stray tests/unit/test_cli_output.py-e with conflict markers committed). 2 failed rounds -> labeled status:needs-human; asked Marcus. Fix is one git rm + push.
 - 13:46Z: Round 3 hunter dispatched (site numbers vs published data: leaderboard, lies-by-model, who fools whom, stats card); PR stop 14:15Z. Plan: ~14:20Z live-site smoke test of demo paths after merges.
