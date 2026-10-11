@@ -1,8 +1,9 @@
-# seth status (updated 2026-10-12T05:20Z)
+# seth status (updated 2026-10-12T05:45Z)
 ## Active
 - #305 humans vs models | implementer opus (unblocked: play server live on Render)
-- #373 follow-ups (DEMO global step, globalBoard gate) | implementer
-- #369 (#359 default 10) in review; #370 (#362 smoke) approved/merging
+- #369 (#359 default 10): rebasing for runbook line; then needs re-review
+- #378 smoke mid-game hidden-info + readme line endings | implementer
+- WRAP-UP 2026-10-12 ~05:45Z: Seth heading home; agents told to push WIP. On resume: check #305/#369/#378 branches and PRs, review/merge.
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
@@ -13,6 +14,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #362 smoke check PR #370 merged; #373 PR #375 approved/merging
 - 2026-10-12 merged: #363 (#346 provider errors+qwen), #367 (#361 README results), #368 (#366 global rankings)
 - #38 DEMO.md draft: PR #364 merged (TODOs: batch numbers, verify, Gemini/Adobe rooms, Figma, video). #353: PR #360 merged.
 - #354 runbook: PR #358 merged
