@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T13:46Z)
 ## Active
+- 13:46Z: Round 3 hunter dispatched (site numbers vs published data: leaderboard, lies-by-model, who fools whom, stats card); PR stop 14:15Z. Plan: ~14:20Z live-site smoke test of demo paths after merges.
 - 13:46Z: Viewer hunt round 2 DONE: PRs #705/#706/#708 (one reviewer), #710 (#702 Escape) and #711 (#703 trailer focus) -> reviewer dispatched. Told Seth on Discord: music/background.mp3 404 on live site, About shows 'TBD by TBD' (his #693).
 - 13:46Z: PR #707 fixes pushed (rebased, kept both sides' tests). Re-review round 2 requested from same reviewer.
 - 13:45Z: PR #707 CHANGES (round 1): catch-all ValueError masks real errors; add malformed-labels test. Fix list sent to same implementer, rebase on main.
