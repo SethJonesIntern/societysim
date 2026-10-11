@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:19Z)
+# marcus status (updated 2026-10-11T13:21Z)
 ## Active
+- 13:21Z: PR #683 (#681 ledger midnight) APPROVED, auto-merge queued. Server change: DEPLOY AFTER DEMO (with #677).
 - 13:19Z: Reviewers dispatched for PR #686 (#684 narration switch) and PR #687 (#685 EventLogger.close). #688 (bottom-bar popups overlap slider at 830-1000px) in progress by viewer hunter. Video announced on Discord.
 - 13:19Z: DEMO VIDEO DONE: scratchpad/demo_video/societysim_demo.mp4 (97 s, 1080p, 33 MB; ElevenLabs narrator voiceover, 1 call, 286 chars; 2 short player lines; script voiceover.txt). Not committed. #679 merged (#678 closed).
 - 13:18Z: PR #679 (#678 labeler) APPROVED, auto-merge queued. Published batch output unchanged on relabel (no hidden_knowledge label sits on a fallback statement); no viewer change, so no site deploy.
