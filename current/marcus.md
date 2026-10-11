@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T03:18Z)
 ## Active
 - Augustin PR #483 (T481 leaderboard styling) -> opus fixed (specificity vs pages.css, medallions, roving-tab keyboard, 410 tests) -> reviewer dispatched
-- Live QA of #465 (Codex, partial before limit): found #484 side panels overlap (QA window was ~900px CSS; breakpoint 1001->821) -> PR #487, reviewer dispatched; ASK MARCUS: <1100px visitor games hide Game events panel while your-turn shows; #485 Research matrix raw model ids -> PR #486 APPROVED, auto-merge. Timer set: rerun full Codex live QA at 00:27 local; standing: Codex computer-use QA between each deploy
+- Live QA of #465 (Codex, partial before limit): found #484 side panels overlap (QA window was ~900px CSS; breakpoint 1001->821) -> PR #487 APPROVED auto-merge; ASK MARCUS (NEW in #487; main shows 170px events panel 1001-1100): <1100px visitor games hide Game events panel while your-turn shows; #485 Research matrix raw model ids -> PR #486 APPROVED, auto-merge. Timer set: rerun full Codex live QA at 00:27 local; standing: Codex computer-use QA between each deploy
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
@@ -205,6 +205,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- #487 minor leftovers: empty strip next to your-turn at 900x1130; nav cuts last links in narrow windows (<~900px)
 - RULE (Seth's request): skip issues assigned to SethJonesIntern with status:in-progress, and his branches. His agents push to issue-422/447/441 branches. #458 (Seth) duplicates merged #457 - told him.
 - #464 reviewer: main's fingerprint for mixed_v2_10p (41a82fe7) != stored run_meta (22206e87), so resuming that finished batch fails on main (expected after #363/#412?). #461 reviewer reported match - conflicting; only matters if re-running mixed_v2_10p.
 - Marcus: keep Render autoDeploy ON until freeze, accept failed visitor games on deploy (#446 closed).
