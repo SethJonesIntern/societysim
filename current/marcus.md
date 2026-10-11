@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T12:00Z)
+# marcus status (updated 2026-10-11T12:19Z)
 ## Active
+- 12:19Z: Live test Watch PASS (games_running 0->1->0 at 11:57Z after Stop watching). Normal game in progress (Kai died N1, so your-turn panel not testable in this seat; narration on, Day 3 reached). A 2nd game (not ours) running since 11:58Z. #669 and #665 MERGED. Seth's #671 approved, not ours.
 - RESUME NOTES (12:01Z, before /compact): Running = Codex live Watch+Play test in Brave (scratchpad/codex_livetest.out; games_running=2 at 12:00Z), games_running logger (scratchpad/games_running.log), poller (scratchpad/poll3.sh, re-arm on exit), 10:45 EDT cutoff alarm (14:45Z; on fire: TaskStop all agents, hold our open PRs, no new code). Pending merges: #669 (bank sync), #665 (trailer v2) auto-merge. After Codex test: post results + deploy ids on #616 and Discord (scratchpad/discord.sh pings Seth). #594 stays on hold. Seth OK'd #647 deploy (done).
 - #647 DEPLOYED 11:54Z via deploy hook (dep-db5nh64s728c738e0q70, fb496f01; rollback dep-db5kdfqjnfac73aqco40). Codex live Watch + Play test running in Brave; games_running logged to scratchpad/games_running.log.
 - #657 follow-up: Seth's #667 expands narration/bank to all 30 names (295 lines) -> PR #669 APPROVED auto-merge (296 files identical, drift test). Seth: narration = ElevenLabs narrator lines only; no browser TTS.
