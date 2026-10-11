@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 (NARRATED_GAMES list) reviewer; #618/#619 after demo; #622 low
+- #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 CHANGES r1 (list must apply only to default site source) fix sent; #618/#619 after demo; #622 low
 - #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 freeze at 15:00Z. Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
 - #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
 - #604 REPUBLISH COMPLETE: final table posted on #604 + Discord; #623 docs + #624 smoke merged.
