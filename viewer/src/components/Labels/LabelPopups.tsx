@@ -5,7 +5,9 @@ import { seatName } from "../../scene/seatName";
 import { seatPosition } from "../Table/Table";
 
 /**
- * Labels to show at this scene: the ones whose source_seq is the current event, filtered by source.
+ * Labels to show at this scene: the ones whose source_seq is the current event, or anywhere inside
+ * `range` when the stepper passes the current beat's first and last seq (a beat spans several events,
+ * and the scene sits on its last one). Filtered by source.
  * Villager mode shows none. Lie labels name hidden roles ("Finn claimed Seer; he is a wolf"), and
  * a label's detail can't be split into public and private parts, so we hide them all.
  * ponytail: could show a label once its truth is public (role revealed at death/game end); not worth it yet.
@@ -15,11 +17,27 @@ export function visibleLabels(
   scene: Scene,
   mode: Mode,
   sources?: LabelSource[],
+  range?: SeqRange,
 ): Label[] {
   if (mode !== "narrator") return [];
-  return labels.filter(
-    (l) => l.source_seq === scene.seq && (!sources || sources.includes(l.source)),
-  );
+  const inScene = (seq: number) => (range ? seq >= range.first && seq <= range.last : seq === scene.seq);
+  return labels.filter((l) => inScene(l.source_seq) && (!sources || sources.includes(l.source)));
+}
+
+/** Inclusive seq range of the stepper's current beat. */
+export interface SeqRange {
+  first: number;
+  last: number;
+}
+
+/** Past this many labels of one type in a beat they share one pop-up, so a vote beat stays readable. */
+export const MAX_SEPARATE_LABELS = 2;
+
+/** Group labels by type; a type with more than MAX_SEPARATE_LABELS becomes one group, the rest stay single. */
+export function groupLabels(labels: Label[]): Label[][] {
+  const byType = new Map<string, Label[]>();
+  for (const l of labels) byType.set(l.label, [...(byType.get(l.label) ?? []), l]);
+  return [...byType.values()].flatMap((g) => (g.length > MAX_SEPARATE_LABELS ? [g] : g.map((l) => [l])));
 }
 
 const pretty = (s: string) => s.replace(/_/g, " ");
@@ -34,6 +52,7 @@ export function LabelPopups({
   mode,
   playing = false,
   sources,
+  range,
   children,
 }: {
   scene: Scene;
@@ -42,24 +61,33 @@ export function LabelPopups({
   /** Autoplay is running: drop the live region so popups aren't announced. */
   playing?: boolean;
   sources?: LabelSource[];
+  /** The current beat's seq range; without it only labels on the shown event pop up. */
+  range?: SeqRange;
   children?: ReactNode;
 }) {
-  const shown = visibleLabels(labels, scene, mode, sources);
+  const shown = visibleLabels(labels, scene, mode, sources, range);
   const n = scene.players.length;
+  const perAnchor = new Map<string, number>(); // stack popups that share a spot
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 640 }}>
       {children}
       {/* Always mounted, even empty: screen readers miss live regions that appear with their content. */}
       <div aria-live={playing ? "off" : "polite"} style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {shown.map((l, k) => {
-          const i = scene.players.findIndex((p) => p.id === l.actor);
+        {groupLabels(shown).map((group, k) => {
+          const l = group[0];
+          const many = group.length > 1;
+          // A group has no single seat; it sits at the table center.
+          const anchor = many ? "" : l.actor;
+          const stack = perAnchor.get(anchor) ?? 0;
+          perAnchor.set(anchor, stack + 1);
+          const i = many ? -1 : scene.players.findIndex((p) => p.id === l.actor);
           const { x, y } = i < 0 ? { x: 50, y: 50 } : seatPosition(i, n);
-          // Pop toward the table center so it stays inside the box; stack same-seat popups.
+          // Pop toward the table center so it stays inside the box; stack same-spot popups.
           const style: CSSProperties = {
             position: "absolute",
             left: `${x}%`,
             top: `${y}%`,
-            transform: `translate(-50%, ${y < 50 ? "35%" : "-135%"}) translateY(${k * 8}px)`,
+            transform: `translate(-50%, ${y < 50 ? "35%" : "-135%"}) translateY(${stack * 8}px)`,
             width: "15em",
             padding: "0.5em 0.7em",
             borderRadius: 8,
@@ -71,20 +99,34 @@ export function LabelPopups({
             lineHeight: 1.3,
             pointerEvents: "auto",
           };
+          const lowest = Math.min(...group.map((g) => g.confidence));
           return (
             <aside
               key={`${l.label}-${l.source}-${l.actor}-${k}`}
               role="note"
-              data-label-for={l.actor}
+              data-label-for={group.map((g) => g.actor).join(" ")}
               data-label-type={l.label}
               data-label-source={l.source}
+              data-label-count={many ? group.length : undefined}
               style={style}
             >
-              <strong>{pretty(l.label)}</strong> · {seatName(scene.players, l.actor)}
+              <strong>{pretty(l.label)}</strong>
+              {many ? ` ×${group.length}` : ""} · {group.map((g) => seatName(scene.players, g.actor)).join(", ")}
               <div>
-                {pretty(l.source)} · {Math.round(l.confidence * 100)}% confidence
+                {pretty(l.source)} · {Math.round(lowest * 100)}% confidence
               </div>
-              <div>{l.detail}</div>
+              {many ? (
+                <details>
+                  <summary>Details</summary>
+                  <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
+                    {group.map((g, j) => (
+                      <li key={j}>{g.detail}</li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <div>{l.detail}</div>
+              )}
             </aside>
           );
         })}
