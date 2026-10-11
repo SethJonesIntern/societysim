@@ -1,5 +1,8 @@
-# marcus status (updated 2026-10-11T03:18Z)
+# marcus status (updated 2026-10-11T03:56Z)
 ## Active
+- Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
+- #516 Games page restyle (Marcus) -> opus implementer issue-516-games-restyle
+- SETH-ASSIGNED (all polter-dev): #504 URGENT all visitor games failing (visitor_starts not in Data API cache) -> opus issue-504-visitor-starts; #509 Play cold-load auto-starts paid game -> sonnet issue-509-no-cold-autostart; HOLD #510 (server/*, after #504), #498 (after Seth's #496 merges, schema.sql), #511 freeze (at 11:00 EDT only), #512 narration audio (needs Marcus: CF token?), #513 bug runs (after the others)
 - Codex live QA rerun scheduled at 00:27 local (timer beabsnjkb)
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
