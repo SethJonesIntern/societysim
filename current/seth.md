@@ -1,9 +1,6 @@
-# seth status (updated 2026-10-12T04:20Z)
+# seth status (updated 2026-10-12T05:00Z)
 ## Active
-- #366 mount GlobalLeaderboard on Leaderboard page | implementer (gap found in #364 review)
-- #38 DEMO.md draft PR #364: changes r1 (2 false claims)
-- #346 PR #363: adding breaker-skip-provider + legacy error-text classification
-- WAVE 2026-10-12 ~03:40Z (Seth: max parallel, ~2.5h left): #359 default 10 players (engine, claimed, Marcus pinged), #361 README results block (new), #362 live-site smoke check (new), #38 DEMO.md draft (claimed). Plus #346 implementing.
+- PRs in review: #363 (#346 provider errors, opus), #369 (#359 default 10), #370 (#362 smoke: live 51/51 PASS, play server UP on Render). Approved/merging: #367 (#361), #368 (#366).
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
@@ -14,6 +11,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #38 DEMO.md draft: PR #364 merged (TODOs: batch numbers, verify, Gemini/Adobe rooms, Figma, video). #353: PR #360 merged.
 - #354 runbook: PR #358 merged
 - #334 test env guard (PR #336) and #335 aggregate dataset card (PR #337): approved/merging
 - T5.2 #35 CLOSED: 10p self-play stopped at 20 games (Seth), $2.45, report posted; not published yet (needs polter-dev write + #335 card fix)
