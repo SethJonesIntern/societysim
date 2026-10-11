@@ -224,6 +224,36 @@ def test_stage_hard_fails_on_tracked_secret_looking_file(tmp_path):
     assert "leak.pem" in r.stderr
 
 
+def test_render_build_filter_covers_every_dockerfile_copy_source():
+    """A merge that the image doesn't use must not redeploy and kill live visitor games."""
+    import fnmatch
+
+    import yaml
+
+    svc = yaml.safe_load((ROOT / "render.yaml").read_text())["services"][0]
+    paths = svc["buildFilter"]["paths"]
+    assert "render.yaml" in paths and "server/Dockerfile" in paths
+
+    def covered(rel: str) -> bool:
+        return any(
+            p == rel or (p.endswith("/**") and rel.startswith(p[:-2])) or fnmatch.fnmatch(rel, p)
+            for p in paths
+        )
+
+    sources = []
+    for line in (ROOT / "server/Dockerfile").read_text().splitlines():
+        m = re.match(r"COPY\s+(?!--)(.+)", line)
+        if m:
+            *srcs, _dest = m.group(1).split()
+            sources += srcs
+    assert {"src", "configs", "pyproject.toml", "uv.lock"} <= set(sources)
+    for src in sources:
+        probe = f"{src}/x.txt" if (ROOT / src).is_dir() else src
+        assert covered(probe), f"buildFilter.paths misses Dockerfile COPY source {src}"
+    for ignored in ("viewer/src/App.tsx", "docs/PLAN.md", "tests/test_x.py", "scripts/status.sh"):
+        assert not covered(ignored)
+
+
 def test_render_blueprint_has_names_only_and_one_instance():
     import yaml
 

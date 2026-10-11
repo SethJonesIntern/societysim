@@ -10,6 +10,23 @@ services:
     plan: starter
     numInstances: 1 # game state is in memory: never scale out or autoscale
     healthCheckPath: /api/health
+    # Game state is in memory, so every deploy kills all running visitor games (#446).
+    # Redeploy only when something the server image COPYs changes (see server/Dockerfile),
+    # not on viewer, docs, tests or scripts merges. Keep in sync with the Dockerfile COPY
+    # lines; tests/test_deploy_play.py checks it. Applies only if the service is synced from
+    # this blueprint, otherwise set the same paths in Settings > Build & Deploy > Build Filters.
+    buildFilter:
+      paths:
+        - render.yaml
+        - server/Dockerfile
+        - pyproject.toml
+        - uv.lock
+        - README.md
+        - LICENSE
+        - src/**
+        - configs/**
+        - schema/**
+        - neon/schema.sql
     envVars:
       # The server maps PLAY_* onto OPENAI_API_KEY / HF_TOKEN / GEMINI_API_KEY at startup and
       # PLAY_* wins over a plain provider var. /api/health shows providers_ready per provider.
