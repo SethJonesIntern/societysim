@@ -248,6 +248,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- 10:22Z: RENDER_DEPLOY_HOOK_URL GitHub secret SET (Codex/Brave copy -> pbpaste|gh secret set, clipboard cleared). Auto-Deploy Off, build filters verified. deploy-play.yml now active: next server-path merge deploys main incl #647 when idle.
 - ~10:25Z Oct 11 Marcus: NO freeze/tag (#511 closed not planned); main is the last iteration. No usage-check task. Render hook: Codex via Brave (Render logged in there).
 - Blocker owners: Seth = #604 go/no-go + #594 hold; Marcus (polter) = Render deploy hook secret + Build Filters, #538, #511 freeze. Augustin does NOT have the Render login.
 - ~00:50 EDT Oct 11: Marcus asleep; Seth in control of this session. No Render dashboard login available.
