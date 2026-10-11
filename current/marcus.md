@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-11T00:58Z)
+# marcus status (updated 2026-10-11T01:01Z)
 ## Active
-- PLAY HOST: RENDER chosen (Marcus signed in). Codex (codex_render.md) creating Blueprint societysim-play, Starter instance, secrets EMPTY; then opens API Keys page. Next: Marcus creates Render API key -> .env RENDER_API_KEY via pbpaste; agent sets env vars via Render API from .env (no printing), redeploy, live checks (limits/client_ip_hint/spoof/Origin 403), VITE_PLAY_API_URL, site redeploy.
-- #356 model selection UX | PR #357 in review (allowed_models in /api/limits, human seat sync, names+avatars). model_pool multi-select skipped.
+- PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. API Keys page open: Marcus creates key -> .env RENDER_API_KEY. Then agent sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
+- #356 model selection | PR #357 APPROVED, auto-merge. Minor: shrinking seats below human seat -> 422.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
 - #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED; main verified OK (78 deception_pairs rows).
