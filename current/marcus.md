@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-11T01:02Z)
+# marcus status (updated 2026-10-11T01:03Z)
 ## Active
-- PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. API Keys page open: Marcus creates key -> .env RENDER_API_KEY. Then agent sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
+- PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. RENDER_API_KEY in .env (Marcus). Agent running: sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
 - #356 model selection | PR #357 APPROVED, auto-merge. Minor: shrinking seats below human seat -> 422.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
