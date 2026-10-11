@@ -1,7 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #301 PR #415 APPROVED, auto-merge (sliders keep limits; focus ok w/o #414). Shared branch pr-assets (#409 merged + #415): delete after #415 merges.
-- #303 PR #414 approved but CONFLICTING (after #409/#412/#413) -> same agent rebasing after #415 merges, then re-review. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
+- #303 PR #414 rebased (Table.tsx seat button conflict only; 376 viewer tests) -> re-review dispatched. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
 - #294 close-out -> PR #416 APPROVED r2, auto-merge pending CI. DONE live: sync-neon, HF publish to polter-dev (token CAN write polter-dev), DEPLOY_SOURCE -> site shows 100 games w/ correct model ids, Databricks 158 games + dashboard, results on #216. After merge: close #42, #216 (#37 not: T5.2/T5.3 unpublished), close #294. Decision: narration audio not on site (CI deploy excludes it; local deploy needs CLOUDFLARE_API_TOKEN not in .env). Seth pinged: migrate GO.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -63,6 +62,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #415 (#301 controls restyle); handoffs already posted on #303/#395 as pending. Kept generic pr-assets branch (cloud session may use it).
 - merged #412 (#400 names match avatars); handoffs on #294, #395; Seth pinged re avatar_presentation. Narration bank (30 names) decision pending Marcus.
 - merged #409 (#407 agents panel) and #413 (#411 refresh resume); handoffs posted
 - #300 #302 closed as covered by #392/#404 (checklist + screenshots on issues)
