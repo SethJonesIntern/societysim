@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T08:56Z)
 ## Active
 - JEV REPUBLISH FULLY LIVE 09:3xZ (#648 merged, deploy 38128699918, agreement.json 200, Jev lie rates populated); #645 closed; Discord + #616 posted.
-- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 CHANGES r2 (button overlaps View select/ambience toggle) fix sent
+- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 CHANGES r3 (left:648px overlaps nav; use flex in top bar) fix sent (grind)
 - Viewer fixes: #638 (#635+#636) and #639 MERGED; Neon cold-start checked: 0.27 s after 7 min idle, no change needed; #638 APPROVED auto-merge; #637 -> PR #644 MERGED
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
 - #626 trailer -> PR #650 (Fable) reviewer; merge before 15:00Z; frames artifact private to Marcus
