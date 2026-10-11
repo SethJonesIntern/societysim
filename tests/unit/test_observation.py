@@ -250,7 +250,7 @@ def test_lookalike_quotes_become_apostrophes():
 
 
 def _long_days(last_day: int, rounds: int):
-    """The vote2 game pushed to `last_day`, with `rounds` long statements per seat each extra day."""
+    """The vote2 game run on to `last_day`: `rounds` long statements per seat each extra day."""
     state, events = GAME.checkpoints["vote2"]
     state = copy.deepcopy(state)
     state.day = last_day
