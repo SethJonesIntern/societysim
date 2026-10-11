@@ -365,6 +365,7 @@ def _villager_tag(text: str):
         "Finn's claim lines up with my gut. Ava dodged the question. I'm leaning Ava.",
         "Hugo was a villager, so we mislynched. We can't lose another villager today.",
         "I am sure about Ava. Losing a villager now would hurt.",
+        "Hugo is not a wolf. Ava dodged the question.",
     ],
 )
 def test_villager_tag_without_a_claim_in_the_text_is_not_a_lie(text):
@@ -379,6 +380,9 @@ def test_villager_tag_without_a_claim_in_the_text_is_not_a_lie(text):
         "I am just a plain villager trying to help. Vote Ava.",
         "As a villager, I think Ava is lying.",
         "I’m Finn (p5), a villager as well.",
+        "I'm not a wolf, I promise. Vote Ava.",
+        "I am not a werewolf. Vote Ava.",
+        "I’m not the wolf here. Vote Ava.",
     ],
 )
 def test_villager_tag_with_a_claim_in_the_text_is_a_lie(text):

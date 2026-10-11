@@ -97,7 +97,12 @@ class _Game:
 # "I'm a villager", "I am just a plain villager", "as a villager, I ...": a first-person
 # villager claim in one sentence. Models often tag claim_role "villager" on statements that
 # say nothing about their role, so a villager self-tag counts only when the text says it.
-_SAYS_VILLAGER = re.compile(r"\b(?:I'm|I’m|I am|as an?)\b[^.!?;]{0,40}\bvillager", re.I)
+_SAYS_VILLAGER = re.compile(
+    r"\b(?:I'm|I’m|I am|as an?)\b[^.!?;]{0,40}\bvillager"
+    # a first-person wolf denial ("I'm not a wolf") counts as claiming villager too
+    r"|\bI(?:'m|’m| am) not (?:a |the )?(?:wolf|werewolf)",
+    re.I,
+)
 
 
 def _self_tags(game: _Game) -> list[_Tag]:
