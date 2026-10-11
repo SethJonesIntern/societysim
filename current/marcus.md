@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:57Z)
+# marcus status (updated 2026-10-11T13:58Z)
 ## Active
+- 13:58Z: PR #716 (#714) APPROVED round 2, auto-merge queued; no wrap at 1440/1920.
 - 13:57Z: Seth approved+merged #713 himself at 13:56Z; our reviewer then found Jev view still sorts GPT-5 nano first (hatched 50% n=2 top-left). Filed #717 follow-up -> implementer, branch issue-717-jev-thin-sort, PR by 14:20Z. Told Seth on Discord.
 - 13:57Z: #713 MERGED (#712 who-fools-whom order; demo video shows old order, numbers same). #716 fixes pushed, re-review round 2 requested.
 - 13:56Z: PR #716 CHANGES round 1: counts wrap at 1440/1920 -> nowrap + test fix sent to same implementer, push by 14:25Z.
