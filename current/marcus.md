@@ -1,5 +1,9 @@
-# marcus status (updated 2026-10-11T07:36Z)
+# marcus status (updated 2026-10-11T08:56Z)
 ## Active
+- PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
+- #626 trailer page (?page=trailer) -> FABLE implementer issue-626-trailer (viewer-only; merge before 15:00Z freeze)
+- Round 3 bug runs (Seth #616): visitor flow e2e mocked (opus), viewer pages edge data (sonnet), batch resume/budget (sonnet) -> summaries on #616; if a round finds nothing tell Seth and switch to improvements
+- Seth's PR #627 (#620 autoplay waits for clips) approved, his
 - #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 CHANGES r1 (list must apply only to default site source) fix sent; #618/#619 after demo; #622 low
 - #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 freeze at 15:00Z. Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
 - #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
