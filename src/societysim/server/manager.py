@@ -35,7 +35,7 @@ from societysim.agents.base import Agent, AgentFactory
 from societysim.agents.prompts import RESPONSE_MODELS
 from societysim.agents.schemas import SuspicionEntry, TargetResponse
 from societysim.agents.scripted import RandomAgent
-from societysim.config import GameConfig
+from societysim.config import GameConfig, Presentation
 from societysim.engine.state import GameState
 from societysim.logging.events import EventLogger
 from societysim.logging.sinks.jsonl import JsonlSink
@@ -118,6 +118,14 @@ def _registry():
     reg = load_registry(REGISTRY)
     reg.apply_env()
     return reg
+
+
+@cache
+def _presentations() -> dict[str, Presentation]:
+    """Model -> avatar presentation, for seat names. A plain read: no env changes."""
+    from societysim.models.registry import load_registry
+
+    return {m.name: m.avatar_presentation for m in load_registry(REGISTRY).models}
 
 
 @cache
@@ -306,7 +314,7 @@ class GameManager:
             sinks = [human.HumanSink(sink, seat) for sink in sinks]
             token = secrets.token_urlsafe(32)  # 256 bits; only its hash is kept
         logger = EventLogger(game_id, sinks)
-        game = Game(cfg, make_agent, logger, colors)
+        game = Game(cfg, make_agent, logger, colors, _presentations())
         session = Session(game_id, game, logger, seat, agent, token and hash_token(token))
         session.client, session.calls = client, calls
         session.task = asyncio.create_task(self._run(session))
