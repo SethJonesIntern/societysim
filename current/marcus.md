@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- #611 (Seth) Jev false_report fires on relayed Seer results (843/853 FP) -> PR #615 (stacked on #604, HOLD) reviewer; Seth must run scripts/check_jev_false_reports.py on his cache
+- #611 (Seth) Jev false_report fires on relayed Seer results (843/853 FP) -> PR #615 (stacked on #604, HOLD) approved r1; pattern hardening (optional fixes) sent -> re-review after; Seth must run scripts/check_jev_false_reports.py on his cache
 - #604: Seth pushed 08:05Z (wolf denial counts) -> approval dropped -> re-review r2 running (hold kept).
 - 07:36Z Seth asks on PR #604: (A) Fable verdict POSTED: real bug, #604 correct (optional: match "I'm not a wolf"), republish before 9AM; lead with gemini-flash 52% n=253; (B) prep POSTED on #604 (Liars 67%->~56% n=421; g0031 drops out of top 3; site redeploy = deploy.yml; pages.yml mirrors HF Space). DON'T merge/republish/deploy until Seth confirms.
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
