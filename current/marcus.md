@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
 - URGENT #553 (Seth) no visitor game reaches day 2 -> opus issue-553-visitor-day2 (deploy times in scratchpad/render_deploys.txt)
-- Augustin NEW PR #551 leaderboard fullscreen: wait for #554 merge, then rebase (offered)
+- Augustin PR #551 leaderboard fullscreen: #554 merged -> opus rebase+review+fix on his branch (stops if he's active), then reviewer
 - New ready for us: #538 purge old run_meta copies (infra, agent:cloud) - not yet dispatched
 - #541 leave docs+401 tests -> PR #552 (touches app.py -> redeploy) APPROVED; hold removed (no live game)
 - FULL SCREEN audit filed #542-#546: #542 MERGED (#554) (conflicts main.tsx with Augustin #551 leaderboard-fullscreen + #532; both told on PR + Discord), #543 MERGED (#548), #544 advanced setup -> PR #550 CHANGES r2 (Turnstile shrunk with CSS zoom - not allowed); r3 APPROVED auto-merge, #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
