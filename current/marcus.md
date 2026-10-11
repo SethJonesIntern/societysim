@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-11T01:43Z)
+# marcus status (updated 2026-10-11T01:44Z)
 ## Active
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage token counts leak roles in running games (opus implementer issue-387-usage-leak; apply schema live after); #388 -> PR #393 in review; timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
@@ -6,7 +6,7 @@
 - PR #380 APPROVED, auto-merge (Render redeploys; hotfix env stays).
 - #385 themed dropdown | PR #391 CHANGES r1 (list snaps back on scroll) -> fix sent. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
 - Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 -> PR #384 APPROVED, auto-merge.
-- BUG HUNT WAVE (Marcus): Codex `codex review` on main worktree (codex_review.out); Opus hunt agent (verified bugs only); Fable hunt agent (same scope); Codex playtest #2 queued: waits for PR #374 merge + 8 min redeploy, then plays Normal game + Advanced/Watch (codex_playtest2.out). File issues from findings.
+- BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt RUNNING. Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 sonnet issue-395-timeline-lb. Global LB tabs load numbers OK (#377 works).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
 - LIVE PLAYTEST FAILED: (A) ROOT CAUSE: server reads OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY, Render only had PLAY_* -> HOTFIXED on Render (srv-db5dvg8473hc73aqg0k0: OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY = PLAY_* values), deploy live, health OK; code fix #379 PR #380 in review (providers_ready in /api/health). (B) game lost = Render autoDeploy restart on merges (7 deploys 01:04-01:21Z); Marcus OK with autoDeploy (freeze 23:00). (C) PR #377 APPROVED auto-merge. (D) live-log overlap -> in #374 takeover. (E) replay list fixture only -> #294 DEPLOY_SOURCE. RE-RUN Codex playtest after merges settle.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
