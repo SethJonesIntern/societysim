@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T12:40Z)
+# marcus status (updated 2026-10-11T12:45Z)
 ## Active
+- 12:45Z: Marcus approved 1 more Normal game. Codex live test 2 (your-turn panel) running in Brave: scratchpad/codex_livetest2.out, shots/livetest2/. Post the result on #616 and Discord.
 - 12:40Z: LIVE TEST DONE, posted on #616 and Discord. Watch PASS. Normal played to end (wolves won) but seat died N1, so your-turn panel UNTESTED (asked Seth for OK on 1 more Normal). Minor: Day 4 engine fallback. games_running back to 0. No rollback. Seth's #671 and #673 merged. Remaining: poller, 14:45Z cutoff alarm.
 - 12:19Z: Live test Watch PASS (games_running 0->1->0 at 11:57Z after Stop watching). Normal game in progress (Kai died N1, so your-turn panel not testable in this seat; narration on, Day 3 reached). A 2nd game (not ours) running since 11:58Z. #669 and #665 MERGED. Seth's #671 approved, not ours.
 - RESUME NOTES (12:01Z, before /compact): Running = Codex live Watch+Play test in Brave (scratchpad/codex_livetest.out; games_running=2 at 12:00Z), games_running logger (scratchpad/games_running.log), poller (scratchpad/poll3.sh, re-arm on exit), 10:45 EDT cutoff alarm (14:45Z; on fire: TaskStop all agents, hold our open PRs, no new code). Pending merges: #669 (bank sync), #665 (trailer v2) auto-merge. After Codex test: post results + deploy ids on #616 and Discord (scratchpad/discord.sh pings Seth). #594 stays on hold. Seth OK'd #647 deploy (done).
