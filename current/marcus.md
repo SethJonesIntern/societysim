@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-11T00:07Z)
+# marcus status (updated 2026-10-11T00:13Z)
 ## Active
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- PLAY SPACE: PR #333 merged + redeployed (6 secrets set) BUT HF PAUSED the Space: 'Flagged as abusive' (restart -> 503). Live checks a-d (incl XFF spoof) NOT run. NEEDS MARCUS: contact HF support / check Space settings. Site has VITE_PLAY_API_URL set -> play page will fail to reach server meanwhile. Fallback idea: other host (Render/Cloud Run).
+- PLAY SPACE: PR #333 merged + redeployed (6 secrets set) BUT HF PAUSED the Space: 'Flagged as abusive' (restart -> 503). Live checks a-d (incl XFF spoof) NOT run. NEEDS MARCUS: contact HF support / check Space settings. Site has VITE_PLAY_API_URL set -> play page will fail to reach server meanwhile. Fallback idea: other host (Render/Cloud Run). HF appeal via Codex STOPPED by Marcus before it started (draft email in scratchpad codex_hfappeal.md). Devpost landing-image upload: Codex stopped mid-save, verify draft.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
