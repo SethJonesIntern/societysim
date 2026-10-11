@@ -2,7 +2,7 @@
 ## Active
 - #301 control styling (StepControls, NarrationControls, DeceptionMatrix, Speed select, SetupForm -> ThemedSelect) | opus | issue-301-control-styling
 - #303 a11y pass desktop (avoids #301 controls, Leaderboard, names) | opus | issue-303-a11y
-- #300/#302 verify vs merged #392/#404, close or fill gaps | sonnet | issue-300-302-gaps
+- #407 Agents panel clips last row at 1920x1080 | sonnet | issue-407-agents-panel-clip
 - #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -65,6 +65,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- #300 #302 closed as covered by #392/#404 (checklist + screenshots on issues)
 - merged #402 (#401 admission/polling) and #404 (#390 table medallions); handoffs posted (#382, #300, #302); pr-assets-404 deleted
 - 01:5xZ merged #391 #392 #393 #386 #396 #380; handoffs posted; pr-assets/issue-385 deleted
 - PR #374 (Augustin landing/mode picker/Advanced; fixed by us) MERGED. PR #377 (neonAuth expires_at) MERGED.
