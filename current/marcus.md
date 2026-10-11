@@ -1,5 +1,8 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
+- #446 visitor game visitor-95bb7a14ac169bf3 failed ~2.5min (Seth) -> opus diagnosing via Render logs API + fix | issue-446-visitor-fail
+- #451 README rewrite (short, plain, research questions) | codex-implementer | issue-451-readme-rewrite (overlaps Seth PR #431 README)
+- Devpost story rewrite: codex exec computer-use (scratchpad codex_devpost_story.md/.out), Save only, no Submit
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 player profile dialog (shrink 30-40%, avatar in empty portrait, headings, compact empty states) | opus | issue-445-profile-dialog
 - #429 PR #444 approved, DIRTY after #439 -> same agent rebasing, then re-review
@@ -64,6 +67,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- closed #449 #450 (mobile, not planned: desktop only)
 - merged #436 (#427 DATA_CONTRACT), #437 (#421 Databricks human row), #439 (#430 wolves check); handoffs posted
 - merged #414 (#303 a11y), #416 (#294 close-out docs); closed #42 #216 #294; handoffs posted (#301 #398 #400 #37 #42 #216). #37 still open (T5.2/T5.3 unpublished). Narration audio not deployed (needs CLOUDFLARE_API_TOKEN) - Marcus.
 - merged #415 (#301 controls restyle); handoffs already posted on #303/#395 as pending. Kept generic pr-assets branch (cloud session may use it).
