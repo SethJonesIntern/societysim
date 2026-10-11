@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T14:05Z)
+# marcus status (updated 2026-10-11T14:13Z)
 ## Active
+- 14:13Z: LIVE SMOKE TEST 8/8 PASS on f0e38541 (posted #616 + Discord). Demo link: ?game=mixed_v2_10p-g0043. Only issue: music/background.mp3 404 (Seth's #693). Post-demo: deploy play server (#677, #683, #687) when idle; #594 hold; #538, #355, #622 done(#676).
 - 14:05Z: #716 and #718 MERGED. Site deploy f0e38541 success at 14:05Z. Live smoke test agent dispatched (read-only, no Play games), shots/smoke/, report by 14:30Z.
 - 14:03Z: Seth merged #707 himself (stray -e file removed first; only cli.py + test file). #698 closed. #716 merged (#714 closed). Removed stale needs-human/changes labels from #707. Waiting on #718 merge + deploy, then live smoke test.
 - 14:01Z: PR #718 (#717) APPROVED, auto-merge queued; all 81 cells per source unchanged, top-left 78% n=23 in both sources.
