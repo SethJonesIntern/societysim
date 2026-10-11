@@ -2,7 +2,7 @@
 ## Active
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) HOLD, reviewer running. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
-- #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 MERGED; play server deployed via API 07:29Z (idle); follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
+- #591 CLOSED: runs 1,2,5 nothing found; run3 -> #593 (done) + #600 (hold); run4 -> #596 (PR #604 hold) + #605
 - #585 CLOSED (all checks pass; smoke 67/67 with PR #592 APPROVED auto-merge)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
 - Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593 596 600 601)
