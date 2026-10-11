@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T14:01Z)
+# marcus status (updated 2026-10-11T14:03Z)
 ## Active
+- 14:03Z: Seth merged #707 himself (stray -e file removed first; only cli.py + test file). #698 closed. #716 merged (#714 closed). Removed stale needs-human/changes labels from #707. Waiting on #718 merge + deploy, then live smoke test.
 - 14:01Z: PR #718 (#717) APPROVED, auto-merge queued; all 81 cells per source unchanged, top-left 78% n=23 in both sources.
 - 13:58Z: #717 -> PR #718 (thin models sort last; Jev top-left 78% n=23). Reviewer dispatched.
 - 13:58Z: PR #716 (#714) APPROVED round 2, auto-merge queued; no wrap at 1440/1920.
