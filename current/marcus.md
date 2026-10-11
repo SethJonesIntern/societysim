@@ -3,10 +3,9 @@
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 PR #471 r1 fixes pushed -> re-review r2. (visitor seed -> #475)
 - URGENT #440 PR #465 r2: layout passes all 33 checks; CONFLICT in App.tsx after #398 merged -> implementer rebasing (keep playing/onPlayingChange, 24px markers fit). Codex re-QA running on preview.
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
-- Regen results PR #472 APPROVED auto-merge (live JSON matches). NOTE: main checkout runs/mixed_v2_10p/report still old numbers (local, gitignored) - reviewers should regen on a copy.
 - #37 PR #474 APPROVED auto-merge
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
-- #382 PR #397 APPROVED r3, auto-merge (all 3 Codex bugs proven by tests). #475 PR #476 in review.
+- #475 PR #476 (visitor seed 53-bit) in review
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
@@ -65,6 +64,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #397 (#382 ledger fail-closed: fail-open, midnight, per-IP restart fixed), #398 (#395 JSON-only LB + timeline names), #472 (results regen after #467); handoffs posted
 - merged #467 (#441-443/#433 analysis) and #470 (#468 LB tabs); #466 live applied
 - merged #455 (README rewrite + docs/DEPLOYMENT.md), #463 (DEMO nav), #464 (#422-424 client retries), #466 (#447 SQL), #469 (#462 viewer polish); handoffs posted; Seth replied on Discord
 - merged #459 (#417-420 Neon sink robustness) and #461 (#432/#460 batch no-log + on_progress); handoffs posted
