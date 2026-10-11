@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:09Z)
+# marcus status (updated 2026-10-11T13:10Z)
 ## Active
+- 13:10Z: PR #676 (#622 mobile nav) APPROVED, auto-merge queued. Desktop verified unchanged.
 - 13:09Z: LIVE TEST 2 DONE: your-turn panel PASS (night/speak/accuse/vote), doctor seat, wolves won D4, 08:45-09:09 EDT, no Turnstile click, games_running 0. Posted on #616 and Discord. Leads sent to viewer bug hunter: narration toggled off once, stale 'Move sent' after elimination, floating menu overlaps event counter in narrow window. Marcus asked for a trailer voiceover: video agent told to write a 40-60 word teaser, ElevenLabs narrator voice (max 2 calls, <600 chars, key only via silent subshell) or fallback macOS say. NO MORE PAID PLAY GAMES approved.
 - 13:07Z: #640 -> PR #677 opened (fallback turns counted as budget_fallback_turns, agents=scripted; DEPLOY HELD until after demo). Reviewer dispatched (checking real games aren't mis-tagged). Marcus asked: fable agent making demo video (scratchpad/demo_video/, short player lines, no commit, due 14:30Z); 2 bug-hunt agents (engine/server, viewer/site) filing issues + small PRs until 14:30Z.
 - 13:06Z: #622 -> PR #676 opened (mobile nav, one @media max-width:480px rule; desktop unchanged). Reviewer dispatched. #640 implementer still running.
