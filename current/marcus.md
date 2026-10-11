@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #411 refresh mid-game resumes same game (sessionStorage credential, ended state, no new start) | opus | issue-411-refresh-resume. Files: play server session lookup/view route + viewer play page client state (cloud: avoid)
+- #411 PR #413 (resume already worked via sessionStorage + /me; adds ended state + tests; viewer-only + test_play_api) -> reviewer dispatched. May conflict with #412 in YourTurnPanel.tsx
 - #301 control styling (StepControls, NarrationControls, DeceptionMatrix, Speed select, SetupForm -> ThemedSelect) | opus | issue-301-control-styling
 - #303 a11y pass desktop (avoids #301 controls, Leaderboard, names) | opus | issue-303-a11y
 - #407 PR #409 APPROVED, auto-merge (10p checked). After merge: delete branch pr-assets if only #409's
