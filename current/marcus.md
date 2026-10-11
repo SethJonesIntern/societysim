@@ -1,6 +1,7 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
-- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355)
+- #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> sonnet issue-588-reasoning-scroll
+- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588)
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
 - #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). post-check agent running (comments + closes #585 if all pass)
 - #573 day-1 summary in 10p prompts -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
