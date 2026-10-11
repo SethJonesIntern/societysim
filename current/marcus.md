@@ -2,7 +2,7 @@
 ## Active
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage token counts leak roles in running games (opus implementer issue-387-usage-leak; apply schema live after); #388 -> PR #393 in review; timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
-- #389 avatars | PR #392 in review (ModelAvatar + AvatarMedallion; screenshot scratchpad/agents-after.png). Your-turn buttons need play API Player.model (follow-up).
+- #389 avatars | PR #392 APPROVED, auto-merge (ModelAvatar + AvatarMedallion; screenshot scratchpad/agents-after.png). Your-turn buttons need play API Player.model (follow-up).
 - PR #380 APPROVED, auto-merge (Render redeploys; hotfix env stays).
 - #385 themed dropdown | PR #391 CHANGES r1 (list snaps back on scroll) -> fix sent. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
 - Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 -> PR #384 APPROVED, auto-merge.
