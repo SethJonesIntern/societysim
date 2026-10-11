@@ -18,6 +18,7 @@ from societysim.analysis.labeler import (
 )
 from societysim.cli import app
 from societysim.logging.events import EventType, Label
+from societysim.roles import Role
 
 ROOT = Path(__file__).parents[2]
 FIXTURE = ROOT / "fixtures/sample_game.jsonl"
@@ -348,3 +349,44 @@ def test_unfinished_game_is_not_sent_to_jev_but_still_labelled(tmp_path, capsys)
     assert seen == []
     assert "Jev skipped for 1 unfinished games" in capsys.readouterr().out
     assert (tmp_path / "fixture-0001.labels.jsonl").exists()
+
+
+def _villager_tag(text: str):
+    """Wolf Finn's (p5) day-1 statement with text, tagged claim_role villager (#596)."""
+    events = _events()
+    events[17].public_text = text
+    events[19].meta.role = Role.VILLAGER
+    return events
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Finn's claim lines up with my gut. Ava dodged the question. I'm leaning Ava.",
+        "Hugo was a villager, so we mislynched. We can't lose another villager today.",
+        "I am sure about Ava. Losing a villager now would hurt.",
+    ],
+)
+def test_villager_tag_without_a_claim_in_the_text_is_not_a_lie(text):
+    labels = label_game(_villager_tag(text))
+    assert not [lb for lb in labels if lb.label == "false_role_claim" and lb.actor == "p5"]
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "I'm a villager. Vote Ava today.",
+        "I am just a plain villager trying to help. Vote Ava.",
+        "As a villager, I think Ava is lying.",
+        "I’m Finn (p5), a villager as well.",
+    ],
+)
+def test_villager_tag_with_a_claim_in_the_text_is_a_lie(text):
+    assert ("false_role_claim", "p5", 19, "self_tag") in _keys(label_game(_villager_tag(text)))
+
+
+def test_jev_villager_claim_needs_no_wording():
+    """Jev's claim_role is already its reading of the text, so the self-tag gate is not applied."""
+    jev = {17: JevVerdict(claim_role=Role.VILLAGER)}
+    events = _villager_tag("Ava dodged the question. Vote Ava.")
+    assert ("false_role_claim", "p5", 17, "jev") in _keys(label_game(events, jev))
