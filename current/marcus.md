@@ -1,9 +1,9 @@
-# marcus status (updated 2026-10-11T00:19Z)
+# marcus status (updated 2026-10-11T00:21Z)
 ## Active
 - #338 play offline state | PR #342 | APPROVED, auto-merge (site redeploys on viewer push). Port notes for Augustin in PR body.
 - #339 ip_hint | PR #341 | APPROVED, auto-merge
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
-- HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render: PR #343 in review (trusted = 10/8 + Cloudflare ranges; spoof-via-CF-worker question). Render Starter ~$7/mo needs Marcus OK.
+- HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render: PR #343 CHANGES r1 (CF-range trust spoofable via Worker/WARP -> opt-in PLAY_CLIENT_IP_HEADER=CF-Connecting-IP, trust 10/8 only). Fix sent to same implementer. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
