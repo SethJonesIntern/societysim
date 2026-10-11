@@ -1,5 +1,7 @@
-# seth status (updated 2026-10-12T03:00Z)
+# seth status (updated 2026-10-12T03:20Z)
 ## Active
+- #353 deploy re-encode cp1252 logs to UTF-8 | implementer
+- #354 RUNNING_BATCHES.md runbook | implementer
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
 - #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
@@ -77,4 +79,5 @@
 - Marcus Discord user ID 687018559851069520 (real pings via notify.sh <msg> <id>).
 - 2026-10-12 ~02:30Z: Seth offline briefly. Nothing running. Pinged Marcus: HF org write for publish + Neon migrate OK + #306.
 - Marcus asks: publish T5.2 to Sethery32/societysim-games --public (avoids org access). Needs Seth OK (public). HF paused Marcus's play Space (flagged abusive); appeal + Render fallback (#340).
+- Filed #355 (infra, Marcus/admin): make python-windows a required check once stable. Seth: 'if you see tasks, create tickets and run them'. Publish to Sethery32 public: SKIPPED for now (Seth).
 ## Codex: n/a
