@@ -5,7 +5,6 @@
 - #596 villager role_claim mislabeled as lies (54% of false_role_claim; all 5 role-claim highlights) -> opus issue-596-role-claim-labels; will change published numbers -> republish + DEMO numbers
 - #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
 - #585 CLOSED (all checks pass; smoke 67/67 with PR #592 APPROVED auto-merge)
-- #589 (#584) APPROVED auto-merge; #590 (#586 narration) APPROVED auto-merge (byte-identical bank clips, 0 chars, leak check clean)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
 - Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593 596 600 601)
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
@@ -89,6 +88,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #589 (#584 claimed role), #590 (#586 narration g0008/g0031), #592 (smoke selector), #595 (#588 reasoning panel); handoff -> #38 posted
 - merged #547 (#536), #548 (#543), #554 (#542; handoff -> #299 posted)
 - merged #525 (#504 Render build filter), #535 (#510 leave game), #539 (#537 bussing dead wolf); handoffs -> #496 #498 #38 posted; #541 unblocked; Seth pinged
 - merged #518 (#509 no cold-load auto-start; auto-start only when referrer is ?page=modes)
