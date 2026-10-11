@@ -891,7 +891,8 @@ can't select and which are not part of the contract.
 ### Requests the viewer makes
 
 ```
-GET {base}/games?select=game_id,models,status&order=started_at.desc.nullslast   game list
+GET {base}/games?select=game_id,models,status,winner&order=started_at.desc.nullslast   game list
+GET {base}/events_public?select=game_id,day&type=eq.game_end               game list: days (day of game_end)
 GET {base}/games?select=status,models&game_id=eq.<id>                       one game's status
 GET {base}/games?select=game_id&status=eq.finished&or=(agents.is.null,agents.neq.scripted)   finished-game count
 GET {base}/events_public?select=event&game_id=eq.<id>&order=seq             a whole game (over)
@@ -904,6 +905,10 @@ GET {base}/lies_by_model?select=*&batch_id=eq.<batch_id>
 GET {base}/global_detectors?select=*                                        global board, Detectors tab
 GET {base}/global_liars?select=*                                            global board, Liars tab
 ```
+
+The game list shows `winner` and days for finished games only (a finished game's log is public
+anyway). Running and failed games show neither, and the Winner column prints "n/a" for them. If
+the `game_end` request fails the list still loads, with days "?".
 
 The finished-game count needs the `or=(agents.is.null,agents.neq.scripted)` filter to count the
 same games the views do. Without it, scripted games are counted while `leaderboard` leaves them

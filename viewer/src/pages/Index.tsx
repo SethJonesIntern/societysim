@@ -30,7 +30,7 @@ export function GameList({ games, href, showWinners = false }: ListProps) {
             </th>
             <td>{g.models?.join(", ") ?? "?"}</td>
             <td>{g.days ?? "?"}</td>
-            <td>{g.live ? "playing" : showWinners ? (g.winner ?? "none") : "hidden"}</td>
+            <td>{g.live ? "playing" : showWinners ? (g.winner === undefined ? "n/a" : (g.winner ?? "none")) : "hidden"}</td>
           </tr>
         ))}
       </tbody>

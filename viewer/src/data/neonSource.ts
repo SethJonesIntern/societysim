@@ -101,11 +101,23 @@ export function neonSource(): NeonSource {
   };
 
   return {
-    // Ids, models and status only: roles and winners stay in the database.
-    listGames: async () =>
-      (await get<{ game_id: string; models: unknown; status: string | null }>(
-        "games?select=game_id,models,status&order=started_at.desc.nullslast",
-      )).map((g): GameSummary => ({ id: g.game_id, models: modelNames(g.models), live: g.status === "running" })),
+    // A finished game's winner and length are public (events_public serves its whole log), so they
+    // are listed. Roles stay in the database, and a running or failed game gets neither.
+    listGames: async () => {
+      const [rows, ends] = await Promise.all([
+        get<{ game_id: string; models: unknown; status: string | null; winner: string | null }>(
+          "games?select=game_id,models,status,winner&order=started_at.desc.nullslast",
+        ),
+        // The day each finished game ended on. The list still loads if this request fails.
+        get<{ game_id: string; day: number }>("events_public?select=game_id,day&type=eq.game_end").catch(() => []),
+      ]);
+      const days = new Map(ends.map((e) => [e.game_id, e.day]));
+      return rows.map((g): GameSummary => {
+        const summary: GameSummary = { id: g.game_id, models: modelNames(g.models), live: g.status === "running" };
+        if (g.status !== "finished") return summary;
+        return { ...summary, winner: g.winner ?? null, ...(days.has(g.game_id) && { days: days.get(g.game_id) }) };
+      });
+    },
 
     loadGame: async (id): Promise<LoadedGame> => {
       const row = await gameRow(id);

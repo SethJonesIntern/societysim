@@ -21,6 +21,7 @@ interface GameRow {
   status: string;
   models: unknown;
   agents?: string | null;
+  winner?: string | null;
   rows: Event[];
 }
 
@@ -44,8 +45,14 @@ function fakeNeon(games: Record<string, GameRow>) {
       if (id) return json(all.filter(([g]) => g === id).map(([, g]) => ({ status: g.status, models: g.models })));
       if (p.get("status") === "eq.finished")
         return json(all.filter(([, g]) => g.status === "finished" && g.agents !== "scripted").map(([g]) => ({ game_id: g })));
-      return json(all.map(([g, v]) => ({ game_id: g, models: v.models, status: v.status })));
+      return json(all.map(([g, v]) => ({ game_id: g, models: v.models, status: v.status, winner: v.winner ?? null })));
     }
+    if (table === "events_public" && p.get("type") === "eq.game_end")
+      return json(
+        Object.entries(games).flatMap(([g, v]) =>
+          v.status === "finished" ? v.rows.filter((e) => e.type === "game_end").map((e) => ({ game_id: g, day: e.day })) : [],
+        ),
+      );
     if (table === "events_public") {
       let rows = games[id!]?.rows ?? [];
       const after = p.get("seq")?.replace(/^gt\./, "");
@@ -94,12 +101,41 @@ describe("neonSource, finished games", () => {
     expect((await src.loadLabels!(ID)).length).toBe(labelRows.length);
   });
 
-  it("lists games with models and a live flag, never roles or winners", async () => {
-    const asked = fakeNeon({ [ID]: { status: "finished", models: MODELS, rows: full }, g2: running() });
+  it("lists games with models, a live flag, and winner and days for finished games only, never roles", async () => {
+    const asked = fakeNeon({
+      [ID]: { status: "finished", models: MODELS, winner: "wolves", rows: full },
+      g2: running(),
+      g3: { status: "failed", models: MODELS, rows: full.slice(0, 10) },
+    });
     const games = await neonSource().listGames();
-    expect(asked[0]).toBe(`${API}/games?select=game_id,models,status&order=started_at.desc.nullslast`);
+    expect(asked).toContain(`${API}/games?select=game_id,models,status,winner&order=started_at.desc.nullslast`);
+    expect(asked).toContain(`${API}/events_public?select=game_id,day&type=eq.game_end`);
+    const endDay = full.find((e) => e.type === "game_end")!.day;
+    expect(games.find((g) => g.id === ID)).toEqual({
+      id: ID,
+      models: [...new Set(MODELS)].sort(),
+      live: false,
+      winner: "wolves",
+      days: endDay,
+    });
+    // Neither a running nor a failed game claims a winner or a length.
+    for (const id of ["g2", "g3"]) {
+      const g = games.find((x) => x.id === id)!;
+      expect(g.winner).toBeUndefined();
+      expect(g.days).toBeUndefined();
+    }
     expect(games.find((g) => g.id === "g2")?.live).toBe(true);
-    expect(games.find((g) => g.id === ID)).toEqual({ id: ID, models: [...new Set(MODELS)].sort(), live: false });
+  });
+
+  it("still lists games when the game_end request fails", async () => {
+    fakeNeon({ [ID]: { status: "finished", models: MODELS, winner: "villagers", rows: full } });
+    const fake = globalThis.fetch;
+    vi.stubGlobal("fetch", async (input: string) =>
+      input.includes("type=eq.game_end") ? new Response("", { status: 500 }) : fake(input),
+    );
+    const [g] = await neonSource().listGames();
+    expect(g).toMatchObject({ id: ID, winner: "villagers" });
+    expect(g.days).toBeUndefined();
   });
 
   it("builds the board from the leaderboard view and counts finished non-scripted games", async () => {

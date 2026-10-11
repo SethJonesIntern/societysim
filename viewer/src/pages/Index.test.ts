@@ -34,6 +34,22 @@ describe("GameList", () => {
     for (const html of [hidden, render(true)]) expect(html).not.toMatch(/seer|Ava|Ben/);
   });
 
+  it("prints n/a, not none, when the source gives no winner", () => {
+    const html = renderToStaticMarkup(
+      createElement(GameList, { games: [{ id: "g9", models: ["m-a"] }], href: () => "", showWinners: true }),
+    );
+    expect(html).not.toContain("none");
+    expect(html).toContain("n/a");
+    expect(html).toContain("<td>?</td>");
+  });
+
+  it("keeps none for a finished game recorded without a winner", () => {
+    const html = renderToStaticMarkup(
+      createElement(GameList, { games: [{ id: "g9", winner: null }], href: () => "", showWinners: true }),
+    );
+    expect(html).toContain("none");
+  });
+
   it("says so when the index is empty", () => {
     expect(renderToStaticMarkup(createElement(GameList, { games: [], href: () => "" }))).toContain("No games");
   });

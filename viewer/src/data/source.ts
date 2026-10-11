@@ -5,7 +5,9 @@ import { parseLog, type ParsedLog } from "./parse";
 /** What the index page shows before a game is opened. Never roles; the page hides winner by default. */
 export interface GameSummary {
   id: string;
+  /** Absent when the source doesn't know (a running or failed game). */
   days?: number;
+  /** `undefined`: the source doesn't know; `null`: a finished game with no recorded winner. */
   winner?: string | null;
   models?: string[];
   /** Still being played (Neon `games.status = 'running'`). */
