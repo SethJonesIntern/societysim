@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-11T01:31Z)
+# marcus status (updated 2026-10-11T01:32Z)
 ## Active
+- Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 (Turnstile token reuse after rejected start + live view gives up before backfill) sonnet implementer issue-383-turnstile-backfill.
 - BUG HUNT WAVE (Marcus): Codex `codex review` on main worktree (codex_review.out); Opus hunt agent (verified bugs only); Fable hunt agent (same scope); Codex playtest #2 queued: waits for PR #374 merge + 8 min redeploy, then plays Normal game + Advanced/Watch (codex_playtest2.out). File issues from findings.
 - PR #380 CHANGES r1 (test env leak GEMINI_API_KEY) -> fix sent to same implementer.
-- Augustin PR #374 (landing/mode picker/Advanced setup, branch frontend-play-screens): FIXED by our agent (rebased; live games load from Neon via retryLoad; names/Seat N not p0; seat clamp; WebP 23MB->4MB); APPROVED, auto-merge. Discord ping sent re remaining UI (leaderboard styling, live view overlap, your-turn panel, model picker, #300-#303, #33).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
 - LIVE PLAYTEST FAILED: (A) ROOT CAUSE: server reads OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY, Render only had PLAY_* -> HOTFIXED on Render (srv-db5dvg8473hc73aqg0k0: OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY = PLAY_* values), deploy live, health OK; code fix #379 PR #380 in review (providers_ready in /api/health). (B) game lost = Render autoDeploy restart on merges (7 deploys 01:04-01:21Z); Marcus OK with autoDeploy (freeze 23:00). (C) PR #377 APPROVED auto-merge. (D) live-log overlap -> in #374 takeover. (E) replay list fixture only -> #294 DEPLOY_SOURCE. RE-RUN Codex playtest after merges settle.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
@@ -57,6 +57,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- PR #374 (Augustin landing/mode picker/Advanced; fixed by us) MERGED. PR #377 (neonAuth expires_at) MERGED.
 - VISITOR PLAY LIVE on Render https://societysim-play.onrender.com (Starter). All checks pass: health, limits (allowed_models 7, client_ip_hint real), XFF spoof ignored, CF-Connecting-IP spoof blocked by CF, Origin 403, bot_check_failed, Neon OK. VITE_PLAY_API_URL set, site redeployed. Render autoDeploy ON (main pushes restart server -> kills live games). .env line 32 (ELEVENLABS_API_KEY) not shell-parseable.
 - #311 assigned to Seth (slim: tag, rollback id, showcase links). Filed #365 archive mode (team:infra, blocked until after judging).
 - PR #357 (#356 model selection) and PR #352 (#347 retry error) MERGED. #355 (python-windows required) deferred to post-hackathon (comment posted).
