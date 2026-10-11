@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
-- #516 Games page restyle (Marcus) -> opus implementer issue-516-games-restyle
+- #516 Games page restyle -> PR #523 (no date col: data lacks it; lifts main.tsx 1100px left cap for Games only) -> reviewer
 - SETH-ASSIGNED (all polter-dev): #504 URGENT all visitor games failing (visitor_starts not in Data API cache) -> opus issue-504-visitor-starts; #509 cold-load auto-start -> PR #518 APPROVED auto-merge (picker links are full loads; referrer safe); HOLD #510 (server/*, after #504), #498 (after Seth's #496 merges, schema.sql), #511 freeze (at 11:00 EDT only), #512 narration audio (needs Marcus: CF token?), #513 bug runs (after the others)
 - Codex live QA rerun scheduled at 00:27 local (timer beabsnjkb)
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
@@ -209,6 +209,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- main.tsx caps every page at 1100px left-aligned: likely root of 'pages break full screen'. Games date column needs a data ticket.
 - Anchored game screen starts at 821px (#487); stacked game rules use max-width:820px.
 - Seth now allocates tasks to us (via GitHub issues: status:ready + assign polter-dev). Ping Seth on Discord (id 319290022417268746) at major milestones/blockers only.
 - Narrow windows <1100px: hide Game events while your-turn shows (Marcus: option a).
