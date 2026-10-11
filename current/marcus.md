@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
-- #401 PR #402 rebased (only test_security.py conflict, kept all tests; 2078 pass) -> re-review dispatched
+- #401 PR #402 RE-APPROVED after rebase, auto-merge pending CI
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - #400 player names missing in live/visitor views + names match avatar gender (avatar_presentation in models.yaml, engine name pools, seeded) | opus | issue-400-player-names
 - #390 PR #404 APPROVED, auto-merge (352 viewer tests; 7-9p chairs OK). After merge: delete branch pr-assets-404. Polish follow-ups (non-blocking): your-turn panel covers right 2 seats ~25-40px at 1280; bubble touches speaker frame; '<' toggle overlaps lower-left seat; stale comment LabelPopups.tsx:28.
