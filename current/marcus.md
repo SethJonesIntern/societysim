@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- #611 (Seth) Jev false_report fires on relayed Seer results (843/853 FP) -> PR #615 (stacked on #604, HOLD) approved r1; pattern hardening (optional fixes) sent -> re-review after; Seth must run scripts/check_jev_false_reports.py on his cache
+- #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
 - #604 MERGED 08:11Z by Seth (GO). Numbers now: false_role_claim 295, lies 356, followed vs base 40.4% vs 71.2%. NEXT (ours, after Seth's #608 deception-matrix PR merges; watcher waiting): backup -> label --no-jev + postbatch (keyless) -> HF publish polter-dev/societysim-games (manifest 100) -> sync-neon -> anon read check -> deploy.yml -> check LB/Research/g0043 seq49 + smoke -> update DEMO.md -> post final numbers on #604.
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) APPROVED (precision ~99%, recall ~95%), HOLD. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
