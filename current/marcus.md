@@ -1,7 +1,9 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #430 wolves>=non-wolves config check (config.py GameConfig) | sonnet | issue-430-wolf-majority-check
-- #429 last_words flag no-op (implement small or reject at load) | opus | issue-429-last-words (also config.py)
+- URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
+- URGENT #445 player profile dialog (shrink 30-40%, avatar in empty portrait, headings, compact empty states) | opus | issue-445-profile-dialog
+- #430 PR #439 -> reviewer dispatched (conflicts with #444 on config.py import line)
+- #429 PR #444 (reject last_words:true at load) -> reviewer dispatched
 - #427 PR #436 (DATA_CONTRACT.md only) -> reviewer dispatched
 - #421 PR #437 (metrics.py seat_groups skips human; parity cell) -> reviewer dispatched. After merge: re-run Databricks metrics notebook (agent via .env subshell, like #294)
 - #303 PR #414 RE-APPROVED after rebase, auto-merge pending CI. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
@@ -192,6 +194,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Cloud session must NOT do the table polish job now (covered by #440). Screenshots: scratchpad images/13.png (play page), 14.png (profile dialog).
 - #421 #427 #429 #430 filed by Seth's agents as team:engine; claimed by me. No cloud tracker issue seen yet at 02:4xZ.
 - Discord: Seth's user id 319290022417268746. Pinged him: we publish to polter-dev/societysim-games; migrate OK but WAIT for my ping after #294 sync-neon; #306 pending Marcus. Seth migrate GO sent.
 - Seth merged #369 #381/#370 #403 #363 #375/#364; #347 live check: llama4 0% invalid, gpt-5-nano 2/~330 lost. #363 moved batch fingerprints (pre-#363 runs not resumable). Seth asks Marcus: HF write polter-dev/societysim-games (told #294 agent to try publishing there), OK sync-neon --migrate --apply (adds events.inserted_at; only after #294 sync-neon finishes), #306 GPT-pair 10p batch ~$4 cap $6.
