@@ -4,7 +4,7 @@
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
 - #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). post-check agent running (comments + closes #585 if all pass)
 - #573 day-1 summary in 10p prompts -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
-- #584 claimed role in Decision history -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
+- #584 claimed role -> PR #589 reviewer
 - #586 narrator-only audio (0 ElevenLabs, no keys) -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
 - #587 DEMO/PITCH docs -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
 - #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
