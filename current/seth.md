@@ -1,4 +1,4 @@
-# seth status (updated 2026-10-12T10:40Z)
+# seth status (updated 2026-10-12T11:10Z)
 ## Active
 - BUG FIXES in flight: Neon #417-#420, client #422-#424, runner #432/#433/#443, CLI #434/#435, analysis #441/#442, live site #447 (global rankings timeout; migration 002 needs OK) + #448 (index winner/days). Docs PR #431 in review. For Marcus: #421 #427 #429 #430 #446 (Seth's failed visitor game). For Augustin: #449 #450 (mobile).
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
@@ -93,4 +93,5 @@
 - Fingerprint note: #363 models.yaml changes moved selfplay_baseline_10p fingerprint ff44a523 -> ca7672fc on main; the 20-game run can't be resumed (intended).
 - 2026-10-12 Marcus replies: (1) HF publish of mixed_v2_10p done by Marcus in #294 close-out; not ours. (2) Neon `sync-neon --migrate --apply`: OK but HOLD until Marcus pings (his close-out is running sync-neon on live now). (3) #306 run: Marcus undecided; wait for ping.
 - Marcus close-out done: mixed_v2_10p published to HF polter-dev, DEPLOY_SOURCE set, site shows 100 games, Databricks 158 games, results on #216; README via generator in PR #416.
+- Marcus's orchestrator opens PRs on our in-progress branches: #464 (client), #466 (#447), #467 (#441/#442/#443/#433). Our agents push to those branches, no duplicate PRs. Runner agent now #432 + on_progress only. #463 duplicates #431. Pinged Marcus to skip Seth-assigned in-progress issues.
 ## Codex: n/a
