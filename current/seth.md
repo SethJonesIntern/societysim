@@ -1,4 +1,4 @@
-# seth status (updated 2026-10-12T08:30Z)
+# seth status (updated 2026-10-12T09:00Z)
 ## Active
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
 - BUG HUNT (Seth 2026-10-12): 8 read-only agents (engine, leaks, batch/CLI, analysis, viewer/live site, neon/data, models/client, docs drift) filing type:bug issues (max 5 each, confirmed repros).
@@ -12,6 +12,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- 2026-10-12 live Neon migration 001 applied (inserted_at); prune dry-run = 0 (all rows fresh). 22 failed games become candidates after 6h; delete only with Seth OK.
 - merged: #369 (#359 default 10p), #381 (#378 smoke mid-game), #403 (#305 humans vs models)
 - #347 live check: fixcheck_10p $0.42: llama4 0% invalid (was 16%), gpt-5-nano 8.7% attempts but only 2 fallbacks/330 turns; posted on #347
 - #373 follow-ups PR #375 merged
@@ -90,4 +91,5 @@
 - Filed #355 (infra, Marcus/admin): make python-windows a required check once stable. Seth: 'if you see tasks, create tickets and run them'. Publish to Sethery32 public: SKIPPED for now (Seth).
 - Fingerprint note: #363 models.yaml changes moved selfplay_baseline_10p fingerprint ff44a523 -> ca7672fc on main; the 20-game run can't be resumed (intended).
 - 2026-10-12 Marcus replies: (1) HF publish of mixed_v2_10p done by Marcus in #294 close-out; not ours. (2) Neon `sync-neon --migrate --apply`: OK but HOLD until Marcus pings (his close-out is running sync-neon on live now). (3) #306 run: Marcus undecided; wait for ping.
+- Marcus close-out done: mixed_v2_10p published to HF polter-dev, DEPLOY_SOURCE set, site shows 100 games, Databricks 158 games, results on #216; README via generator in PR #416.
 ## Codex: n/a
