@@ -1,6 +1,7 @@
-# seth status (updated 2026-10-12T08:10Z)
+# seth status (updated 2026-10-12T08:30Z)
 ## Active
-- #405 fallback/retry metrics | implementer. #399 (#394) re-review r2.
+- #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
+- BUG HUNT (Seth 2026-10-12): 8 read-only agents (engine, leaks, batch/CLI, analysis, viewer/live site, neon/data, models/client, docs drift) filing type:bug issues (max 5 each, confirmed repros).
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
