@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T01:21Z)
+# marcus status (updated 2026-10-11T01:22Z)
 ## Active
+- Augustin PR #374 (landing/mode picker/Advanced setup, branch frontend-play-screens): opus implementer fixing + syncing with main (Marcus: fix and merge). Then reviewer approve+merge. Discord ping sent re remaining UI (leaderboard styling, live view overlap, your-turn panel, model picker, #300-#303, #33).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
 - LIVE PLAYTEST FAILED (visitor-f2147bc052190477): (A) all AI speech "(silent)", 30-60s waits; (B) game vanished after ~3min "game not found"; (C) global LB "Neon auth bad expires_at" -> #376 implementer; (D) "Could not load log: unknown game" box overlaps live game, raw p0 shown; (E) replay list only fixture-0001 (DEPLOY_SOURCE, #294). Opus diagnosis agent on A/B via Render API logs.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
