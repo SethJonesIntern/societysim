@@ -2,7 +2,7 @@
 ## Active
 - #446 NEEDS-HUMAN: root cause = Render autoDeploy restart mid-game (5 deploys 02:25-02:33), not keys/models (llama4 seated x2, not involved). Decision: autoDeploy off during play? 
 - #453 Neon sink disabled after deploy (DeadlockDetectedError at startup) | opus | issue-453-neon-startup-deadlock
-- #451 README rewrite (short, plain, research questions) | codex-implementer | issue-451-readme-rewrite (overlaps Seth PR #431 README)
+- #451 PR #455 (README 216->85 lines, 6 research questions) -> reviewer dispatched. Conflicts w/ Seth #431 (README). Follow-up: docs/PITCH.md slide 9 pointer 'What we're asking' -> 'Research questions'.
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 PR #452 (PlayerProfile.tsx/.css, 806px@1920, modelNames.ts helper) -> reviewer dispatched. #440 told: reuse modelNames.ts, delete dead .inspector-* CSS, re-push screenshots to pr-assets-440.
 - #429 PR #444 RE-APPROVED, auto-merge
