@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:38Z)
+# marcus status (updated 2026-10-11T13:39Z)
 ## Active
+- 13:39Z: #698 -> PR #707 opened (highlights --top min 1; report explains unfinished-only dirs, exit 1). Reviewer dispatched (checking workflows calling report).
 - 13:38Z: #692 merged. Hunters round 2 filed: #694 (play --batch-id path), #697 (label --no-jev no cache) in progress by engine hunter; #699/#700/#701 viewer in progress by viewer hunter; #695/#696 team:runner (Seth's, left ready). Claimed #698 (highlights --top negatives / report msg) -> implementer, branch issue-698-highlights-report, PR by 14:30Z.
 - 13:31Z: PR #692 (#691 cut-off notice) APPROVED, auto-merge queued; g0043 still ends with normal reveal, notice only on truly stopped games.
 - 13:30Z: PR #689 (#688 bottom bar) APPROVED, auto-merge queued; 1440/1920 measured unchanged. Seth's #693 (background music) approved, not ours.
