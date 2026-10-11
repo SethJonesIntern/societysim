@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T13:13Z)
 ## Active
+- 13:13Z: Bug hunters filed #678 (silent fallback statements get hidden_knowledge lie labels) -> PR #679, reviewer dispatched; #680 (stale 'Move sent' after elimination, viewer hunter working it).
 - 13:13Z: MERGED #676 (#622) and #677 (#640). Handoffs: none. No blocked dependents. #640 server change NOT deployed (after demo).
 - 13:12Z: PR #677 (#640 fallback tagging) APPROVED, auto-merge queued. Only the budget fallback writes model=scripted; real LLM, human and Watch games stay llm. PLAY SERVER DEPLOY HELD until after the demo.
 - 13:10Z: PR #676 (#622 mobile nav) APPROVED, auto-merge queued. Desktop verified unchanged.
