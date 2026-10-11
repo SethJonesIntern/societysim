@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:17Z)
+# marcus status (updated 2026-10-11T13:18Z)
 ## Active
+- 13:18Z: PR #679 (#678 labeler) APPROVED, auto-merge queued. Published batch output unchanged on relabel (no hidden_knowledge label sits on a fallback statement); no viewer change, so no site deploy.
 - 13:17Z: PR #682 (#680) APPROVED, auto-merge queued (one-line guard, 529 viewer tests pass).
 - 13:16Z: Bug hunters: PR #682 (#680 stale Move sent) and PR #683 (#681 ledger midnight UTC under-count; server, deploy after demo) -> reviewers dispatched. New issues in progress: #684 (narration switch turns off when live full log replaces public one), #685 (EventLogger.close drops queued event when sink queue full). Video agent recording.
 - 13:13Z: Bug hunters filed #678 (silent fallback statements get hidden_knowledge lie labels) -> PR #679, reviewer dispatched; #680 (stale 'Move sent' after elimination, viewer hunter working it).
