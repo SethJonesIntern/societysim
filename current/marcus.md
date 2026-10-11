@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:06Z)
+# marcus status (updated 2026-10-11T13:07Z)
 ## Active
+- 13:07Z: #640 -> PR #677 opened (fallback turns counted as budget_fallback_turns, agents=scripted; DEPLOY HELD until after demo). Reviewer dispatched (checking real games aren't mis-tagged). Marcus asked: fable agent making demo video (scratchpad/demo_video/, short player lines, no commit, due 14:30Z); 2 bug-hunt agents (engine/server, viewer/site) filing issues + small PRs until 14:30Z.
 - 13:06Z: #622 -> PR #676 opened (mobile nav, one @media max-width:480px rule; desktop unchanged). Reviewer dispatched. #640 implementer still running.
 - 13:05Z: Marcus said keep implementing. Claimed and dispatched #640 (implementer, branch issue-640-fallback-tag; server change, merge OK but DEPLOY HELD until after demo) and #622 (implementer, branch issue-622-mobile-nav; narrow viewports only, desktop unchanged). PRs due by 14:30Z. Skipped #538 (destructive Cloudflare/HF history purge, issue says after demo) and #355 (required-check change, risky before demo). Live test 2 still running.
 - 12:45Z: Marcus approved 1 more Normal game. Codex live test 2 (your-turn panel) running in Brave: scratchpad/codex_livetest2.out, shots/livetest2/. Post the result on #616 and Discord.
