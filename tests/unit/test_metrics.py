@@ -306,6 +306,64 @@ def test_provider_errors_are_reported_apart_from_invalid_output(game):
     assert row["provider_error_rate"] > 0
 
 
+def test_bad_reply_then_provider_error_still_counts_the_model_attempt(game):
+    """#443: a bad reply whose retry hits a provider error is 1 invalid of 1 more attempt."""
+    last = game.events[-1]
+    common = dict(
+        game_id=last.game_id,
+        t=last.t,
+        day=last.day,
+        phase=last.phase,
+        actor="p3",
+        visibility=Visibility.NARRATOR,
+    )
+    usage = {"model": "gpt-oss-120b", "attempts": 5}  # HTTP tries, not model replies
+    extra = [
+        Event(
+            seq=last.seq + 1,
+            type=EventType.INVALID_OUTPUT,
+            meta=EventMeta(action="vote", attempt=1, error="1 validation error for VoteResponse"),
+            **common,
+        ),
+        Event(
+            seq=last.seq + 2,
+            type=EventType.INVALID_OUTPUT,
+            meta=EventMeta(
+                action="vote", attempt=2, error="ServiceUnavailableError: busy", reason="provider"
+            ),
+            **common,
+        ),
+        Event(
+            seq=last.seq + 3,
+            type=EventType.FALLBACK_ACTION,
+            meta=EventMeta(action="vote", reason="provider", usage=usage),
+            **common,
+        ),
+    ]
+    row = compute_metrics([GameData([*game.events, *extra], game.labels)])
+    row = row["models"]["gpt-oss-120b"]["all"]
+    assert row["invalid_output_rate"] == pytest.approx(3 / 11)
+
+
+def test_accepted_reply_counts_once_whatever_the_http_tries(game):
+    """An accepted reply is one model attempt even when the client needed 3 HTTP tries."""
+    last = game.events[-1]
+    ev = Event(
+        seq=last.seq + 1,
+        type=EventType.VOTE,
+        game_id=last.game_id,
+        t=last.t,
+        day=last.day,
+        phase=last.phase,
+        actor="p3",
+        target="p0",
+        visibility=Visibility.NARRATOR,
+        meta=EventMeta(action="vote", usage={"model": "gpt-oss-120b", "attempts": 3}),
+    )
+    row = compute_metrics([GameData([*game.events, ev], game.labels)])
+    assert row["models"]["gpt-oss-120b"]["all"]["invalid_output_rate"] == pytest.approx(2 / 11)
+
+
 def test_pre_reason_provider_errors_are_classified_by_error_text(game):
     """T5.2 logs have no reason field; their provider failures start with the exception name."""
     last = game.events[-1]
@@ -836,10 +894,12 @@ def test_provider_errors_are_in_none_of_the_three_rates():
     )
     row = _reliability({"p0": p0})["model-p0"]["all"]
     assert row["provider_errors"] == 3
-    assert row["invalid_attempt_rate"] == pytest.approx(3 / 3)  # 3 rejected / 3 attempts
+    assert row["invalid_attempt_rate"] == pytest.approx(
+        3 / 4
+    )  # 3 rejected / 4 attempts (the "bad json" before a provider error counts)
     assert row["fallback_rate"] == pytest.approx(1 / 2)  # the clean turn and the real fallback
     assert row["retry_success_rate"] == 0  # one retry, lost
-    assert row["provider_error_rate"] == pytest.approx(3 / 6)
+    assert row["provider_error_rate"] == pytest.approx(3 / 7)
 
 
 def test_legacy_provider_error_then_accepted_reply_is_a_turn_but_not_a_retry():

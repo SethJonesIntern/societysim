@@ -117,27 +117,25 @@ def game_costs(path: Path) -> Counter[str] | None:
 
 
 def game_invalid(path: Path, models: list[str]) -> dict[str, list[int]]:
-    """Per model in a finished game log: [invalid_output events, model attempts], provider errors
-    excluded from both. `models` is the game's model per seat p0..; a log that cannot be read
-    counts as nothing."""
+    """Per model in a finished game log: [invalid_output events, model replies], provider errors
+    excluded from both. A model reply is one invalid_output event or one accepted reply (an event
+    carrying usage that is not a fallback_action), so provider retries inside one HTTP call
+    (usage.attempts) never enter the count. `models` is the game's model per seat p0..; a log
+    that cannot be read counts as nothing."""
     out: dict[str, list[int]] = defaultdict(lambda: [0, 0])
     try:
         for line in read_text_lenient(path).splitlines():
             e = json.loads(line)
             meta = e.get("meta") or {}
             # Provider failures (5xx, 429, timeout) are not the model's fault: ProviderDown
-            # covers outages, so they count neither as invalid nor as model calls.
-            if (
-                e["type"] == EventType.INVALID_OUTPUT
-                and e.get("actor")
-                and not is_provider_failure(meta.get("reason"), meta.get("error"))
-            ):
-                out[models[int(e["actor"][1:])]][0] += 1
-            provider_fallback = e["type"] == EventType.FALLBACK_ACTION and (
-                meta.get("reason") == "provider"
-            )
-            if (usage := meta.get("usage")) and not provider_fallback:
-                out[usage["model"]][1] += usage.get("attempts", 1)
+            # covers outages, so they count neither as invalid nor as model replies.
+            if e["type"] == EventType.INVALID_OUTPUT and e.get("actor"):
+                if not is_provider_failure(meta.get("reason"), meta.get("error")):
+                    row = out[models[int(e["actor"][1:])]]
+                    row[0] += 1
+                    row[1] += 1
+            elif (usage := meta.get("usage")) and e["type"] != EventType.FALLBACK_ACTION:
+                out[usage["model"]][1] += 1
     except (OSError, ValueError, KeyError, IndexError):
         return {}
     return dict(out)
@@ -444,6 +442,11 @@ async def run_batch(
             game = await run_game(
                 a.game_config(cfg.game), make_agent, sinks, a.game_id, colors, presentations
             )
+            if game_costs(out / f"{a.game_id}.jsonl") is None:
+                # The sink swallows write errors, so the log is the only proof the game was kept.
+                raise RuntimeError(
+                    f"log not written: {a.game_id}.jsonl is missing or does not end in game_end"
+                )
             outcome = {"event": "finished", "winner": getattr(game.winner, "value", game.winner)}
             try:
                 _tag_agents(out / f"{a.game_id}.run_meta.json", agents)

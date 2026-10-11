@@ -120,6 +120,19 @@ class GameConfig(_Config):
         return self.models * self.n_players if len(self.models) == 1 else list(self.models)
 
 
+# A batch id becomes a directory name and the prefix of every game id, so it must be one safe path
+# segment: no separators, no "..", no leading or trailing dot, no Windows device names.
+BATCH_ID_RE = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9._-]{0,62}[A-Za-z0-9_-])?")
+WINDOWS_DEVICES = {
+    "con",
+    "prn",
+    "aux",
+    "nul",
+    *(f"com{i}" for i in range(10)),
+    *(f"lpt{i}" for i in range(10)),
+}
+
+
 class BatchConfig(_Config):
     batch_id: str
     seed: int = 0
@@ -134,6 +147,17 @@ class BatchConfig(_Config):
     max_invalid_rate: float = Field(0.25, ge=0, le=1)
     min_calls_for_invalid_check: int = Field(40, ge=1)
     game: GameConfig = GameConfig()  # shared settings; models and seed are set per game
+
+    @field_validator("batch_id")
+    @classmethod
+    def _safe_batch_id(cls, v: str) -> str:
+        if not BATCH_ID_RE.fullmatch(v) or ".." in v or v.split(".")[0].lower() in WINDOWS_DEVICES:
+            raise ValueError(
+                f"batch_id {v!r} must be a single safe folder name: 1 to 64 letters, digits, "
+                "'.', '_' or '-', starting with a letter or digit and not ending in '.' "
+                "(no '/', '', spaces or '..'); it names runs/<batch_id> and prefixes game ids"
+            )
+        return v
 
 
 def load_yaml[T: BaseModel](path: str | Path, model: type[T]) -> T:

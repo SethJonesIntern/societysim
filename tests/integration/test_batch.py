@@ -1034,6 +1034,106 @@ async def test_model_errors_still_trip_the_breaker_next_to_provider_errors(tmp_p
     assert "a" not in res["invalid_output"]
 
 
+class FlakyBad(HealthyFake):
+    """Model b always answers bad JSON, and every HTTP call needed 4 transient retries first.
+    LiteLLMClient then reports usage.attempts=5 for that one reply."""
+
+    async def complete(self, model, messages, response_model):
+        r = await super().complete(model, messages, response_model)
+        if model.name == "b":
+            r = r.model_copy(update={"usage": r.usage.model_copy(update={"attempts": 5})})
+        return r
+
+
+async def test_provider_retries_dilute_invalid_rate(tmp_path):
+    c = cfg(n_games=8, max_concurrency=1, **LIMIT)
+    res = await run_batch(c, SPECS, FlakyBad(bad="b"), runs_dir=tmp_path)
+    assert res["status"] == "stopped_invalid"
+    b = res["invalid_output"]["b"]
+    assert b["invalid"] == b["calls"]  # 100% invalid, not 20%
+
+
+class BadThenOutage(HealthyFake):
+    """Model b answers bad JSON, then its corrected-JSON retry hits an exhausted 503."""
+
+    def __init__(self):
+        super().__init__(bad="b")
+        self.b_calls = 0
+
+    async def complete(self, model, messages, response_model):
+        if model.name == "b":
+            self.b_calls += 1
+            if self.b_calls % 2 == 0:
+                down = HealthyFake(provider_down="b")
+                return await down.complete(model, messages, response_model)
+        return await super().complete(model, messages, response_model)
+
+
+async def test_provider_errors_do_not_dilute_a_fully_invalid_model(tmp_path):
+    # b is wrong on every model reply; some of its turns also end in a provider error. Those
+    # errors are in neither number, so the rate is 100% and the breaker trips.
+    c = cfg(n_games=8, max_concurrency=1, **LIMIT)
+    res = await run_batch(c, SPECS, BadThenOutage(), runs_dir=tmp_path)
+    assert res["status"] == "stopped_invalid"
+    b = res["invalid_output"]["b"]
+    assert b["invalid"] == b["calls"] > 0
+
+
+def test_game_invalid_counts_replies_not_http_tries(tmp_path):
+    def ev(type_, actor, **meta):
+        return json.dumps({"type": type_, "actor": actor, "meta": meta})
+
+    usage = {"model": "m", "attempts": 6}
+    log = tmp_path / "g.jsonl"
+    log.write_text(
+        chr(10).join(
+            [
+                ev("invalid_output", "p0", reason="invalid", error="bad json"),
+                ev("invalid_output", "p0", reason="provider", error="503 unavailable"),
+                ev("fallback_action", "p0", reason="provider", usage=usage),
+                ev("vote", "p0", usage=usage),
+            ]
+        )
+    )
+    assert runner.game_invalid(log, ["m"]) == {"m": [1, 2]}
+
+
+async def test_unwritable_game_log_fails_the_batch(tmp_path, monkeypatch):
+    class DeadSink(runner.JsonlSink):
+        async def start_game(self, run_meta):
+            raise OSError("disk says no")
+
+    monkeypatch.setattr(runner, "JsonlSink", DeadSink)
+    res = await run_batch(cfg(n_games=2), SPECS, HealthyFake(), runs_dir=tmp_path)
+    assert res["status"] == "failed" and res["finished"] == []
+    assert all("log not written" in why for why in res["failed"].values())
+
+
+@pytest.mark.parametrize(
+    "bad",
+    [
+        "exp/b2",
+        "exp" + chr(92) + "b2",
+        "..",
+        "a..b",
+        ".hidden",
+        "trail.",
+        "with space",
+        "",
+        "nul",
+        "x" * 65,
+    ],
+)
+def test_unsafe_batch_id_is_rejected_at_load(bad):
+    with pytest.raises(ValueError, match="batch_id"):
+        cfg(batch_id=bad)
+
+
+def test_safe_batch_ids_load():
+    for ok in ["t", "mixed_v2_10p", "a.b-c", "2026-10-10"]:
+        assert cfg(batch_id=ok).batch_id == ok
+
+
 async def test_breaker_waits_for_the_minimum_number_of_calls(tmp_path):
     c = cfg(n_games=3, max_concurrency=1, min_calls_for_invalid_check=10**6, **LIMIT)
     res = await run_batch(c, SPECS, HealthyFake(bad="b"), runs_dir=tmp_path)

@@ -365,8 +365,13 @@ def game_rows(game: GameData) -> dict[str, Row]:
         if e.suspicion is not None and roles[e.actor] is not Role.WOLF:
             last_susp[(e.actor, e.day)] = e
         if u := e.meta.usage:
-            if not _count_turn(row, e, failed.pop(e.actor, [])):
-                row.attempts += u.attempts
+            flags = failed.pop(e.actor, [])
+            provider_turn = _count_turn(row, e, flags)
+            # Model replies only: rejected ones plus the accepted one. usage.attempts also counts
+            # the client's HTTP retries, so it would dilute the rate when a provider is flaky.
+            row.attempts += flags.count(False) + (
+                0 if provider_turn or e.type is EventType.FALLBACK_ACTION else 1
+            )
             row.input_tokens += u.input_tokens
             row.output_tokens += u.output_tokens
             row.cost_usd += u.cost_usd
