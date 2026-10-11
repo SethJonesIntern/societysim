@@ -3,7 +3,7 @@
 - #601 model page header -> PR #602 reviewer
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 villager role_claim mislabeled as lies (54% of false_role_claim; all 5 role-claim highlights) -> opus issue-596-role-claim-labels; will change published numbers -> republish + DEMO numbers
-- #591 bug runs (Seth): run1 engine (opus), run2 leaks (opus), run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
+- #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
 - #585 CLOSED (all checks pass; smoke 67/67 with PR #592 APPROVED auto-merge)
 - #589 (#584) APPROVED auto-merge; #590 (#586 narration) APPROVED auto-merge (byte-identical bank clips, 0 chars, leak check clean)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
