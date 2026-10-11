@@ -5,7 +5,8 @@
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
 - #37 PR #474 APPROVED auto-merge
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
-- #475 PR #476 (visitor seed 53-bit) in review
+- #475 PR #476 APPROVED auto-merge
+- #477 LB short names | sonnet | issue-477-lb-short-names
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
