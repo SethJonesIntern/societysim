@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-12T11:10Z)
+# seth status (updated 2026-10-12T11:40Z)
 ## Active
-- BUG FIXES in flight: Neon #417-#420, client #422-#424, runner #432/#433/#443, CLI #434/#435, analysis #441/#442, live site #447 (global rankings timeout; migration 002 needs OK) + #448 (index winner/days). Docs PR #431 in review. For Marcus: #421 #427 #429 #430 #446 (Seth's failed visitor game). For Augustin: #449 #450 (mobile).
+- Bug-hunt fixes MERGED: #459 (Neon #417-#420), #464 (client #422-#424), #466 (#447 view; tab-independence split to #468), #467 (#441/#442/#443/#433), #454 (CLI #434/#435), #458 (#448), #431 (docs). #432 via #461. Follow-up: restore per-endpoint caps test dropped by our force-push on #464 (new PR).
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
 - BUG HUNT done: 8 hunters, ~28 bugs. Marcus pinged with his list (#421 #427 #429 #430 #446 #438 seed-predictable roles) + Augustin #449/#450.
 - #353: PR #360 approved/merging
@@ -94,4 +94,6 @@
 - 2026-10-12 Marcus replies: (1) HF publish of mixed_v2_10p done by Marcus in #294 close-out; not ours. (2) Neon `sync-neon --migrate --apply`: OK but HOLD until Marcus pings (his close-out is running sync-neon on live now). (3) #306 run: Marcus undecided; wait for ping.
 - Marcus close-out done: mixed_v2_10p published to HF polter-dev, DEPLOY_SOURCE set, site shows 100 games, Databricks 158 games, results on #216; README via generator in PR #416.
 - Marcus's orchestrator opens PRs on our in-progress branches: #464 (client), #466 (#447), #467 (#441/#442/#443/#433). Our agents push to those branches, no duplicate PRs. Runner agent now #432 + on_progress only. #463 duplicates #431. Pinged Marcus to skip Seth-assigned in-progress issues.
+- #466 put `create index if not exists events_game_type_idx` in schema.sql (implicit DDL); index already exists on live (27,857 events), so it's a no-op now. Reviewer posted a post-merge note.
+- Our agent force-pushed over polter-dev commit 20b8878 on #464; restore was permission-blocked; equivalent tests on main except per-endpoint caps (re-adding in new PR).
 ## Codex: n/a
