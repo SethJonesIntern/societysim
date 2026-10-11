@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T00:49Z)
+# marcus status (updated 2026-10-11T00:51Z)
 ## Active
+- #356 model selection UX (allowlist from server, friendly names+avatars, fix Advanced 400 gemini-flash + 422 human seat) | implementer sonnet | issue-356-model-selection. Augustin building Play UI locally: wiring only.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 in review (sanitized retry error). Live check left for Seth.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
 - #345 PLAY WITHOUT JSON | PR #351 in review (name buttons, optional ratings -> omitted/null; CLI menus; play API scratchpad optional, schema regenerated). Check: in-memory 0.5 for skipped human ratings.
