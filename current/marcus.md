@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-11T01:01Z)
+# marcus status (updated 2026-10-11T01:02Z)
 ## Active
 - PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. API Keys page open: Marcus creates key -> .env RENDER_API_KEY. Then agent sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
 - #356 model selection | PR #357 APPROVED, auto-merge. Minor: shrinking seats below human seat -> 422.
@@ -170,6 +170,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Seth (fully parallel, last ~2.5h): took #359 (n_players default 7->10, team:engine), drafting #38 DEMO.md, README results generator for #37, live-site smoke check. No collision; #294 will RUN his README generator. Note posted on #37.
 - Avatar prompts given to Marcus (storybook painterly, #03271e bg, circle-croppable 1024px, 11 characters, MJ/GPT-image/FLUX/SDXL variants) -> files to viewer/public/avatars/<model>.png (#302).
 - HEARTBEAT: background `sleep 1200` re-armed on each wake -> rescan open PRs (ours), team:engine/infra ready issues, batch progress. Loop stops only if the session closes; on resume run 'continue' from this file.
 - Marcus: API-key and Neon console tasks -> Codex with computer use (desktop).
