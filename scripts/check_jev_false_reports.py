@@ -55,7 +55,7 @@ def main() -> None:
 
     new = [(ev, lb) for ev, jev in games for lb in false_reports(ev, jev)]
     gate = labeler._own_report
-    labeler._own_report = lambda v, text: True  # the rule before #611
+    labeler._own_report = lambda *_: True  # the rule before #611
     old = sum(len(false_reports(ev, jev)) for ev, jev in games)
     labeler._own_report = gate
     print(f"Jev false_report labels: {old} before #611, {len(new)} after\n")

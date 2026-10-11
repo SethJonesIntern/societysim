@@ -120,22 +120,34 @@ def _self_tags(game: _Game) -> list[_Tag]:
     ]
 
 
-# "I checked Ava", "I've investigated Cleo", "my check stands": the speaker reports their own
-# check. Jev's seer_report fires on any mention of a check, including relayed ones ("we know Elif
-# is safe thanks to Iris's check"), so a Jev report counts only with a Seer claim or this wording.
-_OWN_CHECK = re.compile(
-    r"\bI(?:'ve|’ve| have)?\s+(?:also\s+|just\s+|already\s+)?"
-    r"(?:checked|investigated|inspected|scanned)\b"
-    r"|\bmy\s+(?:check|result|investigation|inspection|vision)",
-    re.I,
-)
+_ADV = r"(?:(?:also|just|already|now|actually|finally)\s+)?"
 
 
-def _own_report(v: JevVerdict, text: str) -> bool:
-    return v.claim_role is Role.SEER or bool(_OWN_CHECK.search(text))
+def _own_check(names: list[str]) -> re.Pattern:
+    """First-person check wording: "I checked Ava", "I've now investigated p2", "I did check
+    you", "I looked at Cleo", "my Seer check", "my night check stands". The verb's object must
+    be a player (name, seat id or "you"), so "I checked the vote history" doesn't count.
+
+    Jev's seer_report fires on any mention of a check, including relayed ones ("we know Elif is
+    safe thanks to Iris's check"), so a Jev report counts only with a Seer claim or this wording.
+    """
+    who = "|".join([*(re.escape(n) for n in sorted(names, key=len, reverse=True)), r"p\d+", "you"])
+    return re.compile(
+        rf"(?:\bI(?:'ve|’ve| have)?\s+{_ADV}(?:checked|investigated|inspected|scanned|looked\s+at)"
+        rf"|\bI\s+did\s+{_ADV}(?:check|investigate|inspect|scan|look\s+at))"
+        rf"\s+(?:{who})\b(?!['’]s)"
+        r"|\bmy\s+(?:(?:seer|night|nightly|last|latest|first|own|previous)\s+)?"
+        r"(?:check|result|investigation|inspection|vision)s?\b",
+        re.I,
+    )
+
+
+def _own_report(v: JevVerdict, text: str, own_check: re.Pattern) -> bool:
+    return v.claim_role is Role.SEER or bool(own_check.search(text))
 
 
 def _jev_tags(game: _Game, jev: Jev) -> list[_Tag]:
+    own_check = _own_check(list(game.names.values()))
     tags = []
     for s in game.statements:
         v = jev.get(s.seq)
@@ -145,7 +157,7 @@ def _jev_tags(game: _Game, jev: Jev) -> list[_Tag]:
         tags += [_Tag(EventType.ACCUSATION, target=t, **base) for t in v.accuse]
         if v.claim_role:
             tags.append(_Tag(EventType.ROLE_CLAIM, role=v.claim_role, **base))
-        if v.seer_report and _own_report(v, s.public_text or ""):
+        if v.seer_report and _own_report(v, s.public_text or "", own_check):
             r = v.seer_report
             tags.append(_Tag(EventType.SEER_CLAIM, target=r.target, result=r.result, **base))
     return tags

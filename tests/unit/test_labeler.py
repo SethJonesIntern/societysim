@@ -406,6 +406,9 @@ def _jev_false_reports(events, jev) -> set[tuple]:
         "Ava checked Cleo and found a wolf. Cleo throwing Finn under the bus doesn't change that.",
         "We know Elif is safe thanks to Ava's check. Cleo first, then Finn.",
         "Ava has claimed Seer and cleared Elif, so I trust Elif. I believe Ava checked Cleo too.",
+        "I checked the vote history: Ava's check on Cleo explains it. Cleo first.",
+        "I looked at Cleo's votes, and Ava already found her as a wolf.",
+        "I'll check the record again, but Ava's result on Cleo was wolf.",
     ],
 )
 def test_jev_relayed_seer_result_is_not_a_false_report(text):
@@ -423,6 +426,13 @@ def test_jev_relayed_seer_result_is_not_a_false_report(text):
         (None, "I checked Ava last night and she is a wolf. Vote Ava today."),
         (None, "I’ve investigated Ava and she is a wolf."),
         (None, "My check stands. Ava is a wolf. Vote Ava."),
+        (None, "My Seer check on Ava came back wolf."),
+        (None, "My night check says Ava is a wolf."),
+        (None, "I've now checked Ava: wolf."),
+        (None, "I did check Ava, and she is a wolf."),
+        (None, "I looked at Ava last night. Wolf."),
+        (None, "I checked p0 and she is a wolf."),
+        (None, "Ava, I checked you. You're a wolf."),
     ],
 )
 def test_jev_fake_seer_report_is_a_false_report(claim_role, text):
