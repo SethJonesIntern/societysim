@@ -1,9 +1,9 @@
-# seth status (updated 2026-10-12T05:45Z)
+# seth status (updated 2026-10-12T05:55Z)
 ## Active
-- #305 humans vs models | implementer opus (unblocked: play server live on Render)
+- #305 humans vs models: WIP d9aaf45 pushed on issue-305-humans-vs-models (metrics.py done); left: report.py model, schema regen, report.md, docs, human-seat tests (see #305 comment). Resume with a new implementer on that branch.
 - #369 (#359 default 10): rebasing for runbook line; then needs re-review
-- #378 smoke mid-game hidden-info + readme line endings | implementer
-- WRAP-UP 2026-10-12 ~05:45Z: Seth heading home; agents told to push WIP. On resume: check #305/#369/#378 branches and PRs, review/merge.
+- #378: PR #381 open, needs review (live smoke 53/53)
+- PAUSED 2026-10-12 ~05:55Z (Seth heading home). Nothing running. On resume: review #369 and #381; finish #305 (new implementer, resume branch).
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
