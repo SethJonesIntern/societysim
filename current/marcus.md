@@ -5,7 +5,7 @@
 - #395 PR #398 r3 pushed (JSON-only LB, names, 24px markers, aria-live off in autoplay) -> reviewer r3
 - Regen results PR #472 (OpenSkill ordinals; wolf mu -3.86; site redeployed run 38107054460) -> reviewer
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
-- #382 PR #397 ROUND 3 (Marcus OK): opus on issue-382-ledger-fail-closed (timeout booking + real retry tests; rebase on #456/#464)
+- #382 PR #397 r3 pushed (retry books full hold; 429/503/timeout tests; rebased on #456/#464; 2207 pass) -> opus reviewer r3. PLAY_IP_SALT already set on Render.
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
