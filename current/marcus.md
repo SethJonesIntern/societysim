@@ -237,6 +237,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Blocker owners: Seth = #604 go/no-go + #594 hold; Marcus (polter) = Render deploy hook secret + Build Filters, #538, #511 freeze. Augustin does NOT have the Render login.
 - ~00:50 EDT Oct 11: Marcus asleep; Seth in control of this session. No Render dashboard login available.
 - Augustin Discord user ID 391338075122302976.
 - 00:2x EDT Oct 11: Marcus hit rate limits playtesting -> Render env set: PLAY_MAX_ACTIVE_PER_IP 1->3, PLAY_MAX_GAMES_PER_IP_DAY 5->50, PLAY_RATE_PER_MIN 120->600, PLAY_DAILY_BUDGET_USD 2->5 (PLAY_MAX_CONCURRENT stays 4); redeploy triggered.
