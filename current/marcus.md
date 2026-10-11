@@ -206,6 +206,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Anchored game screen starts at 821px (#487); stacked game rules use max-width:820px.
 - Seth now allocates tasks to us (via GitHub issues: status:ready + assign polter-dev). Ping Seth on Discord (id 319290022417268746) at major milestones/blockers only.
 - Narrow windows <1100px: hide Game events while your-turn shows (Marcus: option a).
 - #487 minor leftovers: empty strip next to your-turn at 900x1130; nav cuts last links in narrow windows (<~900px)
