@@ -1,10 +1,11 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 PR #471 in review (visitor 31-bit seed path to check; file seed ignored w/o --seed)
-- Seth takeover leftovers: #441-443/#433 PR #467 APPROVED auto-merge (then decide README/site regen for OpenSkill ordinals); #468 PR #470 APPROVED; #466 LIVE applied: global_liars 200 0.4s, detectors 0.3s, events/labels 403.
 - URGENT #440 PR #465 (preview https://issue-440-anchored-layout.societysim.pages.dev) -> opus reviewer + Codex computer-use QA on preview (codex_qa_440.out). After merge: Codex live playtest (Marcus clicks Turnstile). Rebase risk vs #469.
-- #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
-- #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
+- #395 PR #398 rework (Marcus OK: JSON-only LB, timeline names, a11y markers/autoplay, table overflow) | sonnet | issue-395-timeline-lb
+- Regenerate results after #467 (Marcus OK): opus | issue-294-regen-results (report, README block, site deploy, HF if changed)
+- #306 GPT-pair batch: Marcus OK, Seth told to run it
+- #382 PR #397 ROUND 3 (Marcus OK): opus on issue-382-ledger-fail-closed (timeout booking + real retry tests; rebase on #456/#464)
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
@@ -63,6 +64,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #467 (#441-443/#433 analysis) and #470 (#468 LB tabs); #466 live applied
 - merged #455 (README rewrite + docs/DEPLOYMENT.md), #463 (DEMO nav), #464 (#422-424 client retries), #466 (#447 SQL), #469 (#462 viewer polish); handoffs posted; Seth replied on Discord
 - merged #459 (#417-420 Neon sink robustness) and #461 (#432/#460 batch no-log + on_progress); handoffs posted
 - merged #454 (#434/#435 CLI), #456 (#453 Neon startup deadlock), #457 (#448 games index winner); handoffs posted
