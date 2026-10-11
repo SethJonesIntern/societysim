@@ -1,7 +1,7 @@
-# marcus status (updated 2026-10-11T01:18Z)
+# marcus status (updated 2026-10-11T01:21Z)
 ## Active
-- #371 seat clamp | PR #372 in review (verify wolf range vs server)
-- Codex LIVE PLAYTEST: 1 visitor game on society-sim.us (codex_playtest.out) -> file bugs from findings.
+- #371 seat clamp | PR #372 APPROVED, auto-merge
+- LIVE PLAYTEST FAILED (visitor-f2147bc052190477): (A) all AI speech "(silent)", 30-60s waits; (B) game vanished after ~3min "game not found"; (C) global LB "Neon auth bad expires_at" -> #376 implementer; (D) "Could not load log: unknown game" box overlaps live game, raw p0 shown; (E) replay list only fixture-0001 (DEPLOY_SOURCE, #294). Opus diagnosis agent on A/B via Render API logs.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
