@@ -1,4 +1,4 @@
-# seth status (updated 2026-10-12T02:10Z)
+# seth status (updated 2026-10-12T02:30Z)
 ## Active
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
 - #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
@@ -6,6 +6,7 @@
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
+- NEXT when Seth is back: invalid-output fixes issue (llama json_schema, provider-error retry/classify, qwen max_tokens). Engine retry-feedback issue filed for Marcus.
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
 - #334 test env guard (PR #336) and #335 aggregate dataset card (PR #337): approved/merging
@@ -74,4 +75,5 @@
 - Filed #323 (engine): anon can read private fields of running batch games in Neon (no RLS).
 - 2026-10-10 Seth: ALWAYS 10 players from now on. Discord: Marcus=polterr, Augustin=agus_marmor (@ for blockers; webhook needs numeric IDs to ping).
 - Marcus Discord user ID 687018559851069520 (real pings via notify.sh <msg> <id>).
+- 2026-10-12 ~02:30Z: Seth offline briefly. Nothing running. Pinged Marcus: HF org write for publish + Neon migrate OK + #306.
 ## Codex: n/a
