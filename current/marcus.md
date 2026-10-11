@@ -3,7 +3,7 @@
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage token counts leak roles in running games (opus implementer issue-387-usage-leak; apply schema live after); #388 lone surrogate crash + IPv6 /64 (sonnet issue-388-surrogate-ipv6); timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
 - #389 avatars in Agents panel + friendly names everywhere | sonnet | issue-389-avatars-everywhere (screenshot scratchpad/agents-panel.png)
-- PR #380 fix pushed (play_env fixture) -> re-review sent.
+- PR #380 APPROVED, auto-merge (Render redeploys; hotfix env stays).
 - #385 themed dropdown | PR #391 in review. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
 - Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE (Marcus): Codex `codex review` on main worktree (codex_review.out); Opus hunt agent (verified bugs only); Fable hunt agent (same scope); Codex playtest #2 queued: waits for PR #374 merge + 8 min redeploy, then plays Normal game + Advanced/Watch (codex_playtest2.out). File issues from findings.
