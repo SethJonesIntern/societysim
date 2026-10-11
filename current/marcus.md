@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #301 PR #415 (controls restyle, no native selects, 44px, sliders for Seats/Wolves; extra files Timeline Speed/key guard, ModeToggle, useStepper, pages.css token swap) -> reviewer dispatched. Urgent handoffs posted on #303, #395. Uses #414 focus ring. Shared branch pr-assets (#409 + #415): delete only after both merged.
+- #301 PR #415 APPROVED, auto-merge (sliders keep limits; focus ok w/o #414). Shared branch pr-assets (#409 merged + #415): delete after #415 merges.
 - #303 PR #414 APPROVED, auto-merge (no leaks, art unchanged, #404 tests pass). Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
 - #294 close-out -> PR #416 APPROVED r2, auto-merge pending CI. DONE live: sync-neon, HF publish to polter-dev (token CAN write polter-dev), DEPLOY_SOURCE -> site shows 100 games w/ correct model ids, Databricks 158 games + dashboard, results on #216. After merge: close #42, #216 (#37 not: T5.2/T5.3 unpublished), close #294. Decision: narration audio not on site (CI deploy excludes it; local deploy needs CLOUDFLARE_API_TOKEN not in .env). Seth pinged: migrate GO.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
