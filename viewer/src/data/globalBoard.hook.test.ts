@@ -9,6 +9,7 @@ import { useGlobalBoard, type GlobalBoard, type GlobalBoardState } from "./globa
 const board = (n: number): GlobalBoard => ({
   detectors: [{ model: `m${n}`, village_games: n, suspicion_gap: 0.5, votes: 1, wolf_vote_rate: 1, ranked: true }],
   liars: [],
+  failed: [],
 });
 
 describe("useGlobalBoard", () => {
@@ -77,5 +78,22 @@ describe("useGlobalBoard", () => {
     expect(seen.at(-1)).toMatchObject({ error: "HTTP 503", board: board(1) });
     await act(() => vi.advanceTimersByTimeAsync(1000));
     expect(seen.at(-1)).toEqual({ error: null, board: board(3) });
+  });
+
+  it("a refresh that fails for one tab keeps that tab's previous rows", async () => {
+    let calls = 0;
+    const seen = mount(async () =>
+      ++calls === 2 ? { ...board(2), detectors: [], failed: ["detectors"] } : board(calls),
+    );
+    await act(() => vi.advanceTimersByTimeAsync(0));
+    await act(() => vi.advanceTimersByTimeAsync(1000));
+    expect(seen.at(-1)).toEqual({ error: null, board: board(1) });
+  });
+
+  it("a tab that fails with no previous rows shows the error", async () => {
+    const failed: GlobalBoard = { ...board(1), detectors: [], failed: ["detectors"] };
+    const seen = mount(async () => failed);
+    await act(() => vi.advanceTimersByTimeAsync(0));
+    expect(seen.at(-1)!.board).toEqual(failed);
   });
 });
