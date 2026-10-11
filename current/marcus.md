@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- 07:36Z Seth asks on PR #604: (A) independent Fable-model verdict (posted verbatim on #604) -> fable agent running; (B) no-regret prep: recall on 20 dropped tags, before/after numbers table for slides/DEMO, exact republish steps -> opus agent posting on #604. DON'T merge/republish/deploy until Seth confirms.
+- 07:36Z Seth asks on PR #604: (A) Fable verdict POSTED: real bug, #604 correct (optional: match "I'm not a wolf"), republish before 9AM; lead with gemini-flash 52% n=253; (B) no-regret prep: recall on 20 dropped tags, before/after numbers table for slides/DEMO, exact republish steps -> opus agent posting on #604. DON'T merge/republish/deploy until Seth confirms.
 - Augustin PR #603 (themed event illustrations) + Seth's #606 (merge main, NO force-push; death_reveal icon by phase) -> opus agent on his branch
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) APPROVED (precision ~99%, recall ~95%), HOLD. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
