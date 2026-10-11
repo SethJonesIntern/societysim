@@ -4,7 +4,7 @@
 - #339 ip_hint scoped IPv6 500 | implementer sonnet | issue-339-ip-hint-robust
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
 - Audit agent: #40 #267 #216 #33 #22 done-or-not.
-- HF abuse-flag investigation agent (read-only) running.
+- HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render (render.yaml, trusted proxies) | implementer sonnet | issue-340-render-deploy. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
