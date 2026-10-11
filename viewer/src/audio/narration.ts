@@ -101,5 +101,15 @@ export function clipUrl(indexUrl: string, clip: Clip): string {
   return indexUrl.slice(0, indexUrl.lastIndexOf("/") + 1) + clip.file;
 }
 
-/** `<game_id>.jsonl` -> `<game_id>.audio/index.json` beside it. */
-export const siblingAudioIndexUrl = (logUrl: string) => logUrl.replace(/\.jsonl(?=$|[?#])/, ".audio/index.json");
+/** Games with shipped narration (viewer/public/<id>.audio/). */
+export const NARRATED_GAMES: readonly string[] = ["mixed_v2_10p-g0008", "mixed_v2_10p-g0031", "mixed_v2_10p-g0043"];
+
+/**
+ * `<game_id>.jsonl` -> `<game_id>.audio/index.json` beside it. With `narratedOnly` (the default published
+ * site), games outside NARRATED_GAMES give null so no 404 is fetched. Custom sources keep every URL.
+ */
+export function siblingAudioIndexUrl(logUrl: string, narratedOnly = false): string | null {
+  const id = /([^/]+)\.jsonl(?=$|[?#])/.exec(logUrl)?.[1];
+  if (!id || (narratedOnly && !NARRATED_GAMES.includes(id))) return null;
+  return logUrl.replace(/\.jsonl(?=$|[?#])/, ".audio/index.json");
+}
