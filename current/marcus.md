@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-11T01:26Z)
+# marcus status (updated 2026-10-11T01:27Z)
 ## Active
-- Augustin PR #374 (landing/mode picker/Advanced setup, branch frontend-play-screens): opus implementer fixing + syncing with main (Marcus: fix and merge). Then reviewer approve+merge. Discord ping sent re remaining UI (leaderboard styling, live view overlap, your-turn panel, model picker, #300-#303, #33).
+- Augustin PR #374 (landing/mode picker/Advanced setup, branch frontend-play-screens): FIXED by our agent (rebased; live games load from Neon via retryLoad; names/Seat N not p0; seat clamp; WebP 23MB->4MB); REVIEWER running. Discord ping sent re remaining UI (leaderboard styling, live view overlap, your-turn panel, model picker, #300-#303, #33).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
 - LIVE PLAYTEST FAILED: (A) ROOT CAUSE: server reads OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY, Render only had PLAY_* -> HOTFIXED on Render (srv-db5dvg8473hc73aqg0k0: OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY = PLAY_* values), deploy live, health OK; code fix #379 PR #380 in review (providers_ready in /api/health). (B) game lost = Render autoDeploy restart on merges (7 deploys 01:04-01:21Z); Marcus OK with autoDeploy (freeze 23:00). (C) PR #377 APPROVED auto-merge. (D) live-log overlap -> in #374 takeover. (E) replay list fixture only -> #294 DEPLOY_SOURCE. RE-RUN Codex playtest after merges settle.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
