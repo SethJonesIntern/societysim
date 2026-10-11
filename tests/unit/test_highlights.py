@@ -95,8 +95,34 @@ def test_lie_without_followers_is_not_a_moment():
 def test_lie_labeled_by_both_sources_is_one_moment():
     g = game()
     bus = next(lb for lb in g.labels if lb.label is LabelType.BUSSING)
-    g.labels.append(bus.model_copy(update={"source": "jev"}))
-    assert [m["seq"][0] for m in lie_moments(g)].count(70) == 1
+    # a real Jev label sits on the statement (69), the self-tag on its accusation (70)
+    g.labels.append(bus.model_copy(update={"source": "jev", "source_seq": 69}))
+    (m,) = [m for m in lie_moments(g) if m["actor"] == "p2"]
+    assert m["seq"] == [70, 104] and m["score"] == 5.0  # the self-tag label is scored
+    assert "Both label sources" in m["description"]
+
+
+def test_fellow_wolf_voted_out_is_named():
+    g = game()
+    edit(g, 104, target="p5", meta=EventMeta(role="wolf"))  # Finn goes out, not Gia
+    (m,) = [m for m in wolf_survival_moments(g) if m["actor"] == "p2"]
+    assert "fellow wolf Finn (p5) was voted out instead" in m["description"]
+    assert "nobody went out" not in m["description"]
+    assert m["score"] == 1.0  # no swap bonus: no non-wolf was eliminated
+
+
+def test_jev_only_lie_is_a_moment_on_its_statement():
+    g = game()
+    bus = next(lb for lb in g.labels if lb.label is LabelType.BUSSING)
+    g.labels = [lb for lb in g.labels if lb is not bus]
+    g.labels.append(bus.model_copy(update={"source": "jev", "source_seq": 69}))
+    (m,) = [m for m in lie_moments(g) if m["actor"] == "p2"]
+    assert m["seq"][0] == 69 and "Both label sources" not in m["description"]
+
+
+def test_no_elimination_says_nobody_went_out():
+    (m,) = [m for m in wolf_survival_moments(game()) if m["actor"] == "p5"]
+    assert m["description"].endswith("; nobody went out.")
 
 
 def test_engine_labels_are_not_lies():

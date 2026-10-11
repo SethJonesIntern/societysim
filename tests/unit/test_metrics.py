@@ -406,8 +406,51 @@ async def test_random_agent_games(tmp_path):
         assert a["wins"] + a["draws"] + a["losses"] == a["games"] == 21
         assert 0 <= a["detection"]["brier"] <= 1
         assert a["invalid_output_rate"] > 0
-    # every seat is the same scripted model: self-play keeps one overall rating
-    assert len(m["openskill"]["overall"]) == 1
+    # every seat is the same scripted model: self-play gives no overall rating (n/a)
+    assert m["openskill"]["overall"] == {}
+    assert len(m["openskill"]["wolf"]) == len(m["openskill"]["village"]) == 1
+
+
+def _seated(game: GameData, gid: str, winner: str, models: dict[str, str]) -> GameData:
+    g = _with_models(_with_winner(game, winner), models)
+    g.events = [e.model_copy(update={"game_id": gid}) for e in g.events]
+    return g
+
+
+def _all(model: str) -> dict[str, str]:
+    return {f"p{i}": model for i in range(7)}
+
+
+def test_self_play_does_not_rate_the_model(game):
+    # A wins as both sides: the game says nothing about A against anyone else
+    os = openskill_ratings([_seated(game, "g0", "wolves", _all("A"))])
+    assert os["overall"] == {}
+    assert os["wolf_side"]["overall"]["mu"] > 0  # the side dummy still learns
+    assert os["wolf"]["A"]["mu"] > 25 > os["village"]["A"]["mu"]  # sided pools as before
+
+
+def test_self_play_game_count_does_not_order_models(game):
+    games = [
+        _seated(game, "g0", "wolves", _all("A")),
+        _seated(game, "g1", "villagers", _all("A")),
+        _seated(game, "g2", "wolves", _all("B")),
+    ]
+    assert openskill_ratings(games)["overall"] == {}
+
+
+def test_model_on_both_sides_keeps_its_rating_others_move(game):
+    # A is wolf p2 and villager p0; the rest are distinct one-side models
+    g = _seated(game, "g0", "wolves", {"p0": "A", "p2": "A"})
+    os = openskill_ratings([g])
+    assert "A" not in os["overall"]
+    assert os["overall"]["gemini-flash"]["mu"] > 25 > os["overall"]["llama-4-maverick"]["mu"]
+    assert os["overall"]["gemini-flash"]["sigma"] < 25 / 3
+    # a later game with A on one side rates A from the prior, untouched by the first game
+    later = _seated(game, "g1", "wolves", {"p2": "A"})
+    both = openskill_ratings([g, later])["overall"]["A"]
+    alone = openskill_ratings([later])["overall"]["A"]
+    assert both["sigma"] == pytest.approx(alone["sigma"], rel=0.01)
+    assert both["sigma"] > openskill_ratings([later, later])["overall"]["A"]["sigma"]
 
 
 def test_human_seat_is_not_ranked():
@@ -836,10 +879,59 @@ def test_provider_errors_are_in_none_of_the_three_rates():
     )
     row = _reliability({"p0": p0})["model-p0"]["all"]
     assert row["provider_errors"] == 3
-    assert row["invalid_attempt_rate"] == pytest.approx(3 / 3)  # 3 rejected / 3 attempts
+    # 3 rejected / 4 model replies: the bad json before a provider death is a reply (#443)
+    assert row["invalid_attempt_rate"] == pytest.approx(3 / 4)
     assert row["fallback_rate"] == pytest.approx(1 / 2)  # the clean turn and the real fallback
     assert row["retry_success_rate"] == 0  # one retry, lost
-    assert row["provider_error_rate"] == pytest.approx(3 / 6)
+    assert row["provider_error_rate"] == pytest.approx(3 / 7)  # 3 / (4 replies + 3 failures)
+
+
+def _p3_extra(game: GameData, *specs) -> GameData:
+    """The fixture plus narrator events for p3 (gpt-oss-120b): (type, meta) per event."""
+    last = game.events[-1]
+    c = dict(game_id=last.game_id, t=last.t, day=last.day, phase=last.phase, actor="p3")
+    extra = [
+        Event(seq=last.seq + i, type=t, visibility=Visibility.NARRATOR, meta=m, **c)
+        for i, (t, m) in enumerate(specs, 1)
+    ]
+    return GameData([*game.events, *extra], game.labels)
+
+
+def _p3_rate(g: GameData) -> float:
+    return compute_metrics([g])["models"]["gpt-oss-120b"]["all"]["invalid_output_rate"]
+
+
+def test_bad_reply_then_provider_fallback_counts_the_reply_as_an_attempt(game):
+    assert _p3_rate(game) == pytest.approx(2 / 10)
+    g = _p3_extra(
+        game,
+        (
+            EventType.INVALID_OUTPUT,
+            EventMeta(action="vote", attempt=1, error="1 validation error for VoteResponse"),
+        ),
+        (
+            EventType.INVALID_OUTPUT,
+            EventMeta(
+                action="vote", attempt=2, error="ServiceUnavailableError: busy", reason="provider"
+            ),
+        ),
+        (
+            EventType.FALLBACK_ACTION,
+            EventMeta(
+                action="vote", reason="provider", usage={"model": "gpt-oss-120b", "attempts": 5}
+            ),
+        ),
+    )
+    assert _p3_rate(g) == pytest.approx(3 / 11)
+
+
+def test_transient_http_retries_do_not_dilute_the_invalid_rate(game):
+    # one accepted reply that took 3 HTTP tries (two 429s first) is one model attempt
+    g = _p3_extra(
+        game,
+        (EventType.VOTE, EventMeta(usage={"model": "gpt-oss-120b", "attempts": 3})),
+    )
+    assert _p3_rate(g) == pytest.approx(2 / 11)
 
 
 def test_legacy_provider_error_then_accepted_reply_is_a_turn_but_not_a_retry():

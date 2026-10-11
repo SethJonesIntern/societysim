@@ -17,7 +17,13 @@ match between two teams:
   harder the wolf side is, so side difficulty does not leak into model ratings;
 - the composite's update goes back to each distinct model on that side: mu moves by the
   composite's mu change times sigma_i^2 / sigma_composite^2, and sigma scales by the
-  composite's sigma ratio. A model on both sides (self-play) takes the mean of its updates.
+  composite's sigma ratio;
+- a model on both sides of one game (self-play) keeps its overall rating unchanged: the game
+  pits it against itself, so it says nothing about how it compares with other models. The
+  match is still rated so the wolf-side dummy learns from it. A model whose every game was
+  self-play has no overall rating (reported as n/a, never ranked by the prior). Self-play
+  games still count toward every other metric, and the sided pools rate them as usual, since
+  (model, "wolf") and (model, "village") are different players.
 Pools: "overall" has one rating per model; "wolf" / "village" have one per (model, side) and
 share one pool. Each pool has its own wolf-side dummy, reported under "wolf_side".
 """
@@ -176,7 +182,9 @@ class Row:
     provider_errors: int = (
         0  # invalid_output events with reason "provider": the model never answered
     )
-    attempts: int = 0  # model calls, not counting those that ended in a provider error
+    # model replies, counted from events: each rejected (non-provider) reply plus each accepted
+    # one. Not usage.attempts, which also counts the client's transient HTTP retries (#443).
+    attempts: int = 0
     # turns = one model call (up to two attempts) that ended in a reply or a fallback move; a
     # turn lost to a provider error is in none of these four
     turns: int = 0
@@ -358,6 +366,7 @@ def game_rows(game: GameData) -> dict[str, Row]:
                 row.provider_errors += 1
             else:
                 row.invalid += 1
+                row.attempts += 1
         if e.type is EventType.ACCUSATION and e.target:
             key = (e.actor, e.meta.statement_seq or e.seq)
             accused[key].add(e.target)
@@ -365,8 +374,9 @@ def game_rows(game: GameData) -> dict[str, Row]:
         if e.suspicion is not None and roles[e.actor] is not Role.WOLF:
             last_susp[(e.actor, e.day)] = e
         if u := e.meta.usage:
-            if not _count_turn(row, e, failed.pop(e.actor, [])):
-                row.attempts += u.attempts
+            provider_turn = _count_turn(row, e, failed.pop(e.actor, []))
+            if not provider_turn and e.type is not EventType.FALLBACK_ACTION:
+                row.attempts += 1  # the accepted reply; its rejected ones were counted above
             row.input_tokens += u.input_tokens
             row.output_tokens += u.output_tokens
             row.cost_usd += u.cost_usd
@@ -740,8 +750,11 @@ def summarize(row: Row) -> dict:
     }
 
 
-def _rate_match(pl: PlackettLuce, pool: dict, teams: dict[str, list], winner: str) -> None:
-    """One game in one pool; `teams` maps side -> one pool key per seat. See module docstring."""
+def _rate_match(pl: PlackettLuce, pool: dict, teams: dict[str, list], winner: str) -> set:
+    """One game in one pool; `teams` maps side -> one pool key per seat. See module docstring.
+
+    Returns the keys whose rating was updated: a key on both sides is left unchanged.
+    """
     for keys in teams.values():
         for k in keys:
             pool.setdefault(k, pl.rating())
@@ -758,17 +771,18 @@ def _rate_match(pl: PlackettLuce, pool: dict, teams: dict[str, list], winner: st
         [[comp["wolf"], pool[WOLF_SIDE]], [comp["village"]]], ranks=ranks
     )
     pool[WOLF_SIDE] = new_side
-    updates: dict = defaultdict(list)
+    both = set(teams["wolf"]) & set(teams["village"])
+    updated = set()
     for side, new in (("wolf", new_wolf), ("village", new_village)):
         old = comp[side]
         for k in dict.fromkeys(teams[side]):
+            if k in both:
+                continue
             r = pool[k]
             mu = r.mu + (new.mu - old.mu) * r.sigma**2 / old.sigma**2
-            updates[k].append((mu, r.sigma * new.sigma / old.sigma))
-    for k, us in updates.items():
-        mu = sum(u[0] for u in us) / len(us)
-        sigma = sum(u[1] for u in us) / len(us)
-        pool[k] = pl.rating(mu=mu, sigma=sigma)
+            pool[k] = pl.rating(mu=mu, sigma=r.sigma * new.sigma / old.sigma)
+            updated.add(k)
+    return updated
 
 
 def openskill_ratings(games: list[GameData]) -> dict[str, dict[str, dict]]:
@@ -779,13 +793,14 @@ def openskill_ratings(games: list[GameData]) -> dict[str, dict[str, dict]]:
     pl = PlackettLuce()
     overall: dict = {}
     sided: dict = {}
+    rated: set = set()  # models with at least one overall update (a game not against itself)
     for g in sorted(games, key=lambda g: g.game_id):
         if g.winner is None:
             continue
         seats: dict[str, list[str]] = {side: [] for side in SIDES}
         for seat, role in g.roles.items():
             seats["wolf" if role is Role.WOLF else "village"].append(g.models[seat])
-        _rate_match(pl, overall, seats, g.winner)
+        rated |= _rate_match(pl, overall, seats, g.winner)
         by_side = {side: [(m, side) for m in ms] for side, ms in seats.items()}
         _rate_match(pl, sided, by_side, g.winner)
 
@@ -797,7 +812,7 @@ def openskill_ratings(games: list[GameData]) -> dict[str, dict[str, dict]]:
         for side in SIDES
     }
     return {
-        "overall": {m: out(r) for m, r in sorted(overall.items()) if m != WOLF_SIDE},
+        "overall": {m: out(r) for m, r in sorted(overall.items()) if m in rated},
         **{side: dict(sorted(rs.items())) for side, rs in side_ratings.items()},
         WOLF_SIDE: {
             name: out(pool[WOLF_SIDE])
