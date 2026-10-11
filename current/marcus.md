@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T08:56Z)
 ## Active
 - JEV REPUBLISH (Seth approved): cache from release jev-cache-mixed_v2_10p unzipped into runs/mixed_v2_10p/.cache/jev (4702); backup scratchpad/pre_jev; label cache-only (354 Jev labels, 0 calls); postbatch (self 356/40.4/71.2 unchanged; Jev 354/40.3/73.1); HF + Neon 1532 labels; deploy.yml 38127255443 success. Verified (#616): self + Jev counts + matrix toggle OK, smoke 67/67; GAPS: live Jev lie rate null + agreement.json 404 (deploy.yml has no Jev cache) -> #645 PR #648 r1 fix pushed (restore_jev_cache.py) -> re-review r2. AFTER MERGE: gh workflow run deploy.yml (no HF republish), check log '0 statements had no cache entry', verify agreement.json + Jev 7.53% + self 356/40.4/71.2 + smoke; post on #616 + Discord.
-- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 r1 fixes pushed -> re-review r2
+- Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 Stop-watching -> PR #651 CHANGES r2 (button overlaps View select/ambience toggle) fix sent
 - Viewer fixes: #638 (#635+#636) and #639 MERGED; Neon cold-start checked: 0.27 s after 7 min idle, no change needed; #638 APPROVED auto-merge; #637 -> PR #644 MERGED
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
 - #626 trailer -> PR #650 (Fable) reviewer; merge before 15:00Z; frames artifact private to Marcus
