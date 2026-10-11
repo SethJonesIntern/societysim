@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
-- #541 leave endpoint docs+401 tests -> sonnet issue-541-leave-docs
+- #541 leave docs+401 tests -> PR #552 (touches app.py -> redeploy) HOLD label until Codex live game ends; reviewer dispatched
 - FULL SCREEN audit filed #542-#546: #542 1100px column (opus issue-542-page-width), #543 home ultrawide -> PR #548 APPROVED auto-merge, #544 advanced setup height -> PR #550 reviewer, #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
 - Augustin PR #532 (#299): NEEDS WORK (build fails main.tsx:81 batchBase; suspicion colours reversed; banner icons squashed; Turnstile under seal). Review sent to Discord + real ping to Augustin. Waiting on Augustin/Marcus re fixing on his branch
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
