@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:41Z)
+# marcus status (updated 2026-10-11T13:45Z)
 ## Active
+- 13:45Z: PR #709 (#697) APPROVED, auto-merge queued; deploy labelling output unchanged with cache. GOTCHA: #707 and #709 both touch cli.py + test_cli_output.py; watch for conflict after the first merges.
 - 13:41Z: Viewer hunt round 2 PRs #705 (#699), #706 (#700), #708 (#701) -> one reviewer for all three. #702 (Escape doesn't close pop-ups) and #703 (trailer focus) in progress by viewer hunter.
 - 13:40Z: Engine hunt round 2 DONE: play server API clean (validation, races, timeouts, shutdown). PRs #704 (#694 batch-id) and #709 (#697 label --no-jev) -> reviewers dispatched. #695/#696 runner, filed only.
 - 13:39Z: #698 -> PR #707 opened (highlights --top min 1; report explains unfinished-only dirs, exit 1). Reviewer dispatched (checking workflows calling report).
