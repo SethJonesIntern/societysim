@@ -1,9 +1,6 @@
-# seth status (updated 2026-10-12T06:30Z)
+# seth status (updated 2026-10-12T07:10Z)
 ## Active
-- #305 humans vs models: WIP d9aaf45 pushed on issue-305-humans-vs-models (metrics.py done); left: report.py model, schema regen, report.md, docs, human-seat tests (see #305 comment). Resume with a new implementer on that branch.
-- #369 (#359 default 10): rebasing for runbook line; then needs re-review
-- #378: PR #381 open, needs review (live smoke 53/53)
-- RESUMED 2026-10-12 ~06:30Z. Reviews #369, #381; #305 finishing (opus, resumed branch); fix-check batch fixcheck_10p (6 games gpt-5-nano+llama4, cap $1, est $0.41) for #347/#349 live acceptance.
+- PRs: #403 (#305 humans vs models, opus review), #399 (#394 smoke selectors, review), #369 (#359) approved/merging, #381 (#378) approved/merging
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
@@ -14,6 +11,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #347 live check: fixcheck_10p $0.42: llama4 0% invalid (was 16%), gpt-5-nano 8.7% attempts but only 2 fallbacks/330 turns; posted on #347
 - #373 follow-ups PR #375 merged
 - #362 smoke check PR #370 merged; #373 PR #375 approved/merging
 - 2026-10-12 merged: #363 (#346 provider errors+qwen), #367 (#361 README results), #368 (#366 global rankings)
@@ -88,4 +86,5 @@
 - 2026-10-12 ~02:30Z: Seth offline briefly. Nothing running. Pinged Marcus: HF org write for publish + Neon migrate OK + #306.
 - Marcus asks: publish T5.2 to Sethery32/societysim-games --public (avoids org access). Needs Seth OK (public). HF paused Marcus's play Space (flagged abusive); appeal + Render fallback (#340).
 - Filed #355 (infra, Marcus/admin): make python-windows a required check once stable. Seth: 'if you see tasks, create tickets and run them'. Publish to Sethery32 public: SKIPPED for now (Seth).
+- Fingerprint note: #363 models.yaml changes moved selfplay_baseline_10p fingerprint ff44a523 -> ca7672fc on main; the 20-game run can't be resumed (intended).
 ## Codex: n/a
