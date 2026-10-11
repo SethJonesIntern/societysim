@@ -9,7 +9,7 @@
 - Round 3 bug runs (Seth #616): visitor flow e2e mocked (opus), viewer pages DONE -> #634 (slow Neon hang; sonnet issue-634-neon-timeout), #635+#636 (Research/LB nulls; sonnet issue-635-636-research-nulls), #637 (wording; queued after #635/636: Leaderboard.tsx overlap); batch runner DONE: #630 #631 #632 #633 filed (Seth's); -> summaries on #616; if a round finds nothing tell Seth and switch to improvements
 - Seth's PR #627 (#620 autoplay waits for clips) approved, his
 - #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 APPROVED r2 auto-merge; #618/#619 after demo; #622 low
-- #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 freeze at 15:00Z. Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
+- #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 CLOSED (no freeze; main is final). Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
 - #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
 - #604 REPUBLISH COMPLETE: final table posted on #604 + Discord; #623 docs + #624 smoke merged.
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
@@ -248,6 +248,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- ~10:25Z Oct 11 Marcus: NO freeze/tag (#511 closed not planned); main is the last iteration. No usage-check task. Render hook: Codex via Brave (Render logged in there).
 - Blocker owners: Seth = #604 go/no-go + #594 hold; Marcus (polter) = Render deploy hook secret + Build Filters, #538, #511 freeze. Augustin does NOT have the Render login.
 - ~00:50 EDT Oct 11: Marcus asleep; Seth in control of this session. No Render dashboard login available.
 - Augustin Discord user ID 391338075122302976.
