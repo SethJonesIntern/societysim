@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T13:22Z)
 ## Active
+- 13:22Z: #682 MERGED (#680 closed). PR #689 (#688 bottom bar overlap) -> reviewer dispatched. #691 (cut-off replay ends frozen with no notice) in progress by viewer hunter. #690 is Seth's (skip).
 - 13:22Z: Engine bug hunt round 1 DONE: #678/#679 merged, #681/#683 merged, #685/#687 in review; 1,500-game fuzz + leak checks clean. Round 2 dispatched (server HTTP API edge cases, CLI, metrics edge logs), PRs by 14:30Z.
 - 13:21Z: PR #683 (#681 ledger midnight) APPROVED, auto-merge queued. Server change: DEPLOY AFTER DEMO (with #677).
 - 13:19Z: Reviewers dispatched for PR #686 (#684 narration switch) and PR #687 (#685 EventLogger.close). #688 (bottom-bar popups overlap slider at 830-1000px) in progress by viewer hunter. Video announced on Discord.
