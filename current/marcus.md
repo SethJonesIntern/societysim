@@ -2,10 +2,10 @@
 ## RESUME HERE (session stopped ~01:00 EDT Oct 11 for token limits; Seth in control, Marcus asleep)
 Agents possibly still running at stop (their output lands on GitHub; check PR state, don't assume):
 - Augustin PR #532 (#299): opus rebase+fix on his branch. Check if pushed and status:review, then dispatch a reviewer.
-- PR #545 open-log screen: sonnet implementer, branch issue-545-open-log. If there's no PR, re-dispatch on the branch.
+- PR #563 (#545 open-log card) OPEN status:review -> NEEDS a reviewer.
 - PR #559 (#553 deploy-when-idle; hold label): reviewer r2 running. When approved: remove hold -> merge (one auto deploy) -> set Render autoDeploy=no via API (PATCH /v1/services/srv-db5dvg8473hc73aqg0k0 {"autoDeploy":"no"}, silent .env subshell) -> then deploy manually via API (POST .../deploys) only when /api/health games_running==0. No Render login tonight, so no hook secret.
 - PR #562 (#546 replay scaling): reviewer running (flag: Event Details text 11px at 1280x650).
-- #555 relabel: NO Jev cache exists. Agent checking label sources: if no Jev labels -> free --no-jev relabel (backup first); else stop and ask Marcus (paid ~5000 calls). Publish: `uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games` (needs HF_TOKEN), then site via pages.yml workflow_dispatch.
+- #555: no Jev labels in batch (--no-jev). Keyless relabel+postbatch done locally: bussing unchanged 76; only new report fields + small OpenSkill shifts. Commented on #555. Republish OPTIONAL (needs HF_TOKEN), not done.
 Approved, auto-merging (post handoffs after merge): #551 (Augustin leaderboard), #558 (#556 days), #560 (#557 short names).
 Queue (assigned to us by Seth): #538 purge old run_meta copies; #512 narration audio (needs CF token?); #498 schema.sql locks (after Seth's #519/#496 merges); #511 FREEZE at 11:00 EDT (autoDeploy off, tag v1.0-demo); follow-up: model page heading in main.tsx shows raw id (after #532).
 Unverified: Render Build Filters (no dashboard login). Live Render env: ACTIVE_PER_IP 3, GAMES_PER_IP_DAY 50, RATE_PER_MIN 600, DAILY_BUDGET_USD 5.
