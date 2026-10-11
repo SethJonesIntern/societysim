@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
-- URGENT #553 (Seth) no visitor game reaches day 2 -> opus issue-553-visitor-day2 (deploy times in scratchpad/render_deploys.txt)
+- #553 root cause: ALL 20 failed visitor games = redeploys (budget/timeouts/day-2 exception ruled out; game started 04:28 reached day 4). PR #559 (autoDeploy off + deploy-play.yml calls Render deploy hook when /api/health games_running==0) HOLD pending Marcus decision (reverses his option b); live steps: RENDER_DEPLOY_HOOK_URL GH secret, autoDeploy off, check VITE_PLAY_API_URL. Reviewer dispatched
 - Augustin PR #551 leaderboard fullscreen: Augustin rebased himself onto #554 at 04:36Z -> reviewer dispatched
 - New ready for us: #538 purge old run_meta copies (infra, agent:cloud) - not yet dispatched
 - #541 leave docs+401 tests -> PR #552 (touches app.py -> redeploy) APPROVED; hold removed (no live game)
