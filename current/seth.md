@@ -1,7 +1,8 @@
-# seth status (updated 2026-10-12T03:20Z)
+# seth status (updated 2026-10-12T03:40Z)
 ## Active
-- #353 deploy re-encode cp1252 logs to UTF-8 | implementer
-- #354 RUNNING_BATCHES.md runbook | implementer
+- WAVE 2026-10-12 ~03:40Z (Seth: max parallel, ~2.5h left): #359 default 10 players (engine, claimed, Marcus pinged), #361 README results block (new), #362 live-site smoke check (new), #38 DEMO.md draft (claimed). Plus #346 implementing.
+- #353 deploy re-encode: PR #360 in review
+- #354 runbook: PR #358 in review
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
 - #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
