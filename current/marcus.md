@@ -183,6 +183,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Cloud bug-hunt orchestrator (Marcus's 2nd session) runs on main: files/fixes bugs labeled found-by:cloud, tracker issue titled 'Cloud bug-hunt tracker'. Don't dispatch on found-by:cloud issues; table overlap polish (post-#404) handed to cloud. Its PRs auto-merge via its own reviewers.
 - DESKTOP ONLY (Marcus): no mobile work anywhere. #303 retitled to accessibility only. Told #390 agent + #391 reviewer.
 - Marcus: take UI work off Augustin where possible (more UI components coming). Our agents do UI tickets too now (themed, matching his art), with port notes.
 - CODE FREEZE 11:00 AM EDT Sun Oct 11 (Marcus clarified). Render autoDeploy stays ON (merges restart server, kill live games).
