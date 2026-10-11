@@ -1,5 +1,6 @@
-# seth status (updated 2026-10-12T11:40Z)
+# seth status (updated 2026-10-11T03:36Z)
 ## Active
+- SETH = PRIMARY IMPLEMENTER / LEAD from 2026-10-11 03:30Z (UI stays Augustin's). Wave: #306 GPT-pair batch RUNNING (40 games, est $3.96, cap $6, no --neon; sync/publish after). Smoke check fails on .role-badge -> implementer (drift vs regression). #38 DEMO.md verify pass -> implementer. 4 read-only bug hunters (play server->team:engine issues, Neon, batch/analysis, viewer logic->team:viewer). Closed dup PR #458 (#457 shipped it) and #447 (done via #466/#470).
 - Bug-hunt fixes MERGED: #459 (Neon #417-#420), #464 (client #422-#424), #466 (#447 view; tab-independence split to #468), #467 (#441/#442/#443/#433), #454 (CLI #434/#435), #458 (#448), #431 (docs). #432 via #461. Follow-up: PR #473 restores per-endpoint caps test (dropped by our force-push on #464), in review. #468 closed by Marcus.
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
 - BUG HUNT done: 8 hunters, ~28 bugs. Marcus pinged with his list (#421 #427 #429 #430 #446 #438 seed-predictable roles) + Augustin #449/#450.
