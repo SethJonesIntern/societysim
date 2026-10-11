@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
-- #617: runs 1-4 done -> #618 #619 #620 (narration autoplay cut, viewer) #621 (audio index 404 x97) #622 (mobile, low) filed, assigned Seth; run 5 data consistency after republish verification
+- #617 CLOSED: filed #618 #619 #620 #621 #622 (Seth's to triage); runs 3,4,5 clean
 - #616 URGENT (Seth lost remote access): poll GitHub every 3 min (scratchpad/poll3.sh; re-arm whenever it exits). Priorities: 1) #604 republish by 12:00Z, 2) #598 DEPLOYED 08:21Z (067829b7), checks OK, Discord posted; 3) #511 freeze at 15:00Z. Seth: post EVERY milestone to Discord too (scratchpad/discord.sh "msg" pings Seth): republish started / done+numbers / #598 deploy done / freeze done.
 - #611 fixed by Seth's #613; our PR #615 CLOSED as superseded
 - #604 REPUBLISH DONE + verified 08:5xZ (Discord posted): 356 lies; 40.4% vs 71.2%; Neon liars gemini-flash 56.1% n=421; top hl g0043/g0008/g0036. Smoke fix -> PR #624 reviewer (67/67 live). DEMO/PITCH/README numbers -> PR #623 reviewer. Backup scratchpad/pre596.
