@@ -2,10 +2,8 @@
 ## Active
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 player profile dialog (shrink 30-40%, avatar in empty portrait, headings, compact empty states) | opus | issue-445-profile-dialog
-- #430 PR #439 APPROVED, auto-merge (then #444 needs rebase on config.py import)
-- #429 PR #444 (reject last_words:true at load) -> reviewer dispatched
-- #427 PR #436 APPROVED, auto-merge
-- #421 PR #437 APPROVED, auto-merge. After merge: dispatch agent to re-run Databricks metrics notebook + dashboard
+- #429 PR #444 approved, DIRTY after #439 -> same agent rebasing, then re-review
+- #421 merged (PR #437); Databricks re-run agent dispatched
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
@@ -66,6 +64,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #436 (#427 DATA_CONTRACT), #437 (#421 Databricks human row), #439 (#430 wolves check); handoffs posted
 - merged #414 (#303 a11y), #416 (#294 close-out docs); closed #42 #216 #294; handoffs posted (#301 #398 #400 #37 #42 #216). #37 still open (T5.2/T5.3 unpublished). Narration audio not deployed (needs CLOUDFLARE_API_TOKEN) - Marcus.
 - merged #415 (#301 controls restyle); handoffs already posted on #303/#395 as pending. Kept generic pr-assets branch (cloud session may use it).
 - merged #412 (#400 names match avatars); handoffs on #294, #395; Seth pinged re avatar_presentation. Narration bank (30 names) decision pending Marcus.
