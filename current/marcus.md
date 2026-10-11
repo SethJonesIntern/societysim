@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
 - #395 PR #398 rework pushed (JSON base + Neon overlay seats/winrate) -> reviewer r2 dispatched
-- #401 PR #402 in review
+- #401 PR #402 APPROVED, auto-merge (2071 pytest pass; #397 conflict only in test_security.py tail)
 - #400 player names missing in live/visitor views + names match avatar gender (avatar_presentation in models.yaml, engine name pools, seeded) | opus | issue-400-player-names
 - #390 table medallions | opus | PR #404 opened -> reviewer dispatched (flags: plates above upper seats, bubble cap CSS outside files; screenshots scratchpad/shots/)
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
