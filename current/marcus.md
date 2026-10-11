@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:24Z)
+# marcus status (updated 2026-10-11T13:28Z)
 ## Active
+- 13:28Z: Viewer bug hunt DONE: #682, #686 merged; #689 in review; PR #692 (#691 cut-off game ends frozen, no notice) reviewer dispatched. No console errors/dead links/wrong numbers at 1440/1920. Note: Games page lists cut-off games first (demo: open a finished game like g0043).
 - 13:24Z: PR #686 (#684 narration switch survives live log swap) APPROVED, auto-merge queued. Narration still defaults off; trailer page unaffected.
 - 13:23Z: PR #687 (#685 EventLogger.close) APPROVED, auto-merge queued; close() bounded by one timeout, no schema change. Server uses this: deploy after demo.
 - 13:22Z: #682 MERGED (#680 closed). PR #689 (#688 bottom bar overlap) -> reviewer dispatched. #691 (cut-off replay ends frozen with no notice) in progress by viewer hunter. #690 is Seth's (skip).
