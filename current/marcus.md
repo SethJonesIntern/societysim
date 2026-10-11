@@ -1,11 +1,11 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
-- #585: read-only Neon pre-check OK (neondb_owner owns all 5 tables), posted. Removed hold on #577 + #519, auto-merge on. Watcher: when both merged -> deploy_when_idle -> then post-checks (health/limits 200, anon read OK, anon PATCH games refused, site_smoke 67/67) and comment on #585.
-- #573 day-1 summary in 10p prompts -> opus issue-573-day1-summary
-- #584 claimed role in Decision history -> sonnet issue-584-claimed-role-history
-- #586 narrator-only audio (0 ElevenLabs, no keys) -> sonnet issue-586-narrator-audio
-- #587 DEMO/PITCH docs -> sonnet issue-587-demo-pitch-docs (DEMO.md shared w/ #586 one line)
+- #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). TODO: post-checks (health/limits 200, anon read OK, anon PATCH games refused, site_smoke 67/67) + comment on #585
+- #573 day-1 summary in 10p prompts -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
+- #584 claimed role in Decision history -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
+- #586 narrator-only audio (0 ElevenLabs, no keys) -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
+- #587 DEMO/PITCH docs -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
 - #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
 - #511 freeze at 11:00 EDT
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
