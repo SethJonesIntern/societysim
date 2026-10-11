@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:40Z)
+# marcus status (updated 2026-10-11T13:41Z)
 ## Active
+- 13:41Z: Viewer hunt round 2 PRs #705 (#699), #706 (#700), #708 (#701) -> one reviewer for all three. #702 (Escape doesn't close pop-ups) and #703 (trailer focus) in progress by viewer hunter.
 - 13:40Z: Engine hunt round 2 DONE: play server API clean (validation, races, timeouts, shutdown). PRs #704 (#694 batch-id) and #709 (#697 label --no-jev) -> reviewers dispatched. #695/#696 runner, filed only.
 - 13:39Z: #698 -> PR #707 opened (highlights --top min 1; report explains unfinished-only dirs, exit 1). Reviewer dispatched (checking workflows calling report).
 - 13:38Z: #692 merged. Hunters round 2 filed: #694 (play --batch-id path), #697 (label --no-jev no cache) in progress by engine hunter; #699/#700/#701 viewer in progress by viewer hunter; #695/#696 team:runner (Seth's, left ready). Claimed #698 (highlights --top negatives / report msg) -> implementer, branch issue-698-highlights-report, PR by 14:30Z.
