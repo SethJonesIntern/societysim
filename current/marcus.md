@@ -3,7 +3,7 @@
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 PR #471 in review (visitor 31-bit seed path to check; file seed ignored w/o --seed)
 - URGENT #440 PR #465: Codex QA on preview FAILED (replay page scrolls, timeline below fold, nav covers seats at 125/150%, plates overlap panels, bottom bar cut; real browser chrome ~790px usable). Sent to opus reviewer; expect changes -> same implementer. Games 'Show winners' checkbox native (small follow-up).
 - #395 PR #398 r3 pushed (JSON-only LB, names, 24px markers, aria-live off in autoplay) -> reviewer r3
-- Regenerate results after #467 (Marcus OK): opus | issue-294-regen-results (report, README block, site deploy, HF if changed)
+- Regen results PR #472 (OpenSkill ordinals; wolf mu -3.86; site redeployed run 38107054460) -> reviewer
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
 - #382 PR #397 ROUND 3 (Marcus OK): opus on issue-382-ledger-fail-closed (timeout booking + real retry tests; rebase on #456/#464)
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
