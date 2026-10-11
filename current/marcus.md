@@ -4,7 +4,7 @@
 - URGENT #440 PR #465 CHANGES r1: only 125% zoom + your-turn (1152x720/632) table shrinks, names truncate; + theme Games 'Show winners' checkbox -> same implementer. Reviewer couldn't repro Codex scroll (likely stale cache). Next: Codex re-QA with hard reload on new preview, then merge, then Codex live playtest (Marcus Turnstile).
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
 - Regen results PR #472 APPROVED auto-merge (live JSON matches). NOTE: main checkout runs/mixed_v2_10p/report still old numbers (local, gitignored) - reviewers should regen on a copy.
-- #37 T5.4 leftovers (publish T5.2/T5.3 batches or close as superseded) | sonnet | issue-37-finish
+- #37 PR #474 (README prior art + HF models) -> reviewer. T5.2/T5.3 NOT published (fetch_hf_batch ignores batch id -> would mix into live site); Space superseded by Render.
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
 - #382 PR #397 r3 pushed (retry books full hold; 429/503/timeout tests; rebased on #456/#464; 2207 pass) -> opus reviewer r3. PLAY_IP_SALT already set on Render.
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
