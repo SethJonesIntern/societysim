@@ -6,7 +6,7 @@
 - #37 PR #474 APPROVED auto-merge
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
 - #475 PR #476 APPROVED auto-merge
-- #477 PR #478 in review
+- #477 PR #478 r1 test fix pushed -> re-review
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
@@ -56,6 +56,7 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- #480 replay polish (themed timeline slider; arrows under seat plates) - dispatch after #465 merges. Codex re-QA of #465: large window 80-150% all fine; 1280x720@150% = <1001px fallback (accepted).
 - #355 (make python-windows required check): HELD, changing branch protection before the freeze could block merges; ask Marcus. #37 overlaps #294 close-out.
 - BIG LIST filed 2026-10-10T22:33Z: viewer (Augustin, assigned): #299 Play page design, #300 10-seat table, #301 style new controls, #302 avatars, #303 mobile/a11y. runner (Seth): #304 ETA bug, #305 humans-vs-models (blocked #282), #306 GPT-pair 10p batch, #307 Neon prune. infra: #308 AMD live (mine, Codex), #309 spend alerts (blocked #282), #310 PR preview deploys. engine: #311 demo safety net (blocked).
 - Discord: Play page spec sent to Augustin (Normal/Watch/Advanced, Your-turn panel, reveal, errors).
