@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
-- FULL SCREEN audit filed #542-#546: #542 1100px column (opus issue-542-page-width), #543 home ultrawide -> PR #548 reviewer, #544 advanced setup height (sonnet issue-544-advanced-setup-fit), #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
+- FULL SCREEN audit filed #542-#546: #542 1100px column (opus issue-542-page-width), #543 home ultrawide -> PR #548 reviewer, #544 advanced setup height -> PR #550 reviewer, #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
 - Augustin PR #532 (#299): NEEDS WORK (build fails main.tsx:81 batchBase; suspicion colours reversed; banner icons squashed; Turnstile under seal). Review sent to Discord + real ping to Augustin. Waiting on Augustin/Marcus re fixing on his branch
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
 - #516 Games restyle PR #523 MERGED? (no date col: data lacks it; lifts main.tsx 1100px left cap for Games only) -> APPROVED auto-merge
