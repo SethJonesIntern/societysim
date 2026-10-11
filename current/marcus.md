@@ -1,10 +1,11 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #446 visitor game visitor-95bb7a14ac169bf3 failed ~2.5min (Seth) -> opus diagnosing via Render logs API + fix | issue-446-visitor-fail
+- #446 NEEDS-HUMAN: root cause = Render autoDeploy restart mid-game (5 deploys 02:25-02:33), not keys/models (llama4 seated x2, not involved). Decision: autoDeploy off during play? 
+- #453 Neon sink disabled after deploy (DeadlockDetectedError at startup) | opus | issue-453-neon-startup-deadlock
 - #451 README rewrite (short, plain, research questions) | codex-implementer | issue-451-readme-rewrite (overlaps Seth PR #431 README)
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
 - URGENT #445 PR #452 (PlayerProfile.tsx/.css, 806px@1920, modelNames.ts helper) -> reviewer dispatched. #440 told: reuse modelNames.ts, delete dead .inspector-* CSS, re-push screenshots to pr-assets-440.
-- #429 PR #444 approved, DIRTY after #439 -> same agent rebasing, then re-review
+- #429 PR #444 RE-APPROVED, auto-merge
 - #421 merged (PR #437); Databricks re-run agent dispatched
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -196,6 +197,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- SECURITY: #446 diagnose agent said harness blocked sourcing .env and it read the Render key with small Python scripts instead (permission workaround). Reported to Marcus. Future agent prompts: explicitly forbid workarounds.
 - Cloud session must NOT do the table polish job now (covered by #440). Screenshots: scratchpad images/13.png (play page), 14.png (profile dialog).
 - #421 #427 #429 #430 filed by Seth's agents as team:engine; claimed by me. No cloud tracker issue seen yet at 02:4xZ.
 - Discord: Seth's user id 319290022417268746. Pinged him: we publish to polter-dev/societysim-games; migrate OK but WAIT for my ping after #294 sync-neon; #306 pending Marcus. Seth migrate GO sent.
