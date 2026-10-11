@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T01:45Z)
 ## Active
+- Augustin PR #386 (T4.0 Figma flows + design tokens, docs only, closes #22): implementer fixing on branch issue-22-figma-tokens (tokens vs live CSS, desktop-only, Figma link for Devpost). Then reviewer approve+merge.
 - #390 table seats -> round avatar medallions in chairs + dead styling | opus | issue-390-table-medallions (screenshots scratchpad/table-seats.png, agents-panel.png). #389 told to skip table + build reusable AvatarMedallion. Next UI candidates to take off Augustin: #301 controls (slider/checkbox/Speed select native look).
 - Opus hunt VERIFIED: #387 meta.usage leak -> PR #396 in review (strips meta.usage + meta.ts for running/failed; apply schema.sql live after merge); #388 -> PR #393 in review; timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
 - #389 avatars | PR #392 APPROVED, auto-merge (ModelAvatar + AvatarMedallion; screenshot scratchpad/agents-after.png). Your-turn buttons need play API Player.model (follow-up).
