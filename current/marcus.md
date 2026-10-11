@@ -1,6 +1,10 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #303 PR #414 rebased (Table.tsx seat button conflict only; 376 viewer tests) -> re-review dispatched. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
+- #430 wolves>=non-wolves config check (config.py GameConfig) | sonnet | issue-430-wolf-majority-check
+- #429 last_words flag no-op (implement small or reject at load) | opus | issue-429-last-words (also config.py)
+- #427 DATA_CONTRACT.md drift | sonnet | issue-427-data-contract
+- #421 Databricks notebook human row | sonnet | issue-421-databricks-human (needs notebook re-run after merge)
+- #303 PR #414 RE-APPROVED after rebase, auto-merge pending CI. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
 - #294 close-out -> PR #416 APPROVED r2, auto-merge pending CI. DONE live: sync-neon, HF publish to polter-dev (token CAN write polter-dev), DEPLOY_SOURCE -> site shows 100 games w/ correct model ids, Databricks 158 games + dashboard, results on #216. After merge: close #42, #216 (#37 not: T5.2/T5.3 unpublished), close #294. Decision: narration audio not on site (CI deploy excludes it; local deploy needs CLOUDFLARE_API_TOKEN not in .env). Seth pinged: migrate GO.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -188,6 +192,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- #421 #427 #429 #430 filed by Seth's agents as team:engine; claimed by me. No cloud tracker issue seen yet at 02:4xZ.
 - Discord: Seth's user id 319290022417268746. Pinged him: we publish to polter-dev/societysim-games; migrate OK but WAIT for my ping after #294 sync-neon; #306 pending Marcus. Seth migrate GO sent.
 - Seth merged #369 #381/#370 #403 #363 #375/#364; #347 live check: llama4 0% invalid, gpt-5-nano 2/~330 lost. #363 moved batch fingerprints (pre-#363 runs not resumable). Seth asks Marcus: HF write polter-dev/societysim-games (told #294 agent to try publishing there), OK sync-neon --migrate --apply (adds events.inserted_at; only after #294 sync-neon finishes), #306 GPT-pair 10p batch ~$4 cap $6.
 - Took Augustin's #300-#303 (assigned both, agent:human->opus) per Marcus; left #299 play page design to Augustin (likely what he's building). Cloud orchestrator must avoid #301/#303 files (listed here as active).
