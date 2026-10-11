@@ -1,6 +1,6 @@
-# seth status (updated 2026-10-12T07:10Z)
+# seth status (updated 2026-10-12T07:40Z)
 ## Active
-- PRs: #403 (#305 humans vs models, opus review), #399 (#394 smoke selectors, review), #369 (#359) approved/merging, #381 (#378) approved/merging
+- #405 fallback/retry metrics | implementer. #399 (#394) re-review r2.
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
@@ -11,6 +11,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- merged: #369 (#359 default 10p), #381 (#378 smoke mid-game), #403 (#305 humans vs models)
 - #347 live check: fixcheck_10p $0.42: llama4 0% invalid (was 16%), gpt-5-nano 8.7% attempts but only 2 fallbacks/330 turns; posted on #347
 - #373 follow-ups PR #375 merged
 - #362 smoke check PR #370 merged; #373 PR #375 approved/merging
