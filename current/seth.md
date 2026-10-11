@@ -1,9 +1,9 @@
-# seth status (updated 2026-10-12T05:55Z)
+# seth status (updated 2026-10-12T06:30Z)
 ## Active
 - #305 humans vs models: WIP d9aaf45 pushed on issue-305-humans-vs-models (metrics.py done); left: report.py model, schema regen, report.md, docs, human-seat tests (see #305 comment). Resume with a new implementer on that branch.
 - #369 (#359 default 10): rebasing for runbook line; then needs re-review
 - #378: PR #381 open, needs review (live smoke 53/53)
-- PAUSED 2026-10-12 ~05:55Z (Seth heading home). Nothing running. On resume: review #369 and #381; finish #305 (new implementer, resume branch).
+- RESUMED 2026-10-12 ~06:30Z. Reviews #369, #381; #305 finishing (opus, resumed branch); fix-check batch fixcheck_10p (6 games gpt-5-nano+llama4, cap $1, est $0.41) for #347/#349 live acceptance.
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
@@ -14,6 +14,7 @@
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- #373 follow-ups PR #375 merged
 - #362 smoke check PR #370 merged; #373 PR #375 approved/merging
 - 2026-10-12 merged: #363 (#346 provider errors+qwen), #367 (#361 README results), #368 (#366 global rankings)
 - #38 DEMO.md draft: PR #364 merged (TODOs: batch numbers, verify, Gemini/Adobe rooms, Figma, video). #353: PR #360 merged.
