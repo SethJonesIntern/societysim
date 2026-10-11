@@ -5,8 +5,6 @@
 - #453 PR #456 r1 fixes pushed -> re-review dispatched
 - #451 PR #455 CHANGES r1 (move cut deploy/ops text to docs/DEPLOYMENT.md + link; Q2 wording + gpt-5 caveat; PITCH slide 9 pointer; carry --preset basic, ?page=replay) -> sent to codex-implementer
 - URGENT #440 anchored play layout (100dvh grid, no page scroll, your-turn dock, seats off Game Events, Agents fit 10, short model names, themed top chrome, smaller) | opus | issue-440-anchored-layout. Then Codex computer-use test on PR preview/live at multiple window sizes (Marcus clicks Turnstile).
-- URGENT #445 PR #452 APPROVED, auto-merge (fits 1280-2560, avatar, names, no leaks). #440 told to drop dead .inspector-* CSS + 3.9MB image.
-- #429 PR #444 RE-APPROVED, auto-merge
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
@@ -67,6 +65,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #444 (#429 last_words rejected) and #452 (#445 profile dialog); handoffs posted
 - Databricks re-run after #437: 158 games, both notebooks OK, dashboard republished, no human row (results on #421)
 - Devpost story rewritten by Codex (9 standard sections, 526 words, saved + verified; no Submit). Marcus to review + Submit.
 - closed #449 #450 (mobile, not planned: desktop only)
