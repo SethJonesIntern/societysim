@@ -2,7 +2,7 @@
 ## Active
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #401 PR #402 rebased (only test_security.py conflict, kept all tests; 2078 pass) -> re-review dispatched
-- #382 PR #397 r2 fixes pushed (2-request cap per call, hold covers both; load() rewrites pending) -> reviewer r2 dispatched
+- #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - #400 player names missing in live/visitor views + names match avatar gender (avatar_presentation in models.yaml, engine name pools, seeded) | opus | issue-400-player-names
 - #390 table medallions | opus | PR #404 opened -> reviewer dispatched (flags: plates above upper seats, bubble cap CSS outside files; screenshots scratchpad/shots/)
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
