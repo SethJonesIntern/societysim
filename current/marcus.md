@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T07:36Z)
 ## Active
 - 07:36Z Seth asks on PR #604: (A) Fable verdict POSTED: real bug, #604 correct (optional: match "I'm not a wolf"), republish before 9AM; lead with gemini-flash 52% n=253; (B) prep POSTED on #604 (Liars 67%->~56% n=421; g0031 drops out of top 3; site redeploy = deploy.yml; pages.yml mirrors HF Space). DON'T merge/republish/deploy until Seth confirms.
-- Augustin PR #603 (themed event illustrations) + Seth's #606 (merge main, NO force-push; death_reveal icon by phase) -> opus agent on his branch
+- Augustin PR #603 (themed event illustrations) + Seth's #606: merged main (no force-push), death_reveal icon by phase, 451 tests -> reviewer
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) APPROVED (precision ~99%, recall ~95%), HOLD. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
 - #591 CLOSED: runs 1,2,5 nothing found; run3 -> #593 (done) + #600 (hold); run4 -> #596 (PR #604 hold) + #605
