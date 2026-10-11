@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T03:18Z)
 ## Active
 - Augustin PR #483 (T481 leaderboard styling) -> opus review+fix on his branch (rebase over #478/#470/#398), then reviewer
-- Live QA of #465 (Codex, partial before limit): found #484 side panels overlap bottom seats in tall window -> opus implementer issue-484-panel-overlap; #485 Research matrix raw model ids -> PR #486 APPROVED, auto-merge. Timer set: rerun full Codex live QA at 00:27 local; standing: Codex computer-use QA between each deploy
+- Live QA of #465 (Codex, partial before limit): found #484 side panels overlap (QA window was ~900px CSS; breakpoint 1001->821) -> PR #487, reviewer dispatched; ASK MARCUS: <1100px visitor games hide Game events panel while your-turn shows; #485 Research matrix raw model ids -> PR #486 APPROVED, auto-merge. Timer set: rerun full Codex live QA at 00:27 local; standing: Codex computer-use QA between each deploy
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
