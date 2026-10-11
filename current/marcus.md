@@ -1,8 +1,7 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 seed privacy | codex-implementer | issue-438-seed-privacy (CLI random seed, opt-in batch salt)
-- SETH TAKEOVER (out of tokens, Marcus asked; cap lifted):  #422-424 PR #464 APPROVED auto-merge (bad-key batch stop OK; play server unaffected); #441-443+#433 PR #467 in review (OpenSkill ordinals change, ranks same; wolf mu -3.66->-3.86; regenerate README/site after merge = Marcus decision);  #447 PR #466 body->Refs #447, re-approve requested (views compute once + events_game_type_idx; 11.4s->1.0s). After merge: LIVE apply neon/schema.sql + verify global_liars 200. Viewer allSettled #468 PR #470 APPROVED r2;   #431 was already MERGED by Seth 02:48Z (with README + Closes #425); DEMO:36 fix PR #463 APPROVED; #455 told to rebase on it. Skipped: #306 (GPT batch, Marcus decision), #311/#38 human.
-- #451 PR #455 APPROVED r2, auto-merge
+- CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 PR #471 in review (visitor 31-bit seed path to check; file seed ignored w/o --seed)
+- Seth takeover leftovers: #441-443/#433 PR #467 APPROVED auto-merge (then decide README/site regen for OpenSkill ordinals); #468 PR #470 APPROVED; #466 merged -> live schema apply agent running.
 - URGENT #440 PR #465 (preview https://issue-440-anchored-layout.societysim.pages.dev) -> opus reviewer + Codex computer-use QA on preview (codex_qa_440.out). After merge: Codex live playtest (Marcus clicks Turnstile). Rebase risk vs #469.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -64,6 +63,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #455 (README rewrite + docs/DEPLOYMENT.md), #463 (DEMO nav), #464 (#422-424 client retries), #466 (#447 SQL), #469 (#462 viewer polish); handoffs posted; Seth replied on Discord
 - merged #459 (#417-420 Neon sink robustness) and #461 (#432/#460 batch no-log + on_progress); handoffs posted
 - merged #454 (#434/#435 CLI), #456 (#453 Neon startup deadlock), #457 (#448 games index winner); handoffs posted
 - merged #444 (#429 last_words rejected) and #452 (#445 profile dialog); handoffs posted
@@ -198,6 +198,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- RULE (Seth's request): skip issues assigned to SethJonesIntern with status:in-progress, and his branches. His agents push to issue-422/447/441 branches. #458 (Seth) duplicates merged #457 - told him.
 - #464 reviewer: main's fingerprint for mixed_v2_10p (41a82fe7) != stored run_meta (22206e87), so resuming that finished batch fails on main (expected after #363/#412?). #461 reviewer reported match - conflicting; only matters if re-running mixed_v2_10p.
 - Marcus: keep Render autoDeploy ON until freeze, accept failed visitor games on deploy (#446 closed).
 - SECURITY: #446 diagnose agent said harness blocked sourcing .env and it read the Render key with small Python scripts instead (permission workaround). Reported to Marcus. Future agent prompts: explicitly forbid workarounds.
