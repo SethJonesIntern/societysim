@@ -187,6 +187,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Seth merged #369 #381/#370 #403 #363 #375/#364; #347 live check: llama4 0% invalid, gpt-5-nano 2/~330 lost. #363 moved batch fingerprints (pre-#363 runs not resumable). Seth asks Marcus: HF write polter-dev/societysim-games (told #294 agent to try publishing there), OK sync-neon --migrate --apply (adds events.inserted_at; only after #294 sync-neon finishes), #306 GPT-pair 10p batch ~$4 cap $6.
 - Took Augustin's #300-#303 (assigned both, agent:human->opus) per Marcus; left #299 play page design to Augustin (likely what he's building). Cloud orchestrator must avoid #301/#303 files (listed here as active).
 - Cloud orchestrator excludes files of #294 close-out too.
 - Cloud bug-hunt orchestrator (Marcus's 2nd session) runs on main: files/fixes bugs labeled found-by:cloud, tracker issue titled 'Cloud bug-hunt tracker'. Don't dispatch on found-by:cloud issues; table overlap polish (post-#404) handed to cloud. Its PRs auto-merge via its own reviewers.
