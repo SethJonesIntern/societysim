@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T00:39Z)
+# marcus status (updated 2026-10-11T00:46Z)
 ## Active
+- #347 retry prompt includes validation error (Seth-filed, team:engine) | implementer sonnet | issue-347-retry-error. No lenient 0.5 fill. Live check left for Seth.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
 - #345 PLAY WITHOUT JSON (form inputs, optional human suspicion = null) | implementer opus | issue-345-play-no-json
 - #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED; main verified OK (78 deception_pairs rows).
