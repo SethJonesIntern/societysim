@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
+- #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #401 PR #402 RE-APPROVED after rebase, auto-merge pending CI
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
@@ -183,6 +184,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Cloud orchestrator excludes files of #294 close-out too.
 - Cloud bug-hunt orchestrator (Marcus's 2nd session) runs on main: files/fixes bugs labeled found-by:cloud, tracker issue titled 'Cloud bug-hunt tracker'. Don't dispatch on found-by:cloud issues; table overlap polish (post-#404) handed to cloud. Its PRs auto-merge via its own reviewers.
 - DESKTOP ONLY (Marcus): no mobile work anywhere. #303 retitled to accessibility only. Told #390 agent + #391 reviewer.
 - Marcus: take UI work off Augustin where possible (more UI components coming). Our agents do UI tickets too now (themed, matching his art), with port notes.
