@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
 - #411 PR #413 (resume already worked via sessionStorage + /me; adds ended state + tests; viewer-only + test_play_api) -> reviewer dispatched. May conflict with #412 in YourTurnPanel.tsx
-- #301 control styling (StepControls, NarrationControls, DeceptionMatrix, Speed select, SetupForm -> ThemedSelect) | opus | issue-301-control-styling
+- #301 PR #415 (controls restyle, no native selects, 44px, sliders for Seats/Wolves; extra files Timeline Speed/key guard, ModeToggle, useStepper, pages.css token swap) -> reviewer dispatched. Urgent handoffs posted on #303, #395. Uses #414 focus ring. Shared branch pr-assets (#409 + #415): delete only after both merged.
 - #303 PR #414 (a11y: tab order, focus ring a11y.css, seat names, live phase, banner contrast 8.5:1) -> reviewer dispatched. Leftovers: #301 step/speed <44px (sent to #301 agent); #398 timeline markers small/seat ids + chat announced in autoplay (add to #398 when resolved)
 - #407 PR #409 APPROVED, auto-merge (10p checked). After merge: delete branch pr-assets if only #409's
 - #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
