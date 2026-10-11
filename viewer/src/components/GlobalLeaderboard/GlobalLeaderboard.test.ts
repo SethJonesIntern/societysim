@@ -1,8 +1,14 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import type { GlobalBoard } from "../../data/globalBoard";
 import { GlobalLeaderboard } from "./GlobalLeaderboard";
+
+// The catalog never loads under renderToStaticMarkup; stand in for it with the long provider name.
+vi.mock("../ModelAvatar/ModelAvatar", async (orig) => ({
+  ...(await orig<typeof import("../ModelAvatar/ModelAvatar")>()),
+  useModelLabel: () => (m: string) => (m === "gpt-oss-120b" ? "openai/gpt-oss-120b-long-catalog-name" : m),
+}));
 
 const board: GlobalBoard = {
   detectors: [
@@ -34,7 +40,7 @@ describe("GlobalLeaderboard", () => {
     const html = render();
     expect(html).toContain('aria-selected="true">Detectors');
     expect(html).toContain("<td>0.45</td><td>50% (n=8)</td>");
-    expect(html).toMatch(/<tr data-ranked="false"><th scope="row">.*few/);
+    expect(html).toMatch(/<tr data-ranked="false"><th scope="row"[^>]*>.*few/);
     expect(html).not.toContain("Lie success");
   });
 
@@ -63,5 +69,13 @@ describe("GlobalLeaderboard", () => {
     const detectorsDown = { ...board, detectors: [], failed: ["detectors" as const] };
     expect(render({ board: detectorsDown })).toContain("load the detectors right now");
     expect(render({ board: detectorsDown, initialTab: "liars" })).toContain("83%");
+  });
+
+  it("shows short model names with the full id on hover", () => {
+    const b = { ...board, detectors: [{ ...board.detectors[0], model: "gpt-oss-120b" }] };
+    const html = render({ board: b });
+    expect(html).toContain('title="openai/gpt-oss-120b-long-catalog-name"');
+    expect(html).toMatch(/> GPT-OSS 120B<\/th>/);
+    expect(html).not.toMatch(/>[^<]*long-catalog-name[^<]*</);
   });
 });
