@@ -1,17 +1,19 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
+- #601 model page header raw id -> sonnet issue-601-model-header
+- #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 villager role_claim mislabeled as lies (54% of false_role_claim; all 5 role-claim highlights) -> opus issue-596-role-claim-labels; will change published numbers -> republish + DEMO numbers
-- #591 bug runs (Seth): run1 engine (opus), run2 leaks (opus), run4 labels (sonnet) running; run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
+- #591 bug runs (Seth): run1 engine (opus), run2 leaks (opus), run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
 - #585 smoke: selector stale (leaderboard has no <main>) -> PR #592 reviewer; then close #585
 - #589 (#584) APPROVED auto-merge; #590 (#586 narration) APPROVED auto-merge (byte-identical bank clips, 0 chars, leak check clean)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
-- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593 596)
+- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593 596 600 601)
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
 - #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). post-checks: health/limits 200, anon read OK, anon PATCH games 403 PASS; site_smoke FAILS (timeout on 'main h1' first page) -> sonnet diagnosing (stale selector vs real break). #585 open
 - #573 day-1 summary -> PR #594 (hold per Seth: no merge before demo) reviewer
 - #584 claimed role -> PR #589 CHANGES r1 (wolf key; hasOwn guard) fix sent
 - #586 narrator audio -> PR #590 (g0008 21 clips, g0031 11; leak check 0; 0 chars) reviewer
-- #587 DEMO/PITCH docs -> PR #597 reviewer (handoff -> #511 hook unset, manual deploys)
+- #587 DEMO/PITCH docs -> PR #597 APPROVED auto-merge (after #596: recheck Liars 67% n=1,066 in DEMO); handoff -> #511 to post after merge
 - #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
 - #511 freeze at 11:00 EDT
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
