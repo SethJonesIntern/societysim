@@ -1,10 +1,10 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
-- #411 PR #413 (resume already worked via sessionStorage + /me; adds ended state + tests; viewer-only + test_play_api) -> reviewer dispatched. May conflict with #412 in YourTurnPanel.tsx
+- #411 PR #413 APPROVED, auto-merge (resume proven by tests; dup-tab shares seat, optional)
 - #301 PR #415 (controls restyle, no native selects, 44px, sliders for Seats/Wolves; extra files Timeline Speed/key guard, ModeToggle, useStepper, pages.css token swap) -> reviewer dispatched. Urgent handoffs posted on #303, #395. Uses #414 focus ring. Shared branch pr-assets (#409 + #415): delete only after both merged.
 - #303 PR #414 (a11y: tab order, focus ring a11y.css, seat names, live phase, banner contrast 8.5:1) -> reviewer dispatched. Leftovers: #301 step/speed <44px (sent to #301 agent); #398 timeline markers small/seat ids + chat announced in autoplay (add to #398 when resolved)
 - #407 PR #409 APPROVED, auto-merge (10p checked). After merge: delete branch pr-assets if only #409's
-- #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
+- #294 close-out -> PR #416 (README via Seth's generator, PITCH, DEMO; Refs #294) -> reviewer dispatched. DONE live: sync-neon, HF publish to polter-dev (token CAN write polter-dev), DEPLOY_SOURCE -> site shows 100 games w/ correct model ids, Databricks 158 games + dashboard, results on #216. After merge: close #42, #216 (#37 not: T5.2/T5.3 unpublished), close #294. Decision: narration audio not on site (CI deploy excludes it; local deploy needs CLOUDFLARE_API_TOKEN not in .env). Seth pinged: migrate GO.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - #400 PR #412 opened (games.models [{model,name}] at game_start; 30 gender-matched names; touched neon.py/run-game/DATA_CONTRACT outside files) -> reviewer dispatched. Decision for Marcus: narration bank covers only old 10 names (all 30 = 11.7k chars > 5k free-tier test) -> new names TTS on first use. Handoffs to #294, #398, Seth (avatar_presentation in models.yaml).
@@ -189,7 +189,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
-- Discord: Seth's user id 319290022417268746. Pinged him: we publish to polter-dev/societysim-games; migrate OK but WAIT for my ping after #294 sync-neon; #306 pending Marcus. TODO: ping Seth go-ahead when #294 sync done.
+- Discord: Seth's user id 319290022417268746. Pinged him: we publish to polter-dev/societysim-games; migrate OK but WAIT for my ping after #294 sync-neon; #306 pending Marcus. Seth migrate GO sent.
 - Seth merged #369 #381/#370 #403 #363 #375/#364; #347 live check: llama4 0% invalid, gpt-5-nano 2/~330 lost. #363 moved batch fingerprints (pre-#363 runs not resumable). Seth asks Marcus: HF write polter-dev/societysim-games (told #294 agent to try publishing there), OK sync-neon --migrate --apply (adds events.inserted_at; only after #294 sync-neon finishes), #306 GPT-pair 10p batch ~$4 cap $6.
 - Took Augustin's #300-#303 (assigned both, agent:human->opus) per Marcus; left #299 play page design to Augustin (likely what he's building). Cloud orchestrator must avoid #301/#303 files (listed here as active).
 - Cloud orchestrator excludes files of #294 close-out too.
