@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:28Z)
+# marcus status (updated 2026-10-11T13:30Z)
 ## Active
+- 13:30Z: PR #689 (#688 bottom bar) APPROVED, auto-merge queued; 1440/1920 measured unchanged. Seth's #693 (background music) approved, not ours.
 - 13:28Z: Viewer bug hunt DONE: #682, #686 merged; #689 in review; PR #692 (#691 cut-off game ends frozen, no notice) reviewer dispatched. No console errors/dead links/wrong numbers at 1440/1920. Note: Games page lists cut-off games first (demo: open a finished game like g0043).
 - 13:24Z: PR #686 (#684 narration switch survives live log swap) APPROVED, auto-merge queued. Narration still defaults off; trailer page unaffected.
 - 13:23Z: PR #687 (#685 EventLogger.close) APPROVED, auto-merge queued; close() bounded by one timeout, no schema change. Server uses this: deploy after demo.
