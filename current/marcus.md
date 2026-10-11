@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:56Z)
+# marcus status (updated 2026-10-11T13:57Z)
 ## Active
+- 13:57Z: #713 MERGED (#712 who-fools-whom order; demo video shows old order, numbers same). #716 fixes pushed, re-review round 2 requested.
 - 13:56Z: PR #716 CHANGES round 1: counts wrap at 1440/1920 -> nowrap + test fix sent to same implementer, push by 14:25Z.
 - 13:54Z: #714 -> PR #716 (Wolf/Village win show n= seats). Reviewer dispatched with browser check at 1440/1920.
 - 13:53Z: Round 3 DONE: all demo numbers verified against the 100 published logs. PR #713 (#712 who-fools-whom small samples sorted first) -> reviewer. Claimed #714 (wolf win 0% on 2-3 seats, no count) -> implementer, branch issue-714-wolf-win-count, PR by 14:20Z. #715 (README Jev) is team:runner, told Seth on Discord.
