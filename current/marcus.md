@@ -4,7 +4,7 @@
 - Opus hunt VERIFIED: #387 meta.usage leak -> PR #396 in review (strips meta.usage + meta.ts for running/failed; apply schema.sql live after merge); #388 -> PR #393 in review; timeout $0 booking + midnight double-book check -> sent to #382 agent. Render keys bug = already hotfixed + PR #380. Unverified: viewer poll race 409 on double submit.
 - #389 avatars | PR #392 APPROVED, auto-merge (ModelAvatar + AvatarMedallion; screenshot scratchpad/agents-after.png). Your-turn buttons need play API Player.model (follow-up).
 - PR #380 APPROVED, auto-merge (Render redeploys; hotfix env stays).
-- #385 themed dropdown | PR #391 CHANGES r1 (list snaps back on scroll) -> fix sent. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
+- #385 themed dropdown | PR #391 fix pushed (0fa4dfe) -> re-review sent. After merge: delete branch pr-assets/issue-385. SetupForm + replay Speed select still native (candidate for #301 takeover).
 - Codex review findings -> #382 (P1 ledger fail-open on Neon write err + per-IP daily count resets on restart; salted IP hash, PLAY_IP_SALT) opus implementer issue-382-ledger-fail-closed; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt RUNNING. Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 sonnet issue-395-timeline-lb. Global LB tabs load numbers OK (#377 works).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
