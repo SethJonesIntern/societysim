@@ -1,7 +1,10 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
+- URGENT #553 (Seth) no visitor game reaches day 2 -> opus issue-553-visitor-day2 (deploy times in scratchpad/render_deploys.txt)
+- Augustin NEW PR #551 leaderboard fullscreen: wait for #554 merge, then rebase (offered)
+- New ready for us: #538 purge old run_meta copies (infra, agent:cloud) - not yet dispatched
 - #541 leave docs+401 tests -> PR #552 (touches app.py -> redeploy) HOLD label until Codex live game ends; reviewer dispatched
-- FULL SCREEN audit filed #542-#546: #542 1100px column (opus issue-542-page-width), #543 home ultrawide -> PR #548 APPROVED auto-merge, #544 advanced setup -> PR #550 CHANGES r1 (form still scrolls w/ list closed; hard cut at ornament) fix sent to same implementer, #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
+- FULL SCREEN audit filed #542-#546: #542 1100px column -> PR #554 reviewer (conflicts main.tsx with Augustin #551 leaderboard-fullscreen + #532; both told on PR + Discord), #543 home ultrawide -> PR #548 APPROVED auto-merge, #544 advanced setup -> PR #550 CHANGES r1 (form still scrolls w/ list closed; hard cut at ornament) fix sent to same implementer, #546 replay panels scale (opus issue-546-replay-scale); #545 open-log empty screen WAITS on #546 (both layout.css)
 - Augustin PR #532 (#299): NEEDS WORK (build fails main.tsx:81 batchBase; suspicion colours reversed; banner icons squashed; Turnstile under seal). Review sent to Discord + real ping to Augustin. Waiting on Augustin/Marcus re fixing on his branch
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
 - #516 Games restyle PR #523 MERGED? (no date col: data lacks it; lifts main.tsx 1100px left cap for Games only) -> APPROVED auto-merge
