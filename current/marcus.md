@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:18Z)
+# marcus status (updated 2026-10-11T13:19Z)
 ## Active
+- 13:19Z: DEMO VIDEO DONE: scratchpad/demo_video/societysim_demo.mp4 (97 s, 1080p, 33 MB; ElevenLabs narrator voiceover, 1 call, 286 chars; 2 short player lines; script voiceover.txt). Not committed. #679 merged (#678 closed).
 - 13:18Z: PR #679 (#678 labeler) APPROVED, auto-merge queued. Published batch output unchanged on relabel (no hidden_knowledge label sits on a fallback statement); no viewer change, so no site deploy.
 - 13:17Z: PR #682 (#680) APPROVED, auto-merge queued (one-line guard, 529 viewer tests pass).
 - 13:16Z: Bug hunters: PR #682 (#680 stale Move sent) and PR #683 (#681 ledger midnight UTC under-count; server, deploy after demo) -> reviewers dispatched. New issues in progress: #684 (narration switch turns off when live full log replaces public one), #685 (EventLogger.close drops queued event when sink queue full). Video agent recording.
