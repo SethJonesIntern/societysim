@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T03:56Z)
 ## Active
-- Augustin PR #532 (#299): NEEDS WORK (build fails main.tsx:81 batchBase; suspicion colours reversed; banner icons squashed; Turnstile under seal). Review sent to Discord (plain @agus_marmor, no numeric ID). Waiting on Augustin/Marcus re fixing on his branch
+- Augustin PR #532 (#299): NEEDS WORK (build fails main.tsx:81 batchBase; suspicion colours reversed; banner icons squashed; Turnstile under seal). Review sent to Discord + real ping to Augustin. Waiting on Augustin/Marcus re fixing on his branch
 - Marcus: "some pages don't work on full screen" -> opus audit agent filing team:viewer issues (Playwright 1512..3440 wide); dispatch fixes when filed
 - #516 Games restyle PR #523 MERGED? (no date col: data lacks it; lifts main.tsx 1100px left cap for Games only) -> APPROVED auto-merge
 - SETH-ASSIGNED (all polter-dev): #504 visitor games failing: root cause = every main push redeploys play server (not visitor_starts; 42501 is expected anon deny) -> PR #525 render.yaml build filter APPROVED auto-merge (blueprint-managed per DEPLOYMENT.md); Codex 00:27 checks Render Build Filters read-only; #510 -> PR #535 (POST leave, dead seat not active, Leave button) -> reviewer;  follow-up: leave endpoint missing in play_api.schema.json/DATA_CONTRACT.md, #498 (after Seth's #496 merges, schema.sql), #511 freeze (at 11:00 EDT only), #512 narration audio (needs Marcus: CF token?), #513 bug runs: part 2 found #536 (wolf msgs not word-capped -> sonnet issue-536-wolf-word-cap) + #537 (Jev bussing on dead wolf -> PR #539 reviewer; after merge published batches need relabel+republish); part 3 CI OK (server extra installed); part 1 live DEMO walkthrough -> Codex at 00:27 (prompt scratchpad/codex_live_0030.md)
@@ -211,6 +211,7 @@
 - T3.2 #18 labeler: PR #52 merged. Handoffs posted on #19 #21. Follow-up filed as #55.
 - Earlier: T3.1 #17 jev (NEEDS MARCUS live API test), T1.3 #5, T1.5 #7, T0.4 #46, T0.2 #2, T0.3 #43, T0.1 #1.
 ## Decisions / gotchas
+- Augustin Discord user ID 391338075122302976.
 - 00:2x EDT Oct 11: Marcus hit rate limits playtesting -> Render env set: PLAY_MAX_ACTIVE_PER_IP 1->3, PLAY_MAX_GAMES_PER_IP_DAY 5->50, PLAY_RATE_PER_MIN 120->600, PLAY_DAILY_BUDGET_USD 2->5 (PLAY_MAX_CONCURRENT stays 4); redeploy triggered.
 - main.tsx caps every page at 1100px left-aligned: likely root of 'pages break full screen'. Games date column needs a data ticket.
 - Anchored game screen starts at 821px (#487); stacked game rules use max-width:820px.
