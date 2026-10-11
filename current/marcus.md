@@ -4,7 +4,7 @@
 - Round 3 visitor flow: #640 (after demo), #641+#642 -> PR #647 APPROVED auto-merge; ASKED SETH 'deploy 647' vs 'hold 647'; #649 viewer Stop-watching -> sonnet issue-649-stop-watching (waits for #647 on main)
 - Viewer fixes: #638 (#635+#636) and #639 MERGED; follow-up: check Neon cold-start > 4 s (agent measuring; maybe longer first-request budget); #638 APPROVED auto-merge; #637 -> PR #644 MERGED
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
-- #626 trailer page (?page=trailer) -> FABLE implementer issue-626-trailer (viewer-only; merge before 15:00Z freeze)
+- #626 trailer -> PR #650 (Fable) reviewer; merge before 15:00Z; frames artifact private to Marcus
 - Round 3 bug runs (Seth #616): visitor flow e2e mocked (opus), viewer pages DONE -> #634 (slow Neon hang; sonnet issue-634-neon-timeout), #635+#636 (Research/LB nulls; sonnet issue-635-636-research-nulls), #637 (wording; queued after #635/636: Leaderboard.tsx overlap); batch runner DONE: #630 #631 #632 #633 filed (Seth's); -> summaries on #616; if a round finds nothing tell Seth and switch to improvements
 - Seth's PR #627 (#620 autoplay waits for clips) approved, his
 - #617 CLOSED. Seth triage: #620 his (fixing now); #621 OURS -> PR #625 APPROVED r2 auto-merge; #618/#619 after demo; #622 low
