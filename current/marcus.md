@@ -1,4 +1,4 @@
-# marcus status (updated 2026-10-10T23:56Z)
+# marcus status (updated 2026-10-11T00:05Z)
 ## Active
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
@@ -48,6 +48,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- GitHub social preview set to societysim-media/main.jpeg (Codex). Social-image Codex job stopped by Marcus.
 - #308 AMD: PR #331 MERGED (README/PITCH numbers); results posted on #253. Pod (SJC 8060S) still up until ~02:10Z.
 - #309 PR #328 play alerts MERGED; repo secret PLAY_ALERT_WEBHOOK_URL set (Space secret at deploy). Closed #168 (done via #276+#291). Note on #294: sync labels to Neon (live labels table empty).
 - #323 Neon privacy: PR #325 merged, schema APPLIED LIVE (1ce1e8a) + verified via Data API (events/labels 403; running game public-only; labels_public empty for running). Site redeployed 23:18Z. Note: labels table empty in Neon (no labels synced yet).
