@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T08:56Z)
 ## Active
-- JEV REPUBLISH (Seth approved): cache from release jev-cache-mixed_v2_10p unzipped into runs/mixed_v2_10p/.cache/jev (4702); backup scratchpad/pre_jev; label cache-only (354 Jev labels, 0 calls); postbatch (self 356/40.4/71.2 unchanged; Jev 354/40.3/73.1); HF + Neon 1532 labels; deploy.yml 38127255443 success. Verification agent -> #616.
+- JEV REPUBLISH (Seth approved): cache from release jev-cache-mixed_v2_10p unzipped into runs/mixed_v2_10p/.cache/jev (4702); backup scratchpad/pre_jev; label cache-only (354 Jev labels, 0 calls); postbatch (self 356/40.4/71.2 unchanged; Jev 354/40.3/73.1); HF + Neon 1532 labels; deploy.yml 38127255443 success. Verified (#616): self + Jev counts + matrix toggle OK, smoke 67/67; GAPS: live Jev lie rate null + agreement.json 404 (deploy.yml has no Jev cache) -> #645 opus issue-645-jev-deploy (target live 14:00Z; then I re-publish/deploy per PR steps).
 - Round 3 visitor flow: #640 (after demo), #641+#642 -> opus issue-641-642-admission (server; deploy needs Seth OK + idle, before 15:00Z)
 - Viewer fixes: #638 (#635+#636) and #639 (#634 Neon timeout) APPROVED auto-merge; #638 APPROVED auto-merge; #637 -> sonnet issue-637-empty-states (waits for #638 on main)
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
