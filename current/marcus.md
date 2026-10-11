@@ -2,7 +2,7 @@
 ## Active
 - JEV REPUBLISH (Seth approved): cache from release jev-cache-mixed_v2_10p unzipped into runs/mixed_v2_10p/.cache/jev (4702); backup scratchpad/pre_jev; label cache-only (354 Jev labels, 0 calls); postbatch (self 356/40.4/71.2 unchanged; Jev 354/40.3/73.1); HF + Neon 1532 labels; deploy.yml 38127255443 success. Verification agent -> #616.
 - Round 3 visitor flow: #640 (after demo), #641+#642 -> opus issue-641-642-admission (server; deploy needs Seth OK + idle, before 15:00Z)
-- Viewer fixes: #638 (#635+#636) and #639 (#634 Neon timeout) APPROVED auto-merge; #638 reviewer running; #637 queued after #638
+- Viewer fixes: #638 (#635+#636) and #639 (#634 Neon timeout) APPROVED auto-merge; #638 APPROVED auto-merge; #637 -> sonnet issue-637-empty-states (waits for #638 on main)
 - PRESENTATION MOVED TO 11:00 AM EDT. Usage report posted (#616 + Discord).
 - #626 trailer page (?page=trailer) -> FABLE implementer issue-626-trailer (viewer-only; merge before 15:00Z freeze)
 - Round 3 bug runs (Seth #616): visitor flow e2e mocked (opus), viewer pages DONE -> #634 (slow Neon hang; sonnet issue-634-neon-timeout), #635+#636 (Research/LB nulls; sonnet issue-635-636-research-nulls), #637 (wording; queued after #635/636: Leaderboard.tsx overlap); batch runner DONE: #630 #631 #632 #633 filed (Seth's); -> summaries on #616; if a round finds nothing tell Seth and switch to improvements
