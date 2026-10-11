@@ -1,6 +1,6 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
-- #601 model page header -> PR #602 reviewer
+- #601 model page header -> PR #602 APPROVED auto-merge
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 villager role_claim mislabeled as lies (54% of false_role_claim; all 5 role-claim highlights) -> opus issue-596-role-claim-labels; will change published numbers -> republish + DEMO numbers
 - #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 (likely forfeits recorded as failed; adds WARNING log per unfinished game) reviewer; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
