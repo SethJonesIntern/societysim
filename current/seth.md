@@ -1,16 +1,16 @@
-# seth status (updated 2026-10-12T00:50Z)
+# seth status (updated 2026-10-12T01:30Z)
 ## Active
+- #335 publish: aggregate dataset card across batches | implementer
+- #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
 - #334 test env isolation (opus) | INCIDENT 2026-10-10: #319 agent's pytest found the repo .env via dotenv walking up from .claude/worktrees and ran live-Neon tests. Verified read-only: no schema change, no test rows, Marcus's batch unaffected. All agent pytest runs must prefix empty creds + PYTHON_DOTENV_DISABLED=1 until #334 merges.
-- #319 | final review after view fix (inserted_at last col of events_public)
 - #293 play UI: PR #330 approved/merging (gated on VITE_PLAY_API_URL; Marcus pinged to deploy)
-- #35 10p config: PR #329 approved/merging (fingerprint ff44a523b8a74550 = live run)
 - #319 approved/merging (prune; migrate only via --migrate --apply). #315 approved/merging.
 - WAVE (2026-10-10 ~21:45Z), 9 implementers: #291 stepper+narration UI, #295 Neon live mode (opus, supersedes PR #120), #296 spot-the-wolf, #297 model profiles (opus, contract), #298 OG previews, #304 batch ETA, #306 GPT-pair 10p config (dry-run only; run needs Marcus OK), #307 Neon prune (dry-run default; real dry-run by orchestrator, delete needs Seth OK), #310 Pages preview CI
-- T5.2 #35 | RUNNING 10p self-play: 90 games, cap $12 (est $11.52), batch selfplay_baseline_10p, main 1ce1e8a, scratch cfg selfplay_10p.yaml. Main folder detached; don't switch branches. 7p 45-game run = early sample.
 - #36 mixed cap | PR #140 approved, auto-merge (batch run still needs Seth OK)
 ## Queue (next up)
 - NOTE for T2.5 #15: batch runner must call Registry.apply_env() (hosted_vllm routing for deepinfra models).
 ## Done (last 10)
+- T5.2 #35 CLOSED: 10p self-play stopped at 20 games (Seth), $2.45, report posted; not published yet (needs polter-dev write + #335 card fix)
 - #36 T5.3 closed as superseded by 10p mixed (#216/#294) per Seth's 10-player decision
 - 2026-10-10 merged: #312 (#310 preview CI), #316 (#291 stepper/narration), #317 (#304 ETA), #318 (#306 GPT config, run needs Marcus), #321 (#295 live mode)
 - #232 Windows suite green: PR #237 merged 19:15Z
