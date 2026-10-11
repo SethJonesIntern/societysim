@@ -1,11 +1,12 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
+- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355)
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
-- #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). TODO: post-checks (health/limits 200, anon read OK, anon PATCH games refused, site_smoke 67/67) + comment on #585
-- #573 day-1 summary in 10p prompts -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
-- #584 claimed role in Decision history -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
-- #586 narrator-only audio (0 ElevenLabs, no keys) -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
-- #587 DEMO/PITCH docs -> implementer STOPPED by user ~07:10Z (issue still in-progress/assigned; branch may hold WIP; resume only if asked)
+- #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). post-check agent running (comments + closes #585 if all pass)
+- #573 day-1 summary in 10p prompts -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
+- #584 claimed role in Decision history -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
+- #586 narrator-only audio (0 ElevenLabs, no keys) -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
+- #587 DEMO/PITCH docs -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
 - #538 purge old Pages deploys / HF history: needs Cloudflare + HF accounts -> waiting on Marcus
 - #511 freeze at 11:00 EDT
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
