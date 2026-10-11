@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:21Z)
+# marcus status (updated 2026-10-11T13:22Z)
 ## Active
+- 13:22Z: Engine bug hunt round 1 DONE: #678/#679 merged, #681/#683 merged, #685/#687 in review; 1,500-game fuzz + leak checks clean. Round 2 dispatched (server HTTP API edge cases, CLI, metrics edge logs), PRs by 14:30Z.
 - 13:21Z: PR #683 (#681 ledger midnight) APPROVED, auto-merge queued. Server change: DEPLOY AFTER DEMO (with #677).
 - 13:19Z: Reviewers dispatched for PR #686 (#684 narration switch) and PR #687 (#685 EventLogger.close). #688 (bottom-bar popups overlap slider at 830-1000px) in progress by viewer hunter. Video announced on Discord.
 - 13:19Z: DEMO VIDEO DONE: scratchpad/demo_video/societysim_demo.mp4 (97 s, 1080p, 33 MB; ElevenLabs narrator voiceover, 1 call, 286 chars; 2 short player lines; script voiceover.txt). Not committed. #679 merged (#678 closed).
