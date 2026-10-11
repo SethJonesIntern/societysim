@@ -1,5 +1,6 @@
 # marcus status (updated 2026-10-11T01:54Z)
 ## Active
+- #411 refresh mid-game resumes same game (sessionStorage credential, ended state, no new start) | opus | issue-411-refresh-resume. Files: play server session lookup/view route + viewer play page client state (cloud: avoid)
 - #301 control styling (StepControls, NarrationControls, DeceptionMatrix, Speed select, SetupForm -> ThemedSelect) | opus | issue-301-control-styling
 - #303 a11y pass desktop (avoids #301 controls, Leaderboard, names) | opus | issue-303-a11y
 - #407 PR #409 (inspector.css .roster scrollbar/padding) -> reviewer dispatched (checking 10p). After merge: delete branch pr-assets (generic name, verify it's only #409's)
