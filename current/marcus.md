@@ -1,6 +1,6 @@
-# marcus status (updated 2026-10-11T01:17Z)
+# marcus status (updated 2026-10-11T01:18Z)
 ## Active
-- #371 seat clamp (Advanced 422 when seats shrink) | implementer sonnet | issue-371-seat-clamp
+- #371 seat clamp | PR #372 in review (verify wolf range vs server)
 - Codex LIVE PLAYTEST: 1 visitor game on society-sim.us (codex_playtest.out) -> file bugs from findings.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
