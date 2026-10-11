@@ -1,9 +1,8 @@
 # marcus status (updated 2026-10-11T00:16Z)
 ## Active
-- #338 play offline state (viewer/src/play) | implementer sonnet | issue-338-play-offline
-- #339 ip_hint scoped IPv6 500 | implementer sonnet | issue-339-ip-hint-robust
+- #338 play offline state | PR #342 | in review
+- #339 ip_hint | PR #341 | in review
 - #42 Databricks live on real (non-10p) batches + live-verify held PR #268 (unhold if OK) | implementer sonnet | issue-42-databricks-live. HF dataset societysim-games is EMPTY (T5.2 not published yet).
-- Audit agent: #40 #267 #216 #33 #22 done-or-not.
 - HF flag: automated, no reason given; account <1 day old + Docker + LLM keys looks like a key relay. Appeal -> safety@huggingface.co (cc website@), reviews ~1 week+. Fallback #340 Render (render.yaml, trusted proxies) | implementer sonnet | issue-340-render-deploy. Render Starter ~$7/mo needs Marcus OK.
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
@@ -53,6 +52,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- Audit: closed #40 (PR #321/#325) and #267 (PR #277/#276/#316). #216 partial (needs 10p results). #33 not done (viewer polish: role flip, arrow draw-in, night arrow contrast, bussing color, bubble overlap; Augustin area). #22 Augustin Figma.
 - GitHub social preview set to societysim-media/main.jpeg (Codex). Social-image Codex job stopped by Marcus.
 - #308 AMD: PR #331 MERGED (README/PITCH numbers); results posted on #253. Pod (SJC 8060S) still up until ~02:10Z.
 - #309 PR #328 play alerts MERGED; repo secret PLAY_ALERT_WEBHOOK_URL set (Space secret at deploy). Closed #168 (done via #276+#291). Note on #294: sync labels to Neon (live labels table empty).
