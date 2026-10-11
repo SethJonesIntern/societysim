@@ -2,7 +2,7 @@
 ## Active
 - Augustin PR #479 (Normal/Watch start right after bot check): opus fixed retry/back-double-start/focus (401 tests), reviewer dispatched
 - #480 replay polish -> PR #482 (gold slider, arrows under plates, +1 line Timeline.tsx out-of-list) -> reviewer dispatched
-- Live QA of #465: Codex hit usage limit mid-run -> fallback Claude Playwright QA; rerun Codex after 00:26; standing: Codex computer-use QA between each deploy
+- Live QA of #465 (Codex, partial before limit): found #484 side panels overlap bottom seats in tall window -> opus implementer issue-484-panel-overlap; #485 Research matrix/Games raw model ids -> sonnet implementer issue-485-research-short-names. Timer set: rerun full Codex live QA at 00:27 local; standing: Codex computer-use QA between each deploy
 - CODEX x3: (a) codex review DONE: only findings = the 3 ledger bugs PR #397 already fixes (fail-open on Neon insert fail P1, midnight rollover P2, per-IP count lost on restart P2); no leaks/redaction/seat-token issues. Strengthens case for #397 round 3 (ask Marcus); (b) codex visual QA DONE: replay overlaps + file input -> sent to #440; LB global_liars 500 = #447; LB n/a + table overflow = #398 (parked); Research cards/Games models raw ids, Research matrix narrow, #462 PR #469 APPROVED (home fits); (c) #438 merged. (visitor seed -> #475)
 - #395 PR #398 APPROVED r3 auto-merge. FOLLOW-UP after merge: LB rows show long catalog names ('Llama-4-Maverick-17B-128E-Instruct-FP8 · huggingface') -> use modelNames.ts short names (small sonnet).
 - #306 GPT-pair batch: Marcus OK, Seth told to run it
