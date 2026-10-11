@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T14:13Z)
+# marcus status (updated 2026-10-11T14:45Z)
 ## Active
+- 14:45Z: CODE CUTOFF EXECUTED. No coding agents running; #594 on hold (Seth's #720 also hold). Posted on #616 + Discord. No dispatches, no commits after 15:00Z. AFTER DEMO: deploy play server (#677, #683, #687) via deploy hook when games_running=0; #594 decision; #538, #355, #715 (Seth), #695/#696 (Seth).
 - 14:13Z: LIVE SMOKE TEST 8/8 PASS on f0e38541 (posted #616 + Discord). Demo link: ?game=mixed_v2_10p-g0043. Only issue: music/background.mp3 404 (Seth's #693). Post-demo: deploy play server (#677, #683, #687) when idle; #594 hold; #538, #355, #622 done(#676).
 - 14:05Z: #716 and #718 MERGED. Site deploy f0e38541 success at 14:05Z. Live smoke test agent dispatched (read-only, no Play games), shots/smoke/, report by 14:30Z.
 - 14:03Z: Seth merged #707 himself (stray -e file removed first; only cli.py + test file). #698 closed. #716 merged (#714 closed). Removed stale needs-human/changes labels from #707. Waiting on #718 merge + deploy, then live smoke test.
