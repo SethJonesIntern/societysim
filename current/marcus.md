@@ -2,10 +2,8 @@
 ## Active
 - #294 close-out | opus | issue-294-closeout | batch DONE 100/100 $11.02 (runs/mixed_v2_10p); runbook in progress; HF publish skipped (token lacks org write)
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
-- #401 PR #402 RE-APPROVED after rebase, auto-merge pending CI
 - #382 PR #397 NEEDS-HUMAN after 2 failed rounds. Remaining: manager.py:207-208 timeout-then-success books $0 for timed-out request (book hold when usage.attempts>1); test_security.py:634 test passes with max_retries=5 (add 429/5xx + timeout-then-success cases). Everything else verified. No live schema apply needed (server applies at startup). PLAY_IP_SALT already set. Proposed: one more round 3. Awaiting Marcus.
 - #400 player names missing in live/visitor views + names match avatar gender (avatar_presentation in models.yaml, engine name pools, seeded) | opus | issue-400-player-names
-- #390 PR #404 APPROVED, auto-merge (352 viewer tests; 7-9p chairs OK). After merge: delete branch pr-assets-404. Polish follow-ups (non-blocking): your-turn panel covers right 2 seats ~25-40px at 1280; bubble touches speaker frame; '<' toggle overlaps lower-left seat; stale comment LabelPopups.tsx:28.
 - Opus hunt: #387 PR #396 MERGED + schema.sql applied LIVE, verified (running games no meta.usage; events/labels 403; LB views OK). #388 PR #393 MERGED. Unverified: viewer poll race 409 on double submit.
 - Codex review findings -> #382 -> PR #397 CHANGES r1 (retry books 6x hold; load() race) fix sent (fail closed, visitor_starts salted hash, timeout worst-case booking, midnight fix); PLAY_IP_SALT SET on Render (not deployed yet); apply schema.sql live after merge; #383 -> PR #384 APPROVED, auto-merge.
 - BUG HUNT WAVE: Codex review done (#382,#383). Opus hunt done (#387,#388). Fable hunt DONE (Render keys + Turnstile reuse already fixed; new -> #401 PR #402 in review (all 4 real; check_start reshaped; #397 told to rebase onto it)). Codex playtest #2 BLOCKED by Turnstile (needs human click); found raw ids in timeline + static LB n/a -> #395 PR #398 (ids fixed; LB root cause: Neon leaderboard view only has seats+win rate) sent back: merge JSON metrics + Neon overlay instead of hiding columns. Global LB tabs load numbers OK (#377 works).
@@ -55,6 +53,7 @@
 - No viewer work (Augustin only). Seth's held PRs #80/#90/#97 need Seth's decisions; don't touch.
 - When idle: scan all teams for status:ready non-viewer tickets with closed deps; file real follow-ups from review notes.
 ## Queue (next up)
+- #355 (make python-windows required check): HELD, changing branch protection before the freeze could block merges; ask Marcus. #37 overlaps #294 close-out.
 - BIG LIST filed 2026-10-10T22:33Z: viewer (Augustin, assigned): #299 Play page design, #300 10-seat table, #301 style new controls, #302 avatars, #303 mobile/a11y. runner (Seth): #304 ETA bug, #305 humans-vs-models (blocked #282), #306 GPT-pair 10p batch, #307 Neon prune. infra: #308 AMD live (mine, Codex), #309 spend alerts (blocked #282), #310 PR preview deploys. engine: #311 demo safety net (blocked).
 - Discord: Play page spec sent to Augustin (Normal/Watch/Advanced, Your-turn panel, reveal, errors).
 - #217 human_vs_ai.yaml - PARKED by Marcus (just curious; later for demo).
@@ -63,6 +62,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #402 (#401 admission/polling) and #404 (#390 table medallions); handoffs posted (#382, #300, #302); pr-assets-404 deleted
 - 01:5xZ merged #391 #392 #393 #386 #396 #380; handoffs posted; pr-assets/issue-385 deleted
 - PR #374 (Augustin landing/mode picker/Advanced; fixed by us) MERGED. PR #377 (neonAuth expires_at) MERGED.
 - VISITOR PLAY LIVE on Render https://societysim-play.onrender.com (Starter). All checks pass: health, limits (allowed_models 7, client_ip_hint real), XFF spoof ignored, CF-Connecting-IP spoof blocked by CF, Origin 403, bot_check_failed, Neon OK. VITE_PLAY_API_URL set, site redeployed. Render autoDeploy ON (main pushes restart server -> kills live games). .env line 32 (ELEVENLABS_API_KEY) not shell-parseable.
