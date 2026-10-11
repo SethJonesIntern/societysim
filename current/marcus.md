@@ -1,4 +1,15 @@
-# marcus status (updated 2026-10-11T03:56Z)
+# marcus status (updated 2026-10-11T04:48Z)
+## RESUME HERE (session stopped ~01:00 EDT Oct 11 for token limits; Seth in control, Marcus asleep)
+Agents possibly still running at stop (their output lands on GitHub; check PR state, don't assume):
+- Augustin PR #532 (#299): opus rebase+fix on his branch. Check if pushed and status:review, then dispatch a reviewer.
+- PR #545 open-log screen: sonnet implementer, branch issue-545-open-log. If there's no PR, re-dispatch on the branch.
+- PR #559 (#553 deploy-when-idle; hold label): reviewer r2 running. When approved: remove hold -> merge (one auto deploy) -> set Render autoDeploy=no via API (PATCH /v1/services/srv-db5dvg8473hc73aqg0k0 {"autoDeploy":"no"}, silent .env subshell) -> then deploy manually via API (POST .../deploys) only when /api/health games_running==0. No Render login tonight, so no hook secret.
+- PR #562 (#546 replay scaling): reviewer running (flag: Event Details text 11px at 1280x650).
+- #555 relabel: NO Jev cache exists. Agent checking label sources: if no Jev labels -> free --no-jev relabel (backup first); else stop and ask Marcus (paid ~5000 calls). Publish: `uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games` (needs HF_TOKEN), then site via pages.yml workflow_dispatch.
+Approved, auto-merging (post handoffs after merge): #551 (Augustin leaderboard), #558 (#556 days), #560 (#557 short names).
+Queue (assigned to us by Seth): #538 purge old run_meta copies; #512 narration audio (needs CF token?); #498 schema.sql locks (after Seth's #519/#496 merges); #511 FREEZE at 11:00 EDT (autoDeploy off, tag v1.0-demo); follow-up: model page heading in main.tsx shows raw id (after #532).
+Unverified: Render Build Filters (no dashboard login). Live Render env: ACTIVE_PER_IP 3, GAMES_PER_IP_DAY 50, RATE_PER_MIN 600, DAILY_BUDGET_USD 5.
+
 ## Active
 - #555 relabel: NO Jev cache exists (paid relabel ~5000 calls needs Marcus). Agent checking label sources: if no Jev labels -> free --no-jev relabel + postbatch; else stop. Publish: uv run societysim publish runs/mixed_v2_10p --repo polter-dev/societysim-games (HF_TOKEN); site: pages.yml workflow_dispatch
 - #553 root cause: ALL 20 failed visitor games = redeploys (budget/timeouts/day-2 exception ruled out; game started 04:28 reached day 4). PR #559 (autoDeploy off + deploy-play.yml calls Render deploy hook when /api/health games_running==0) MARCUS CHOSE: deploy only when no game running. Codex hook copy FAILED (Chrome computer-use timeout); asked Marcus to copy hook himself or restart Chrome. Plan: reviewer verdict -> hook to clipboard -> pbpaste|gh secret set RENDER_DEPLOY_HOOK_URL -> remove hold/merge -> autoDeploy off via API (currently yes); live steps: RENDER_DEPLOY_HOOK_URL GH secret, autoDeploy off, check VITE_PLAY_API_URL. #559 r1 fixes pushed -> re-review r2 (hold stays). NO Render login tonight (Marcus asleep, SETH IN CONTROL ~00:50 EDT). New plan: #559 now skips when hook missing (pushed) -> fresh re-review r2; merge #559 (one deploy) -> set autoDeploy=no via API -> orchestrator runs a deploy-when-idle watcher (API deploy when games_running==0 and main has new server commits)
@@ -288,4 +299,4 @@
 - Discord webhook (URL in ~/.config/societysim/discord_webhook, chmod 600; never print it): IMPORTANT ONLY = Marcus must act now: start/run a server (e.g. AMD), provide or fix an API key/token/credential, a blocking decision, or something broken that needs immediate attention. NOT for merges, reviews, milestones or routine progress.
 - Adobe track dropped (2026-10-10). #33 (T4.11 polish) is optional and first to cut. docs/PLAN.md and scripts/setup-labels.sh still mention Adobe; fix in a small docs PR.
 - VIEWER = AUGUSTIN ONLY (Marcus): never pick up team:viewer tickets. #33/#40 unassigned and handed back; PRs #120/#121 on hold for him; summary posted on #22. Merged viewer PRs stay as they are unless Marcus says otherwise.
-## Codex: available (live walkthrough+QA running since 00:27)
+## Codex: available, but Chrome computer use flaky (timeouts); Render dashboard logged out
