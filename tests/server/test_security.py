@@ -4,13 +4,16 @@ NEON_DATABASE_URL and skips without it."""
 
 import asyncio
 import contextlib
+import hashlib
 import ipaddress
 import json
 import logging
 import os
 import uuid
+from datetime import timedelta
 from decimal import Decimal
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 import pytest
@@ -27,6 +30,7 @@ from societysim.config import GameConfig  # noqa: E402
 from societysim.engine.state import GameState  # noqa: E402
 from societysim.models.client import CompletionResult, Usage  # noqa: E402
 from societysim.server import admission, security  # noqa: E402
+from societysim.server import ledger as ledger_module  # noqa: E402
 from societysim.server import manager as manager_module  # noqa: E402
 from societysim.server.app import create_app  # noqa: E402
 from societysim.server.ledger import (
@@ -38,6 +42,7 @@ from societysim.server.security import PlayConfig  # noqa: E402
 from societysim.setup import GameSetup  # noqa: E402
 
 TIMEOUT = 30
+SALT = "test-salt-0123456789abcdef"
 SEED = 1  # p0 survives Night 1 and gets a turn
 SITE = "https://society-sim.us"
 DEV = "http://localhost:5173"
@@ -98,6 +103,7 @@ async def make_client(tmp_path, monkeypatch):
     yield make
     for client in clients:
         await client.manager.shutdown()
+        await client.manager.ledger.close()
         await client.aclose()
 
 
@@ -429,13 +435,31 @@ class FakeNeon:
 
     def __init__(self):
         self.events: dict[tuple[str, int], dict] = {}
-        self.spend: list[tuple] = []
+        self.spend: list[tuple] = []  # (day, game_id, cost_usd, created_at)
+        self.starts: dict[tuple, int] = {}  # (day, client_hash) -> games
         self.down = False
+        self.fail_writes = 0  # the next N ledger writes fail
+        self.lands = False  # ...after the row was written (a reply lost to a timeout)
+        self.during_read = None  # awaited while the ledger reads the start counts
 
     async def connect(self):
         if self.down:
             raise ConnectionError(f"could not reach {SECRETS['NEON_DATABASE_URL']}")
         return FakeConn(self)
+
+    def write(self, sql, args):
+        failing = self.fail_writes > 0
+        self.fail_writes -= failing
+        if failing and not self.lands:
+            raise ConnectionError("connection reset")
+        if "into visitor_spend" in sql:  # insert ... where not exists (game_id, created_at)
+            if not any(r[1] == args[1] and r[3] == args[3] for r in self.spend):
+                self.spend.append(args)
+        else:  # upsert, keeping the greater count
+            day, key, games = args
+            self.starts[day, key] = max(self.starts.get((day, key), 0), games)
+        if failing:
+            raise TimeoutError
 
 
 class FakeConn:
@@ -445,8 +469,10 @@ class FakeConn:
     async def execute(self, sql, *args):
         if sql.startswith("delete from events"):
             self.db.events = {k: v for k, v in self.db.events.items() if k[0] != args[0]}
-        elif "insert into visitor_spend" in sql:
-            self.db.spend.append(args)
+        elif sql.startswith("delete from visitor_starts where day < $1"):
+            self.db.starts = {k: v for k, v in self.db.starts.items() if k[0] >= args[0]}
+        elif "into visitor_spend" in sql or "into visitor_starts" in sql:
+            self.db.write(sql, args)
 
     async def executemany(self, sql, rows):
         if "insert into events" in sql:
@@ -455,7 +481,14 @@ class FakeConn:
 
     async def fetchval(self, sql, *args):
         assert "from visitor_spend where day = $1" in sql
-        return Decimal(str(sum(cost for day, _, cost in self.db.spend if day == args[0])))
+        return Decimal(str(sum(r[2] for r in self.db.spend if r[0] == args[0])))
+
+    async def fetch(self, sql, *args):
+        assert "from visitor_starts where day = $1" in sql
+        if self.db.during_read:
+            await self.db.during_read()
+        rows = self.db.starts.items()
+        return [{"client_hash": k, "games": n} for (day, k), n in rows if day == args[0]]
 
     def transaction(self):  # sync_game runs in one (#418)
         return contextlib.nullcontext()
@@ -466,7 +499,7 @@ class FakeConn:
 
 async def test_ledger_persists_to_neon_and_fails_closed():
     db = FakeNeon()
-    ledger = Ledger(2.0, persistent=True)
+    ledger = Ledger(2.0, persistent=True, ip_salt=SALT)
     assert ledger.remaining_usd() == 0 and ledger.remaining_today() == 0  # not loaded yet
     assert ledger.try_reserve(0.01) is None
     db.down = True
@@ -481,15 +514,217 @@ async def test_ledger_persists_to_neon_and_fails_closed():
     await ledger.settle("g1", held, None)  # never came back: the hold is booked
     await ledger.record("g1", 0.40)  # at game end: 0.05 the metering missed
     assert ledger.spent_usd() == pytest.approx(0.40)
-    assert [round(cost, 6) for _, gid, cost in db.spend] == [0.25, 0.10, 0.05]
+    assert [round(r[2], 6) for r in db.spend] == [0.25, 0.10, 0.05]
     assert ledger.try_reserve(1.61) is None and ledger.try_reserve(1.60) is not None
     assert ledger.spent_nanos == ledger.budget_nanos
 
-    restarted = Ledger(2.0, persistent=True)  # a restart keeps today's spend
+    restarted = Ledger(2.0, persistent=True, ip_salt=SALT)  # a restart keeps today's spend
     await restarted.load(db.connect)
     assert restarted.remaining_usd() == pytest.approx(1.60)
     restarted.game_estimate_usd = 0.5
     assert restarted.remaining_today() == 3
+
+
+async def test_ledger_needs_a_salt_to_persist():
+    db = FakeNeon()
+    for salt in ("", "short"):
+        ledger = Ledger(2.0, persistent=True, ip_salt=salt)
+        assert not await ledger.load(db.connect) and ledger.remaining_usd() == 0
+    assert await Ledger(2.0, persistent=True, ip_salt=SALT).load(db.connect)
+
+
+async def wait_ready(ledger: Ledger) -> None:
+    async with asyncio.timeout(TIMEOUT):
+        while not ledger.ready:
+            await asyncio.sleep(0.005)
+
+
+async def test_failed_spend_write_fails_closed_and_recovers(monkeypatch):
+    """#382: a spend row Neon didn't take stops all paid calls and new games, until a retry
+    writes it; then the ledger reloads, and nothing is counted twice."""
+    monkeypatch.setattr(ledger_module, "RETRY_MIN_S", 0.01)
+    db = FakeNeon()
+    ledger = Ledger(2.0, persistent=True, ip_salt=SALT)
+    assert await ledger.load(db.connect)
+    first, second = ledger.try_reserve(0.30), ledger.try_reserve(0.20)  # two calls in flight
+    db.fail_writes, db.down = 1, True  # the write fails, and Neon stays down for a while
+    await ledger.settle("g1", first, 0.25)
+    assert not ledger.ready and ledger.remaining_usd() == 0 and ledger.remaining_today() == 0
+    assert ledger.try_reserve(0.01) is None  # running games fall back to scripted agents
+    await ledger.settle("g1", second, 0.10)  # booked while down: kept for the retry
+    await asyncio.sleep(0.05)  # a few retries, all failing
+    assert not ledger.ready and db.spend == [] and len(ledger.unsaved) == 2
+    db.down = False
+    await wait_ready(ledger)
+    assert [r[2] for r in db.spend] == [0.25, 0.10] and not ledger.unsaved
+    assert ledger.spent_usd() == pytest.approx(0.35)
+    restarted = Ledger(2.0, persistent=True, ip_salt=SALT)
+    assert await restarted.load(db.connect)
+    assert restarted.spent_usd() == pytest.approx(0.35)
+    await ledger.close()
+
+
+async def test_booking_during_the_reload_is_written_before_it_opens():
+    db = FakeNeon()
+    ledger = Ledger(2.0, persistent=True, ip_salt=SALT)
+    assert await ledger.load(db.connect)
+    ledger.ready = False  # as after a failed write
+
+    async def booked_meanwhile():  # a running game's call settles while load() reads
+        await ledger.settle("g1", 0, 0.05)
+
+    db.during_read = booked_meanwhile
+    assert await ledger.load(db.connect)
+    assert not ledger.unsaved and [r[2] for r in db.spend] == [0.05]
+    await ledger.close()
+
+
+async def test_spend_row_that_landed_before_the_error_is_not_counted_twice():
+    db = FakeNeon()
+    ledger = Ledger(2.0, persistent=True, ip_salt=SALT)
+    assert await ledger.load(db.connect)
+    db.fail_writes, db.lands = 1, True  # written, then the reply was lost
+    await ledger.settle("g1", ledger.try_reserve(0.30), 0.25)
+    assert not ledger.ready and len(db.spend) == 1
+    assert await ledger.load(db.connect)  # writes it again: a no-op
+    assert len(db.spend) == 1 and ledger.spent_usd() == pytest.approx(0.25)
+    restarted = Ledger(2.0, persistent=True, ip_salt=SALT)
+    assert await restarted.load(db.connect) and restarted.spent_usd() == pytest.approx(0.25)
+    await ledger.close()
+
+
+def neon_client(make_client, db: FakeNeon, **kw):
+    """A dev-mode app whose ledger persists to `db` and loads on the first start."""
+    c = make_client(play=play(ip_salt=SALT, **kw))
+    c.manager.ledger.persistent, c.manager.ledger.ready = True, False
+    c.manager.neon_connect = db.connect
+    return c
+
+
+async def test_daily_cap_per_ip_survives_a_restart(make_client):
+    db = FakeNeon()
+    c = neon_client(make_client, db, max_games_per_ip_day=2)
+    for _ in range(2):
+        await finished(c, (await start(c, watch_only=True))["game_id"])
+    await asyncio.gather(*c.manager.ledger._tasks)
+    err(await c.post("/api/games", json={}), 429, "too_many_games_today")
+    # Neon holds a salted hash per client, never the IP or a plain hash of it.
+    ((day, key), games), *rest = db.starts.items()
+    assert not rest and games == 2 and len(key) == 64
+    assert key == c.manager.ledger.client_key("127.0.0.1")
+    assert key != hashlib.sha256(b"127.0.0.1").hexdigest()
+
+    restarted = neon_client(make_client, db, max_games_per_ip_day=2)  # same UTC day
+    r = await restarted.post("/api/games", json={})
+    err(r, 429, "too_many_games_today")
+    assert restarted.manager.started_today("127.0.0.1") == 2
+    assert restarted.manager.started_today("198.51.100.7") == 0
+
+
+async def test_failed_start_count_write_refuses_games_until_written(make_client):
+    db = FakeNeon()
+    c = neon_client(make_client, db)
+    db.fail_writes = 1
+    await finished(c, (await start(c, watch_only=True))["game_id"])
+    await asyncio.gather(*c.manager.ledger._tasks)
+    assert not c.manager.ledger.ready and not db.starts
+    db.down = True
+    err(await c.post("/api/games", json={"watch_only": True}), 503, "budget_exhausted")
+    db.down = False  # the next start reconnects, writes the count, then admits
+    await start(c, watch_only=True)
+    await asyncio.gather(*c.manager.ledger._tasks)
+    assert list(db.starts.values()) == [2]
+
+
+def _unavailable():
+    import litellm
+
+    return litellm.exceptions.ServiceUnavailableError("503", llm_provider="openai", model="x")
+
+
+def _rate_limited():
+    import litellm
+
+    return litellm.exceptions.RateLimitError("slow down", llm_provider="openai", model="x")
+
+
+_VOTE = SimpleNamespace(
+    choices=[
+        SimpleNamespace(
+            message=SimpleNamespace(
+                content=json.dumps(
+                    {
+                        "private_reasoning": {"thoughts": "x", "suspicion": []},
+                        "action": {"vote": "p2"},
+                    }
+                )
+            )
+        )
+    ],
+    usage=SimpleNamespace(prompt_tokens=10, completion_tokens=5),
+)
+
+
+@pytest.mark.parametrize(
+    "outcomes",
+    [
+        pytest.param([TimeoutError, TimeoutError, TimeoutError], id="timeouts"),
+        pytest.param([_unavailable, _unavailable, _unavailable], id="503s"),
+        pytest.param([_rate_limited, _rate_limited, _rate_limited], id="429s"),
+        pytest.param([TimeoutError, _VOTE], id="timeout-then-success"),
+        pytest.param([_unavailable, _VOTE], id="503-then-success"),
+    ],
+)
+async def test_failed_or_retried_call_books_its_hold_and_never_more(monkeypatch, outcomes):
+    """The client reports $0 for a failed request, but the provider may still bill it. The
+    play client makes at most PLAY_ATTEMPTS requests per call, the hold covers that many
+    worst cases, and a call that failed or needed a retry books exactly the hold: never
+    $0 for the failed request, never more than held (#382)."""
+    import litellm
+
+    cfg = GameConfig(n_players=7, models=["qwen3-235b"] * 7)
+    with mock.patch.dict(
+        os.environ, {k: "test-key" for k in SECRETS if k.endswith(("_KEY", "_TOKEN"))}
+    ):
+        make, _ = llm_agents_for(cfg, max_tokens=300)
+        client = manager_module._client()
+        monkeypatch.setattr(client, "backoff_s", 0.0)
+        sent = []
+
+        async def provider(**kw):
+            out = outcomes[len(sent)]
+            sent.append(kw)
+            if out is _VOTE:
+                return out
+            raise out()
+
+        monkeypatch.setattr(litellm, "acompletion", provider)
+        ledger, calls = Ledger(1.0), set()
+        state = GameState(cfg)
+        agent = manager_module._metered(make, ledger, "g", calls, 300)(state, "p1")
+        turn = Turn(action="vote", prompt="vote", others=["p2"], targets=["p2"])
+        held = agent.worst_case(turn.prompt)
+        result = await agent.act(turn)
+    succeeded = outcomes[-1] is _VOTE
+    assert (result.error is None) == succeeded
+    if outcomes[0] is TimeoutError and not succeeded:
+        assert result.error == manager_module.TIMED_OUT
+    assert len(sent) == manager_module.PLAY_ATTEMPTS == 2
+    assert result.usage.attempts == 2
+    one = admission.call_worst_case("qwen3-235b", len(agent.inner.system) + 4, 300)
+    assert held == pytest.approx(2 * one) and held > 0
+    assert ledger.games["g"] == pytest.approx(held) and ledger.spent_nanos == nanos(held)
+
+
+async def test_game_across_midnight_is_not_booked_twice(monkeypatch):
+    ledger = Ledger(1.0)
+    await ledger.settle("g1", ledger.try_reserve(0.30), 0.25)
+    tomorrow = ledger_module._today() + timedelta(days=1)
+    monkeypatch.setattr(ledger_module, "_today", lambda: tomorrow)
+    await ledger.settle("g1", ledger.try_reserve(0.30), 0.10)  # after midnight
+    await ledger.record("g1", 0.35)  # game end: the metering missed nothing
+    assert ledger.spent_usd() == pytest.approx(0.10)  # today's share only
+    assert ledger.games["g1"] == pytest.approx(0.35)
 
 
 async def test_start_refused_when_ledger_or_budget_is_out(make_client):
@@ -522,7 +757,7 @@ class CostlyAgent:
             await asyncio.sleep(self.delay)
         except asyncio.CancelledError:
             CostlyAgent.log["cancelled"] += 1
-            CostlyAgent.log["held"] += worst
+            CostlyAgent.log["held"] += manager_module.PLAY_ATTEMPTS * worst  # the hold
             raise
         result = await self.inner.act(turn)
         CostlyAgent.log["done"] += 1
@@ -820,6 +1055,10 @@ def test_visitor_spend_is_never_granted_to_anonymous():
     assert grants and not [line for line in grants if "visitor_spend" in line]
     assert "revoke all on visitor_spend from anonymous" in sql
     assert "alter table visitor_spend enable row level security" in sql
+    assert "create table if not exists visitor_starts" in sql
+    assert not [line for line in grants if "visitor_starts" in line]
+    assert "revoke all on visitor_starts from anonymous" in sql
+    assert "alter table visitor_starts enable row level security" in sql
 
 
 @pytest.mark.live
@@ -831,12 +1070,12 @@ async def test_real_neon_ledger_roundtrip():
     conn = await connect_neon()
     try:
         await apply_schema(conn)
-        first = Ledger(1000.0, persistent=True)
+        first = Ledger(1000.0, persistent=True, ip_salt=SALT)
         assert await first.load(connect_neon)
         before = first.spent_usd()
         await first.settle(gid, 0.0, 0.0123)
         await first.close()
-        again = Ledger(1000.0, persistent=True)
+        again = Ledger(1000.0, persistent=True, ip_salt=SALT)
         assert await again.load(connect_neon)
         assert again.spent_usd() == pytest.approx(before + 0.0123, abs=1e-6)
         await again.close()

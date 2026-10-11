@@ -50,6 +50,7 @@ from societysim.setup import REGISTRY, GameSetup, setup_errors
 
 log = logging.getLogger(__name__)
 
+PLAY_ATTEMPTS = 2  # requests per model call: one retry for a timeout or provider error
 MAX_TEXT = 280  # statement text and wolf chat message, after control characters are stripped
 NEON_SCHEMA_LOCK = 453_000_001  # pg_advisory_xact_lock key around the startup schema apply
 KEEP_FINISHED_S = 3600  # how long an ended game stays readable through /me
@@ -137,7 +138,13 @@ def _client():
     from societysim.models.client import LiteLLMClient
 
     litellm.suppress_debug_info = True  # its help banner can print provider error text
-    return LiteLLMClient(limits=_registry().limits())  # one client, so rate limits are shared
+    # One client, so rate limits are shared. At most PLAY_ATTEMPTS requests per call, which
+    # the ledger's hold covers (worst_case below), so a failed call never books past it.
+    return LiteLLMClient(
+        limits=_registry().limits(),
+        max_retries=PLAY_ATTEMPTS - 1,
+        timeout_retries=PLAY_ATTEMPTS - 1,
+    )
 
 
 def llm_agents_for(
@@ -177,7 +184,9 @@ class MeteredAgent:
     """Books each model call in the ledger. The call's worst-case cost is held first; if it
     doesn't fit in what is left today, a scripted agent answers instead (no spend), so the
     game still finishes. The hold settles to the real cost, or stays if the call never
-    returns. Failed calls are scrubbed of provider text."""
+    returns. The hold covers every attempt the client may make (PLAY_ATTEMPTS), and a call
+    that failed or was retried books all of it, so a failed request is never under-counted
+    and a call never books more than it held. Failed calls are scrubbed of provider text."""
 
     def __init__(
         self,
@@ -205,6 +214,10 @@ class MeteredAgent:
         try:
             result = scrub(await self.inner.act(turn))
             cost = result.usage.cost_usd
+            # The client reports $0 for a failed request, but the provider may still bill
+            # it: a call that failed, or needed a retry, books the whole hold.
+            if result.error is not None or result.usage.attempts > 1:
+                cost = None
             return result
         finally:  # also when cancelled: then the hold is what gets booked
             await self.ledger.settle(self.game_id, held, cost)
@@ -251,16 +264,10 @@ class GameManager:
         self._neon_up = True  # False from the first failure until Neon is back
         self._neon_task: asyncio.Task | None = None  # the one background retry loop
         self._neon_on_ready: Callable[[], Awaitable[bool]] | None = None
-        self._started: tuple[str, dict[str, int]] = ("", {})  # (UTC day, client -> games)
-
-    def _started_counts(self) -> dict[str, int]:
-        today = time.strftime("%Y-%m-%d", time.gmtime())
-        if self._started[0] != today:
-            self._started = (today, {})
-        return self._started[1]
 
     def started_today(self, client: str) -> int:
-        return self._started_counts().get(client, 0)
+        """Games this client IP started today; kept in the ledger, so a restart keeps it."""
+        return self.ledger.started_today(client)
 
     async def prepare_neon(self, on_ready: Callable[[], Awaitable[bool]] | None = None) -> None:
         """Create the Neon tables, then call `on_ready` (the ledger load; kept for later calls).
@@ -356,8 +363,7 @@ class GameManager:
         session.client, session.calls = client, calls
         session.task = asyncio.create_task(self._run(session))
         self.games[game_id] = session
-        counts = self._started_counts()
-        counts[client] = counts.get(client, 0) + 1
+        self.ledger.count_start(client)
         return session, token
 
     async def _run(self, session: Session) -> None:
@@ -495,7 +501,7 @@ def _metered(
 
         def worst_case(prompt: str) -> float:
             prompt_bytes = system_bytes + len(prompt.encode())
-            return admission.call_worst_case(model, prompt_bytes, max_tokens)
+            return PLAY_ATTEMPTS * admission.call_worst_case(model, prompt_bytes, max_tokens)
 
         fallback = RandomAgent(state, s)
         return MeteredAgent(inner, fallback, ledger, game_id, worst_case, calls)
