@@ -1,8 +1,8 @@
-# seth status (updated 2026-10-12T10:00Z)
+# seth status (updated 2026-10-12T10:40Z)
 ## Active
 - BUG FIXES in flight: Neon #417-#420, client #422-#424, runner #432/#433/#443, CLI #434/#435, analysis #441/#442, live site #447 (global rankings timeout; migration 002 needs OK) + #448 (index winner/days). Docs PR #431 in review. For Marcus: #421 #427 #429 #430 #446 (Seth's failed visitor game). For Augustin: #449 #450 (mobile).
 - #405: PR #408 in review. #406: PR #410 (selector only; seats fine) in review. #399 merging.
-- BUG HUNT (Seth 2026-10-12): 8 read-only agents (engine, leaks, batch/CLI, analysis, viewer/live site, neon/data, models/client, docs drift) filing type:bug issues (max 5 each, confirmed repros).
+- BUG HUNT done: 8 hunters, ~28 bugs. Marcus pinged with his list (#421 #427 #429 #430 #446 #438 seed-predictable roles) + Augustin #449/#450.
 - #353: PR #360 approved/merging
 - #346 provider-error retry/classify + qwen max_tokens | implementer (llama part done by Marcus #348/PR #349)
 - #319 approved/merging; next: migration apply + prune dry-run need Seth+Marcus OK
