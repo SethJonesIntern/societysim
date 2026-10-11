@@ -1,7 +1,6 @@
 # marcus status (updated 2026-10-11T01:07Z)
 ## Active
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
-- PLAY HOST RENDER: service societysim-play CREATED (Starter $7/mo) https://societysim-play.onrender.com, first deploy building, secrets EMPTY. RENDER_API_KEY in .env (Marcus). Agent running: sets env via Render API, redeploy, live checks, VITE_PLAY_API_URL, site redeploy.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
 - #42 Databricks: LIVE on real data done (58 games mixed_v1+selfplay_baseline+selfplay_amd; dashboard 01f1c4a8de811c60854d375219a83fbb; MLflow exp 387213714723263; win rates match report). Remaining: re-run with mixed_v2_10p after batch, then close. PR #268 MERGED; main verified OK (78 deception_pairs rows).
@@ -9,7 +8,6 @@
 - DEVPOST draft saved: all text, links, UCF, domain society-sim.us (GoDaddy), prizes HF/AMD/Databricks/Neon/Gemini (proj 1069060524198)/Figma Best Design. Optional empty: video link (YouTube/Vimeo), gallery (<=15 imgs, 5MB, 3:2), thumbnail. Marcus: terms box + submit.
 - AGENT CAP raised to 5 for this wave (Marcus).
 - STAY ON OUR PATH (Marcus: everyone awake now; only team:engine/infra for us). Prior: LOOP MODE (Marcus 2026-10-10T22:34Z): drive everything to done; Codex for anything on Marcus's computer/browser. Before dispatching, re-check assignee (Seth claims runner/infra issues now).
-- PLAY SPACE: PR #333 merged + redeployed (6 secrets set) BUT HF PAUSED the Space: 'Flagged as abusive' (restart -> 503). Live checks a-d (incl XFF spoof) NOT run. NEEDS MARCUS: contact HF support / check Space settings. Site has VITE_PLAY_API_URL set -> play page will fail to reach server meanwhile. Fallback idea: other host (Render/Cloud Run). HF appeal via Codex STOPPED by Marcus before it started (draft email in scratchpad codex_hfappeal.md). Devpost landing-image upload: Codex stopped mid-save, verify draft.
 - Seth claimed: #291 #295 #296 #297 #298 #304 #306 #307 #310 (+#35 #36). Don't duplicate.
 - MILESTONE ISSUES filed for Seth (team:runner, status:ready) 2026-10-10T22:29Z: #291 wire stepper+narration, #292 Research+New game pages, #295 live mode (redo #120), #296 spot-the-wolf, #297 model profiles, #298 link previews; #293 play UI wiring (blocked on #282); #294 10p close-out (mine).
 - #281 PR #289 MERGED, #283 PR #285 MERGED.
@@ -54,6 +52,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- VISITOR PLAY LIVE on Render https://societysim-play.onrender.com (Starter). All checks pass: health, limits (allowed_models 7, client_ip_hint real), XFF spoof ignored, CF-Connecting-IP spoof blocked by CF, Origin 403, bot_check_failed, Neon OK. VITE_PLAY_API_URL set, site redeployed. Render autoDeploy ON (main pushes restart server -> kills live games). .env line 32 (ELEVENLABS_API_KEY) not shell-parseable.
 - #311 assigned to Seth (slim: tag, rollback id, showcase links). Filed #365 archive mode (team:infra, blocked until after judging).
 - PR #357 (#356 model selection) and PR #352 (#347 retry error) MERGED. #355 (python-windows required) deferred to post-hackathon (comment posted).
 - #345 play without JSON: PR #351 MERGED, handoffs posted.
