@@ -1,5 +1,6 @@
-# marcus status (updated 2026-10-11T13:58Z)
+# marcus status (updated 2026-10-11T14:01Z)
 ## Active
+- 14:01Z: PR #718 (#717) APPROVED, auto-merge queued; all 81 cells per source unchanged, top-left 78% n=23 in both sources.
 - 13:58Z: #717 -> PR #718 (thin models sort last; Jev top-left 78% n=23). Reviewer dispatched.
 - 13:58Z: PR #716 (#714) APPROVED round 2, auto-merge queued; no wrap at 1440/1920.
 - 13:57Z: Seth approved+merged #713 himself at 13:56Z; our reviewer then found Jev view still sorts GPT-5 nano first (hatched 50% n=2 top-left). Filed #717 follow-up -> implementer, branch issue-717-jev-thin-sort, PR by 14:20Z. Told Seth on Discord.
