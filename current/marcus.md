@@ -1,7 +1,7 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
-- #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) HOLD, reviewer running. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
+- #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) APPROVED (precision ~99%, recall ~95%), HOLD. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
 - #591 CLOSED: runs 1,2,5 nothing found; run3 -> #593 (done) + #600 (hold); run4 -> #596 (PR #604 hold) + #605
 - #585 CLOSED (all checks pass; smoke 67/67 with PR #592 APPROVED auto-merge)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
