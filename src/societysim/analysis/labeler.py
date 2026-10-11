@@ -9,6 +9,7 @@ The raw log is only ever read.
 """
 
 import json
+import re
 from collections import Counter
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -93,12 +94,29 @@ class _Game:
         return {e.target for e in self.events if e.type in deaths and e.seq < seq and e.target}
 
 
+# "I'm a villager", "I am just a plain villager", "as a villager, I ...": a first-person
+# villager claim in one sentence. Models often tag claim_role "villager" on statements that
+# say nothing about their role, so a villager self-tag counts only when the text says it.
+_SAYS_VILLAGER = re.compile(
+    r"\b(?:I'm|I’m|I am|as an?)\b[^.!?;]{0,40}\bvillager"
+    # a first-person wolf denial ("I'm not a wolf") counts as claiming villager too
+    r"|\bI(?:'m|’m| am) not (?:a |the )?(?:wolf|werewolf)",
+    re.I,
+)
+
+
 def _self_tags(game: _Game) -> list[_Tag]:
     kinds = (EventType.ACCUSATION, EventType.ROLE_CLAIM, EventType.SEER_CLAIM)
+    text = {s.seq: s.public_text or "" for s in game.statements}
     return [
         _Tag(e.type, e.seq, e.meta.statement_seq, e.actor, e.target, e.meta.role, e.meta.result)
         for e in game.events
         if e.type in kinds
+        and not (
+            e.type is EventType.ROLE_CLAIM
+            and e.meta.role is Role.VILLAGER
+            and not _SAYS_VILLAGER.search(text.get(e.meta.statement_seq, ""))
+        )
     ]
 
 
