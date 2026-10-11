@@ -1,7 +1,10 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
+- #591 bug runs (Seth): run1 engine (opus), run2 leaks (opus), run4 labels (sonnet) running; run3 Neon done by me -> filed #593 (2 day-1 failures with no deploy nearby) -> opus fixing; run5 viewer deriveScene: nothing found (66,986 scenes)
+- #585 smoke: selector stale (leaderboard has no <main>) -> PR #592 reviewer; then close #585
+- #589 (#584) APPROVED auto-merge; #590 (#586 narration) reviewer running
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> sonnet issue-588-reasoning-scroll
-- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588)
+- Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593)
 - Resumed 03:00 EDT. Seth merged #532 #562 #563; #559 merged; Render autoDeploy=no (manual deploys only, scratchpad/deploy_when_idle.sh via API; no hook secret).
 - #585: pre-check OK; #577 + #519 MERGED 07:05Z; play server deploy triggered via API 07:09Z (idle). post-checks: health/limits 200, anon read OK, anon PATCH games 403 PASS; site_smoke FAILS (timeout on 'main h1' first page) -> sonnet diagnosing (stale selector vs real break). #585 open
 - #573 day-1 summary in 10p prompts -> RE-DISPATCHED 07:15Z (user asked; fresh branch, earlier attempt pushed nothing)
