@@ -1,9 +1,8 @@
 # marcus status (updated 2026-10-11T07:04Z)
 ## Active
-- #601 model page header -> PR #602 APPROVED auto-merge
 - #600 forfeit status in Neon: filed, blocked+hold until after demo
 - #596 -> PR #604 (lies 1129->350; lie success 41% vs 71% base; top liar gpt-5-mini) HOLD, reviewer running. SETH DECIDES (Discord pinged ~07:45Z): (a) merge+relabel+republish+DEMO before 9AM or (b) after. Matrix follow-up issue filed (blocked on #604)
-- #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 APPROVED auto-merge; watcher deploys play server via API when merged + idle; follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
+- #591 bug runs (Seth): run1 engine: nothing found (182 logs, 28,505 events, replay identical); run2 leaks (opus) running; run4 done (found #596; local runs/ highlights stale vs live); run3 Neon done by me -> #593 -> PR #599 MERGED; play server deployed via API 07:29Z (idle); follow-up forfeit-status issue filed (hold until after demo). Render logs API returns 0 lines (can't confirm); run5 viewer deriveScene: nothing found (66,986 scenes)
 - #585 CLOSED (all checks pass; smoke 67/67 with PR #592 APPROVED auto-merge)
 - #588 (Augustin-filed, taken by us) clipped hidden reasoning + themed scrollbars -> PR #595 APPROVED auto-merge
 - Watcher: polls every 60s for NEW ready issues assigned to us (known: 538 511 355 588 591 593 596 600 601)
@@ -88,6 +87,7 @@
 - Blocked (non-viewer): #37 (needs #21 = Seth PR #80 held), #42 (needs #21, #34), #34-#36 batches (need #16 = Seth PR #97 held), #38 human demo.
 - Optional later: real token count for the observation budget.
 ## Done (last 10)
+- merged #597 (#587 DEMO/PITCH; handoff -> #511), #599 (#593 unfinished-game log; deployed 07:29Z), #602 (#601 model header)
 - merged #589 (#584 claimed role), #590 (#586 narration g0008/g0031), #592 (smoke selector), #595 (#588 reasoning panel); handoff -> #38 posted
 - merged #547 (#536), #548 (#543), #554 (#542; handoff -> #299 posted)
 - merged #525 (#504 Render build filter), #535 (#510 leave game), #539 (#537 bussing dead wolf); handoffs -> #496 #498 #38 posted; #541 unblocked; Seth pinged
