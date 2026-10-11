@@ -1,8 +1,8 @@
-# marcus status (updated 2026-10-11T01:23Z)
+# marcus status (updated 2026-10-11T01:24Z)
 ## Active
 - Augustin PR #374 (landing/mode picker/Advanced setup, branch frontend-play-screens): opus implementer fixing + syncing with main (Marcus: fix and merge). Then reviewer approve+merge. Discord ping sent re remaining UI (leaderboard styling, live view overlap, your-turn panel, model picker, #300-#303, #33).
 - #371 seat clamp | PR #372 APPROVED, auto-merge
-- LIVE PLAYTEST FAILED: (A) ROOT CAUSE: server reads OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY, Render only had PLAY_* -> HOTFIX agent setting both names on Render + redeploy; code fix #379 implementer (issue-379-play-key-mapping). (B) game lost = Render autoDeploy restart on merges (7 deploys 01:04-01:21Z); Marcus OK with autoDeploy (freeze 23:00). (C) PR #377 APPROVED auto-merge. (D) live-log overlap -> in #374 takeover. (E) replay list fixture only -> #294 DEPLOY_SOURCE. RE-RUN Codex playtest after merges settle.
+- LIVE PLAYTEST FAILED: (A) ROOT CAUSE: server reads OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY, Render only had PLAY_* -> HOTFIXED on Render (srv-db5dvg8473hc73aqg0k0: OPENAI_API_KEY/HF_TOKEN/GEMINI_API_KEY = PLAY_* values), deploy live, health OK; code fix #379 implementer (issue-379-play-key-mapping). (B) game lost = Render autoDeploy restart on merges (7 deploys 01:04-01:21Z); Marcus OK with autoDeploy (freeze 23:00). (C) PR #377 APPROVED auto-merge. (D) live-log overlap -> in #374 takeover. (E) replay list fixture only -> #294 DEPLOY_SOURCE. RE-RUN Codex playtest after merges settle.
 - #294 RUNBOOK posted (issuecomment-6104041446). Dry-run OK on 82 games (top highlight g0043). BLOCKER: HF token lacks societysim org write -> Marcus edits token to add org (or Seth publishes). sync-neon ONLY after batch ends (else marks unfinished failed). Publish only mixed_v2_10p to dataset (site deploy merges all). Seth README generator not merged yet.
 - #347 retry prompt includes validation error (Seth-filed, team:engine) | PR #352 APPROVED, auto-merge. Seth @-mentioned on #347 for the paid live check.
 - HF appeal email DRAFTED in Gmail (marcusruth2003) by Codex; Marcus to review+send.
