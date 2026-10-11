@@ -3,7 +3,7 @@
 - #430 wolves>=non-wolves config check (config.py GameConfig) | sonnet | issue-430-wolf-majority-check
 - #429 last_words flag no-op (implement small or reject at load) | opus | issue-429-last-words (also config.py)
 - #427 PR #436 (DATA_CONTRACT.md only) -> reviewer dispatched
-- #421 Databricks notebook human row | sonnet | issue-421-databricks-human (needs notebook re-run after merge)
+- #421 PR #437 (metrics.py seat_groups skips human; parity cell) -> reviewer dispatched. After merge: re-run Databricks metrics notebook (agent via .env subshell, like #294)
 - #303 PR #414 RE-APPROVED after rebase, auto-merge pending CI. Leftover for #398: timeline markers small/seat ids + chat announced in autoplay
 - #294 close-out -> PR #416 APPROVED r2, auto-merge pending CI. DONE live: sync-neon, HF publish to polter-dev (token CAN write polter-dev), DEPLOY_SOURCE -> site shows 100 games w/ correct model ids, Databricks 158 games + dashboard, results on #216. After merge: close #42, #216 (#37 not: T5.2/T5.3 unpublished), close #294. Decision: narration audio not on site (CI deploy excludes it; local deploy needs CLOUDFLARE_API_TOKEN not in .env). Seth pinged: migrate GO.
 - #395 PR #398 NEEDS-HUMAN after 2 failed rounds: live leaderboard.json has 1 game + old model ids (gemma-4-26b/llama-4-maverick vs Neon gemma4-26b/llama4-maverick) -> dup rows; Games/CI from JSON vs winrate from Neon mismatch; rank order; column hiding still present. Proposal: drop overlay, JSON only, regenerate leaderboard.json with canonical ids in #294 close-out. Awaiting Marcus.
