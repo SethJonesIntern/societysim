@@ -314,7 +314,7 @@ def test_hf_space_needs_trusted_proxies(tmp_path):
     """On a Space every request comes through HF's proxy: without trusting it, all visitors
     would share one IP and one set of limits."""
     base = {"runs_dir": tmp_path, "agents": scripted, "neon": False}
-    space = PlayConfig.from_env({"SPACE_ID": "polter-dev/societysim", "PLAY_DEV_MODE": "1"})
+    space = PlayConfig.from_env({"SPACE_ID": "Sethery32/societysim", "PLAY_DEV_MODE": "1"})
     with pytest.raises(RuntimeError, match=f"PLAY_TRUSTED_PROXIES={security.HF_PROXIES}"):
         create_app(Settings(**base, play=space))
     trusted = PlayConfig.from_env(
@@ -328,7 +328,7 @@ def test_hf_space_needs_trusted_proxies(tmp_path):
 # HF Spaces: the peer is HF's proxy (10.16.x.x in the Space logs), behind an AWS load balancer
 # that appends the address it saw to X-Forwarded-For, after whatever the client sent.
 HF_HEADERS = {
-    "Host": "polter-dev-societysim-play.hf.space",
+    "Host": "sethery32-societysim-play.hf.space",
     "X-Forwarded-For": "198.51.100.20",
     "X-Forwarded-Proto": "https",
     "X-Forwarded-Port": "443",

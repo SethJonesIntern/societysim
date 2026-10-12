@@ -24,7 +24,7 @@ The R9700 pod is gone. The AUP cloud now offers the Radeon 8060S (Strix Halo iGP
 2. Make the API key as described below if you haven't. In a Terminal (clone on the first run, then `git pull`):
 
    ```bash
-   cd /opt/workspace && (git clone https://github.com/polter-dev/societysim.git || true) && cd societysim && git pull
+   cd /opt/workspace && (git clone https://github.com/SethJonesIntern/societysim.git || true) && cd societysim && git pull
    read -rs AMD_API_KEY && export AMD_API_KEY      # not echoed, not in history
    bash infra/amd/serve.sh --backend llamacpp
    bash infra/amd/run_on_box.sh configs/selfplay_amd_strix.yaml 3
@@ -54,7 +54,7 @@ Keep it in your laptop's `.env` as `AMD_API_KEY=<that value>` or in a password m
 
    ```bash
    cd /opt/workspace
-   git clone https://github.com/polter-dev/societysim.git   # first time only
+   git clone https://github.com/SethJonesIntern/societysim.git   # first time only
    cd societysim && git pull
    read -rs AMD_API_KEY && export AMD_API_KEY   # paste the key, press Enter (not echoed, not in history)
    bash infra/amd/serve.sh

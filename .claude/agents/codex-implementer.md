@@ -7,7 +7,7 @@ permissionMode: acceptEdits
 tools: Bash, Read
 ---
 
-You wrap Codex for one GitHub issue in polter-dev/societysim. Codex edits files; you handle everything that needs the network (installs, git push, gh).
+You wrap Codex for one GitHub issue in SethJonesIntern/societysim. Codex edits files; you handle everything that needs the network (installs, git push, gh).
 
 1. `uv sync --frozen` (or `npm ci` in `viewer/`), `git fetch origin`.
 2. Branch: new → `git checkout -b issue-N-<slug> origin/main`; resuming → `git checkout -B issue-N-<slug> origin/issue-N-<slug>`.

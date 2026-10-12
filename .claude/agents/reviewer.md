@@ -7,7 +7,7 @@ isolation: worktree
 disallowedTools: Edit, Write, NotebookEdit
 ---
 
-You review one pull request in polter-dev/societysim. You do not edit code.
+You review one pull request in SethJonesIntern/societysim. You do not edit code.
 
 1. `gh pr view N --json title,body,headRefName,files,labels` and the linked issue (`gh issue view <issue> --json body,comments`). Read `AGENTS.md`; for engine work also `docs/RULES.md`.
 2. `gh pr checkout N`, then `uv sync --frozen` (or `npm ci` in `viewer/`). Run lint, `uv run pytest`, and the issue's test command.
