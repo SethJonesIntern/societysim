@@ -463,7 +463,9 @@ async def run_batch(
                 note_disk(exc)
             log.warning("batch %s: run_meta.json not written; the next save retries", cfg.batch_id)
 
-    def save(status: Status) -> dict[str, Any]:
+    def save(status: Status, final: bool = False) -> dict[str, Any]:
+        """Write run_meta.json. The last save of a batch with a full disk logs its failure and
+        still returns the summary, so the caller can print it instead of a traceback."""
         s = {
             "batch_id": cfg.batch_id,
             "status": status,
@@ -486,8 +488,15 @@ async def run_batch(
             "config": cfg.model_dump(mode="json"),
         }
         tmp = meta_path.with_suffix(".json.tmp")
-        tmp.write_text(json.dumps(s, indent=2), encoding="utf-8")
-        _replace(tmp, meta_path)  # a hard kill leaves the old file, never half of one
+        try:
+            tmp.write_text(json.dumps(s, indent=2), encoding="utf-8")
+            _replace(tmp, meta_path)  # a hard kill leaves the old file, never half of one
+        except OSError as exc:
+            if not (final and (disk or exc.errno in DISK_ERRNOS)):
+                raise
+            note_disk(exc)
+            log.error("batch %s: final run_meta.json not written: %s", cfg.batch_id, exc)
+            s["status"], s["disk_error"] = "failed", disk[0]
         return s
 
     if client:
@@ -640,10 +649,10 @@ async def run_batch(
         for task in tasks:
             task.cancel()
         await asyncio.gather(*tasks, return_exceptions=True)
-        save("interrupted")
+        save("interrupted", final=True)
         raise
     if failed or disk:
-        return save("failed")
+        return save("failed", final=True)
     if invalid_stop and len(started_ids) < len(todo):
-        return save("stopped_invalid")
-    return save("budget_stopped" if budget_hit else "completed")
+        return save("stopped_invalid", final=True)
+    return save("budget_stopped" if budget_hit else "completed", final=True)

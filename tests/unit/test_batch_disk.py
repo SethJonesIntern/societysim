@@ -115,3 +115,50 @@ def test_cli_names_the_disk_and_exits_non_zero(tmp_path, monkeypatch):
     assert "cannot write logs: no new games" in res.output
     assert f"could not write to {Path('runs') / 'cli'}: " in res.output
     assert "free space and re-run to resume" in res.output
+
+
+def every_save_after_the_first_fails(monkeypatch):
+    real = runner._replace
+    n = 0
+
+    def replace(src, dst):
+        nonlocal n
+        if dst.name == "run_meta.json":
+            n += 1
+            if n > 1:  # truly full or read-only: the ledger can never be written again
+                raise OSError(errno.ENOSPC, FULL)
+        real(src, dst)
+
+    monkeypatch.setattr(runner, "_replace", replace)
+
+
+async def test_full_disk_final_save_still_returns_the_summary(tmp_path, monkeypatch):
+    every_save_after_the_first_fails(monkeypatch)
+    res = await run_batch(cfg(max_concurrency=1), SPECS, Priced(), runs_dir=tmp_path)
+    assert res["status"] == "failed" and res["disk_error"] == FULL
+    assert res["spent_usd"] > 0 and len(res["not_started"]) == 7
+
+
+def test_cli_full_disk_prints_the_clean_message_not_a_traceback(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    every_save_after_the_first_fails(monkeypatch)
+    disk_full_sink(monkeypatch)
+    path = tmp_path / "b.yaml"
+    path.write_text(
+        json.dumps(
+            {
+                "batch_id": "cli",
+                "n_games": 6,
+                "models": ["gemma4-26b", "qwen3-235b"],
+                "budget_usd": 5,
+                "max_concurrency": 2,
+                "game": {"n_players": 7},
+            }
+        )
+    )
+    res = CliRunner().invoke(app, ["batch", "--config", str(path), "--registry", str(REGISTRY)])
+    assert res.exit_code == 1, res.output
+    assert res.exception is None or isinstance(res.exception, SystemExit)
+    assert f"could not write to {Path('runs') / 'cli'}: " in res.output
+    assert "free space and re-run to resume" in res.output
+    assert "spent $" in res.output and "Traceback" not in res.output

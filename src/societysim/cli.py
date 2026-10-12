@@ -438,6 +438,10 @@ def batch(
             f"could not write to {Path('runs') / cfg.batch_id}: {result['disk_error']}; "
             "free space and re-run to resume"
         )
+        _echo(
+            f"spent ${result['spent_usd']:.4f} of ${cfg.budget_usd:.2f} (the ledger in "
+            "run_meta.json may miss spend still in flight)"
+        )
         if not result["failed"]:
             raise typer.Exit(1)
     if result["failed"]:
