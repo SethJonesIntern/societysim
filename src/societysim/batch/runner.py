@@ -300,6 +300,19 @@ def _try_lock(f: Any) -> None:
         fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
 
 
+def _unlock(f: Any) -> None:
+    """Release the lock now. flock goes with the close, but Windows may keep a byte-range lock
+    until the handle is reclaimed, so unlock it explicitly."""
+    if sys.platform == "win32":
+        import msvcrt
+
+        try:
+            f.seek(_LOCK_AT)
+            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
+        except OSError:  # not locked (never was); closing the file is all that is left
+            pass
+
+
 @contextmanager
 def _batch_lock(out: Path) -> Iterator[None]:
     """Hold runs/<batch_id>/run_meta.json.lock for the run; BatchLocked if another run has it.
@@ -321,7 +334,8 @@ def _batch_lock(out: Path) -> Iterator[None]:
         f.write(str(os.getpid()).encode())
         yield
     finally:
-        f.close()  # closing the file drops the lock
+        _unlock(f)
+        f.close()
 
 
 async def run_batch(
