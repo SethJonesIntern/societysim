@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Deploy the visitor-play game server (src/societysim/server) to a Docker Hugging Face Space.
 #
-#   scripts/deploy-play-space.sh [--dry-run] [space_id]     (default polter-dev/societysim-play)
+#   scripts/deploy-play-space.sh [--dry-run] [space_id]     (default Sethery32/societysim-play)
 #
 # The caller's environment supplies everything. Values are never printed or put on a command
 # line; the output lists names only.
@@ -34,7 +34,7 @@ cd "$(dirname "$0")/.."
 
 dry_run=false
 stage_only=""
-space="polter-dev/societysim-play"
+space="Sethery32/societysim-play"
 while [ $# -gt 0 ]; do
   a=$1; shift
   case "$a" in

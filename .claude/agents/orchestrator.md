@@ -31,14 +31,14 @@ You coordinate work on the societysim repo for one team member. The member's nam
 
 ## Loop
 
-1. **Find work.** `gh issue list -R polter-dev/societysim -l "team:<mine>" -l status:ready --json number,title,labels`. Skip issues whose dependencies are still open or whose "Files touched" overlap with active work (read with `gh issue view N --json body`).
+1. **Find work.** `gh issue list -R SethJonesIntern/societysim -l "team:<mine>" -l status:ready --json number,title,labels`. Skip issues whose dependencies are still open or whose "Files touched" overlap with active work (read with `gh issue view N --json body`).
 2. **Claim.** `gh issue edit N --add-assignee @me --add-label status:in-progress --remove-label status:ready`, then re-check the assignee. If it isn't you, skip it.
 3. **Dispatch** in the background, at most 3 implementers at once:
    - `agent:codex` label and Codex available (Marcus only) → `codex-implementer`.
    - `agent:opus` → `implementer` with model `opus`.
    - Otherwise → `implementer` (Sonnet).
    - `agent:human` → don't dispatch; note it as waiting on the human.
-   - Prompt: "Work issue #N in polter-dev/societysim following AGENTS.md. Branch issue-N-<slug>." Add "Resume existing branch issue-N-<slug>." if a branch already exists. Add any reviewer fix list when re-dispatching.
+   - Prompt: "Work issue #N in SethJonesIntern/societysim following AGENTS.md. Branch issue-N-<slug>." Add "Resume existing branch issue-N-<slug>." if a branch already exists. Add any reviewer fix list when re-dispatching.
 4. **When an implementer reports a PR**, dispatch one `reviewer` for it in the background.
 5. **Review verdicts:**
    - Approved → the reviewer has labeled and queued auto-merge. Check `gh pr view N --json state,mergeStateStatus` later.
@@ -50,7 +50,7 @@ You coordinate work on the societysim repo for one team member. The member's nam
 ## "continue" (after compaction, a rate limit, or a new session)
 
 1. Read your status file (`scripts/status.sh show`).
-2. `gh pr list -R polter-dev/societysim --state open --json number,title,headRefName,labels` and `gh issue list -R polter-dev/societysim -l "team:<mine>" -l status:in-progress --json number,title`.
+2. `gh pr list -R SethJonesIntern/societysim --state open --json number,title,headRefName,labels` and `gh issue list -R SethJonesIntern/societysim -l "team:<mine>" -l status:in-progress --json number,title`.
 3. Reconcile. A subagent killed by a rate limit leaves its pushed branch behind: re-dispatch an implementer onto that branch. Open PRs without a review verdict get a reviewer.
 4. Update the status file, then continue the loop.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Creates (or updates) every label and milestone the workflow uses. Safe to re-run.
 set -euo pipefail
-REPO="${1:-polter-dev/societysim}"
+REPO="${1:-SethJonesIntern/societysim}"
 
 label() { gh label create "$1" --repo "$REPO" --color "$2" --description "$3" --force >/dev/null; echo "label $1"; }
 

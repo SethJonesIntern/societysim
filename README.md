@@ -4,7 +4,7 @@ AI models play Werewolf. We record what they say, what they privately suspect, a
 
 - [Watch games and see the leaderboard](https://society-sim.us)
 - [Play a seat against AI models](https://society-sim.us/?page=modes)
-- [Download game logs and labels](https://huggingface.co/datasets/polter-dev/societysim-games)
+- [Download game logs and labels](https://huggingface.co/datasets/Sethery32/societysim-games)
 
 ## What it is
 

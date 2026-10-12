@@ -66,7 +66,7 @@ Each script is about 60 seconds spoken. Each says what to click, what to say, an
 
 ### Hugging Face: Best Use of Open Source AI
 
-**Evidence:** HF Dataset with the game logs and labels: https://huggingface.co/datasets/polter-dev/societysim-games (public, 100 games of `mixed_v2_10p`, 20,512 events, 1,178 labels). HF Space with the viewer: `polter-dev/societysim` (a static Space, running on 2026-10-11), open it at https://polter-dev-societysim.static.hf.space (the plain `polter-dev-societysim.hf.space` address returns 404). It is deployed from that dataset by the Deploy workflow (#294); Play shows "(offline)" there. Model list in `configs/models.yaml` and the README.
+**Evidence:** HF Dataset with the game logs and labels: https://huggingface.co/datasets/Sethery32/societysim-games (public, 100 games of `mixed_v2_10p`, 20,512 events, 1,178 labels). HF Space with the viewer: `Sethery32/societysim` (a static Space), open it at https://sethery32-societysim.static.hf.space (the plain `sethery32-societysim.hf.space` address returns 404). It is deployed from that dataset by the Deploy workflow (#294); Play shows "(offline)" there. Model list in `configs/models.yaml` and the README.
 
 **Click path**
 1. Space (or society-sim.us, `?page=games`), game index. Point at the model names.

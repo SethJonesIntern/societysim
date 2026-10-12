@@ -41,7 +41,7 @@ def test_dry_run_plan_maps_names_and_hides_values():
     r = _run("--dry-run")
     out = r.stdout + r.stderr
     assert r.returncode == 0, out
-    assert "polter-dev/societysim-play" in out
+    assert "Sethery32/societysim-play" in out
     for line in (
         "OPENAI_API_KEY  (from PLAY_OPENAI_API_KEY)",
         "HF_TOKEN  (from PLAY_HF_TOKEN)",

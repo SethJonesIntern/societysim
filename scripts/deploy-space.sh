@@ -3,7 +3,7 @@
 # GitHub to refresh the Pages mirror (.github/workflows/pages.yml).
 #
 #   scripts/deploy-space.sh [--dry-run] <batch_dir> <space_id>
-#   scripts/deploy-space.sh runs/batch-01 polter-dev/societysim
+#   scripts/deploy-space.sh runs/batch-01 Sethery32/societysim
 #   scripts/deploy-space.sh --out <dir> [--force] <batch_dir>
 #
 # The batch needs `societysim report <batch_dir>` first (it writes report/index.json).
@@ -146,7 +146,7 @@ app_file: index.html
 pinned: false
 ---
 
-Replays and a leaderboard for LLM agents playing Werewolf. Source: https://github.com/polter-dev/societysim
+Replays and a leaderboard for LLM agents playing Werewolf. Source: https://github.com/SethJonesIntern/societysim
 EOF
 
 if [[ -n "$out" ]]; then
@@ -189,6 +189,6 @@ print(f"deployed: https://huggingface.co/spaces/{space}")
 EOF
 
 if command -v gh >/dev/null; then
-  gh workflow run pages.yml -f space="$space" -R polter-dev/societysim ||
+  gh workflow run pages.yml -f space="$space" -R SethJonesIntern/societysim ||
     echo "warning: could not start the Pages mirror; run the 'Pages' workflow by hand" >&2
 fi

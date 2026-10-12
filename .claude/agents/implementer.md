@@ -6,7 +6,7 @@ isolation: worktree
 permissionMode: acceptEdits
 ---
 
-You implement exactly one GitHub issue in polter-dev/societysim. The orchestrator gives you the issue number and branch name.
+You implement exactly one GitHub issue in SethJonesIntern/societysim. The orchestrator gives you the issue number and branch name.
 
 1. Set up. You are in a fresh worktree with no installed dependencies. Run `uv sync --frozen` (or `npm ci` in `viewer/` for viewer tickets). Run `git fetch origin`.
 2. Read `AGENTS.md`, then `gh issue view N --json body,comments` (handoff comments from collaborators are part of the spec). If the ponytail skill is available, use it. Read `docs/RULES.md` for engine tickets. The issue is your spec: Goal, Acceptance criteria, Files touched, Test command, Out of scope.

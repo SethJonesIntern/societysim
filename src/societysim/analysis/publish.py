@@ -125,7 +125,7 @@ This dataset holds {len(games)} games, {n_events} events and {n_labels} labels, 
 ## Schema
 
 Events and labels are documented in
-[docs/LOG_SCHEMA.md](https://github.com/polter-dev/societysim/blob/main/docs/LOG_SCHEMA.md).
+[docs/LOG_SCHEMA.md](https://github.com/SethJonesIntern/societysim/blob/main/docs/LOG_SCHEMA.md).
 `actor` and `target` are seat ids (`p0`...`p9`), never names. Event rows include the private
 reasoning of each player, so this is a research log, not what any player saw.
 

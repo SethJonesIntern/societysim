@@ -15,7 +15,7 @@ name: Deploy
 # without them that step is skipped. hf-space needs the HF_TOKEN secret.
 # Visitor play: the viewer build gets the VITE_PLAY_API_URL and VITE_TURNSTILE_SITE_KEY repo
 # variables (both public). The deploy-play job (dispatch with deploy_play=true) pushes the game
-# server to the polter-dev/societysim-play Space; see README, "Visitor play".
+# server to the Sethery32/societysim-play Space; see README, "Visitor play".
 # Live Neon games: set the VITE_NEON_DATA_API_URL and VITE_NEON_AUTH_URL repo variables (README,
 # deploy section). Unset, the viewer builds in static mode and the log says so.
 

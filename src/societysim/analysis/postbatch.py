@@ -154,7 +154,7 @@ def next_steps(batch: Path) -> str:
             "Next (not run; these upload or cost money):",
             f"  societysim publish {batch}",
             f"  societysim sync-neon {batch}",
-            f"  HF_TOKEN=... scripts/deploy-space.sh {batch} polter-dev/societysim",
+            f"  HF_TOKEN=... scripts/deploy-space.sh {batch} Sethery32/societysim",
             "  scripts/databricks_ingest.py --runs runs/",
             "    (each ingest replaces the Delta tables, so it takes the parent runs/ dir,"
             " not one batch)",
